@@ -1,0 +1,38 @@
+* {
+-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+html, body {
+	margin: 0;
+	padding: 0;
+}
+body {
+	color: #222;
+	font: 16px/1.5 Helvetica, Arial, sans-serif;
+}
+h1, h2, h3, p, pre, ul {
+	margin: 0;
+	padding: 0;
+}
+p, pre, ul {
+	margin-bottom: 0;
+}
+pre {
+	background: #fefefe;
+	border: 1px solid #dedede;
+	overflow-x: auto;
+	padding: 2em;
+} 
+
+/* 主要代码部分 */
+#nav {list-style: none; background:url(/images/zzdb_left_nav.png) no-repeat; float:left;}
+#nav a {color: #666;font-size: 18px;text-decoration: none; text-align:center; height:30px; line-height:30px;  padding:3px 10px 3px 40px; }
+#nav li{ margin-bottom:30px;}
+#nav a:hover { border-radius:13px; background-image:url(/images/left_nav_yuan.png); background-repeat:no-repeat; }
+#nav .current a {background-image:url(/images/left_nav_yuan.png); background-repeat:no-repeat;color: #ff4400; border-radius:13px; padding-left:40px;  }
+.section {border-bottom: 5px solid #ccc;padding: 50px 20px;}
+.section p:last-child {	margin-bottom: 0;}
+
+
+.zzdb_tiaojcg_leftnav{ letter-spacing:25px;}

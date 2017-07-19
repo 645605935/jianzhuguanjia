@@ -1,0 +1,131 @@
+﻿@charset "utf-8";
+/* CSS Document */
+* {font-family: "微软雅黑","宋体";margin: 0;padding: 0;}
+html, body{ font-size:14px;color: #767676;font-family: Arial,Helvetica,sans-serif;background-color: white;}
+ul{ list-style-type:none;}
+a{border:0;color: #9A9A9A; text-decoration:none;outline:none;}
+input,:hover,img{border:none;}
+
+
+.head{width:100%; height:38px;}
+.head img{width:100%; height:100%;}
+.header{ position:relative;background:#fff; z-index:998; min-width:1220px; }
+.header_top{position:relative; height:35px; font-size:12px;background-color:#f9f9f9; border-bottom:1px solid #eee; z-index: 3000; width: 100%;}
+.header_top_center{width:1220px; margin:0 auto; height:35px}
+.header_top_left {height:35px; color:#999;font-weight:normal;font: 12px/1.5 "Microsoft YaHei", ΢ź,\9ed1\4f53,\5b8b\4f53, "Microsoft JhengHei", ϸ, STHeiti, MingLiu;}
+.header_top_left h1{display:inline-block; height:35px; position:relative; line-height:30px ; color:#9A9A9A}
+.header_top_right ul li{display:inline-block; height:35px; position:relative; line-height:35px ; color:#9A9A9A}
+.header_top_left h1 a{color:#9A9A9A;font-weight:normal;font-size:12px;}
+.header_top_right{float:right; height:35px;margin-right:25px;display: inline;}
+.header_top_right ul li a, .header_top_right ul li  span ,.header_top_right ul li em{float:left;display:inline; color:#999;font-style:normal;}
+.header_top_right ul li a,.header_top_right ul li em{ padding: 0 5px; font-style:normal;}
+.header_top_right ul li a:hover{color:#f25618; text-decoration:none}
+.header_top_right ul li .htr_line{overflow: hidden;width: 1px;height: 12px;margin-top: 11px;background-color: #ddd;}
+.header_top_right ul li a.nav_fzlink{color: #f25618;}
+
+
+/*2012.8.26 首页头部改版*/
+.right_img{padding-top:25px; padding-left:45px; width:264px; height:87px; float:left;padding-left:0;}
+.header_top_right ul li #regist em{background:url(../images/dh1.png) no-repeat left; background-size:15px 15px; font-size:12px; padding-left:18px; color:#5e5c5b;}
+.header_top_right ul li #regist em span{font-size:19px; float:none; color:#5e5c5b; font-family:Tahoma;}
+.header_top_right ul li a{text-decoration:none; color:#5e5c5b;float:left;}
+.header_top_right ul li a:hover{color:#f40; text-decoration:underline;}
+
+.header_search{width:585px; margin-left:50px;}
+.header_search .header_search_input{width:490px; outline:none; line-height:35px; padding-left:0; text-indent:0.5em;height: 33px;border: 1px solid #fff;float: left;color: #666;border: 0;margin-top: 1px;display: inline;}
+.header_search .header_search_submit{width:90px; right:-2px;border: 0;background: #ff4400;height: 36px;text-align: center;font-size: 16px;color: #fff;position: absolute;top: 0;cursor: pointer;}
+/*-------*/
+
+.logo_box{width:100%; height:70px; border-bottom:1px solid #ddd; box-shadow:0px 4px 5px #ddd; margin:15px 0;}
+.logo{width:1200px; height:70px; margin:0 auto;}
+.logo a{float:left; display:inline;}
+.logo .ico-logo{background:url("../images/logo.gif") no-repeat; width:233px; height:66px;}
+.logo p{width:auto; height:35px; line-height:35px; margin-top:15px; margin-left:15px; border-left:1px solid #888; padding-left:10px; color:#666; letter-spacing:2px; display:inline-block; font-size:22px; float:left;}
+.logo span{height:35px; line-height:35px; padding-right:40px; font-size:18px; background:url(../images/fj.png) no-repeat right; margin-top:15px; display:inline-block; float:right;}
+.logo span a{color:#ff4401; font-weight:600; display:inline; float:none;}
+
+
+/* 注册，登陆，修改密码_主体代码 */
+.mion{width:1000px; height:auto; overflow:hidden; padding-bottom:20px; padding:10px; margin:45px auto; margin-top:45px;}
+.mion-left{width:529px; height:auto; border-right:1px solid #ededed; float:left;}
+
+/* 注册，登陆，修改密码_主要样式 */
+
+.ul_form{height:auto; overflow:hidden; padding-left:110px;}
+.ul_form li{width:100%; height:auto; padding-bottom:23px; display:inline-block; position:relative;}
+.ul_form li label{padding-right:15px; line-height:38px; color:#666; text-align:right; display:block; float:left;}
+.ul_form li label span{padding-right:5px; color:#f00;}
+.ul_form li input{width:250px; height:35px; line-height:35px; border-radius:4px; border:1px solid #ddd; text-indent:1em; float:left; color:#8a949c; display:inline; outline:0;}
+.ul_form li input:focus{border:1px solid #ff4401;}
+.ul_form li input.btn{width:110px; text-align:center; text-indent:0; height:31px; line-height:31px; border:1px solid #f2f2f2; border-radius:4px; background:#f2f2f2; outline:none; color:#666; cursor:pointer; position:absolute; right:87px; top:2px;}
+.ul_form li input.btn:hover{background:#ff4401; color:#fff;}
+.ul_form li img{margin-top:10px; margin-left:10px;}
+.ul_form li .input{width:auto; height:auto; margin-top:4px;}
+
+.ul_form li p{display:inline-block; position:absolute; top:35px; left:90px;}
+.ul_form li p .a{color:#5d829c; font-size:12px; padding-left:135px;}
+.ul_form li p .a:hover{color:#5d829c; text-decoration:underline;}
+.ul_form li .span{width:252px; height:40px; line-height:40px; background:#ee7603; color:#fff; font-size:18px; text-align:center; border-radius:4px; text-decoration:none; display:block; margin-left:112px;}
+.ul_form li input.submit_button_zc{background:#ff4401 none repeat scroll 0 0;border-radius: 4px;color: #fff;display: block;font-size: 18px;height: 40px;line-height: 20px;text-align:center;text-decoration: none;width:346px;margin-top: 3px;cursor:pointer; border:0; letter-spacing:3px;}
+.ul_form li input.submit_button_zc:hover{background:#ff6600;}
+.ul_form li input.submit_button_dl{width:255px; height:40px; line-height:20px; background:#ee7603; color:#fff; font-size:18px; text-align:center; border-radius:4px; text-decoration:none; display:block; margin-left:112px;cursor:pointer;font: 18px "Microsoft YaHei",΢ź,黑体,宋体,"Microsoft JhengHei",ϸ,STHeiti,MingLiu;}
+.ul_form li input.submit_button_dl:hover{background:#ff6600;}
+.ul_form li .span1{width:250px; height:40px; line-height:40px; border:1px solid #f0f0f0; color:#999; font-size:18px; text-align:center; border-radius:4px; text-decoration:none; display:block; margin-left:112px;}
+.ul_form li .span1:hover{color:#ee7603; background:none;}
+.ul_form li i{width:110px; height:60px; line-height:60px; margin-top:2px; color:#ee7603; font-style:normal; padding-left:10px; text-align:right; font-size:12px; display:none;}
+.ul_form li b{font-size:12px; line-height:16px; color:#666; font-weight:normal;}
+.ul_form li span{height:20px; line-height:20px; display:inline-block;}
+.ul_form li span a{color:#f30; text-decoration:none;}
+.ul_form li span a:hover{background:none; text-decoration:underline; color:#f00;}
+.choice a{width:155px; text-align:center; height:60px; line-height:60px; padding:1px; font-size:18px; border:1px solid #ccc; border-radius:4px; display:inline-block; float:left;}
+.choice a:hover{border:2px solid #ff4401; color:#ff4401; padding:0;}
+.choice a.selected{border:2px solid #ff4401; color:#ff4401; padding:0;}
+
+/* 登陆页面 */
+.ul_form li a.forget{color:#ff4401; font-size:16px; margin-right:33px; float:right; display:block;}
+.register{text-align:center; font-size:16px;}
+.register a{color:#ff4401;}
+
+/* 注册页面右_样式 */
+.mion-right{width:400px; height:auto; padding-left:70px; float:left;}
+.mion-right img{width:271px; height:348px; display:inline; float:left;}
+.mion-right div{width:190px; height:40px; line-height:40px; padding-left:55px; margin-top:25px; margin-left:45px; font-size:18px; color:#666; background:url(../images/ico.jpg) no-repeat; display:inline; float:left;}
+.mion-right div.div2{line-height:20px; background-position:0 -40px;}
+.mion-right div span{width:135px; text-align:center; line-height:30px; font-size:18px;}
+.mion-right div span:hover{font-weight:600;}
+.mion-right div p{width:130px; text-align:center; line-height:20px; font-size:14px;}
+
+/* 登陆，注册，修改密码底部样式 */
+.bottom{width:100%; height:auto; text-align:center; margin:0; color:#666;}
+.bottom ul li{width:100%; line-height:27px; text-align:center;}
+.bottom ul li a{padding:0 5px; color:#888; display:inline;}
+.bottom ul li a:hover{color:#f00;}
+.bottom img{width:100%}
+.error_bg {background: url("../images/global.png") no-repeat scroll -253px 7px !important;  display: inline-block;  padding: 0 15px;  }
+.messge{ height: 25px;line-height: 25px;border-radius: 4px;float: left;color:#ff6666;}
+
+/* 服务条款_弹窗层 */
+#popup{width:100%; height:100%; position:fixed; top:0; left:0;}
+#popup .popup_layer{width:945px; height:600px; position:absolute; top:50%; left:50%; margin-top:-270px; margin-left:-470px; background:#fff; border:3px solid #999; border-radius:10px; z-index:999;}
+.title{width:100%; height:35px; background:#ececec; color:#444; border-top-left-radius:10px; border-top-right-radius:10px;}
+.title h3{line-height:35px; font-size:18px; font-weight:400; padding-left:5%; float:left;}
+.title a{width:20px; height:20px; font-size:20px; display:inline; float:right;}
+.text{width:90%; margin:2% auto; color:#333;}
+.text p{line-height:20px; margin-bottom:10px;}
+.text h4{font-size:16px; margin-bottom:10px;}
+.popup_bj{width:100%; height:100%; position:absolute; top:0; left:0; background:#000; opacity:0.3; filter:alpha(opacity=30); z-index:0;}
+.agree{width:290px; text-align:center; line-height:50px; font-size:20px; color:#fff; background:#ff4401; border-radius:5px; margin:25px auto; display:block;}
+.agree:hover{background:#f30;}
+
+/* 登陆，修改密码，修改成功页面右部 样式 */
+.mion_er{width:100%; height:490px; margin:45px 0; background:#fb6808; position:relative;text-align:center;}
+.mioner{width:1200px; height:490px; margin:0 auto; background:url(../images/bj2.jpg) no-repeat -14px 33px;}
+.mion_er_right{width:400px; height:335px; border-radius:10px; float:right; margin-top:70px; background:#fff;}
+
+
+/* 修改密码成功页面 */
+li.return{text-align:right; font-size:19px; font-weight:600; margin-top:20px;}
+li.return a{color:#ff4401;}
+li.remind{height:66px; background:url(../images/giu.png) no-repeat left; padding-left:80px; padding-bottom:0; margin:0 auto; margin-top:50px; box-sizing:border-box; -webkit-box-sizing:border-box; -moz-box-sizing:border-box; display:block;}
+li.remind b{line-height:33px; font-size:22px;}
+li.remind em{line-height:33px; font-size:16px; float:left; font-style:normal;}

@@ -1,0 +1,141 @@
+<html>
+ <head> 
+  <meta charset="utf-8" /> 
+  <title>注册</title> 
+ </head> 
+ <body> 
+  <div class="logo_box"> 
+   <div class="logo"> 
+    <a href="http://www.zizhiguanjia.com/" title="资质管家">
+     <div class="ico-logo header-logo"></div></a> 
+    <p>欢迎入驻</p> 
+    <span>已有账号，<a href="login.html">直接登录</a></span> 
+   </div> 
+  </div> 
+  <meta http-equiv="x-ua-compatible" content="ie=7" /> 
+  <meta name="viewport" content="width=device-width" /> 
+  <title>用户注册-资质管家</title> 
+  <link rel="stylesheet" type="text/css" href="css/member.css" /> 
+  <div class="mion"> 
+   <div class="mion-left"> 
+    <form action="/user/register" method="post" id="register_form" novalidate="novalidate"> 
+     <ul class="ul_form"> 
+      <li> <label>用　户　名</label> <input name="Contact" id="Contact" placeholder="请输入您的称呼" type="text" /> <p class="messge" id="contact_error"></p> </li> 
+      <li> <label>手 机 号 码</label> <input name="Phone" id="Phone" placeholder="建议输入常用手机号" type="text" /> <p class="messge" id="phone_error"></p> </li> 
+      <li> <label>验　证　码</label> <input style="height: 35px; line-height: 25px; border-radius: 4px; text-indent: 1em;" name="IdentifyingCode" id="IdentifyingCode" placeholder="手机验证码" type="text" /> <input class="btn" value="获取验证码" name="smsId" id="smsId" onclick="settime(this);" type="button" /> <p class="messge" id="identifyingCode_error"></p><br /> </li> 
+      <li style="width:500px;font-size:12px;height:12px;margin-left:100px;display:none" id="hint">未收到验证码，请发送&quot;yz&quot;至13371739040进行人工验证</li> 
+      <li> <label>设 置 密 码</label> <input name="password" maxlength="16" id="password" placeholder="请输入密码，6-16位字符" type="password" /> <p class="messge"></p> </li> 
+      <li> <label>确 认 密 码</label> <input name="repassword" maxlength="16" id="repassword" placeholder="请再输入密码" type="password" /> <p class="messge"></p> </li> 
+      <li class="choice" id="choice"> <a href="javascript:;" onclick="hidMeg()">建筑企业</a> <a href="javascript:;" style="margin-left:28px;" onclick="hidMeg()">中介机构</a> <input name="CompanyType" id="CompanyType" type="hidden" /> <p class="messge" id="comMess" style="top:63px;left:0px"></p> </li> 
+      <li> <input checked="checked" class="input" name="Agree" id="Agree1" type="checkbox" /> <span>我已阅读并同意<a href="javascript:;" id="k" target="_parent">《资质管家服务协议》</a></span> <p class="messge" style="left:0px;top:19px;"></p> </li> 
+      <li><input class="submit_button_zc" value="立即免费注册" id="registerId" type="submit" /></li> 
+     </ul> 
+    </form> 
+   </div> 
+   <div class="mion-right"> 
+    <img src="images/ewm2.jpg" /> 
+    <div class="div1"> 
+     <span>建筑企业办资质</span> 
+    </div> 
+    <div class="div2"> 
+     <p>24小时服务热线:</p> 
+     <span>010-56269198</span> 
+    </div> 
+   </div> 
+  </div> 
+  <div id="popup" style="display:none;"> 
+   <div class="popup_layer"> 
+    <div class="title"> 
+     <h3>资质管家服务协议</h3> 
+     <a id="x" href="javascript:;">x</a> 
+    </div> 
+    <div class="text"> 
+     <h4>服务条款　Terms of Service</h4> 
+     <p>欢迎使用资质管家！任何使用资质管家的用户均应仔细阅读本声明，用户可选择不使用资质管家，用户使用资质管家的行为，包括进入资质管家主页及各层页面将被视为对本声明全部内容的认可。</p> 
+     <p>1.资质管家所有刊登内容，以及所提供的信息资料，目的是为了更好地服务我们的访问者，本网站不保证所有信息、文本、图形、链接及其它 项目的绝对准确性和完整性，故仅供访问者参照使用。</p> 
+     <p>2.资质管家不担保网络服务一定能满足用户的要求，也不担保网络服务不会中断，对网络服务的及时性、安全性、准确性也都不做担保。对于因不可抗力或资质管家不能控制的原因造成的网络服务中断或其他缺陷，资质管家不承担任何责任，但将尽力减少因此而给用户造成的损失和 影响.资质管家严格保障用户隐私权，对上网用户的个人信息保密，未经上网用户同意不得向他人泄露，但法律另有规定的除外.用户自愿注册个人信息，用户在注册时提供的所有信息，都是基于自愿，用户有权在任何时候拒绝提供这些信息。注册个人信息的用户同意资质管家对这些信息进行善意利用。用户明确同意其使用资质管家网络服务所存在的风险将完全由其自己承担。</p> 
+     <p>3.任何单位或个人认为通过资质管家的内容（或通过资质管家到的第三方内容：例如，口袋资源分享）可能涉嫌侵犯其合法权益，应该及时向资质管家书面反馈，并提供身份证明、权属证明及详细侵权情况证明，资质管家在收到上述法律文件后，将会尽快删除被控侵权内容。</p> 
+     <p>4.除资质管家注明之服务条款外，其它因使用资质管家而引致之任何意外、疏忽、合约毁坏、诽谤、版权或知识产权侵犯及其所造成的各种损失 （包括因下载而感染电脑病毒），资质管家概不负责，亦不承担任何法律责任。</p> 
+     <p>5.任何透过资质管家网页而链接及得到之资讯、产品及服务，资质管家概不负责，亦不负任何法律责任。</p> 
+     <p>6.资质管家内所有内容并不反映任何资质管家之意见及观点。</p> 
+     <p>7.资质管家适用于中华人民共和国法律法规规定的其它有关免责规定。</p> 
+     <a href="javascript:;" class="agree" id="agree2">同意并继续</a> 
+    </div> 
+   </div> 
+   <div class="popup_bj"></div> 
+  </div> 
+  <div class="bottom"> 
+   <ul> 
+    <li> <a href="daiban.html">资质代办</a>| <a href="zizhibiaozhun.html">资质标准</a>| <a href="news.html">行业资讯</a>| <a href="reg.html" rel="nofollow">中介入驻</a>| <a href="about.html" rel="nofollow">关于我们</a>| <a href="http://www.zizhiguanjia.com/join.html" rel="nofollow">加入我们</a>| <a href="http://www.zizhiguanjia.com/contact.html" rel="nofollow">联系我们</a>| <a href="#" rel="nofollow" style="cursor: default; color: #888;">常见问题</a>| <a href="#" rel="nofollow" style="cursor: default; color: #888;">意见反馈</a>| </li> 
+    <li>版权所有 资质管家（北京）信息技术有限公司 京ICP备16024435号-1</li> 
+   </ul> 
+   <a href="http://www.zizhiguanjia.com/sitemap.html" target="_blank" style="color: #5e5c5b;text-decoration: none !important;"></a> 
+  </div> 
+  <script async="" src="js/analytics.js"></script>
+  <script src="js/push.js"></script>
+  <script src="js/hm.js?580e9422d1d340fa7711682e41256040"></script>
+  <script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "js/hm.js?580e9422d1d340fa7711682e41256040";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+    </script> 
+  <script>
+            (function () {
+                var bp = document.createElement('script');
+                var curProtocol = window.location.protocol.split(':')[0];
+                if (curProtocol === 'https') {
+                    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+                }
+                else {
+                    bp.src = 'js/push.js';
+                }
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(bp, s);
+            })();
+        </script> 
+  <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'js/analytics.js', 'ga');
+
+        ga('create', 'UA-101792527-1', 'auto');
+        ga('send', 'pageview');
+
+    </script> 
+  <div style="display: none"> 
+   <a href="http://www.cnzz.com/stat/website.php?web_id=1255699131" target="_blank" title="站长统计">站长统计</a> 
+  </div> ; 
+  <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script> 
+  <script type="text/javascript" src="js/jquery.validate.js"></script> 
+  <script type="text/javascript" src="js/user_countdown.js"></script> 
+  <script type="text/javascript" src="js/user_check.js?v=20160321"></script> 
+  <script type="text/javascript">
+        //公司类别切换
+        window.onload = function () {
+            var oli = choice.getElementsByTagName("a");
+
+            oli[0].onclick = function () {
+                oli[0].className = "selected";
+                oli[1].className = "";
+                $("#comMess").removeClass("error_bg");
+                $("#comMess").text("");
+                $("#CompanyType").val(0);
+            };
+            oli[1].onclick = function () {
+                oli[1].className = "selected";
+                oli[0].className = "";
+                $("#comMess").removeClass("error_bg");
+                $("#comMess").text("");
+                $("#CompanyType").val(1);
+            };
+        };
+    </script> 
+ </body>
+</html>

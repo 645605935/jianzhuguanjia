@@ -1,0 +1,197 @@
+﻿#zhizgj_left {
+        float: none !important;
+       background: url(../images/zzdd_right_img.jpg) #ffcc33 no-repeat;
+       background-position: 0 100%;
+       background-size: 300px 104px;
+    }
+
+    .order-popover {
+        display: none;
+        background: url(../images/tankuang.png) no-repeat;
+        width: 535px;
+        height: 475px;
+        z-index: 9999;
+        position: fixed;
+    }
+
+    .order-suc-popover {
+        display: none;
+        background: url(../images/tankuang.png) no-repeat;
+        width: 535px;
+        height: 475px;
+        z-index: 9999;
+        position: fixed;
+    }
+
+    .pop-close {
+        float: right;
+    }
+
+    .pop-form {
+        padding-top: 180px;
+    }
+
+    .pop-row {
+        height: 50px;
+        /*width: 100%;*/
+        padding: 0px 20%;
+    }
+    .pop-row select{
+        border:1px solid #cccccc;
+    }
+
+    .pop-phone {
+        border: 1px solid #a0a0a0;
+    }
+
+    .pop-phone, .pop-subptype, .pop-submit-btn {
+        width: 100%;
+        height: 30px;
+        border-radius: 3px;
+    }
+
+    .pop-subtype, .pop-sublv, .pop-areapid, .pop-areaid {
+        width: 49.3%;
+        height: 30px;
+    }
+
+    .pop-submit-btn {
+        background-color: #ff4400;
+        color: white;
+    }
+
+    .pop-err {
+        display: none;
+        height: 20px;
+        width: 100%;
+        color: red;
+    }
+
+    .pop-err-sa {
+        float: left;
+        width: 50%;
+        color: red;
+    }
+
+    .order-popover input::-webkit-input-placeholder { /* WebKit browsers */
+        color:red;
+        font-size: 14px;
+        text-align: left;
+    }
+
+    .order-popover input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+        color: red;
+        font-size: 14px;
+        text-align: left;
+    }
+
+    .company-list-popoverinput::-moz-placeholder { /* Mozilla Firefox 19+ */
+        color: red;
+        font-size: 14px;
+        text-align: left;
+    }
+
+    .company-list-popoverinput:-ms-input-placeholder { /* Internet Explorer 10+ */
+        color: red;
+        font-size: 14px;
+        text-align: center;
+    }
+
+    /*pop-order-suc*/
+
+    .pop-suc-div {
+        padding-top: 180px;
+        text-align: center;
+        height: 175px;
+    }
+
+    .pop-suc-row1 {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .pop-suc-row2 {
+        color: red;
+        font-size: 14px;
+        margin-top: 10px;
+    }
+
+    .pop-suc-row3 {
+        margin-top: 70px;
+    }
+
+    .pop-suc-row4 {
+        margin-top: 10px;
+        clear: both;
+    }
+
+    .pop-suc-row3, .pop-suc-row4 {
+        height: 25px;
+        clear: both;
+        width: 100%;
+        font-size: 14px;
+        text-align: center;
+    }
+
+    .pop-suc-row4 a{
+        display: inline-block;
+        color: white;
+        border-radius: 4px;
+        width: 70px;
+        line-height: 25px;
+        background-color: #3e77e3;
+    }
+    .resp-err {
+        color:red;
+    }
+
+    .theme-popover-mask {
+	z-index: 9998;
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	background:#000;
+	opacity:0.3;
+	filter:alpha(opacity=40);
+	display:none
+}
+
+/*安证页面*/
+.anz_xiad_left {
+        float: none !important;
+        background:url(../images/zizdb_xiad_bj.png) no-repeat !important;
+        background-position: 0 100%;
+    }
+.an_mfhqbj {
+    background: url(../images/anz_right_imgTOP.png) no-repeat 10px 10px !important; 
+}
+.zzgj_anz_btn{ 
+    width:100%;
+     border:1px solid #2687da; 
+     height:35px; 
+     line-height:30px; 
+     border-radius:3px; 
+     padding-left:5px; 
+     font-size:14px;
+ }
+ .zzgj_anz_suozdq {
+    width: 49%;
+    border: 1px solid #2687da;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 3px;
+    padding-left: 3%;
+}
+.zzgj_anz_ljsqbtn {
+    width: 126px;
+    height: 30px;
+    background: #f5c000;
+    line-height: 30px;
+    border: none;
+    border-radius: 3px;
+    color: #FFF;
+    font-size: 14px;
+    float: right;
+}

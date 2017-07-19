@@ -1,0 +1,139 @@
+<html>
+ <head> 
+  <title>公司实名认证</title> 
+  <meta charset="utf-8" /> 
+ </head>
+ <body style="text-align:center;">
+  <div class="logo_box"> 
+   <div class="logo"> 
+    <a href="http://www.zizhiguanjia.com/" title="资质管家">
+     <div class="ico-logo header-logo"></div></a> 
+    <p>欢迎入驻</p> 
+    <div class="div1"> 
+     <i>前往</i> 
+     <a href="http://www.zizhiguanjia.com/usercenter/brokerindex">账户中心</a>
+     <i style="margin:0 10px 0 10px;">|</i> 
+     <a href="http://www.zizhiguanjia.com/">首页</a> 
+    </div> 
+    <div class="div2"> 
+     <p>24小时服务热线:</p> 
+     <span>010-56269198</span> 
+    </div> 
+   </div> 
+  </div> 
+  <link type="text/css" href="css/register.css" rel="stylesheet" /> 
+  <!--  主体区  --> 
+  <div class="main"> 
+   <div class="register"> 
+    <div class="main_step"> 
+     <span class="the front">①注册创建账号</span> 
+     <span class="the">②公司实名认证</span> 
+     <span>③完善公司信息</span> 
+     <span>④等待获取订单</span> 
+    </div> 
+    <!--  填写信息区  --> 
+    <form action="/user/companyattsetat" method="post" id="agententer_form" novalidate="novalidate"> 
+     <ul class="ul_form"> 
+      <li> <label>公 司 名 称&nbsp;：&nbsp;</label> <input name="CompanyName" id="CompanyName" placeholder="请填写工商局注册的全称" type="text" /> <p class="messge"></p> </li> 
+      <li> <label>公 司 地 址&nbsp;：&nbsp;</label> <select id="AreaPid" name="AreaPid"> <option value="">--省/市--</option> <option value="12">A 安徽</option><option value="1">B 北京</option><option value="22">C 重庆</option><option value="13">F 福建</option><option value="19">G 广东</option><option value="20">G 广西</option><option value="24">G 贵州</option><option value="28">G 甘肃</option><option value="3">H 河北</option><option value="8">H 黑龙江</option><option value="16">H 河南</option><option value="17">H 湖北</option><option value="18">H 湖南</option><option value="21">H 海南</option><option value="7">J 吉林</option><option value="10">J 江苏</option><option value="14">J 江西</option><option value="6">L 辽宁</option><option value="5">N 内蒙古</option><option value="30">N 宁夏</option><option value="29">Q 青海</option><option value="4">S 山西</option><option value="9">S 上海</option><option value="15">S 山东</option><option value="23">S 四川</option><option value="27">S 陕西</option><option value="2">T 天津</option><option value="26">X 西藏</option><option value="31">X 新疆</option><option value="25">Y 云南</option><option value="11">Z 浙江</option></select> <select style="margin-right:0;" id="AreaId" name="AreaId"><option value="">市/地区</option></select> <p class="messge"></p> </li> 
+      <li> <label>详 细 地 址&nbsp;：&nbsp;</label> <input name="Address" id="Address" type="text" /> <p class="messge"></p> </li> 
+      <li> <label>公 司 规 模&nbsp;：&nbsp;</label> <select style="width:340px; margin-right:0; text-indent:10px;" name="Scale"> <option value="0">请选择公司规模</option> <option value="1">10人及以下</option> <option value="2">11-50人</option> <option value="3">51-100人</option> <option value="4">100人以上</option> </select> <p class="messge"></p><br /> </li> 
+      <li> <label>营 业 执 照&nbsp;：&nbsp;</label> 
+       <div id="LicensePreview" class="upload" style="padding-left: 10px; z-index: 1;">
+        上传图片
+       </div><i style="display:none"></i> <a href="javascript:;" id="see">查看示例</a> <p id="LicenseError"></p> 
+       <div id="html5_1bku55bq2s1i1vmq1lr21ruhg4d3_container" class="moxie-shim moxie-shim-html5" style="position: absolute; top: 0px; left: 130px; width: 222px; height: 42px; overflow: hidden; z-index: 0;">
+        <input id="html5_1bku55bq2s1i1vmq1lr21ruhg4d3" style="font-size: 999px; opacity: 0; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;" multiple="" accept="image/jpeg,image/gif,image/png" type="file" />
+       </div></li> 
+      <li id="sample"> 
+       <div id="License_ImgDiv" style="border: 1px dashed #ccc;  margin-bottom: 10px;margin-left:130px; padding: 1px; overflow: hidden;width:220px;height:220px; display: none;"> 
+        <img id="License_PicurePreview" src="" style="width:170px;height:120px;margin-top:41px;" /> 
+       </div> <span id="LicenseError"></span> 
+       <div class="frame frame2" id="anli"> 
+        <img src="" id="img1" /> 
+       </div> </li> 
+      <li> <em style="text-indent:0;">要求：1.营业执照将作为公司图册之一展示在首页，请务必保持图片清晰：</em> <em>2.证件需要原数码照，或者原件复印件加盖公司公章</em> <em>3.文件最大2MB的jpg/png格式图片</em> </li> 
+      <li><input class="submit_button_zc" value="保存，下一步" type="submit" /></li> 
+     </ul> 
+    </form> 
+    <div class="advantage"> 
+     <span><h2>为什么需要实名认证</h2></span> 
+     <ul> 
+      <li><img src="images/advantage_1.png" /><p>展示公司信息</p></li> 
+      <li><img src="images/advantage_2.png" /><p>赢得建企青睐</p></li> 
+      <li><img src="images/advantage_3.png" /><p>提高诚信排名</p></li> 
+      <li><img src="images/advantage_4.png" /><p>获取更多订单</p></li> 
+     </ul> 
+    </div> 
+   </div> 
+  </div> 
+  <div class="bottom"> 
+   <ul> 
+    <li> <a href="daiban.html">资质代办</a>| <a href="zizhibiaozhun.html">资质标准</a>| <a href="news.html">行业资讯</a>| <a href="reg.html" rel="nofollow">中介入驻</a>| <a href="about.html" rel="nofollow">关于我们</a>| <a href="http://www.zizhiguanjia.com/join.html" rel="nofollow">加入我们</a>| <a href="http://www.zizhiguanjia.com/contact.html" rel="nofollow">联系我们</a>| <a href="#" rel="nofollow" style="cursor: default; color: #888;">常见问题</a>| <a href="#" rel="nofollow" style="cursor: default; color: #888;">意见反馈</a>| </li> 
+    <li>版权所有 资质管家（北京）信息技术有限公司 京ICP备16024435号-1</li> 
+   </ul> 
+   <a href="http://www.zizhiguanjia.com/sitemap.html" target="_blank" style="color: #5e5c5b;text-decoration: none !important;"></a> 
+  </div> 
+  <script async="" src="js/analytics.js"></script>
+  <script src="js/push.js"></script>
+  <script src="js/hm.js?580e9422d1d340fa7711682e41256040"></script>
+  <script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "js/hm.js?580e9422d1d340fa7711682e41256040";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+    </script> 
+  <script>
+            (function () {
+                var bp = document.createElement('script');
+                var curProtocol = window.location.protocol.split(':')[0];
+                if (curProtocol === 'https') {
+                    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+                }
+                else {
+                    bp.src = 'js/push.js';
+                }
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(bp, s);
+            })();
+        </script> 
+  <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'js/analytics.js', 'ga');
+
+        ga('create', 'UA-101792527-1', 'auto');
+        ga('send', 'pageview');
+
+    </script> 
+  <div style="display: none"> 
+   <a href="http://www.cnzz.com/stat/website.php?web_id=1255699131" target="_blank" title="站长统计">站长统计</a> 
+  </div> 
+  <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script> 
+  <script type="text/javascript" src="js/jquery.validate.js"></script> 
+  <script type="text/javascript" src="js/area_data.js"></script> 
+  <script type="text/javascript" src="js/Area.js"></script> 
+  <script type="text/javascript" src="js/plupload.full.min.js"></script> 
+  <script type="text/javascript" src="js/popup.js"></script> 
+  <script type="text/javascript" src="js/upload.js?v=20151105"></script> 
+  <script type="text/javascript" src="js/company_attesta.js"></script> 
+  <script>
+    areaData = $.parseJSON(areaData);
+    $(document).ready(function () {
+        //地区
+        var area = new Area();
+        area.CallArea("AreaPid", "AreaId", $("#AreaPid").val(), $("#AreaId").val());
+    });
+    var upload = new Upload("license", "LicensePreview", "License_PicurePreview", false);
+
+
+
+</script>
+ </body>
+</html>

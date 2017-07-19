@@ -1,0 +1,123 @@
+﻿@charset "utf-8";
+/* CSS Document */
+.mion a{color:#0409dc; text-decoration:none;}
+.mion a:hover{color:#f00;}
+.mion_right{min-height:580px; margin-top:0;}
+.mion_left dl dt a{width:197px; height:75px; line-height:75px; display:block; background:#07c237; position:absolute; top:0; left:0; color:#fff; font-size:16px; text-decoration:none;}
+.clear:after{display:block; clear:both; content:"\0020"; visibility:hidden; height:0;}
+.clear:before{display:block; clear:both; content:"\0020"; visibility:hidden; height:0;}
+.data{width:840px; height:150px; padding-left:40px; margin-top:35px;}
+.head{width:100px; padding:17px; height:100px; border:1px solid #dcdcdc; float:left;}
+.information{width:666px; height:116px; /*padding:17px;*/ float:right;}
+.information ul li{height:35px; line-height:35px; font-size:14px;}
+.information ul li em{margin-left: -15px; position:absolute;width:204px;display:none}
+.information ul li b{color:#f00; font-weight:bold; font-size:14px;}
+.information ul li a{text-decoration:none;}
+.information ul li span{font-size:12px; color:#333333; margin-left:10px;}
+.information ul li span img{vertical-align:text-top; margin-right:5px;}
+.information ul li .hid{position:absolute;left:0px;top:0px;width:242px;height:116px;background:inherit;background-color:rgba(255, 255, 255, 1);box-sizing:border-box;border-width:1px;border-style:solid;border-color:rgba(228, 228, 228, 1);border-radius:0px;margin-left:300px;padding:5px;line-height:1.5em}
+.information ul li .hid img{width:5px;height:5px;margin-bottom:2px;}
+.information .li_dealpercent img {margin-bottom:10px;}
+.information .li_dealpercent em {color: #666666;}
+
+.upload{width:825px; height:300px;padding:50px 0 40px 0px; padding-left:40px;}
+.upload ul {margin:10px 0 10px 35px;}
+.upload ul li{color:#666; width:840px; height:40px; line-height:50px;margin-top:0px}
+.upload ul li span {border:none;margin:15px 180px 0 0px;float:right}
+.upload ul li span a{font-size:14px;color:#ff4400}
+.upload ul li b{font-size:14px;margin-left:100px}
+.upload ul li em{margin-bottom:20px;display:none; position:absolute}
+.ul_account em {margin-left:74px;}
+.ul_ticketcount em {margin-left:179px}
+.num_style { color:#ff4400; font-size:16px;!important}
+.ul_ordercount .qcc{color:#ff4400; font-size:14px;}
+
+
+ 
+.upload ul li .lab {font-size:14px;color:#666666;position:absolute}
+.upload ul li .lab img{margin-bottom:12px;}
+
+.upload ul li button{width:80px; height:25px; margin:0 5px;}
+.upload span{ font-size:16px;border-left:solid #ff4400;padding-left:10px}
+
+.ul_ordercount li i{float:left;font-size:14px;margin-top:10px;width:140px;}
+.ul_ordercount li i label{color:#ff4400;font-size:16px;}
+.ul_ordercount li i i{color:#ff4400;font-size:16px;}
+.explain{width:840px; height:90px;}
+.explain dl{width:810px; margin-left:30px; margin-top:20px;}
+.explain dl dt{width:810px; line-height:35px; background:url(../images/tb_dp.png) no-repeat left; padding-left:15px; color:#f00;}
+.explain dl dd{color:#666; margin-left:15px;}
+.explain dl dd p{width:810px; height:25px; line-height:25px;}
+
+
+.content_box form li p{width:105px; height:35px; line-height:35px; font-size:14px; text-align:right; float:left; padding-right:10px;}
+
+
+/* 公司资料 */
+.content_box form li{overflow:hidden;}
+.content_box form li select.longtext_1{width:315px;}
+.one{width:655px; height:25px; float:left; margin-top:10px;}
+.content_box form li span{margin-right:10px; color:#333;}
+.content_box form li span input{width:15px; height:15px; vertical-align:text-top; margin-right:5px;}
+.two{width:620px; height:130px; background:#f8f8f8; border:1px solid #e7e7e7; float:left; padding:20px 0 0 20px;}
+.two #subjectSpan p {width: 170px;text-align: left;}
+.content_box form li button{width: 126px;text-align: center;height: 40px;line-height: 40px;background: #fff;border: 1px solid #999;color: #a0a0a0;border-radius: 5px;display: inline-block;font-size: 12px;float: left;margin-right: 8px;margin-bottom: 8px;outline:none;}
+.div_button {width: 402px;float: right;position: relative;margin-top:10px;}
+.div_button .in{border:1px solid #f40;color:#f40}
+.div_button span label{margin-right:10px;color:#999}
+.mion_right h4{width:865px; border-bottom:1px solid #ccc;}
+.mion_right h4 span{width:865px; height:15px; border-left:2px solid #02ad69; padding-left:20px; margin:20px 0; display:block; font-weight:bold; font-size:15px; color:#333;}
+ 
+
+/* 企业认证 */
+.authentication{width:850px; height:auto;}
+.authentication ol{width:800px; height:auto; padding:25px;}
+.authentication ol li{width:800px; height:auto; overflow:hidden; margin-top:15px;}
+.authentication ol li a.a1{width:85px; height:85px; line-height:85px; background:#f9f9f9; border:1px solid #d9d9d9; display:block; text-align:center; text-decoration:none; color:#333; float:left;}
+/*.authentication ol li img{margin-right:10px; margin-top:5px;}*/
+.authentication ol li a.a2{width:95px; height:30px; line-height:30px; background:#f86b0f; text-align:center; text-decoration:none; color:#fff; display:block; font-size:14px; margin-left:200px; margin-top:30px;}
+.authentication ol li a.a2:hover{background:#d05708;}
+.authentication ol li button{ width:80px;height:25px;}
+.pp{width:110px; height:auto; overflow:hidden; font-size:14px; text-align:right; float:left; margin-right:15px; color:#777; line-height:32px;}
+.pp p{height:30px; line-height:30px;}
+.pp span{color:#f00; font-size:14px; margin-right:10px;}
+.card{width:650px; height:auto; overflow:hidden; float:left;}
+.card h1{font-size:16px; font-weight:bold; color:#f00;}
+.card span{color:#666;}
+.carder{width:620px; height:220px; border:1px solid #ccc; margin-bottom:10px;}
+.carder p{width:615px; text-align:center; height:50px; line-height:50px; color:#f00; font-size:16px;}
+.carder img{margin:0 65px; margin-top:25px;}
+.card form{width:650px; line-height:45px; float:left;}
+.card form button{width:85px; height:25px; margin-right:10px;}
+.pictures{display:block; float:left;}
+.pictures img{float:left;}
+.pictures span{height:30px; line-height:50px; margin-left:10px; float:left;}
+.mion_right ol li{margin-left:30px;}
+.mion_right ol li.li_x{margin-top:50px; height:22px; line-height:22px; padding-left:30px; font-size:14px; background:url(../images/x1.png) no-repeat;}
+.mion_right ol li.li_g{margin-top:50px; height:22px; line-height:22px; padding-left:30px; font-size:14px; color:#f00; background:url(../images/g.png) no-repeat;}
+.content_box form li .input1{margin-left:140px; margin-top:25px;}
+.content_box table tr .td1 a{background-position:10px; background-size:20px;}
+.authentication ol li input{width:315px; height:32px; border:1px solid #ede9ea; border-radius:4px; text-indent:0.3em;}
+.tupian{width:120px; height:120px; position:relative; float:left;}
+.tupian span{width:120px; height:120px; margin:0; position:absolute; top:0; left:0; background:url(../images/zz.jpg) no-repeat; background-size:150px 80px;}
+.tupian a{width:20px; height:20px; position:absolute; top:0; right:0; background:url(../images/gb.png); background-size:20px; z-index:999;}
+.sc{width:700px; margin-left:110px; margin-top:10px;}
+.pictures a:hover .pictures a img{display:block;}
+.content_box table tr.tr1 td b{font-weight:bold; color:#f00; font-size:13px;}
+.content_box form li .inp1{line-height:32px;}
+
+.authentication ol li #sub{width:95px; height:30px; line-height:30px; background:#f86b0f; text-align:center; text-decoration:none; color:#fff;display:block; font-size:14px; margin-left:200px; margin-top:30px;cursor:pointer;}
+.authentication ol li #sub:hover{background:#d05708;}
+
+.explain{width:380px; background-color:#fffeea; margin-top:20px;border:1px solid #e4d9a2}
+.explain dl{width:330px;margin-top:0px;}
+.explain dl dt{width:350px;}
+
+
+/* 丰富公司信息样式 */
+.advantage{width:880px; margin-top:30px;}
+.advantage span{width:870px; height:24px; text-align:center; border-bottom:2px solid #ccc; position:relative; display:block;}
+.advantage span h2{width:260px; font-size:22px; font-weight:normal; letter-spacing:1px; position:absolute; top:12px; left:50%; margin-left:-130px; background:#fff; color:#666;}
+.advantage ul{width:880px; overflow:hidden; margin-top:40px;}
+.advantage ul li{width:25%; float:left;text-align:center}
+.advantage ul li p{width:220px; text-align:center; line-height:20px; color:#606060; font-size:16px; margin-top:25px;}

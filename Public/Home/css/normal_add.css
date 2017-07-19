@@ -1,0 +1,184 @@
+﻿
+   .bg_step1 {
+        background: url("../images/zzdb.gif") no-repeat;
+        width: 1080px;
+        height: 234px;
+    }
+      .bg_step2 {
+        background: url("../images/zzdb.gif") no-repeat;
+        width: 1080px;
+        height: 234px;
+    }
+.global {
+        background: url("../images/global.png") no-repeat;
+        background-position:  -210px -56px;
+        display: inline-block;
+        height: 25px;
+       float:left;
+        margin-top:10px;
+        vertical-align: middle;
+        width: 30px;
+
+}
+ .content_one, .content_two {
+        font-size: 12px;
+        padding-left: 10px;
+    }
+    .disabled {
+       display:none;
+    }
+        .content_one label, .content_two label {
+            text-align: center;
+        }
+
+    .content_three {
+        font-size: 12px;
+        height: 30px;
+        top: 30px;
+        z-index: 999;
+        background: rgb(255, 255, 255) none repeat scroll 0px 0px;
+        position: absolute;
+        border: 1px solid #ccc;
+        line-height: 30px;
+        padding-left: 30px;
+        width: 180px;
+        display: none;
+    }
+
+        .content_three span {
+            color: #0055cc;
+            cursor: pointer;
+        }
+    .kuang{
+             border:0px;
+             width:160px;
+             height:40px;
+             border: 4px solid #f00;
+    }
+ .span2{ display:inline-block; float:left;  margin-top: 8px;position:relative;}
+
+   .business_list li input {
+    display: none;
+}
+    .price3131_click {
+        cursor: pointer;
+        padding-left: 6px;
+    }
+
+    .price3131_1 {
+        position: absolute;
+        top: -4px;
+        left: 11px;
+        background: #fff;
+        display: none;
+        cursor: pointer;
+    }
+
+
+    .price3131_1_1 .Ttriangle {
+        float: left;
+        margin: 19px 0 0 21px;
+    }
+
+    .Ttriangle {
+        display: inline-block;
+        height: 6px;
+        margin-left: 15px;
+        width: 8px;
+        background: url(../images/jigsaw.png) no-repeat -152px -111px;
+    }
+
+.price3131_1_1 {
+        width: 180px;
+        height: 35px;
+        line-height: 34px;
+        border-left: 1px #dfdede solid;
+        border-top: 1px #dfdede solid;
+        border-right: 1px #dfdede solid;
+        text-align: center;
+        position: absolute;
+        top: 0;
+        z-index: 10;
+        background: #fff;
+    }
+        .price3131_1_1 p {
+            float: left;
+            border-bottom: 1px #d0cece solid;
+            margin-right: -6px;
+            margin-left: 17px;
+        }
+
+    .price3131_1 {
+        cursor: pointer;
+    }
+
+    .price3131_1_1 p {
+        border-bottom: 1px solid #d0cece;
+        float: left;
+        margin-left: 17px;
+        margin-right: -6px;
+    }
+
+    .price3131 span.f18 {
+        color: #ff4900;
+        font-family: "Microsoft YaHei";
+        font-size: 18px;
+    }
+
+       .scope_of_business {
+        overflow: auto;
+        height: 200px;
+    }
+
+        .scope_of_business  {
+            /*border: 1px dotted orange;*/
+            padding: 2px 0px;
+        }
+
+        .scope_of_business {
+            /*border: 1px dotted orange;*/
+            padding: 2px 0px;
+            color: #999;
+            /*text-align:left;*/
+        }
+
+.tit {
+    border-left: 8px solid #FF4400;
+    color: #333;
+    font: 20px "Microsoft YaHei";
+    margin-bottom:20px;
+    padding-left: 7px;
+}
+
+.cailiao{
+   font-family:"Microsoft YaHei", ??,\9ed1\4f53,\5b8b\4f53, "Microsoft JhengHei", ?, STHeiti, MingLiu;
+   width:970px;
+   font-size:14px;
+  line-height:28px;
+   color: #666;
+}
+
+.company_select_type {
+    border: 1px solid #EAEAEA;
+    width: 1150px;
+    top: 20px;
+    margin-top: 20px;
+}
+.user_center {
+    margin-left:100px;
+}
+
+.pt21 {
+
+   margin:-25px 0 40px 750px
+
+}
+
+.y_class label{
+	border: 1px solid #d84a4a !important;
+    color:#d84a4a;
+	cursor: pointer;
+    background:url(../images/bj.jpg) no-repeat right 0 bottom 0;
+}
+.business_list {width: auto;}
+.divSpace{height:25px}

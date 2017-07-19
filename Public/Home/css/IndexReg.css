@@ -1,0 +1,173 @@
+﻿#zhizgj_left {
+    float: left;
+    width: 300px;
+    height: 375px;
+    box-shadow: 0 0 10px rgba(255, 68,0, 0.3);
+}
+
+.mfhqbj {
+    background: url(../images/zzdd_right_imgTOP.png) no-repeat 10px 10px;
+    font-size: 18px;
+    font-family: "微软雅黑", "黑体", Arial;
+    color: #ff4400;
+    height: 120px;
+    text-align: center;
+    padding-top: 28px;
+}
+
+.huoqbj_title {
+    position: relative;
+    bottom: 10px;
+    margin-left: 5px;
+}
+
+    .huoqbj_title a {
+        color: #ff4400;
+    }
+
+        .huoqbj_title a:hover {
+            color: #ff4400;
+        }
+
+.huoqlxfs {
+    width: 260px;
+    margin: 0 auto;
+}
+
+    .huoqlxfs ul {
+        margin-top: 10px;
+    }
+
+        .huoqlxfs ul li {
+            height: 30px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+            .huoqlxfs ul li select {
+                border-radius: 3px;
+                height: 30px;
+                line-height: 26px;
+                padding: 1px 0 4px 5px;
+            }
+
+            .huoqlxfs ul li p {
+                font-size: 12px;
+                color: #F00;
+                height: 20px;
+                line-height: 28px;
+            }
+/*.zzgj_index_btn{ width:100%; border:1px solid #999999; height:35px; line-height:30px; border-radius:3px; padding-left:5px; font-size:14px;}*/
+.zzgj_suozdq {
+    width: 49%;
+    border: 1px solid #999999;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 3px;
+    padding-left: 3%;
+}
+
+.zzgj_index_ljsqbtn {
+    width: 126px;
+    height: 30px;
+    background: #ff4400;
+    line-height: 30px;
+    border: none;
+    border-radius: 3px;
+    color: #FFF;
+    font-size: 14px;
+    float: right;
+}
+
+.uform-err {
+    display: none;
+    color: red;
+    text-align: left;
+    padding-left: 10px;
+}
+
+.uform-err-subptype, .uform-err-phone {
+   /* width: 50%;*/
+    /*display: inline-block;*/
+    float: left;
+}
+
+.uform-err-subtype, .uform-err-sublv, .uform-err-areapid, .uform-err-areaid {
+    width: 46%;
+    /*display: inline-block;*/
+    float: left;
+}
+/*获取报价样式*/
+.mfhqbj .mfhqbj_num {
+    width: 255px;
+    height: 60px;
+    margin: 0 auto;
+    text-align: right;
+}
+
+    .mfhqbj .mfhqbj_num em {
+        float: right;
+        height: 58px;
+        line-height: 80px;
+        padding: 0 13px;
+        color: #666666;
+    }
+
+    .mfhqbj .mfhqbj_num .mfhqbj_jiagesz {
+        float: right;
+        height: 58px;
+        line-height: 80px;
+        width: 70px;
+        text-align: center;
+        overflow: hidden;
+    }
+
+        .mfhqbj .mfhqbj_num .mfhqbj_jiagesz .mfhqbj_jiagesz_box {
+            display: block;
+            width: 70px;
+            font-size: 26px;
+            color: #ff4400;
+            text-align: center;
+            position: relative;
+            left: 0;
+            top: 0;
+            animation: mycontinue 8s infinite;
+        }
+
+@keyframes mycontinue {
+    0% {
+        top: -0px;
+    }
+
+
+    12.5% {
+        top: -80px;
+    }
+
+    25% {
+        top: -160px;
+    }
+
+    37.5% {
+        top: -240px;
+    }
+
+    50% {
+        top: -320px;
+    }
+    62.5% {
+        top: -400px;
+    }
+
+    75% {
+        top: -480px;
+    }
+
+    87.5% {
+        top: -560px;
+    }
+
+    100% {
+        top: -640px;
+    }
+}

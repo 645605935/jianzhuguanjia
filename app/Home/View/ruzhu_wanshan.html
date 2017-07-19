@@ -1,0 +1,292 @@
+<html>
+ <head> 
+  <title>完善公司信息</title> 
+  <meta charset="utf-8" /> 
+ </head>
+ <body style="text-align:center;">
+  <div class="logo_box"> 
+   <div class="logo"> 
+    <a href="http://www.zizhiguanjia.com/" title="资质管家">
+     <div class="ico-logo header-logo"></div></a> 
+    <p>欢迎入驻</p> 
+    <div class="div1"> 
+     <i>前往</i> 
+     <a href="http://www.zizhiguanjia.com/usercenter/brokerindex">账户中心</a>
+     <i style="margin:0 10px 0 10px;">|</i> 
+     <a href="http://www.zizhiguanjia.com/">首页</a> 
+    </div> 
+    <div class="div2"> 
+     <p>24小时服务热线:</p> 
+     <span>010-56269198</span> 
+    </div> 
+   </div> 
+  </div> 
+  <link type="text/css" href="css/register.css" rel="stylesheet" /> 
+  <style type="text/css">
+        #Logoimg_div img {
+            border: dashed 1px #ccc;
+            width: 150px;
+            height: 150px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        #Imageimg_div img {
+            border: dashed 1px #ccc;
+            width: 200px;
+            height: 150px;
+        }
+    </style> 
+  <!--  主体区  --> 
+  <div class="main"> 
+   <div class="register"> 
+    <div class="main_step"> 
+     <span class="the front">①注册创建账号</span> 
+     <span class="the front">②公司实名认证</span> 
+     <span class="the">③完善公司信息</span> 
+     <span>④等待获取订单</span> 
+    </div> 
+    <!--  填写信息区  --> 
+    <form action="/user/companyperfet" method="post" id="perfet_form" novalidate="novalidate"> 
+     <input value="" name="SubjectIds" id="SubjectIds" type="hidden" /> 
+     <ul class="ul_form perfect"> 
+      <li> <label><i style="color: #FF0000;line-height:0px">*&nbsp;</i>公 司 优 势&nbsp;：&nbsp;</label> <textarea rows="4" style="width:400px; border-radius:5px; border:1px solid #999; line-height:15px;padding:10px" name="Advantage" id="Advantage" placeholder="重点描述公司擅长办理业务及主营区域，35字内"></textarea> <p style="width: 640px;height: auto;text-align:left;font-size:12px;position:relative;color:#a0a0a0;bottom:0px;">示例：我公司擅长办理施工总承包资质，主营区域是北京市朝阳区、通州区。</p> <p class="messge"></p> </li> 
+      <li> <label><i style="color: #FF0000;line-height:0px">*&nbsp;</i>公 司 介 绍&nbsp;：&nbsp;</label> <textarea rows="6" style="width:400px; border-radius:5px; border:1px solid #999; line-height:20px;" name="Introduction"> 成立时间： 办理业务： 服务理念： </textarea> <em class="em_gsjs">示例：创立时间：2013年公司描述：主要为建筑企业提供公司注册、代理记账、建筑企业资质申办服务。服务理念：因为专注所以专业，多年来，公司始终秉承“专业、高效、合作、双赢”的经营理念和精神，在业界树立了良好的口碑，并积累了丰富的行业经验，业务流程娴熟。</em> <p class="messge"></p> </li> 
+      <li> <label><i style="color: #FF0000;line-height:0px">*&nbsp;</i>业 务 范 围&nbsp;：&nbsp;</label> <button type="button" id="selected" class="in" style="font-size:14px;height:35px">资质代办</button> </li> 
+      <li> <label style="margin-bottom:15px;"><i style="color: #FF0000;line-height:0px">*&nbsp;</i>资 质 分 类&nbsp;：&nbsp;</label> <strong>请慎重选择，若经查实贵公司的实际业务范围不符，将存在被封号的可能且信誉等级减半。</strong> </li> 
+      <!--专业--> 
+      <li id="zizhi"> 
+       <div class="sub_button"> 
+        <span><label>●</label>建筑施工：</span> 
+        <div> 
+         <button type="button" value="1" class="">施工总承包资质</button> 
+         <button type="button" value="2" class="">施工专业承包资质</button> 
+         <button type="button" value="3" class="">施工劳务资质</button> 
+        </div> 
+       </div> 
+       <div class="sub_button"> 
+        <span><label>●</label>工程设计：</span> 
+        <div> 
+         <button type="button" value="201" class="">工程设计综合资质</button> 
+         <button type="button" value="212" class="">工程设计行业资质</button> 
+         <button type="button" value="213" class="">工程设计专业资质</button> 
+         <button type="button" value="214" class="">工程设计专项资质</button> 
+         <button type="button" value="215" class="">建筑工程设计事务所资质</button> 
+        </div> 
+       </div> 
+       <div class="sub_button"> 
+        <span><label>●</label>工程勘察：</span> 
+        <div> 
+         <button type="button" value="114" class="">工程勘察综合资质</button> 
+         <button type="button" value="600" class="">工程勘察专业资质</button> 
+         <button type="button" value="620" class="">工程勘察劳务资质</button> 
+        </div> 
+       </div> 
+       <div class="sub_button"> 
+        <span><label>●</label>工程监理：</span> 
+        <div> 
+         <button type="button" value="102" class="">工程监理综合资质</button> 
+         <button type="button" value="700" class="">工程监理专业资质</button> 
+         <button type="button" value="720" class="">工程监理事务所资质</button> 
+        </div> 
+       </div> 
+       <div class="sub_button"> 
+        <div class="sub_button_left"> 
+         <span><label>●</label>工程造价：</span> 
+         <div> 
+          <button type="button" value="113" class="">工程造价咨询资质</button> 
+         </div> 
+        </div> 
+       </div> 
+       <div class="sub_button"> 
+        <div class="sub_button_left"> 
+         <span><label>●</label>工程安防：</span> 
+         <div> 
+          <button type="button" value="115" class="">安防工程资质</button> 
+         </div> 
+        </div> 
+        <div class="sub_button_right"> 
+         <span><label>●</label>系统集成：</span> 
+         <div> 
+          <button type="button" value="14100" class="">计算机信息系统集成资质</button> 
+         </div> 
+        </div> 
+       </div> 
+       <div class="sub_button"> 
+        <div class="sub_button_left"> 
+         <span><label>●</label>承装修试：</span> 
+         <div> 
+          <button type="button" value="117" class="">承装电力设施许可证</button> 
+         </div> 
+        </div> 
+        <div class="sub_button_right"> 
+         <span><label>●</label>环境评价：</span> 
+         <div> 
+          <button type="button" value="211" class="">环境影响评价资质</button> 
+         </div> 
+        </div> 
+       </div> 
+       <div class="sub_button"> 
+        <div class="sub_button_left"> 
+         <span><label>●</label>工程招标：</span> 
+         <div> 
+          <button type="button" value="11100" class="">工程招标代理机构资格</button> 
+         </div> 
+        </div> 
+        <div class="sub_button_right"> 
+         <span><label>●</label>城乡规划：</span> 
+         <div> 
+          <button type="button" value="402" class="">城乡规划编制资质</button> 
+         </div> 
+        </div> 
+       </div> 
+       <div class="sub_button"> 
+        <div class="sub_button_left"> 
+         <span><label>●</label>劳务派遣：</span> 
+         <div> 
+          <button type="button" value="12100" class="">劳务派遣经营许可证</button> 
+         </div> 
+        </div> 
+       </div> 
+       <div class="sub_button"> 
+        <span><label>●</label>房&nbsp;&nbsp;地&nbsp;产：</span> 
+        <div> 
+         <button type="button" value="302" class="">房地产开发企业资质</button> 
+         <button type="button" value="303" class="">房地产经纪机构资质</button> 
+         <button type="button" value="304" class="">房地产估价机构资质</button> 
+        </div> 
+       </div> 
+       <div class="sub_button"> 
+        <span class="iso"><label>●</label> ISO体系：</span> 
+        <div> 
+         <button type="button" value="17100" class="">ISO质量管理体系</button> 
+         <button type="button" value="17200" class="">ISO环境管理体系</button> 
+        </div> 
+       </div> 
+       <div class="sub_button"> 
+        <span><label>●</label>产品认证：</span> 
+        <div> 
+         <button type="button" value="18100" class="">3C产品认证</button> 
+         <button type="button" value="18200" class="">CEP中国环保产品认证</button> 
+         <button type="button" value="18300" class="">欧盟CE产品安全认证</button> 
+         <button type="button" value="18400" class="">中国环境标志认证(十环)</button> 
+         <button type="button" value="18500" class="">ISCCC电子产品认证</button> 
+        </div> 
+       </div> <p class="sub_messge" id="subject_error"></p> </li> 
+      <li> <label><i style="color: #FF0000;line-height:0px">*&nbsp;</i>服 务 区 域&nbsp;：&nbsp;</label> 
+       <div class="div_button" id="region"> 
+        <select name="ServeAreaPid" id="ServeAreaPid"> <option value="">--请选择--</option> <option value="12">A 安徽</option><option value="1">B 北京</option><option value="22">C 重庆</option><option value="13">F 福建</option><option value="19">G 广东</option><option value="20">G 广西</option><option value="24">G 贵州</option><option value="28">G 甘肃</option><option value="3">H 河北</option><option value="8">H 黑龙江</option><option value="16">H 河南</option><option value="17">H 湖北</option><option value="18">H 湖南</option><option value="21">H 海南</option><option value="7">J 吉林</option><option value="10">J 江苏</option><option value="14">J 江西</option><option value="6">L 辽宁</option><option value="5">N 内蒙古</option><option value="30">N 宁夏</option><option value="29">Q 青海</option><option value="4">S 山西</option><option value="9">S 上海</option><option value="15">S 山东</option><option value="23">S 四川</option><option value="27">S 陕西</option><option value="2">T 天津</option><option value="26">X 西藏</option><option value="31">X 新疆</option><option value="25">Y 云南</option><option value="11">Z 浙江</option></select> 
+        <select name="ServeAreaId" id="ServeAreaId"><option value="0">--不限--</option></select> 
+        <p class="messge" id="phone_error"></p> 
+       </div> </li> 
+      <li> <label>公 司 Logo&nbsp;：&nbsp;</label> 
+       <div id="LogoPreview" class="upload" style="padding-left: 10px; font-size: 14px; z-index: 1;">
+        上传图片
+       </div><i style="display:none"></i> <em>支持最大2MB的jpg/png格式图片</em> <p id="LogoError"></p> 
+       <div id="html5_1bku56k8l1ves1hg3qsb5ap19813_container" class="moxie-shim moxie-shim-html5" style="position: absolute; top: 0px; left: 130px; width: 138px; height: 42px; overflow: hidden; z-index: 0;">
+        <input id="html5_1bku56k8l1ves1hg3qsb5ap19813" style="font-size: 999px; opacity: 0; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;" accept="image/jpeg,image/png" type="file" />
+       </div></li> 
+      <li> 
+       <div id="Logoimg_div" style="display: none;"></div> </li> 
+      <li> <label>公 司 图 册&nbsp;：&nbsp;</label> 
+       <div id="ImagePreview" class="upload" style="padding-left: 10px; font-size: 14px; z-index: 1;">
+        上传图片
+       </div><i style="display:none"></i> <em>支持最大2MB的jpg/png格式图片</em> <p id="LogoError"></p> 
+       <div id="html5_1bku56k8p1a8knuk1be9132c153b6_container" class="moxie-shim moxie-shim-html5" style="position: absolute; top: 0px; left: 130px; width: 138px; height: 42px; overflow: hidden; z-index: 0;">
+        <input id="html5_1bku56k8p1a8knuk1be9132c153b6" style="font-size: 999px; opacity: 0; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;" multiple="" accept="image/jpeg,image/png" type="file" />
+       </div></li> 
+      <li id="sample1" style="margin-bottom:10px;margin-left:60px;"> <label> </label> <em>可上传办公环境、团队面貌、成功案例等可展示公司办理实力的图片，上传后可增长约78%的浏览量。如未上传，营业执照将作为公司图册之一展示在首页</em> 
+       <div id="Imageimg_div" style="display: none;margin-left:50px;text-align:left;"></div> </li> 
+      <li> 
+       <div> 
+        <label><i style="color: #FF0000;line-height:0px">*&nbsp;</i>热线联系人：&nbsp;</label> 
+        <label style="width:100px">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：&nbsp;</label> 
+        <input name="MemberName" type="text" /> 
+        <p class="messge" style="top:40px"></p> 
+       </div> 
+       <div style="float:left;margin:20px 0 0 100px;"> 
+        <label>联 系 电 话：&nbsp;</label> 
+        <input name="MemberPhone" type="text" /> 
+        <p class="messge" style="top:100px"> </p> 
+       </div> <em style="width:330px;line-height:40px;margin:10px 0 0 60px;">此热线电话将作为公司与建筑企业沟通的24小时联系电话</em> </li> 
+      <li><input class="submit_button_zc" value="保存，下一步" id="perfer_from" type="submit" /></li> 
+     </ul> 
+    </form> 
+    <div class="advantage"> 
+     <span><h2>为什么要丰富公司信息</h2></span> 
+     <ul> 
+      <li><img src="images/advantage_1.png" /><p>展示公司信息</p></li> 
+      <li><img src="images/advantage_2.png" /><p>赢得建企青睐</p></li> 
+      <li><img src="images/advantage_3.png" /><p>提高诚信排名</p></li> 
+      <li><img src="images/advantage_4.png" /><p>获取更多订单</p></li> 
+     </ul> 
+    </div> 
+   </div> 
+  </div> 
+  <!--  底部信息  --> 
+  <div class="bottom"> 
+   <ul> 
+    <li> <a href="daiban.html">资质代办</a>| <a href="zizhibiaozhun.html">资质标准</a>| <a href="news.html">行业资讯</a>| <a href="reg.html" rel="nofollow">中介入驻</a>| <a href="about.html" rel="nofollow">关于我们</a>| <a href="http://www.zizhiguanjia.com/join.html" rel="nofollow">加入我们</a>| <a href="http://www.zizhiguanjia.com/contact.html" rel="nofollow">联系我们</a>| <a href="#" rel="nofollow" style="cursor: default; color: #888;">常见问题</a>| <a href="#" rel="nofollow" style="cursor: default; color: #888;">意见反馈</a>| </li> 
+    <li>版权所有 资质管家（北京）信息技术有限公司 京ICP备16024435号-1</li> 
+   </ul> 
+   <a href="http://www.zizhiguanjia.com/sitemap.html" target="_blank" style="color: #5e5c5b;text-decoration: none !important;"></a> 
+  </div> 
+  <script async="" src="js/analytics.js"></script>
+  <script src="js/push.js"></script>
+  <script src="js/hm.js?580e9422d1d340fa7711682e41256040"></script>
+  <script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "js/hm.js?580e9422d1d340fa7711682e41256040";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+    </script> 
+  <script>
+            (function () {
+                var bp = document.createElement('script');
+                var curProtocol = window.location.protocol.split(':')[0];
+                if (curProtocol === 'https') {
+                    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+                }
+                else {
+                    bp.src = 'js/push.js';
+                }
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(bp, s);
+            })();
+        </script> 
+  <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'js/analytics.js', 'ga');
+
+        ga('create', 'UA-101792527-1', 'auto');
+        ga('send', 'pageview');
+
+    </script> 
+  <div style="display: none"> 
+   <a href="http://www.cnzz.com/stat/website.php?web_id=1255699131" target="_blank" title="站长统计">站长统计</a> 
+  </div> 
+  <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script> 
+  <script type="text/javascript" src="js/jquery.validate.js"></script> 
+  <script type="text/javascript" src="js/area_data.js"></script> 
+  <script type="text/javascript" src="js/Area.js"></script> 
+  <script type="text/javascript" src="js/plupload.full.min.js"></script> 
+  <script type="text/javascript" src="js/upload.js?v=20151105"></script> 
+  <script type="text/javascript" src="js/company_perfect.js"></script> 
+  <script type="text/javascript">
+    areaData = $.parseJSON(areaData);
+    var upload = new Upload1("logo", "LogoPreview", "Logoimg_div", false, false);
+    var upload1 = new Upload1("image", "ImagePreview", "Imageimg_div", false, true);
+    $(document).ready(function () {
+        var area = new Area();
+        area.CallArea("ServeAreaPid", "ServeAreaId", $("#ServeAreaPid").val(), $("#ServeAreaId").val());
+    });
+</script> 
+ </body>
+</html>

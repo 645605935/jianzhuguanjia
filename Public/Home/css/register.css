@@ -1,0 +1,176 @@
+﻿@charset "utf-8";
+/* CSS Document */
+/* reset */
+html,body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,blockquote,pre,hr,figure,table,caption,th,td,form,fieldset,legend,input,button,textarea,menu{margin:0;padding:0;}
+header,footer,section,article,aside,nav,hgroup,address,figure,figcaption,menu,details{display:block;}
+table{border-collapse:collapse;border-spacing:0;}
+caption,th{text-align:left;font-weight:normal;}
+html,body,fieldset,img,iframe,abbr{border:0;}
+i,cite,em,var,address,dfn{font-style:normal;}
+[hidefocus],summary{outline:0;}
+li{list-style:none;}
+h1,h2,h3,h4,h5,h6,small{font-size:100%;}
+sup,sub{font-size:83%;}
+pre,code,kbd,samp{font-family:inherit;}
+q:before,q:after{content:none;}
+textarea{overflow:auto;resize:none;}
+label,summary{cursor:default;}
+a,button{cursor:pointer;}
+h1,h2,h3,h4,h5,h6,em,strong,b{font-weight:bold;}
+del,ins,u,s,a,a:hover{text-decoration:none;}
+body,textarea,input,button,select,keygen,legend{font:12px/1.14 arial,\5FAE\8F6F\96C5\9ED1;color:#333;outline:0;}
+body{background:#fff;}
+a,a:hover{color:#333;}
+body{font-family:"微软雅黑", "宋体";}
+
+/* logo区样式 */
+.logo_box{width:100%; height:70px; border-bottom:1px solid #ddd; box-shadow:0px 4px 5px #ddd; margin-top:15px; text-align:center;}
+.logo{width:1200px; height:70px; margin:0 auto;}
+.logo a{float:left; display:inline;}
+.logo .ico-logo{background:url("http://www.zizhiguanjia.com/Images/logo.gif") no-repeat; width:233px; height:66px;}
+.logo p{width:auto; height:35px; line-height:35px; margin-top:15px; margin-left:15px; border-left:1px solid #888; padding-left:10px; color:#666; letter-spacing:2px; display:inline-block; font-size:22px; float:left;}
+.logo span{height:35px; line-height:35px; padding-right:40px; font-size:18px; background:url(../images/fj.png) no-repeat right; margin-top:15px; display:inline-block; float:right;}
+.logo span a{color:#ff4401; font-weight:600; display:inline; float:none;}
+
+/* 表单样式 */
+.ul_form{width:500px; margin:0 auto; font-size:16px;}
+.ul_form li{width:100%; height:auto; padding-bottom:15px; display:inline-block; position:relative;}
+.ul_form li label{width:130px; line-height:42px; color:#666; text-align:right; display:block; float:left;}
+.ul_form li label span{padding-right:5px; color:#f00;}
+.ul_form li input{width:340px; height:40px; line-height:40px; border-radius:4px; border:1px solid #ccc; text-indent:1em; font-size:14px; float:left; color:#8a949c; display:inline; outline:0;}
+.ul_form li input:focus{border:1px solid #ff4401;}
+.ul_form li input.btn{width:130px; text-align:center; text-indent:0; font-size:14px; height:36px; line-height:36px; border:1px solid #f2f2f2; border-radius:4px; background:#f0f0f0; outline:none; color:#666; cursor:pointer; position:absolute; right:31px; top:3px;}
+.ul_form li input.btn:hover{background:#ff4401; color:#fff;}
+.ul_form li img{margin-bottom:10px; margin-right:10px;}
+.ul_form li .input{width:15px; height:15px; margin-top:4px; margin-left:70px;}
+
+.ul_form li p{display:inline-block; position:absolute; bottom:-3px ;left:130px;}
+.ul_form li p .a{color:#5d829c; font-size:12px; padding-left:135px;}
+.ul_form li p .a:hover{color:#5d829c; text-decoration:underline;}
+.ul_form li .span{width:252px; height:40px; line-height:40px; background:#ee7603; color:#fff; font-size:18px; text-align:center; border-radius:4px; text-decoration:none; display:block; margin-left:112px;}
+.ul_form li input.submit_button_zc{background:#ff4401 none repeat scroll 0 0;border-radius: 4px;color: #fff;display: block;font-size: 18px;height: 40px;line-height: 20px;text-align:center;text-decoration: none;width:300px; margin-left:100px; margin-top: 3px;cursor:pointer; border:0; letter-spacing:3px;}
+.ul_form li input.submit_button_zc:hover{background:#ff6600;}
+.ul_form li input.submit_button_dl{width:255px; height:40px; line-height:20px; background:#ee7603; color:#fff; font-size:18px; text-align:center; border-radius:4px; text-decoration:none; display:block; margin-left:112px;cursor:pointer;font: 18px "Microsoft YaHei",΢ź,黑体,宋体,"Microsoft JhengHei",ϸ,STHeiti,MingLiu;}
+.ul_form li input.submit_button_dl:hover{background:#ff6600;}
+.ul_form li .span1{width:250px; height:40px; line-height:40px; border:1px solid #f0f0f0; color:#999; font-size:18px; text-align:center; border-radius:4px; text-decoration:none; display:block; margin-left:112px;}
+.ul_form li .span1:hover{color:#ee7603; background:none;}
+.ul_form li i{width:110px; height:60px; line-height:60px; margin-top:2px; color:#ee7603; font-style:normal; padding-left:10px; text-align:right; font-size:12px;}
+.ul_form li b{font-size:12px; line-height:16px; color:#666; font-weight:normal;}
+.ul_form li div b {color:#05c;}
+.ul_form li span{height:20px; line-height:20px; display:inline-block; margin-left:30px; float:left;}
+.ul_form li .iso{ margin-left:34px;}
+.ul_form li span a{color:#f30; text-decoration:none;}
+.ul_form li span a:hover{background:none; text-decoration:underline; color:#f00;}
+
+.ul_form li select{width:161px; height:40px; line-height:40px; border:1px solid #ddd; margin-right:20px; margin-top:5px; color:#8a949c; text-indent:16px; border-radius:5px; font-size:14px; display:block; float:left;}
+.upload{width:210px; height:40px; line-height:40px; position:relative; background:#f5f5f5; border:1px solid #ccc; border-radius:5px; color:#666; cursor:pointer; float:left;background-image:url(../images/xj.png);background-repeat:no-repeat;background-position:50px 10px;}
+.ul_form li .upload input{width:100%; height:100%; position:absolute; left:0; top:0; opacity:0; filter:alpha(opacity=0); -moz-opacity:0; }
+.upload img{width:23px; height:17px; float:left;}
+.upload span{float:left;}
+.ul_form li a#see{color:#999; width:120px; line-height:40px; float:left;}
+.ul_form li em{font-weight:normal; font-size:13px; line-height:20px; width:440px; text-align:left; color:#666; text-indent:3em; display:inline-block;}
+
+
+/* 服务条款_弹窗层 */
+#popup{width:100%; height:100%; position:fixed; top:0; left:0;}
+#popup .popup_layer{width:945px; height:600px; position:absolute; top:50%; left:50%; margin-top:-270px; margin-left:-470px; background:#fff; border:3px solid #999; border-radius:10px; z-index:999;}
+.title{width:100%; height:35px; background:#ececec; color:#444; border-top-left-radius:10px; border-top-right-radius:10px;}
+.title h3{line-height:35px; font-size:18px; font-weight:400; padding-left:5%; float:left;}
+.title a{width:20px; height:20px; font-size:20px; display:inline; float:right;}
+.text{width:90%; margin:2% auto; color:#333;}
+.text p{line-height:20px; margin-bottom:10px;text-align:left}
+.text h4{font-size:16px; margin-bottom:10px;}
+.popup_bj{width:100%; height:100%; position:absolute; top:0; left:0; background:#000; opacity:0.3; filter:alpha(opacity=30); z-index:0;}
+.agree{width:290px; text-align:center; line-height:50px; font-size:20px; color:#fff; background:#ff4401; border-radius:5px; margin:25px auto; display:block;}
+.agree:hover{background:#f30;}
+
+/* 上传图片预览效果 */
+.frame{width:220px; height:220px; border:1px dashed #ccc; position:absolute; left:130px; top:0; display:none;}
+#sample img{margin:0 auto;}
+
+
+/* 登陆，注册，修改密码底部样式 */
+.bottom{width:100%; height:auto; text-align:center; margin:0; color:#666;}
+.bottom ul li{width:100%; line-height:16px; margin-bottom:30px; text-align:center;}
+.bottom ul li a{padding:0 20px; color:#666; display:inline; font-size:14px;}
+.bottom ul li a:hover{color:#f00;}
+.bottom img{width:100%}
+.error_bg {background: url("http://www.zizhiguanjia.com/Images/global.png") no-repeat scroll -253px 7px !important;  display: inline-block;  padding: 0 15px;  }
+.messge{height: 25px;line-height: 25px;border-radius: 4px;float: left;color:#ff6666;}
+
+
+/* 注册页面主体区 */
+.main{width:1000px; height:auto; margin:0 auto; margin-bottom:77px;}
+.register{width:1000px; height:auto;}
+/* 步骤样式 */
+.main_step{width:1000px; height:38px; overflow:hidden; margin:40px 0px;}
+.main_step span{width:25%; text-align:center; line-height:37px; border-bottom:1px solid #ccc; color:#ccc; font-size:20px; float:left;}
+.main_step span.front{filter:alpha(opacity:50); opacity:0.5; -moz-opacity:0.5;-khtml-opacity: 0.5}
+.main_step span.the{line-height:35px; border-bottom:2px solid #f40; font-weight:600; border-bottom:3px solid #ff4400; color:#ff4400; display:block;}
+
+/* 提醒注册成功样式 */
+.prompt{width:1000px; height:auto; overflow:hidden;font-size:18px}
+.tx{text-align:center;}
+.tx span{font-size:24px; color:#f40;}
+.tx p{font-size:14px; color:#666; margin:30px 0;}
+.tx a{color:#f40; font-size:14px; margin:0 5px; text-decoration:underline;}
+.tx a.route{width:300px; text-align:center; height:40px; line-height:40px; font-size:18px; text-decoration:none; color:#fff; background:#f40; border-radius:5px; display:block; margin:0 auto;}
+.tx a.route:hover{background:#f60;}
+
+/* 实名认证优势样式 */
+.advantage{width:1000px; margin-top:70px;}
+.advantage span{width:1000px; height:24px; text-align:center; border-bottom:2px solid #ccc; position:relative; display:block;}
+.advantage span h2{width:260px; font-size:22px; font-weight:normal; letter-spacing:1px; position:absolute; top:12px; left:50%; margin-left:-130px; background:#fff; color:#666;}
+.advantage ul{width:1000px; overflow:hidden; margin-top:70px;}
+.advantage ul li{width:25%; float:left;}
+.advantage ul li p{width:100%; text-align:center; line-height:20px; color:#606060; font-size:16px; margin-top:60px;}
+
+
+/* 完善公司信息 */
+.perfect{width:532px;}
+.perfect li input{width:128px;}
+/*.perfect li span{margin:0; font-size:14px; line-height:25px; height:25px;}*/
+.perfect li button{width:135px; text-align:center; height:25px; line-height:25px; background:#fff; border:1px solid #999; color:#a0a0a0; border-radius:5px; display:inline-block; font-size:12px; float:left; margin-right:8px; margin-bottom:8px;}
+.perfect li strong{font-weight:normal; font-size:12px; color:#f40; width:400px; line-height:20px; display:inline-block; text-align:left;}
+.sub_button {width:556px; float:right;}
+.sub_button span {margin-right:5px; font-size:14px; line-height:25px; height:25px; color:green;}
+.sub_button span label {margin-right:10px;color:#999;width:12px;float:left;line-height:20px;}
+.sub_button div{margin:0; font-size:14px; line-height:25px; height:25px;}
+.sub_button div button:nth-child(4) {margin-left:127px;}
+.sub_button_left {width:50%; float:left;height:33px !important}
+.sub_button_right {width:50%; float:right;height:33px !important}
+.sub_button_right span{margin-left:38px !important;}
+.messge{height: 25px;line-height: 25px;border-radius: 4px;float: left;color:#ff6666;}
+#subject_error {height: 25px;line-height: 25px;border-radius: 4px;float: left;color:#ff6666;position:static !important;margin-left:127px;}
+
+
+
+.perfect li select{width:161px; margin-right:20px; padding-left:35px;}
+.perfect li .upload{width:126px;background-image:url(../images/xj.png);background-repeat:no-repeat;background-position:20px 10px;}
+.perfect li em{width:255px; line-height:40px; text-indent:0; color:#a0a0a0;}
+/*.perfect li a{width:18px; text-align:center; height:18px; line-height:17px; border:1px solid #666; border-radius:10px; font-size:19px; color:#999; position:absolute; bottom:32px; right:-20px;}*/
+.iframe{width:128px; height:128px; border:1px dashed #ccc; position:absolute; left:130px; top:0; overflow:hidden;}
+#sample1 em{width:400px; line-height:20px; visibility:visible; font-size:12px;left:130px; bottom:0px;}
+.div_button .iframe{position:relative; left:0; top:0; float:left; margin-right:20px; margin-bottom:20px;}
+.div_button #plus{text-align:center; line-height:128px; font-size:65px; color:#999; cursor:pointer;}
+#gain{background:#f5f5f5; border:1px solid #ccc; color:#666;}
+.contacts{width:100%; height:42px; margin-bottom:20px; float:left;}
+.ul_form li .contacts label{color:#a4a4a4;}
+.perfect li .in{border:1px solid #f40;color:#f40}
+
+/* 等待审核 */
+.tx ul{width:500px; height:80px; margin:0 auto; text-align:left; margin:30px auto;}
+.tx ul li{line-height:20px; font-size:14px; color:#666;}
+.tx em{font-size:14px; color:#666; font-weight:normal; text-align:center; width:1000px; line-height:20px; display:block;margin-top:25px}
+.perfect li em.em_gsjs{width:400px; line-height:20px; float:right;}
+
+/*入驻流程头部*/
+.div2{width:190px; height:40px; line-height:40px; padding-left:55px; font-size:18px; color:#666; background:url(../images/ico.jpg) no-repeat; display:inline; float:right;background-position:10px -40px;margin-top:13px;float:right}
+.div2 p{width:130px; text-align:center; line-height:20px; font-size:14px;height:auto;border:none;margin-left:0px;margin-top:0px}
+.div2 span{width:135px; text-align:center; line-height:30px; font-size:18px;background:none;margin:0px;float:initial}
+
+.div1 {width:190px; height:40px; line-height:40px; padding-left:400px; font-size:18px;float:left;padding-top:20px}
+.div1 a { text-decoration:underline;}
+.div1 a:hover{color:#f00}
+
+.div1 i {float:left;margin-right:20px}

@@ -1,0 +1,6 @@
+﻿.pages{width:100%;text-align: center;overflow: hidden;clear: both;overflow: hidden;margin: 50px auto;}
+.pages a,.pages span{margin:0 3px;display:inline-block;padding:8px 10px;border-radius: 3px;overflow: hidden; color:#555}
+.pages a{background:#E5E5E5;}
+.pages a:hover{background-color:#EDEDED;}
+.pages span{background:#ff4400;color: #fff;}
+.pages .point{background:none;color: #555;padding:8px 0;}
