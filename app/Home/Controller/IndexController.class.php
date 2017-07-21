@@ -9,12 +9,8 @@ class IndexController extends CommonController{
     }
 
     public function index(){
-       
-
         $this->display();
     }
-
-
 
     //是否到期，可否继续登录
     public function ajaxIsCanLogin(){
@@ -32,7 +28,6 @@ class IndexController extends CommonController{
             echo json_encode($data);
         }
     }
-
 
     //临时接口
     public function isokphone(){
