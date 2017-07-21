@@ -7,7 +7,9 @@ function settime(obj) {
         $("#phone_error").addClass("messge").addClass("error_bg");
         return;
     } else {
-        $.post("/sms/getvalidatecode", { phone: $("#Phone").val(), code: $("#IdentifyingCode").val() }, function (data) {
+        $.post(""+Home_User_getvalidatecode+"", { phone: $("#Phone").val(), code: $("#IdentifyingCode").val() }, function (data) {
+            var data=JSON.parse(data);
+            // console.log(data);return;
             if (!data.IsSuccess) {
                 $("#identifyingCode_error").text("验证码发送失败,请重新获取");
                 $("#identifyingCode_error").addClass("messge").addClass("error_bg");

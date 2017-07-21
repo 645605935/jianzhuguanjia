@@ -2162,4 +2162,5 @@ function xCopy($source, $destination, $child){
 require './app/Common/Common/cache.php';
 require './app/Common/Common/oss.php';
 require './app/Common/Common/zhangtengrui.php';
+require './app/Common/Common/jsms.php';
 

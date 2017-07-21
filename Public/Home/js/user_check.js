@@ -33,7 +33,7 @@ $("#register_form").validate({
             required: true,
             isMobile: true,
             remote: {
-                url: "/user/userbasicisexist",
+                url: ""+Home_User_userbasicisexist+"",
                 type: "post",
                 dataType: "json",
                 data: { phone: function () { return $("#Phone").val(); } }
@@ -112,7 +112,9 @@ $("#register_form").validate({
             if (!$("#hint").is(":hidden") && $("#IdentifyingCode").val() == "") {
                 formSubmit();
             } else {
-                $.post("/sms/checkvalidatecode", { phone: $("#Phone").val(), code: $("#IdentifyingCode").val() }, function (data) {
+                $.post(""+Home_User_checkvalidatecode+"", { phone: $("#Phone").val(), code: $("#IdentifyingCode").val() }, function (data) {
+                    var data=JSON.parse(data);
+                    // console.log(data);return;
                     if (!data.IsSuccess) {
                         $("#identifyingCode_error").text("验证码不正确,请重新输入");
                         $("#identifyingCode_error").addClass("messge").addClass("error_bg");

@@ -105,10 +105,13 @@ $("#agententer_form").validate({
     success: function (element) {
     },
     submitHandler: function () {
+        alert(1111)
         if (!$("#hint").is(":hidden") && $("#IdentifyingCode").val() == "") {
             formSubmit();
         } else {
-            $.post("/sms/checkvalidatecode", { phone: $("#Phone").val(), code: $("#IdentifyingCode").val() }, function (data) {
+            $.post(""+Home_User_checkvalidatecode+"", { phone: $("#Phone").val(), code: $("#IdentifyingCode").val() }, function (data) {
+                var data=JSON.parse(data);
+                // console.log(data);return;
                 if (!data.IsSuccess) {
                     $("#identifyingCode_error").text("验证码不正确,请重新输入");
                     $("#identifyingCode_error").addClass("messge").addClass("error_bg");
