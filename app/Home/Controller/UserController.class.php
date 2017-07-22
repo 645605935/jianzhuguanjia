@@ -10,8 +10,6 @@ class UserController extends CommonController{
     }
 
     public function register(){
-
-
         if($_POST){
             $data=array();
             $data['Contact']=$_POST['Contact'];
@@ -43,6 +41,42 @@ class UserController extends CommonController{
             $this->display();
         }
     }
+
+    public function login(){
+        $this->display();
+    }
+
+    public function UserLogin(){
+        if($_POST){
+            $where=array();
+            $where['phone']=$_POST['Phone'];
+            $where['password']=md5($_POST['password']);
+
+            $row=M('User')->where($where)->find();
+            if($row){
+                session('userinfo',$row);
+
+                $gid=$row['gid'];
+                if($gid==33){
+                    $Isbroker=1;
+                }else{
+                    $Isbroker=0;
+                }
+                $data=array();
+                $data['IsSuccess']=true;
+                $data['Isbroker']=$Isbroker;
+                $data['Msg']='登录成功';
+            }else{
+                $data=array();
+                $data['IsSuccess']=false;
+                $data['Msg']='登录失败';
+            }
+
+            echo json_encode($data);
+        }
+    }
+
+
 
     public function userbasicisexist(){
         $phone=$_POST['phone'];
@@ -79,54 +113,7 @@ class UserController extends CommonController{
 
 
 
-    public function ajax_register(){
-        $_json=file_get_contents('php://input');
-        $_arr=json_decode($_json,true);
 
-        if($_arr){
-            $data=array();
-            $data['truename']=$_arr['truename'];
-            $data['password']=md5($_arr['password']);
-            $data['username']=$_arr['username'];
-            $data['gid']=$_arr['gid'];
-            $data['img']=$_arr['img'];
-            $data['time']=time();
-
-
-            if($id = D('User')->where($where)->add($data)){
-                $row= D('User')->relation(true)->find($id);
-                if($row){
-                    // 赋权限,如果没有则添加
-                    $ga_data=array();
-                    $ga_data['uid']=$id;
-                    $ga_data['group_id']=$_arr['gid'];
-                    M('AuthGroupAccess')->add($ga_data);
-                    
-
-                    $data=array();
-                    $data['code']=0;
-                    $data['msg']='success';
-                    $data['data']=$row;
-                }else{
-                    $data=array();
-                    $data['code']=1;
-                    $data['msg']='error';
-                }
-            }else{
-                $data=array();
-                $data['code']=1;
-                $data['msg']='error';
-            }
-            
-            
-        }else{
-            $data=array();
-            $data['code']=2;
-            $data['msg']='error';
-        }
-
-        echo json_encode($data);
-    }
   
 
 

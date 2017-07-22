@@ -53,21 +53,20 @@ $("#login_form").validate({
 
     },
     submitHandler: function () {
-        $.post("/user/UserLogin", $("#login_form").serialize(), function (data) {
+        $.post(""+Home_User_UserLogin+"", $("#login_form").serialize(), function (data) {
+            var data=JSON.parse(data);
             if (data.IsSuccess) {
                 if (typeof (currentUrl) != "undefined") {
                     if (typeof (popup) != "undefined") {
                         popup.closePopup();
                     }
                     location.reload();
-                }
-                else {
+                }else {
                     if (data.Isbroker) {
-                        location.href = "/usercenter/brokerindex";
+                        location.href = ""+Home_Usercenter_brokerindex+"";
                     } else {
-                        location.href = "/";
+                        location.href = ""+Home_User_index+"";
                     }
-
                 }
 
             }

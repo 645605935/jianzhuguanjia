@@ -1,0 +1,183 @@
+<html>
+ <head> 
+  <meta http-equiv="x-ua-compatible" content="ie=7" /> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+  <title>新增资质案例</title> 
+  <link type="text/css" rel="stylesheet" href="__PUBLIC__/Home/css/usercenter.css?v=20160601" /> 
+  <link href="__PUBLIC__/Home/css/broker.css" rel="stylesheet" /> 
+  <script async="" src="__PUBLIC__/Home/js/analytics.js"></script>
+  <script src="__PUBLIC__/Home/js/push.js"></script>
+  <script src="__PUBLIC__/Home/js/hm.js?580e9422d1d340fa7711682e41256040"></script>
+  <script type="text/javascript" src="__PUBLIC__/Home/js/jquery-1.10.2.js"></script> 
+  <script type="text/javascript" src="__PUBLIC__/Home/js/jquery.validate.js"></script> 
+  <script type="text/javascript" src="__PUBLIC__/Home/js/popup.js"></script> 
+ </head> 
+ <body> 
+  <div class="header"> 
+   <div class="header_center"> 
+    <div class="header_left"> 
+     <h1> <a href="http://www.zizhiguanjia.com">资质代办，找资质管家</a> <a href="zizhibiaozhun.html">资质百科</a> <a href="http://www.zizhiguanjia.com/zizhi">资质代办公司</a> </h1> 
+    </div> 
+    <div class="header_right"> 
+     <ul> 
+      <li> 
+       <div id="regist" style="float:right;margin-top:5px"> 
+        <em>咨询热线：<span>010-56269198 </span> </em> 
+        <em style="background:none;">您好，欢迎来到资质管家！</em> 
+        <a href="http://www.zizhiguanjia.com/usercenter/brokerindex">熊丽丽</a> 
+        <span id="loginout"><a href="javascript:void(0);" rel="nofollow" onclick="LoginOut();">(退出)</a></span> 
+        <a href="http://www.zizhiguanjia.com/usercenter/brokerorder" rel="nofollow">我的订单</a> 
+       </div> </li> 
+     </ul> 
+    </div> 
+   </div> 
+  </div> 
+  <div class="cr_header"> 
+   <div class="w1000"> 
+    <h1><a href="http://www.zizhiguanjia.com/"><img src="__PUBLIC__/Home/images/logo.gif" /></a></h1> 
+    <ul> 
+     <li><a href="http://www.zizhiguanjia.com">网站首页</a></li> 
+     <li class="li2"><a href="http://www.zizhiguanjia.com/baojia">资质代办</a></li> 
+     <li><a href="zizhibiaozhun.html">资质标准</a></li> 
+     <li><a href="about.html">关于我们</a></li> 
+    </ul> 
+   </div> 
+  </div> 
+  <div class="elear" style="clear:both;"></div> 
+  <div class="mion"> 
+   <div class="mion_left"> 
+    <dl> 
+     <dt>
+      <a href="http://www.zizhiguanjia.com/usercenter/brokerindex">账户中心首页</a>
+     </dt> 
+     <dd class="">
+      <a href="http://www.zizhiguanjia.com/company/companylicense"><span style="background:url(__PUBLIC__/Home/images/un.png) no-repeat; background-position:left;">实名认证</span></a>
+     </dd> 
+     <dd class="">
+      <a href="http://www.zizhiguanjia.com/company/companyinfo"><span style="background:url(__PUBLIC__/Home/images/uz.png) no-repeat; background-position:left;">公司资料</span></a>
+     </dd> 
+     <dd class="">
+      <a href="http://www.zizhiguanjia.com/safetyset/index"><i></i><span style="background:url(__PUBLIC__/Home/images/us.png) no-repeat; background-position:left;">安全设置</span></a>
+     </dd> 
+     <dd class="">
+      <a href="http://www.zizhiguanjia.com/usercenter/brokerorder"><i></i><span style="background:url(__PUBLIC__/Home/images/uo.png) no-repeat; background-position:left;">订单管理</span></a>
+     </dd> 
+     <dd class="dd">
+      <a href="http://www.zizhiguanjia.com/company/caseinfo"><i></i><span style="background:url(__PUBLIC__/Home/images/uc.png) no-repeat; background-position:left;">资质案例</span></a>
+     </dd> 
+     <dd class="">
+      <a href="http://www.zizhiguanjia.com/company/team"><i></i><span style="background:url(__PUBLIC__/Home/images/ut.png) no-repeat; background-position:left;">精英团队</span></a>
+     </dd> 
+     <dd class="">
+      <a href="http://www.zizhiguanjia.com/usercenter/Question"><i></i><span style="background:url(__PUBLIC__/Home/images/uq.png) no-repeat; background-position:left;">常见问题</span></a>
+     </dd> 
+     <div class="clear"></div> 
+    </dl> 
+   </div> 
+   <link type="text/css" rel="stylesheet" href="__PUBLIC__/Home/css/caseinfo.css" /> 
+   <link type="text/css" rel="stylesheet" href="__PUBLIC__/Home/css/popup.css" /> 
+   <style>
+    #CaseInfo_PicurePreview img {
+        width: 100px;
+        height: 100px;
+    }
+</style> 
+   <div class="mion_right"> 
+    <h4><span>资质案例</span></h4> 
+    <form id="add_CaseInfo" method="post" novalidate="novalidate"> 
+     <input id="OldCompanyName" name="OldCompanyName" type="hidden" /> 
+     <input id="OldSubjectType" name="OldSubjectType" value="0" type="hidden" /> 
+     <div class="case"> 
+      <ul> 
+       <li style="position: relative;"> 
+        <div class="ppp">
+         <span></span>上传图片
+        </div> <button id="CaseImg" style="position: relative; z-index: 1;">选择文件</button> <span id="CaseImgError"></span> 
+        <div id="html5_1bku5b74im921cq4qeah015813_container" class="moxie-shim moxie-shim-html5" style="position: absolute; top: 0px; left: 125px; width: 54px; height: 21px; overflow: hidden; z-index: 0;">
+         <input id="html5_1bku5b74im921cq4qeah015813" style="font-size: 999px; opacity: 0; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;" accept="image/jpeg,image/png" type="file" />
+        </div></li> 
+       <li> 
+        <div class="pp">
+         <p></p>
+        </div> 
+        <div class="exhibition" id="CaseInfo_PicurePreview">
+         <img src="__PUBLIC__/Home/images/tx.png" width="100" height="100" />
+        </div> <i>说明：图片不能大于2M的jpg、png图片，且清晰</i> </li> 
+       <li> 
+        <div class="ppp">
+         <span></span>公司名称
+        </div> <input class="text" id="CompanyName" name="CompanyName" type="text" /><b style="color:#777;">用于平台审核，在前台展示时会对企业做隐私保护处理</b><br /> <span class="messge" style="margin-left:125px;"></span> </li> 
+       <li> 
+        <div class="ppp">
+         <span></span>资质类型
+        </div> <select class="text" name="SubjectType" id="SubjectType"> <option value="">请选择</option> <option value="301">施工总承包资质</option> <option value="302">专业承包资质</option> </select><br /> <span class="messge" style="margin-left:125px;"></span> </li> 
+       <li> 
+        <table> 
+         <tbody>
+          <tr> 
+           <td> 
+            <div class="ppp">
+             合作业务
+            </div> <textarea name="Business" class="text_dh" id="bussiness"></textarea> </td> 
+           <td style="font-size:14px;vertical-align:top;width:280px;color:#777;"> <b style="color:#0026ff;">示例：</b><br /> 市政总承包三级资质；电力专业承包二级资质 </td> 
+          </tr> 
+         </tbody>
+        </table> <span class="messge" style="margin-left:125px;"></span> </li> 
+       <li> 
+        <div class="ppp">
+         <span></span>办理周期
+        </div> <select class="text" name="ExDate" id="ExDate"> <option value="">请选择</option> <option value="1-3个月">1-3个月</option> <option value="3-6个月">3-6个月</option> <option value="6个月-1年">6个月-1年</option> <option value="1年以上">1年以上</option> </select><br /> <span class="messge" style="margin-left:125px;"></span> </li> 
+       <li> 
+        <div class="ppp">
+         <span></span>办理价格
+        </div> <input class="text" id="Price" name="Price" type="text" /><b style="color:#0026ff;">示例：</b><b style="color:#777;">1.5万</b><br /> <span class="messge" style="margin-left:125px;"></span> </li> 
+       <li> 
+        <table> 
+         <tbody>
+          <tr> 
+           <td> 
+            <div class="ppp">
+             人员配置
+            </div> <textarea name="BusinessTeam" class="text_dh" id="BusinessTeam"></textarea> </td> 
+           <td style="font-size:14px;vertical-align:top;width:280px;color:#777;"> <b style="color:#0026ff;">示例：</b><br /> 收集企业资料1人；匹配人员1人； 人员到位上社保1人；制作材料上报2人； 领取证书1人。共6人。 </td> 
+          </tr> 
+         </tbody>
+        </table> <span class="messge" style="margin-left:125px;"></span> </li> 
+       <li> 
+        <div class="pp">
+         <p> </p>
+        </div> <input value="提交" class="button" id="btnAdd" type="submit" /> <i style="margin-top:10px;">注：您上传的图片还需审核，请您上传正确图片，以免延误审核</i> </li> 
+      </ul> 
+     </div> 
+    </form> 
+   </div> 
+   <script type="text/javascript" src="__PUBLIC__/Home/js/plupload.full.min.js"></script> 
+   <script type="text/javascript" src="__PUBLIC__/Home/js/upload.js"></script> 
+   <script type="text/javascript" src="__PUBLIC__/Home/js/popup.js"></script> 
+   <script type="text/javascript" src="__PUBLIC__/Home/js/addCaseInfo.js"></script> 
+   <script type="text/javascript" src="__PUBLIC__/Home/js/jquery-1.10.2.js"></script> 
+   <script type="text/javascript">
+    var upload = new Upload1("caseinfo", "CaseImg", "CaseInfo_PicurePreview", false, false);
+</script> 
+   <div class="elear" style="clear:both;"></div> 
+  </div> 
+  <div class="elear" style="clear:both;"></div> 
+  <div style="   color: #999;height: 20px;margin: 20px 0;text-align: center;width: 100%;">
+   版权所有 资质管家（北京）信息技术有限公司 京ICP备16024435号-1&nbsp;&nbsp;
+   <a href="http://www.zizhiguanjia.com/sitemap.html" target="_blank" style="color: #5e5c5b;text-decoration: none !important;"></a>
+  </div>
+
+  <script type="text/javascript">
+        function LoginOut() {
+            var message = "确定要退出当前用户吗？";
+            if (confirm(message)) {
+                $.post("/user/exituser", "", function (data) {
+                    if (data.IsSuccess) {
+                        location.href = "http://www.zizhiguanjia.com";
+                    }
+                })
+            }
+        };
+    </script> 
+ </body>
+</html>

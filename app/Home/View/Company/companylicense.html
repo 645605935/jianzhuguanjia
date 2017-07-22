@@ -1,0 +1,193 @@
+<html>
+ <head> 
+  <meta http-equiv="x-ua-compatible" content="ie=7" /> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+  <title>实名认证</title> 
+  <link type="text/css" rel="stylesheet" href="__PUBLIC__/Home/css/usercenter.css?v=20160601" /> 
+  <link href="__PUBLIC__/Home/css/broker.css" rel="stylesheet" /> 
+  <script async="" src="__PUBLIC__/Home/js/analytics.js"></script>
+  <script src="__PUBLIC__/Home/js/push.js"></script>
+  <script src="__PUBLIC__/Home/js/hm.js?580e9422d1d340fa7711682e41256040"></script>
+  <script type="text/javascript" src="__PUBLIC__/Home/js/jquery-1.10.2.js"></script> 
+  <script type="text/javascript" src="__PUBLIC__/Home/js/jquery.validate.js"></script> 
+  <script type="text/javascript" src="__PUBLIC__/Home/js/popup.js"></script> 
+ </head> 
+ <body> 
+  <div class="header"> 
+   <div class="header_center"> 
+    <div class="header_left"> 
+     <h1> <a href="http://www.zizhiguanjia.com">资质代办，找资质管家</a> <a href="zizhibiaozhun.html">资质百科</a> <a href="http://www.zizhiguanjia.com/zizhi">资质代办公司</a> </h1> 
+    </div> 
+    <div class="header_right"> 
+     <ul> 
+      <li> 
+       <div id="regist" style="float:right;margin-top:5px"> 
+        <em>咨询热线：<span>010-56269198 </span> </em> 
+        <em style="background:none;">您好，欢迎来到资质管家！</em> 
+        <a href="http://www.zizhiguanjia.com/usercenter/brokerindex">熊丽丽</a> 
+        <span id="loginout"><a href="javascript:void(0);" rel="nofollow" onclick="LoginOut();">(退出)</a></span> 
+        <a href="http://www.zizhiguanjia.com/usercenter/brokerorder" rel="nofollow">我的订单</a> 
+       </div> </li> 
+     </ul> 
+    </div> 
+   </div> 
+  </div> 
+  <div class="cr_header"> 
+   <div class="w1000"> 
+    <h1><a href="http://www.zizhiguanjia.com/"><img src="__PUBLIC__/Home/images/logo.gif" /></a></h1> 
+    <ul> 
+     <li><a href="http://www.zizhiguanjia.com">网站首页</a></li> 
+     <li class="li2"><a href="http://www.zizhiguanjia.com/baojia">资质代办</a></li> 
+     <li><a href="zizhibiaozhun.html">资质标准</a></li> 
+     <li><a href="about.html">关于我们</a></li> 
+    </ul> 
+   </div> 
+  </div> 
+  <div class="elear" style="clear:both;"></div> 
+  <div class="mion"> 
+   <div class="mion_left"> 
+    <dl> 
+     <dt>
+      <a href="http://www.zizhiguanjia.com/usercenter/brokerindex">账户中心首页</a>
+     </dt> 
+     <dd class="dd">
+      <a href="http://www.zizhiguanjia.com/company/companylicense"><span style="background:url(__PUBLIC__/Home/images/un.png) no-repeat; background-position:left;">实名认证</span></a>
+     </dd> 
+     <dd class="">
+      <a href="http://www.zizhiguanjia.com/company/companyinfo"><span style="background:url(__PUBLIC__/Home/images/uz.png) no-repeat; background-position:left;">公司资料</span></a>
+     </dd> 
+     <dd class="">
+      <a href="http://www.zizhiguanjia.com/safetyset/index"><i></i><span style="background:url(__PUBLIC__/Home/images/us.png) no-repeat; background-position:left;">安全设置</span></a>
+     </dd> 
+     <dd class="">
+      <a href="http://www.zizhiguanjia.com/usercenter/brokerorder"><i></i><span style="background:url(__PUBLIC__/Home/images/uo.png) no-repeat; background-position:left;">订单管理</span></a>
+     </dd> 
+     <dd class="">
+      <a href="http://www.zizhiguanjia.com/company/caseinfo"><i></i><span style="background:url(__PUBLIC__/Home/images/uc.png) no-repeat; background-position:left;">资质案例</span></a>
+     </dd> 
+     <dd class="">
+      <a href="http://www.zizhiguanjia.com/company/team"><i></i><span style="background:url(__PUBLIC__/Home/images/ut.png) no-repeat; background-position:left;">精英团队</span></a>
+     </dd> 
+     <dd class="">
+      <a href="http://www.zizhiguanjia.com/usercenter/Question"><i></i><span style="background:url(__PUBLIC__/Home/images/uq.png) no-repeat; background-position:left;">常见问题</span></a>
+     </dd> 
+     <div class="clear"></div> 
+    </dl> 
+   </div> 
+   <link type="text/css" rel="stylesheet" href="__PUBLIC__/Home/css/popup.css" /> 
+   <div class="mion_right"> 
+    <div class="content_box"> 
+     <h4><span>实名认证</span></h4> 
+     <form method="post" action="/company/companylicense" id="sub_license" novalidate="novalidate"> 
+      <ul style="margin-left:200px;"> 
+       <li> <span style="color:red">*</span>&nbsp;公&nbsp;&nbsp;司&nbsp;&nbsp;名&nbsp;&nbsp;称： <input name="CompanyName" class="inp1" id="CompanyName" value="江苏恶人问我" type="text" /> <span class="messge"></span> </li> 
+       <li> <span style="color:red">*</span>&nbsp;公&nbsp;&nbsp;司&nbsp;&nbsp;地&nbsp;&nbsp;址： <select id="AreaPid" name="AreaPid" style="width:155px"> <option value="">--省/市--</option> <option value="12">A 安徽</option><option value="1">B 北京</option><option value="22">C 重庆</option><option value="13">F 福建</option><option value="19" selected="selected">G 广东</option><option value="20">G 广西</option><option value="24">G 贵州</option><option value="28">G 甘肃</option><option value="3">H 河北</option><option value="8">H 黑龙江</option><option value="16">H 河南</option><option value="17">H 湖北</option><option value="18">H 湖南</option><option value="21">H 海南</option><option value="7">J 吉林</option><option value="10">J 江苏</option><option value="14">J 江西</option><option value="6">L 辽宁</option><option value="5">N 内蒙古</option><option value="30">N 宁夏</option><option value="29">Q 青海</option><option value="4">S 山西</option><option value="9">S 上海</option><option value="15">S 山东</option><option value="23">S 四川</option><option value="27">S 陕西</option><option value="2">T 天津</option><option value="26">X 西藏</option><option value="31">X 新疆</option><option value="25">Y 云南</option><option value="11">Z 浙江</option></select> <select style="margin-right:0;width:155px;" id="AreaId" name="AreaId"><option value="">市/地区</option><option value="249">C 潮州</option><option value="247">D 东莞</option><option value="236" selected="selected">F 佛山</option><option value="231">G 广州</option><option value="241">H 惠州</option><option value="244">H 河源</option><option value="237">J 江门</option><option value="250">J 揭阳</option><option value="239">M 茂名</option><option value="242">M 梅州</option><option value="246">Q 清远</option><option value="232">S 韶关</option><option value="233">S 深圳</option><option value="235">S 汕头</option><option value="243">S 汕尾</option><option value="245">Y 阳江</option><option value="251">Y 云浮</option><option value="234">Z 珠海</option><option value="238">Z 湛江</option><option value="240">Z 肇庆</option><option value="248">Z 中山</option></select> <span class="messge"></span> </li> 
+       <li> <span style="color:red">*</span>&nbsp;详&nbsp;&nbsp;细&nbsp;&nbsp;地&nbsp;&nbsp;址： <input name="Address" class="inp1" id="Address" value="撒大声地" type="text" /> <span class="messge"></span> </li> 
+       <li> <span style="color:red">*</span>&nbsp;公&nbsp;&nbsp;司&nbsp;&nbsp;规&nbsp;&nbsp;模： <select id="Scale" name="Scale" style="width:310px;"> <option value="0">请选择公司规模</option> <option value="1">10人及以下</option> <option value="2">11人-50人</option> <option value="3" selected="selected">51人-100人</option> <option value="4">100人以上</option> </select> <span class="messge"></span> </li> 
+       <li style="height:100px;"> <p style="width:115px;"><span style="color:red">*</span>&nbsp;营&nbsp;&nbsp;业&nbsp;&nbsp;执&nbsp;&nbsp;照：</p> 
+        <div class="sc" style="position: relative;"> 
+         <button id="License" style="position: relative; z-index: 1;">上传图片</button> 
+         <br /> 
+         <br /> 
+         <em style="text-indent:0;">要求：1.营业执照将作为公司形象图之一展示在首页，请务必保持图片清晰：</em>
+         <br /> 
+         <em>2.证件需要原数码照，或者原件复印件加盖公司公章</em>
+         <br /> 
+         <em>3.文件最大2MB的jpg/png格式图片</em>
+         <br /> 
+         <div id="html5_1bku59n071bk41hb01p7t176g13s13_container" class="moxie-shim moxie-shim-html5" style="position: absolute; top: 0px; left: 15px; width: 126px; height: 40px; overflow: hidden; z-index: 0;">
+          <input id="html5_1bku59n071bk41hb01p7t176g13s13" style="font-size: 999px; opacity: 0; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;" multiple="" accept="image/jpeg,image/gif,image/png" type="file" />
+         </div>
+        </div> </li> 
+       <li style="padding-left: 110px;height:160px"> 
+        <div id="LicenseImg_div" style="border: 1px #ddd ;  margin-bottom: 10px; padding: 1px; overflow: hidden;width:160px; display: block;float:left"> 
+         <img id="LicenseImg" src="__PUBLIC__/Home/images/20170713222239692.png" style="height:160px;width:160px" /> 
+         <input value="__PUBLIC__/Home/images/20170713222239692.png" name="Logo" id="Logo" type="hidden" /> 
+        </div> 
+        <div id="Caseshow" style="border: 1px #ddd solid;  margin-bottom: 10px; padding: 1px; overflow: hidden;width:160px; display: none"> 
+         <img src="__PUBLIC__/Home/images/sl.png" style="height:160px;width:160px" /> 
+        </div> </li> 
+       <li><input value="保存资料" class="input1" id="sub_com" type="submit" /></li> 
+      </ul> 
+      <div class="clear"></div> 
+     </form> 
+    </div> 
+   </div> 
+   <script type="text/javascript" src="__PUBLIC__/Home/js/jquery-1.10.2.min.js"></script> 
+   <script type="text/javascript" src="__PUBLIC__/Home/js/jquery.validate.js"></script> 
+   <script type="text/javascript" src="__PUBLIC__/Home/js/area_data.js"></script> 
+   <script type="text/javascript" src="__PUBLIC__/Home/js/Area.js"></script> 
+   <script type="text/javascript" src="__PUBLIC__/Home/js/plupload.full.min.js"></script> 
+   <script type="text/javascript" src="__PUBLIC__/Home/js/upload.js?v=20151105"></script> 
+   <script type="text/javascript" src="__PUBLIC__/Home/js/company_license.js"></script> 
+   <script>
+    areaData = $.parseJSON(areaData);
+    var upload = new Upload("license", "License", "LicenseImg", false);
+    $(document).ready(function () {
+        //地区
+        var area = new Area();
+        area.CallArea("AreaPid", "AreaId",19, 236);
+
+     
+    });
+
+
+</script> 
+   <div class="elear" style="clear:both;"></div> 
+  </div> 
+  <div class="elear" style="clear:both;"></div> 
+  <div style="   color: #999;height: 20px;margin: 20px 0;text-align: center;width: 100%;">
+   版权所有 资质管家（北京）信息技术有限公司 京ICP备16024435号-1&nbsp;&nbsp;
+   <a href="http://www.zizhiguanjia.com/sitemap.html" target="_blank" style="color: #5e5c5b;text-decoration: none !important;"></a>
+  </div>
+  <a href="http://www.zizhiguanjia.com/sitemap.html" target="_blank" style="color: #5e5c5b;text-decoration: none !important;"> <script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "__PUBLIC__/Home/js/hm.js?580e9422d1d340fa7711682e41256040";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+    </script> <script>
+            (function () {
+                var bp = document.createElement('script');
+                var curProtocol = window.location.protocol.split(':')[0];
+                if (curProtocol === 'https') {
+                    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+                }
+                else {
+                    bp.src = 'js/push.js';
+                }
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(bp, s);
+            })();
+        </script> <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'js/analytics.js', 'ga');
+
+        ga('create', 'UA-101792527-1', 'auto');
+        ga('send', 'pageview');
+
+    </script> </a>
+  <div style="display: none">
+   <a href="http://www.zizhiguanjia.com/sitemap.html" target="_blank" style="color: #5e5c5b;text-decoration: none !important;"> </a>
+   <a href="http://www.cnzz.com/stat/website.php?web_id=1255699131" target="_blank" title="站长统计">站长统计</a> 
+  </div> 
+  <script type="text/javascript">
+        function LoginOut() {
+            var message = "确定要退出当前用户吗？";
+            if (confirm(message)) {
+                $.post("/user/exituser", "", function (data) {
+                    if (data.IsSuccess) {
+                        location.href = "http://www.zizhiguanjia.com";
+                    }
+                })
+            }
+        };
+    </script> 
+ </body>
+</html>

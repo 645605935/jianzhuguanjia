@@ -1,6 +1,6 @@
-﻿if (document.domain != "zizhiguanjia.com" && document.domain != "www.zizhiguanjia.com" && document.domain != "localhost" && document.domain != "192.168.1.128") {
-    window.location.href = "http://www.zizhiguanjia.com/";
-}
+﻿// if (document.domain != "zizhiguanjia.com" && document.domain != "www.zizhiguanjia.com" && document.domain != "localhost" && document.domain != "192.168.1.128") {
+//     window.location.href = "http://www.zizhiguanjia.com/";
+// }
 $("#loginout").click(function () {
     var message = "确定要退出当前用户吗？";
     if (confirm(message)) {

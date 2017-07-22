@@ -40,6 +40,26 @@ class IndexController extends CommonController{
         }
     }
 
+    public function aboutus(){
+        $this->display();
+    }
+
+    public function contact(){
+        $this->display();
+    }
+
+    public function join(){
+        $this->display();
+    }
+
+    public function mzsm(){
+        $this->display();
+    }
+
+    public function team(){
+        $this->display();
+    }
+
 
 
     
