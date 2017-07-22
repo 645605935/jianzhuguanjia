@@ -60,6 +60,18 @@ class IndexController extends CommonController{
         $this->display();
     }
 
+    public function tuiguang(){
+        $this->display();
+    }
+
+    public function xunzheng(){
+        $this->display();
+    }
+
+    public function baike(){
+        $this->display();
+    }
+
 
 
     
