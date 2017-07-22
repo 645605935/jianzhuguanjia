@@ -10,17 +10,38 @@ class UserController extends CommonController{
     }
 
     public function register(){
-        // if($_GET['aaa']==1){
-        //     $phone="15822836709";
-        //     $response=send_code($phone);
-        // }else{
-        //     $msg_id="290544903796";
-        //     $code="285775";
-        //     $response=check_code($msg_id, $code);
-        // }
 
-        // dump($response);die;
-        $this->display();
+
+        if($_POST){
+            $data=array();
+            $data['Contact']=$_POST['Contact'];
+            $data['Phone']=$_POST['Phone'];
+            $data['password']=md5($_POST['password']);
+            if($_POST['CompanyType']==0){
+                $gid=22;//建筑企业
+            }else{
+                $gid=33;//中介机构
+            }
+            $data['gid']=$gid;
+            $data['time']=time();
+
+            $id=M('User')->add($data);
+            if($id){
+                $data=array();
+                $data['IsSuccess']=true;
+                $data['CompanyType']=$_POST['CompanyType'];
+                $data['Phone']=$_POST['Phone'];
+                $data['Msg']='注册成功';
+            }else{
+                $data=array();
+                $data['IsSuccess']=false;
+                $data['Msg']='注册失败';
+            }
+
+            echo json_encode($data);
+        }else{
+            $this->display();
+        }
     }
 
     public function userbasicisexist(){
@@ -57,10 +78,6 @@ class UserController extends CommonController{
     }
 
 
-    
-    
-
-    
 
     public function ajax_register(){
         $_json=file_get_contents('php://input');

@@ -130,7 +130,8 @@ $("#register_form").validate({
 function formSubmit() {
     $("#identifyingCode_error").text("");
     $("#identifyingCode_error").removeClass("error_bg");
-    $.post("/user/register", $("#register_form").serialize(), function (data) {
+    $.post(""+Home_User_register+"", $("#register_form").serialize(), function (data) {
+        var data=JSON.parse(data);
         if (data.IsSuccess) {
             if (data.CompanyType == 0) {
                 location.href = "/accountinfor/personalinfo";
