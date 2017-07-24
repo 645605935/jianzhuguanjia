@@ -80,9 +80,10 @@ $("#sub_company").validate({
 
     },
     submitHandler: function () {
-        $.post("/usercenter/companyalter", $("#sub_company").serialize(), function (data) {
-            if (data.isSuccess) {
-                popup.msgPopup(data.messages);
+        $.post(""+Home_Accountinfor_companyalter+"", $("#sub_company").serialize(), function (data) {
+            var data=JSON.parse(data);
+            if (data.IsSuccess) {
+                popup.msgPopup(data.Msg);
             }
         })
     }

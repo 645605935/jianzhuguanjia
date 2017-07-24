@@ -65,7 +65,7 @@ $("#login_form").validate({
                     if (data.Isbroker) {
                         location.href = ""+Home_Usercenter_brokerindex+"";
                     } else {
-                        location.href = ""+Home_User_index+"";
+                        location.href = ""+Home_accountinfor_personalinfo+"";
                     }
                 }
 
