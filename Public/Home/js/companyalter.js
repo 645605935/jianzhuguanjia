@@ -88,12 +88,7 @@ $("#sub_company").validate({
         })
     }
 })
-var AreaPid = $("#InpAreaId").val() == "0" ? "" : $("#InpAreaId").val();
-var AreaPpid = $("#InpAreaPid").val() == "0" ? "" : $("#InpAreaPid").val();
-//var AreaPpid = $("#InpAreaPpid").val() == "0" ? "" : $("#InpAreaPpid").val();
 $(document).ready(function () {
-    //地区
-    var area = new Area();
-    area.CallArea("AreaPpid", "AreaPid", AreaPpid, AreaPid);
+  
 });
  

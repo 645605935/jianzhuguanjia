@@ -14,6 +14,16 @@ class AccountinforController extends CommonController{
     }
 
     public function personalinfo(){
+        global $user;
+
+        $companyinfo=M('User')->find($user['id']); 
+
+        $province=M('Province')->select();
+        $city=M('city')->where(array('fatherid'=>$companyinfo['company_province']))->select();
+
+        $this->companyinfo=$companyinfo;
+        $this->province=$province;
+        $this->city=$city;
         $this->display();
     }
 
@@ -23,8 +33,8 @@ class AccountinforController extends CommonController{
             $data=array();
             $data['company_name']=$_POST['Name'];
             $data['company_people']=$_POST['contact'];
-            $data['company_phone']=$_POST['TelPhone'];
-            $data['company_email']=$_POST['Email'];
+            $data['contact_phone']=$_POST['TelPhone'];
+            $data['contact_email']=$_POST['Email'];
             $data['company_province']=$_POST['AreaPpid'];
             $data['company_city']=$_POST['AreaId'];
             $data['company_address']=$_POST['address'];

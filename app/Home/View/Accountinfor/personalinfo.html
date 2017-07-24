@@ -1,154 +1,150 @@
 <html>
- <head> 
-  <meta http-equiv="x-ua-compatible" content="ie=7" /> 
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
-  <title>账户资料</title> 
-  <link type="text/css" rel="stylesheet" href="__PUBLIC__/Home/css/usercenter.css?v=20160601" /> 
-  <script async="" src="__PUBLIC__/Home/js/analytics.js"></script>
-  <script src="__PUBLIC__/Home/js/push.js"></script>
-  <script src="__PUBLIC__/Home/js/hm.js?580e9422d1d340fa7711682e41256040"></script>
-  <script type="text/javascript" src="__PUBLIC__/Home/js/jquery-1.10.2.js"></script> 
-  <script type="text/javascript" src="__PUBLIC__/Home/js/jquery.validate.js"></script> 
-  <script type="text/javascript" src="__PUBLIC__/Home/js/popup.js"></script> 
-
-  <script type="text/javascript">
+<head>
+<meta http-equiv="x-ua-compatible" content="ie=7"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>账户资料</title>
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/Home/css/usercenter.css?v=20160601"/>
+<script type="text/javascript" src="__PUBLIC__/Home/js/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Home/js/jquery.validate.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Home/js/popup.js"></script>
+<script type="text/javascript">
     var Home_Accountinfor_companyalter="{:U('Home/Accountinfor/companyalter')}";
   </script>
- </head> 
- <body> 
-  <div class="header"> 
-   <div class="header_center"> 
-    <div class="header_left"> 
-     <h1> <a href="http://www.zizhiguanjia.com/">资质代办，找资质管家</a> </h1> 
-    </div> 
-    <div class="header_right"> 
-     <ul> 
-      <li> 
-       <div id="regist" style="float:right;margin-top:5px"> 
-        <em>咨询热线：<span>010-56269198 </span> </em> 
-        <em style="background:none;">您好，欢迎来到资质管家！</em> 
-        <a href="http://www.zizhiguanjia.com/accountinfor/personalinfo/">素材火</a> 
-        <span id="loginout"><a href="javascript:void(0);" rel="nofollow" onclick="LoginOut();">(退出)</a></span> 
-        <a href="http://www.zizhiguanjia.com/order/list/" rel="nofollow">我的订单</a> 
-       </div> </li> 
-     </ul> 
-    </div> 
-   </div> 
-  </div> 
-  <div class="cr_header"> 
-   <div class="w1000"> 
-    <h1><a href="http://www.zizhiguanjia.com/"><img src="__PUBLIC__/Home/images/logo.gif" /></a></h1> 
-    <ul> 
-     <li><a href="http://www.zizhiguanjia.com/">网站首页</a></li> 
-     <li class="li2"><a href="http://www.zizhiguanjia.com/zzdb/">资质代办</a></li> 
-     <li><a href="http://www.zizhiguanjia.com/ryjz/">企业寻证</a></li> 
-     <li><a href="zizhibiaozhun.html">资质标准</a></li> 
-     <li><a href="about.html">关于我们</a></li> 
-    </ul> 
-   </div> 
-  </div> 
-  <div class="elear" style="clear:both;"></div> 
-  <div class="mion"> 
-   <div class="mion_left"> 
-    <dl> 
-     <img src="__PUBLIC__/Home/images/tx.jpg" width="80" height="80" /> 
-     <dt> 
-      <span title="南京炫迈网络科技有限公司" style="font-size:16px;">南京炫迈网..</span> (素材火) 
-     </dt> 
-     <dd class="dd">
-      <a href="http://www.zizhiguanjia.com/accountinfor/personalinfo"><span style="background:url(__PUBLIC__/Home/images/uz.png) no-repeat; background-position:left;">账户资料</span></a>
-     </dd> 
-     <dd class="">
-      <a href="http://www.zizhiguanjia.com/safetyset/index"><i></i><span style="background:url(__PUBLIC__/Home/images/us.png) no-repeat; background-position:left;">安全设置</span></a>
-     </dd> 
-     <dd class="">
-      <a href="http://www.zizhiguanjia.com/order/list"><i></i><span style="background:url(__PUBLIC__/Home/images/uo.png) no-repeat; background-position:left;">订单管理</span></a>
-     </dd> 
-    </dl> 
-   </div> 
-   <link type="text/css" rel="stylesheet" href="__PUBLIC__/Home/css/usercenter.css" /> 
-   <link type="text/css" rel="stylesheet" href="__PUBLIC__/Home/css/popup.css" /> 
-   <div class="mion_right"> 
-    <div class="content_box"> 
-     <h2>个人资料</h2> 
-     <h3><span>基本资料</span></h3> 
-     <ul> 
-      <li> <i style="background:url(__PUBLIC__/Home/images/xt4.jpg) no-repeat; background-position:left top;"> 手机认证<br /> <span>18005151538</span> </i> <a style="background:#a9d86e;cursor:default"><img src="__PUBLIC__/Home/images/xt6.png" />已认证</a> </li> 
-      <li> <i style="background:url(__PUBLIC__/Home/images/xt5.jpg) no-repeat; background-position:left top;"> 登陆密码<br /> ******** </i> <a href="http://www.zizhiguanjia.com/SafetySet/ChangePassword" style="background:#59ace2;"><img src="__PUBLIC__/Home/images/xt6.png" />去修改</a> </li> 
-     </ul> 
-    </div> 
-    <div class="content_box" style="margin-top:30px;"> 
-     <h3><span>公司资料</span></h3> 
-     <form method="post" action="/usercenter/companyalter" id="sub_company" novalidate="novalidate"> 
-      <li> <p><span style="color:red">*</span>&nbsp;企业名称：</p> <input name="Name" class="inp1" id="Name" value="南京炫迈网络科技有限公司" type="text" /> <span class="messge"></span> </li> 
-      <li> <p><span style="color:red">*</span>&nbsp;真实姓名：</p> <input class="inp1" id="contact" name="contact" onkeyup="this.value = this.value.replace(/^ +| +$/g, '')" onkeydown=" this.value = this.value.replace(/\s/g, '')" value="素材火" type="text" /> <span class="messge"></span> </li> 
-      <li> <p><span style="color:red"></span>&nbsp;固定电话：</p> <input name="TelPhone" class="inp1" id="TelPhone" value="" type="text" /> <span class="messge"></span> </li> 
-      <li> <p><span style="color:red">*</span>&nbsp;邮箱地址：</p> <input name="Email" class="inp1" id="Email" value="416148489@qq.com" type="text" /> <span class="messge"></span> </li> 
-      <li> <p><span style="color:red">*</span>&nbsp;公司地址：</p> <select id="AreaPpid" class="longtext " name="AreaPpid" style="width:157px;"> <option value="">--省/市--</option> <option value="12">A 安徽</option><option value="1">B 北京</option><option value="22">C 重庆</option><option value="13">F 福建</option><option value="19">G 广东</option><option value="20">G 广西</option><option value="24" selected="selected">G 贵州</option><option value="28">G 甘肃</option><option value="3">H 河北</option><option value="8">H 黑龙江</option><option value="16">H 河南</option><option value="17">H 湖北</option><option value="18">H 湖南</option><option value="21">H 海南</option><option value="7">J 吉林</option><option value="10">J 江苏</option><option value="14">J 江西</option><option value="6">L 辽宁</option><option value="5">N 内蒙古</option><option value="30">N 宁夏</option><option value="29">Q 青海</option><option value="4">S 山西</option><option value="9">S 上海</option><option value="15">S 山东</option><option value="23">S 四川</option><option value="27">S 陕西</option><option value="2">T 天津</option><option value="26">X 西藏</option><option value="31">X 新疆</option><option value="25">Y 云南</option><option value="11">Z 浙江</option></select> <select name="AreaId" class="longtext" id="AreaPid" style="width:157px;"><option value="">市/地区</option><option value="296">A 安顺</option><option value="299">B 毕节</option><option value="293" selected="selected">G 贵阳</option><option value="294">L 六盘水</option><option value="298">Q 黔西南</option><option value="300">Q 黔东南</option><option value="301">Q 黔南</option><option value="297">T 铜仁</option><option value="295">Z 遵义</option></select> <input value="293" id="InpAreaId" type="hidden" /> <input value="24" id="InpAreaPid" type="hidden" /> <input name="address" class="inp1" value="南京路300号" type="text" /> <span class="messge" id="address_span"></span> </li> 
-      <li> <p><span style="color:red">*</span>&nbsp;公司简介：</p> <textarea cols="33" rows="7" name="Introduction" id="Introduction">南京炫迈网络科技有限公司南京炫迈网络科技有限公司南京炫迈网络科技有限公司南京炫迈网络科技有限公司南京炫迈网络科技有限公司南京炫迈网络科技有限公司</textarea> <span class="messge" id="introduction_span"></span> </li> 
-      <li><input value="保存资料" class="input1" id="sub_com" type="submit" /></li> 
-     </form> 
-    </div> 
-   </div> 
-   <script type="text/javascript" src="__PUBLIC__/Home/js/jquery-1.10.2.js"></script> 
-   <script type="text/javascript" src="__PUBLIC__/Home/js/jquery.validate.js"></script> 
-   <script type="text/javascript" src="__PUBLIC__/Home/js/popup.js"></script> 
-   <script type="text/javascript" src="__PUBLIC__/Home/js/area_data.js"></script> 
-   <script type="text/javascript" src="__PUBLIC__/Home/js/Area.js"></script> 
-   <script type="text/javascript" src="__PUBLIC__/Home/js/companyalter.js"></script> 
-   <script type="text/javascript" charset="utf-8" src="__PUBLIC__/Home/js/10051268.js"></script> 
-   <div id="talk99_message"></div> 
-   <div id="doyoo_share" style="display:none;"></div> 
-   <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/oms.css?17070503" /> 
-   <script type="text/javascript" src="__PUBLIC__/Home/js/oms.js?170704" charset="utf-8"></script> 
-   <script>
-    areaData = $.parseJSON(areaData);
-</script> 
-   <div class="elear" style="clear:both;"></div> 
-  </div> 
-  <div class="elear" style="clear:both;"></div> 
-  <div style="   color: #999;height: 20px;margin: 20px 0;text-align: center;width: 100%;">
-   版权所有 资质管家（北京）信息技术有限公司 京ICP备16024435号-1&nbsp;&nbsp;
-   <a href="http://www.zizhiguanjia.com/sitemap.html" target="_blank" style="color: #5e5c5b;text-decoration: none !important;"></a>
+</head>
+<body>
+<div class="header">
+  <div class="header_center">
+    <div class="header_left">
+      <h1><a href="http://www.zizhiguanjia.com/">资质代办，找资质管家</a></h1>
+    </div>
+    <div class="header_right">
+      <ul>
+        <li>
+        <div id="regist" style="float:right;margin-top:5px">
+          <em>咨询热线：<span>010-56269198 </span></em>
+          <em style="background:none;">您好，欢迎来到资质管家！</em>
+          <a href="http://www.zizhiguanjia.com/accountinfor/personalinfo/">素材火</a>
+          <span id="loginout"><a href="javascript:void(0);" rel="nofollow" onclick="LoginOut();">(退出)</a></span>
+          <a href="http://www.zizhiguanjia.com/order/list/" rel="nofollow">我的订单</a>
+        </div>
+        </li>
+      </ul>
+    </div>
   </div>
-  <a href="http://www.zizhiguanjia.com/sitemap.html" target="_blank" style="color: #5e5c5b;text-decoration: none !important;"> <script>
-    var _hmt = _hmt || [];
-    (function () {
-        var hm = document.createElement("script");
-        hm.src = "__PUBLIC__/Home/js/hm.js?580e9422d1d340fa7711682e41256040";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
-    </script> <script>
-            (function () {
-                var bp = document.createElement('script');
-                var curProtocol = window.location.protocol.split(':')[0];
-                if (curProtocol === 'https') {
-                    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-                }
-                else {
-                    bp.src = '__PUBLIC__/Home/js/push.js';
-                }
-                var s = document.getElementsByTagName("script")[0];
-                s.parentNode.insertBefore(bp, s);
-            })();
-        </script> <script>
-        (function (i, s, o, g, r, a, m) {
-            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date(); a = s.createElement(o),
-            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-        })(window, document, 'script', '__PUBLIC__/Home/js/analytics.js', 'ga');
+</div>
+<div class="cr_header">
+  <div class="w1000">
+    <h1><a href="http://www.zizhiguanjia.com/"><img src="__PUBLIC__/Home/images/logo.gif"/></a></h1>
+    <ul>
+      <li><a href="http://www.zizhiguanjia.com/">网站首页</a></li>
+      <li class="li2"><a href="http://www.zizhiguanjia.com/zzdb/">资质代办</a></li>
+      <li><a href="http://www.zizhiguanjia.com/ryjz/">企业寻证</a></li>
+      <li><a href="zizhibiaozhun.html">资质标准</a></li>
+      <li><a href="about.html">关于我们</a></li>
+    </ul>
+  </div>
+</div>
+<div class="elear" style="clear:both;">
+</div>
+<div class="mion">
+  <div class="mion_left">
+    <dl>
+      <img src="__PUBLIC__/Home/images/tx.jpg" width="80" height="80"/>
+      <dt>
+      <span title="南京炫迈网络科技有限公司" style="font-size:16px;">南京炫迈网..</span> (素材火) 
+      </dt>
+      <dd class="dd">
+      <a href="http://www.zizhiguanjia.com/accountinfor/personalinfo"><span style="background:url(__PUBLIC__/Home/images/uz.png) no-repeat; background-position:left;">账户资料</span></a>
+      </dd>
+      <dd class="">
+      <a href="http://www.zizhiguanjia.com/safetyset/index"><i></i><span style="background:url(__PUBLIC__/Home/images/us.png) no-repeat; background-position:left;">安全设置</span></a>
+      </dd>
+      <dd class="">
+      <a href="http://www.zizhiguanjia.com/order/list"><i></i><span style="background:url(__PUBLIC__/Home/images/uo.png) no-repeat; background-position:left;">订单管理</span></a>
+      </dd>
+    </dl>
+  </div>
+  <link type="text/css" rel="stylesheet" href="__PUBLIC__/Home/css/usercenter.css"/>
+  <link type="text/css" rel="stylesheet" href="__PUBLIC__/Home/css/popup.css"/>
+  <div class="mion_right">
+    <div class="content_box">
+      <h2>个人资料</h2>
+      <h3><span>基本资料</span></h3>
+      <ul>
+        <li><i style="background:url(__PUBLIC__/Home/images/xt4.jpg) no-repeat; background-position:left top;"> 手机认证<br/><span>18005151538</span></i><a style="background:#a9d86e;cursor:default"><img src="__PUBLIC__/Home/images/xt6.png"/>已认证</a></li>
+        <li><i style="background:url(__PUBLIC__/Home/images/xt5.jpg) no-repeat; background-position:left top;"> 登陆密码<br/> ******** </i><a href="http://www.zizhiguanjia.com/SafetySet/ChangePassword" style="background:#59ace2;"><img src="__PUBLIC__/Home/images/xt6.png"/>去修改</a></li>
+      </ul>
+    </div>
+    <div class="content_box" style="margin-top:30px;">
+      <h3><span>公司资料</span></h3>
+      <form method="post" action="/usercenter/companyalter" id="sub_company" novalidate="novalidate">
+        <li>
+        <p>
+          <span style="color:red">*</span>&nbsp;企业名称：
+        </p>
+        <input name="Name" class="inp1" id="Name" value="{$companyinfo.company_name}" type="text"/><span class="messge"></span></li>
+        <li>
+        <p>
+          <span style="color:red">*</span>&nbsp;真实姓名：
+        </p>
+        <input class="inp1" id="contact" name="contact" onkeyup="this.value = this.value.replace(/^ +| +$/g, '')" onkeydown=" this.value ="" this.value.replace(/\s/g, '')" value="{$companyinfo.truename}" type="text"/><span class="messge"></span></li>
+        <li>
+        <p>
+          <span style="color:red"></span>&nbsp;固定电话：
+        </p>
+        <input name="TelPhone" class="inp1" id="TelPhone" value="{$companyinfo.contact_phone}" type="text"/><span class="messge"></span></li>
+        <li>
+        <p>
+          <span style="color:red">*</span>&nbsp;邮箱地址：
+        </p>
+        <input name="Email" class="inp1" id="Email" value="{$companyinfo.contact_email}" type="text"/><span class="messge"></span></li>
+        <li>
+        <p>
+          <span style="color:red">*</span>&nbsp;公司地址：
+        </p>
+        <select id="AreaPpid" class="longtext " name="AreaPpid" style="width:157px;">
+          <option value="">--省/市--</option>
+          <foreach name="province" item="v">
+              <option value="{$v['provinceid']}" <if condition="$v['provinceid'] eq $companyinfo['company_province']">selected="selected"</if>>{$v['first_name']} {$v['province']}</option>
+          </foreach>
+        </select>
 
-        ga('create', 'UA-101792527-1', 'auto');
-        ga('send', 'pageview');
+        <select name="AreaId" class="longtext" id="AreaPid" style="width:157px;">
+          <option value="">市/地区</option>
+          <foreach name="city" item="v">
+              <option value="{$v['cityid']}" <if condition="$v['cityid'] eq $companyinfo['company_city']">selected="selected"</if>>{$v['first_name']} {$v['city']}</option>
+          </foreach>
+        </select>
+        <input value="{$companyinfo.company_city}" id="InpAreaId" type="hidden"/>
+        <input value="{$companyinfo.company_province}" id="InpAreaPid" type="hidden"/>
+        <input name="address" class="inp1" value="{$companyinfo.company_address}" type="text"/><span class="messge" id="address_span"></span></li>
+        <li>
+        <p>
+          <span style="color:red">*</span>&nbsp;公司简介：
+        </p>
+        <textarea cols="33" rows="7" name="Introduction" id="Introduction">{$companyinfo.company_introduction}</textarea><span class="messge" id="introduction_span"></span></li>
+        <li><input value="保存资料" class="input1" id="sub_com" type="submit"/></li>
+      </form>
+    </div>
+  </div>
+  <script type="text/javascript" src="__PUBLIC__/Home/js/jquery-1.10.2.js"></script>
+  <script type="text/javascript" src="__PUBLIC__/Home/js/jquery.validate.js"></script>
+  <script type="text/javascript" src="__PUBLIC__/Home/js/popup.js"></script>
+  <!-- <script type="text/javascript" src="__PUBLIC__/Home/js/area_data.js"></script> -->
+  <!-- <script type="text/javascript" src="__PUBLIC__/Home/js/Area.js"></script> -->
+  <script type="text/javascript" src="__PUBLIC__/Home/js/companyalter.js"></script>
 
-    </script> </a>
-  <div style="display: none">
-   <a href="http://www.zizhiguanjia.com/sitemap.html" target="_blank" style="color: #5e5c5b;text-decoration: none !important;"> </a>
-   <a href="http://www.cnzz.com/stat/website.php?web_id=1255699131" target="_blank" title="站长统计">站长统计</a> 
-  </div> 
-  <script type="text/javascript">
+
+  <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/oms.css?17070503"/>
+
+
+</div>
+
+<div style=" color: #999;height: 20px;margin: 20px 0;text-align: center;width: 100%;">
+   版权所有 资质管家（北京）信息技术有限公司 京ICP备16024435号-1&nbsp;&nbsp;
+</div>
+
+<script type="text/javascript">
     function LoginOut() {
         var message = "确定要退出当前用户吗？";
         if (confirm(message)) {
@@ -159,10 +155,51 @@
             })
         }
     };
-</script> 
-  <div id="doyoo_panel" style="position: fixed; top: 150px; right: 5px; width: 144px;">
-   <div id="ohead" style="background: rgba(0, 0, 0, 0) url(__PUBLIC__/Home/images/dn_sc.gif?131127" );"=""></div>
-  </div>
-  <div id="doyoo_mon_closer"></div>
- </body>
+</script>
+
+</body>
 </html>
+
+
+
+<script type="text/javascript">
+    $('#AreaPpid').change(function(){
+        var provinceid=$(this).children('option:selected').val();
+        if(provinceid){
+            _ajax_get_city_select(provinceid);
+        }else{
+            alert('请选择省份');
+        }
+    });
+
+
+    function _ajax_get_city_select(provinceid){
+        $.ajax({  
+            async:false,
+            type:'get',  
+            contentType:"application/x-www-form-urlencoded",
+            url : "{:U('Home/Index/ajax_get_city_list')}",
+            data:{
+              provinceid:provinceid
+            },
+            dataType : 'json',
+            success  : function(json) {  
+                if(json.code==0){
+                    var data=json.data;
+
+                    var str="<option value=''>市/地区</option>";
+                    $.each(json.data, function(key, value) {
+                         str+="<option value='"+value.cityid+"'>"+value.first_name+" "+value.city+"</option>";
+                    });
+                    $('#AreaPid').html(str);
+
+                }else{
+                    layer.msg(json.msg);
+                }
+            },
+            error  : function(json) {  
+                layer.msg(json.msg);
+            }  
+        });  
+    } 
+</script>

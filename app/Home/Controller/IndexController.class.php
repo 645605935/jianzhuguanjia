@@ -72,7 +72,26 @@ class IndexController extends CommonController{
         $this->display();
     }
 
+    public function ajax_get_city_list(){
+        $map=array();
+        if($provinceid=$_GET['provinceid']){
+            $map['fatherid']=$provinceid;
+        }
+            
+        $list = M('City')->where($map)->order('first_name desc')->select();
 
+        if($list){
+            $data=array();
+            $data['code']=0;
+            $data['msg']='success';
+            $data['data']=$list;
+        }else{
+            $data=array();
+            $data['code']=1;
+            $data['msg']='empty';
+        }
+        echo json_encode($data);
+    }
 
     
    

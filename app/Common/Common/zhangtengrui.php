@@ -4,7 +4,7 @@
 
 /** * 取汉字的第一个字的首字母 * @param type $str * @return string|null */
 function _getFirstCharter($str) {
-    if (emptyempty($str)) {
+    if (empty($str)) {
         return '';
     }
     $fchar = ord($str{0});
