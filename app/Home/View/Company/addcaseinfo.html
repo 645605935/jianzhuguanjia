@@ -5,6 +5,7 @@
   <title>新增资质案例</title> 
   <link type="text/css" rel="stylesheet" href="__PUBLIC__/Home/css/usercenter.css?v=20160601" /> 
   <link href="__PUBLIC__/Home/css/broker.css" rel="stylesheet" /> 
+  <link rel="stylesheet" href="__PUBLIC__/Admin/layui-v1.0.4/layui/css/layui.css"  media="all">
   <script async="" src="__PUBLIC__/Home/js/analytics.js"></script>
   <script src="__PUBLIC__/Home/js/push.js"></script>
   <script src="__PUBLIC__/Home/js/hm.js?580e9422d1d340fa7711682e41256040"></script>
@@ -84,6 +85,56 @@
 </style> 
    <div class="mion_right"> 
     <h4><span>资质案例</span></h4> 
+
+    <form class="layui-form layui-form-pane col-xs-12" action="" method="post">
+
+        <table class="layui-table" id="search_table">
+          <thead>
+            <tr>
+              <th>搜索</th>
+            </tr> 
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="layui-inline" style="margin-top: 5px;">
+                  <div class="layui-form-item">
+                    <label class="layui-form-label">产品名称</label>
+                    <div class="layui-input-inline">
+                      <input type="text" name="title" placeholder="" value="{$_POST['title']}" autocomplete="off" class="layui-input title">
+                    </div>
+                  </div>
+                </div>  
+
+                <div class="layui-inline" style="margin-top: 5px;">
+                  <div class="layui-form-item">
+                    <label class="layui-form-label">时间范围</label>
+                    <div class="layui-input-inline">
+                      <input class="layui-input Date1" name="Date1" value="{$_POST['Date1']}" placeholder="开始日" id="LAY_demorange_s">
+                    </div>
+                    <div class="layui-input-inline">
+                      <input class="layui-input Date2" name="Date2" value="{$_POST['Date2']}" placeholder="截止日" id="LAY_demorange_e">
+                    </div>
+                  </div>
+                </div> 
+
+              </td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td>
+                <button style="float:left;" class="layui-btn id-btn-dialog2_add" title="id-btn-dialog2_add"> 添加 </button>
+                <button style="float:right;" class="layui-btn search_btn" lay-submit="" title="search_btn">搜索</button>
+              </td>
+            </tr> 
+          </tfoot>
+        </table>
+
+    </form>
+
+
+    
     <form id="add_CaseInfo" method="post" novalidate="novalidate"> 
      <input id="OldCompanyName" name="OldCompanyName" type="hidden" /> 
      <input id="OldSubjectType" name="OldSubjectType" value="0" type="hidden" /> 
