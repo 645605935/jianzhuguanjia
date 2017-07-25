@@ -75,57 +75,6 @@
         <li><i style="background:url(__PUBLIC__/Home/images/xt5.jpg) no-repeat; background-position:left top;"> 登陆密码<br/> ******** </i><a href="http://www.zizhiguanjia.com/SafetySet/ChangePassword" style="background:#59ace2;"><img src="__PUBLIC__/Home/images/xt6.png"/>去修改</a></li>
       </ul>
     </div>
-    <div class="content_box" style="margin-top:30px;">
-      <h3><span>公司资料</span></h3>
-      <form method="post" action="/usercenter/companyalter" id="sub_company" novalidate="novalidate">
-        <li>
-        <p>
-          <span style="color:red">*</span>&nbsp;企业名称：
-        </p>
-        <input name="Name" class="inp1" id="Name" value="{$companyinfo.company_name}" type="text"/><span class="messge"></span></li>
-        <li>
-        <p>
-          <span style="color:red">*</span>&nbsp;真实姓名：
-        </p>
-        <input class="inp1" id="contact" name="contact" onkeyup="this.value = this.value.replace(/^ +| +$/g, '')" onkeydown=" this.value ="" this.value.replace(/\s/g, '')" value="{$companyinfo.truename}" type="text"/><span class="messge"></span></li>
-        <li>
-        <p>
-          <span style="color:red"></span>&nbsp;固定电话：
-        </p>
-        <input name="TelPhone" class="inp1" id="TelPhone" value="{$companyinfo.contact_phone}" type="text"/><span class="messge"></span></li>
-        <li>
-        <p>
-          <span style="color:red">*</span>&nbsp;邮箱地址：
-        </p>
-        <input name="Email" class="inp1" id="Email" value="{$companyinfo.contact_email}" type="text"/><span class="messge"></span></li>
-        <li>
-        <p>
-          <span style="color:red">*</span>&nbsp;公司地址：
-        </p>
-        <select id="AreaPpid" class="longtext " name="AreaPpid" style="width:157px;">
-          <option value="">--省/市--</option>
-          <foreach name="province" item="v">
-              <option value="{$v['provinceid']}" <if condition="$v['provinceid'] eq $companyinfo['company_province']">selected="selected"</if>>{$v['first_name']} {$v['province']}</option>
-          </foreach>
-        </select>
-
-        <select name="AreaId" class="longtext" id="AreaPid" style="width:157px;">
-          <option value="">市/地区</option>
-          <foreach name="city" item="v">
-              <option value="{$v['cityid']}" <if condition="$v['cityid'] eq $companyinfo['company_city']">selected="selected"</if>>{$v['first_name']} {$v['city']}</option>
-          </foreach>
-        </select>
-        <input value="{$companyinfo.company_city}" id="InpAreaId" type="hidden"/>
-        <input value="{$companyinfo.company_province}" id="InpAreaPid" type="hidden"/>
-        <input name="address" class="inp1" value="{$companyinfo.company_address}" type="text"/><span class="messge" id="address_span"></span></li>
-        <li>
-        <p>
-          <span style="color:red">*</span>&nbsp;公司简介：
-        </p>
-        <textarea cols="33" rows="7" name="Introduction" id="Introduction">{$companyinfo.company_introduction}</textarea><span class="messge" id="introduction_span"></span></li>
-        <li><input value="保存资料" class="input1" id="sub_com" type="submit"/></li>
-      </form>
-    </div>
   </div>
   <script type="text/javascript" src="__PUBLIC__/Home/js/jquery-1.10.2.js"></script>
   <script type="text/javascript" src="__PUBLIC__/Home/js/jquery.validate.js"></script>
