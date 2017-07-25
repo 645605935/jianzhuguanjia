@@ -34,7 +34,7 @@
 .operation a.a1{background-position:0 -18px;}
 .checkinfo{width:60px; padding-top:30px; margin-left:-70px; float:left;}
 .page{width:865px; height:50px; line-height:50px; text-align:center;}
-.page a{width:30px; text-align:center; line-height:30px; background:#ff5400; color:#fff; margin-left:10px; text-decoration:none; border-radius:4px; display:inline-block; margin-top:15px;}
+.page a{ text-align:center; line-height:30px; background:#ff5400; color:#fff; margin-left:10px; text-decoration:none; border-radius:4px; display:inline-block; margin-top:15px;padding: 0px 3px;}
 .page a:hover{color:#fff; background:#f00;}
 
 /* input & team */

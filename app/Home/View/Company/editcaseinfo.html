@@ -73,14 +73,18 @@
                       <div class="layui-form-item">
                         <label class="layui-form-label">上传图片</label>
                         <div class="layui-input-inline">
-                          <input type="file" id="add_upload_img" name="file" class="layui-upload-file">
+                          <input type="file" id="edit_upload_img" name="file" class="layui-upload-file">
                         </div>
                         <label class="">说明：图片不能大于2M的jpg、png图片，且清晰</label>
                       </div>
                     </div>
                   </td>
                   <td>
-                    <img class="show_img" data-src="holder.js/100x100" class="img-thumbnail" alt="100x100" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgdmlld0JveD0iMCAwIDE0MCAxNDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzE0MHgxNDAKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNWQ1MzI3ODU3YiB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1ZDUzMjc4NTdiIj48cmVjdCB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjQ1IiB5PSI3NC44Ij4xNDB4MTQwPC90ZXh0PjwvZz48L2c+PC9zdmc+" data-holder-rendered="true" style="width: 100px; height: 100px;">
+                    <if condition="$v.img">
+                        <img class="show_img" data-src="holder.js/100x100" class="img-thumbnail" alt="100x100" src="{$row.img}" data-holder-rendered="true" style="width: 100px; height: 100px;">
+                    <else/>
+                        <img class="show_img" data-src="holder.js/100x100" class="img-thumbnail" alt="100x100" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgdmlld0JveD0iMCAwIDE0MCAxNDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzE0MHgxNDAKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNWQ1MzI3ODU3YiB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1ZDUzMjc4NTdiIj48cmVjdCB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjQ1IiB5PSI3NC44Ij4xNDB4MTQwPC90ZXh0PjwvZz48L2c+PC9zdmc+" data-holder-rendered="true" style="width: 100px; height: 100px;">
+                    </if>
                   </td>
                 </tr>
                 
@@ -90,7 +94,7 @@
                       <div class="layui-form-item">
                         <label class="layui-form-label">公司名称</label>
                         <div class="layui-input-inline">
-                          <input type="text" name="company_name" lay-verify="required" autocomplete="off" class="layui-input company_name">
+                          <input type="text" name="company_name" lay-verify="required" value="{$row.company_name}" autocomplete="off" class="layui-input company_name">
                         </div>
                       </div>
                     </div>
@@ -109,7 +113,7 @@
                           <select name="zizhileixing" class="zizhileixing">
                             <option value="">请选择</option>
                             <foreach name="zizhileixing" item="v">
-                                <option value="{$v.id}">{$v.title}</option>
+                                <option value="{$v.id}" <if condition="$v['id'] eq $row['zizhileixing']">selected</if>>{$v.title}</option>
                             </foreach>
                           </select>
                         </div>
@@ -127,7 +131,7 @@
                       <div class="layui-form-item">
                         <label class="layui-form-label">合作业务</label>
                         <div class="layui-input-inline" style="width:542px;">
-                          <textarea class="layui-textarea layui-hide hezuoyewu" name="hezuoyewu" lay-verify="content_1" id="editer_1"></textarea>
+                          <textarea class="layui-textarea layui-hide hezuoyewu" name="hezuoyewu" lay-verify="content_1" id="editer_1">{$row['hezuoyewu']}</textarea>
                         </div>
                       </div>
                     </div>
@@ -144,7 +148,7 @@
                           <select name="banlizhouqi" class="banlizhouqi">
                             <option value="">请选择</option>
                             <foreach name="banlizhouqi" item="v">
-                                <option value="{$v.id}">{$v.title}</option>
+                                <option value="{$v.id}" <if condition="$v['id'] eq $row['banlizhouqi']">selected</if>>{$v.title}</option>
                             </foreach>
                           </select>
                         </div>
@@ -162,7 +166,7 @@
                       <div class="layui-form-item">
                         <label class="layui-form-label">办理价格</label>
                         <div class="layui-input-inline">
-                          <input type="text" name="price" lay-verify="required" autocomplete="off" class="layui-input price">
+                          <input type="text" name="price" lay-verify="required" value="{$row.price}" autocomplete="off" class="layui-input price">
                         </div>
                       </div>
                     </div>
@@ -178,7 +182,7 @@
                       <div class="layui-form-item">
                         <label class="layui-form-label">人员配置</label>
                         <div class="layui-input-inline" style="width:542px;">
-                          <textarea class="layui-textarea layui-hide renyuanpeizhi" name="renyuanpeizhi" lay-verify="content_2" id="editer_2"></textarea>
+                          <textarea class="layui-textarea layui-hide renyuanpeizhi" name="renyuanpeizhi" lay-verify="content_2" id="editer_2">{$row.renyuanpeizhi}</textarea>
                         </div>
                       </div>
                     </div>
@@ -190,8 +194,9 @@
               <tfoot>
                 <tr>
                   <td colspan="2" style="text-align:center;">
-                    <input type="hidden" name="img" lay-verify="required" class="layui-input img">
-                    <button class="layui-btn" lay-submit="" lay-filter="demo1_add">确认</button>
+                    <input type="hidden" name="id" lay-verify="required" value="{$row.id}" class="layui-input id">
+                    <input type="hidden" name="img" lay-verify="required" value="{$row.img}" class="layui-input img">
+                    <button class="layui-btn" lay-submit="" lay-filter="demo1_edit">确认</button>
                     <button type="reset" class="layui-btn layui-btn-primary reset">重置</button>
                   </td>
                 </tr>
@@ -235,12 +240,12 @@
 
 <script>
     //添加
-    function _ajax_add(_data){
+    function _ajax_edit(_data){
          $.ajax({  
              async:false,
              type:'post',  
              contentType:"application/x-www-form-urlencoded",
-             url : "{:U('Home/Company/ajax_add_case')}",
+             url : "{:U('Home/Company/ajax_edit_case')}",
              data: _data,
              dataType : 'json',
              success  : function(json) {
@@ -265,7 +270,7 @@
           ,layedit = layui.layedit
           ,laydate = layui.laydate;
 
-          var form_type='add';
+          var form_type='edit';
 
           //上传文件
           layui.upload({
@@ -310,8 +315,8 @@
           });
 
           //监听提交
-          form.on('submit(demo1_add)', function(data){
-            var _json=_ajax_add(data.field);
+          form.on('submit(demo1_edit)', function(data){
+            var _json=_ajax_edit(data.field);
 
             // alert(JSON.stringify(data.field));
             return false;

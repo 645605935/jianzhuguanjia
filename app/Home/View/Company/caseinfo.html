@@ -1,136 +1,130 @@
 <html>
- <head> 
-  <meta http-equiv="x-ua-compatible" content="ie=7" /> 
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
-  <title></title> 
-  <link type="text/css" rel="stylesheet" href="__PUBLIC__/Home/css/usercenter.css?v=20160601" /> 
-  <link href="__PUBLIC__/Home/css/broker.css" rel="stylesheet" /> 
-  <script async="" src="__PUBLIC__/Home/js/analytics.js"></script>
-  <script src="__PUBLIC__/Home/js/push.js"></script>
-  <script type="text/javascript" src="__PUBLIC__/Home/js/jquery-1.10.2.js"></script> 
-  <script type="text/javascript" src="__PUBLIC__/Home/js/jquery.validate.js"></script> 
-  <script type="text/javascript" src="__PUBLIC__/Home/js/popup.js"></script> 
- </head> 
- <body> 
-  <div class="header"> 
-   <div class="header_center"> 
-    <div class="header_left"> 
-     <h1> <a href="http://www.zizhiguanjia.com">资质代办，找资质管家</a> <a href="zizhibiaozhun.html">资质百科</a> <a href="http://www.zizhiguanjia.com/zizhi">资质代办公司</a> </h1> 
-    </div> 
-    <div class="header_right"> 
-     <ul> 
-      <li> 
-       <div id="regist" style="float:right;margin-top:5px"> 
-        <em>咨询热线：<span>010-56269198 </span> </em> 
-        <em style="background:none;">您好，欢迎来到资质管家！</em> 
-        <a href="http://www.zizhiguanjia.com/usercenter/brokerindex">熊丽丽</a> 
-        <span id="loginout"><a href="javascript:void(0);" rel="nofollow" onclick="LoginOut();">(退出)</a></span> 
-        <a href="http://www.zizhiguanjia.com/usercenter/brokerorder" rel="nofollow">我的订单</a> 
-       </div> </li> 
-     </ul> 
-    </div> 
-   </div> 
-  </div> 
-  <div class="cr_header"> 
-   <div class="w1000"> 
-    <h1><a href="http://www.zizhiguanjia.com/"><img src="__PUBLIC__/Home/images/logo.gif" /></a></h1> 
-    <ul> 
-     <li><a href="http://www.zizhiguanjia.com">网站首页</a></li> 
-     <li class="li2"><a href="http://www.zizhiguanjia.com/baojia">资质代办</a></li> 
-     <li><a href="zizhibiaozhun.html">资质标准</a></li> 
-     <li><a href="about.html">关于我们</a></li> 
-    </ul> 
-   </div> 
-  </div> 
-  <div class="elear" style="clear:both;"></div> 
-  <div class="mion"> 
-   <div class="mion_left"> 
-    <dl> 
-     <dt>
-      <a href="http://www.zizhiguanjia.com/usercenter/brokerindex">账户中心首页</a>
-     </dt> 
-     <dd class="">
-      <a href="http://www.zizhiguanjia.com/company/companylicense"><span style="background:url(__PUBLIC__/Home/images/un.png) no-repeat; background-position:left;">实名认证</span></a>
-     </dd> 
-     <dd class="">
-      <a href="http://www.zizhiguanjia.com/company/companyinfo"><span style="background:url(__PUBLIC__/Home/images/uz.png) no-repeat; background-position:left;">公司资料</span></a>
-     </dd> 
-     <dd class="">
-      <a href="http://www.zizhiguanjia.com/safetyset/index"><i></i><span style="background:url(__PUBLIC__/Home/images/us.png) no-repeat; background-position:left;">安全设置</span></a>
-     </dd> 
-     <dd class="">
-      <a href="http://www.zizhiguanjia.com/usercenter/brokerorder"><i></i><span style="background:url(__PUBLIC__/Home/images/uo.png) no-repeat; background-position:left;">订单管理</span></a>
-     </dd> 
-     <dd class="dd">
-      <a href="http://www.zizhiguanjia.com/company/caseinfo"><i></i><span style="background:url(__PUBLIC__/Home/images/uc.png) no-repeat; background-position:left;">资质案例</span></a>
-     </dd> 
-     <dd class="">
-      <a href="http://www.zizhiguanjia.com/company/team"><i></i><span style="background:url(__PUBLIC__/Home/images/ut.png) no-repeat; background-position:left;">精英团队</span></a>
-     </dd> 
-     <dd class="">
-      <a href="http://www.zizhiguanjia.com/usercenter/Question"><i></i><span style="background:url(__PUBLIC__/Home/images/uq.png) no-repeat; background-position:left;">常见问题</span></a>
-     </dd> 
-     <div class="clear"></div> 
-    </dl> 
-   </div> 
-   <link type="text/css" rel="stylesheet" href="__PUBLIC__/Home/css/caseinfo.css?v=20160531" /> 
-   <div class="mion_right"> 
-    <h4><span></span></h4> 
-    <div class="case_zs"> 
-     <a href="{:U('Home/company/addcaseinfo')}" class="return">新增案例</a> 
-     <div class="tit">
-      资质列表
-      <p>操作</p>
-      <p>状态</p>
-     </div> 
-     <ul> 
-      <li> 
-       <div class="anxx"> 
-        <div class="img">
-         <img src="__PUBLIC__/Home/images/20170713222604300.png" width="100" height="100" />
-        </div> 
-        <div class="informatione"> 
-         <p>公司名称：<b class="b1">啥大大说的</b></p> 
-         <p>资质类型：<b>施工总承包资质</b></p> 
-         <p>办理周期：<b>6个月-1年</b></p> 
-         <p>办理价格：<b>120</b></p> 
-        </div> 
-        <div class="checkinfo">
-          审核中 
-        </div> 
-        <div class="operation"> 
-         <a href="/company/addcaseinfo?ty=2&amp;name=啥大大说的&amp;subjecttype=301">编辑</a> 
-         <a href="javascript:void(0)" class="a1" onclick="deleteByUrl('啥大大说的','301')">删除</a> 
-        </div> 
-       </div> </li> 
-      <link href="__PUBLIC__/Home/css/Page.css" rel="stylesheet" type="text/css" /> 
-      <div class="pages"> 
-       <span>1</span> 
-       <a class="a1 counts">共1条</a> 
-      </div> 
-     </ul> 
-    </div> 
-   </div> 
-   <script type="text/javascript" src="__PUBLIC__/Home/js/addCaseInfo.js"></script> 
-   <div class="elear" style="clear:both;"></div> 
-  </div> 
-  <div class="elear" style="clear:both;"></div> 
-  <div style="   color: #999;height: 20px;margin: 20px 0;text-align: center;width: 100%;">
-   版权所有 资质管家（北京）信息技术有限公司 京ICP备16024435号-1&nbsp;&nbsp;
-   <a href="http://www.zizhiguanjia.com/sitemap.html" target="_blank" style="color: #5e5c5b;text-decoration: none !important;"></a>
-  </div>
+    
+    <head>
+        <meta http-equiv="x-ua-compatible" content="ie=7" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+        <link type="text/css" rel="stylesheet" href="__PUBLIC__/Home/css/usercenter.css?v=20160601" />
+        <link href="__PUBLIC__/Home/css/broker.css" rel="stylesheet" />
+        <script async="" src="__PUBLIC__/Home/js/analytics.js"></script>
+        <script src="__PUBLIC__/Home/js/push.js"></script>
+        <script type="text/javascript" src="__PUBLIC__/Home/js/jquery-1.10.2.js"></script>
+        <script type="text/javascript" src="__PUBLIC__/Home/js/jquery.validate.js"></script>
+        <script type="text/javascript" src="__PUBLIC__/Home/js/popup.js"></script>
+    </head>
+    
+    <body>
+        <div class="header">
+            <div class="header_center">
+                <div class="header_left">
+                    <h1>
+                        <a href="http://www.zizhiguanjia.com">资质代办，找资质管家</a>
+                        <a href="zizhibiaozhun.html">资质百科</a>
+                        <a href="http://www.zizhiguanjia.com/zizhi">资质代办公司</a></h1>
+                </div>
+                <div class="header_right">
+                    <ul>
+                        <li>
+                            <div id="regist" style="float:right;margin-top:5px">
+                                <em>咨询热线：
+                                    <span>010-56269198</span></em>
+                                <em style="background:none;">您好，欢迎来到资质管家！</em>
+                                <a href="http://www.zizhiguanjia.com/usercenter/brokerindex">熊丽丽</a>
+                                <span id="loginout">
+                                    <a href="javascript:void(0);" rel="nofollow" onclick="LoginOut();">(退出)</a></span>
+                                <a href="http://www.zizhiguanjia.com/usercenter/brokerorder" rel="nofollow">我的订单</a></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="cr_header">
+            <div class="w1000">
+                <h1>
+                    <a href="http://www.zizhiguanjia.com/">
+                        <img src="__PUBLIC__/Home/images/logo.gif" /></a>
+                </h1>
+                <ul>
+                    <li>
+                        <a href="http://www.zizhiguanjia.com">网站首页</a></li>
+                    <li class="li2">
+                        <a href="http://www.zizhiguanjia.com/baojia">资质代办</a></li>
+                    <li>
+                        <a href="zizhibiaozhun.html">资质标准</a></li>
+                    <li>
+                        <a href="about.html">关于我们</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="elear" style="clear:both;"></div>
+        <div class="mion">
+            <div class="mion_left">
+                <include file="_left" /></div>
+            <link type="text/css" rel="stylesheet" href="__PUBLIC__/Home/css/caseinfo.css?v=20160531" />
+            <div class="mion_right">
+                <h4>
+                    <span></span>
+                </h4>
+                <div class="case_zs">
+                    <a href="{:U('Home/company/addcaseinfo')}" class="return">新增案例</a>
+                    <div class="tit">资质列表
+                        <p>操作</p>
+                        <p>状态</p>
+                    </div>
+                    <ul>
+                        <foreach name="list" item="v">
+                            <li>
+                                <div class="anxx">
+                                    <div class="img">
+                                        <img src="{$v.img}" width="100" height="100" /></div>
+                                    <div class="informatione">
+                                        <p>公司名称：
+                                            <b class="b1">{$v.company_name}</b></p>
+                                        <p>资质类型：
+                                            <b>{$v.zizhileixing}</b>
+                                        </p>
+                                        <p>办理周期：
+                                            <b>{$v.banlizhouqi}</b>
+                                        </p>
+                                        <p>办理价格：
+                                            <b>{$v.price}</b>
+                                        </p>
+                                    </div>
+                                    <div class="checkinfo">
+                                        <if condition="$v['status'] eq 0">审核中</if>
+                                        <if condition="$v['status'] eq 1">通过</if>
+                                        <if condition="$v['status'] eq -1">不通过</if>
+                                    </div>
+                                    <div class="operation">
+                                        <a href="{:U('Home/Company/editcaseinfo',array('id'=>$v['id']))}">编辑</a>
+                                        <a href="javascript:void(0)" class="a1" onclick="deleteByUrl('啥大大说的','301')">删除</a></div>
+                                </div>
+                            </li>
+                        </foreach>
+                        
+                        <div class="page">
+                            {$page}
+                        </div>
+                    </ul>
+                </div>
+            </div>
+            <script type="text/javascript" src="__PUBLIC__/Home/js/addCaseInfo.js"></script>
+            <div class="elear" style="clear:both;"></div>
+        </div>
+        <div class="elear" style="clear:both;"></div>
+        <div style="   color: #999;height: 20px;margin: 20px 0;text-align: center;width: 100%;">版权所有 资质管家（北京）信息技术有限公司 京ICP备16024435号-1&nbsp;&nbsp;
+            <a href="http://www.zizhiguanjia.com/sitemap.html" target="_blank" style="color: #5e5c5b;text-decoration: none !important;"></a></div>
+        <script type="text/javascript">function LoginOut() {
+                var message = "确定要退出当前用户吗？";
+                if (confirm(message)) {
+                    $.post("/user/exituser", "",
+                    function(data) {
+                        if (data.IsSuccess) {
+                            location.href = "http://www.zizhiguanjia.com";
+                        }
+                    })
+                }
+            };</script>
+    </body>
 
-  <script type="text/javascript">
-        function LoginOut() {
-            var message = "确定要退出当前用户吗？";
-            if (confirm(message)) {
-                $.post("/user/exituser", "", function (data) {
-                    if (data.IsSuccess) {
-                        location.href = "http://www.zizhiguanjia.com";
-                    }
-                })
-            }
-        };
-    </script> 
- </body>
 </html>
