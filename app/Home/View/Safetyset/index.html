@@ -1,155 +1,62 @@
 <html>
- <head> 
-  <meta http-equiv="x-ua-compatible" content="ie=7" /> 
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
-  <title></title> 
-  <link type="text/css" rel="stylesheet" href="__PUBLIC__/Home/css/usercenter.css?v=20160601" /> 
-  <link href="__PUBLIC__/Home/css/broker.css" rel="stylesheet" /> 
-  <script async="" src="__PUBLIC__/Home/js/analytics.js"></script>
-  <script src="__PUBLIC__/Home/js/push.js"></script>
-  <script src="__PUBLIC__/Home/js/hm.js?580e9422d1d340fa7711682e41256040"></script>
-  <script type="text/javascript" src="__PUBLIC__/Home/js/jquery-1.10.2.js"></script> 
-  <script type="text/javascript" src="__PUBLIC__/Home/js/jquery.validate.js"></script> 
-  <script type="text/javascript" src="__PUBLIC__/Home/js/popup.js"></script> 
- </head> 
- <body> 
-  <div class="header"> 
-   <div class="header_center"> 
-    <div class="header_left"> 
-     <h1> <a href="http://www.zizhiguanjia.com">资质代办，找资质管家</a> <a href="zizhibiaozhun.html">资质百科</a> <a href="http://www.zizhiguanjia.com/zizhi">资质代办公司</a> </h1> 
-    </div> 
-    <div class="header_right"> 
-     <ul> 
-      <li> 
-       <div id="regist" style="float:right;margin-top:5px"> 
-        <em>咨询热线：<span>010-56269198 </span> </em> 
-        <em style="background:none;">您好，欢迎来到资质管家！</em> 
-        <a href="http://www.zizhiguanjia.com/usercenter/brokerindex">熊丽丽</a> 
-        <span id="loginout"><a href="javascript:void(0);" rel="nofollow" onclick="LoginOut();">(退出)</a></span> 
-        <a href="http://www.zizhiguanjia.com/usercenter/brokerorder" rel="nofollow">我的订单</a> 
-       </div> </li> 
-     </ul> 
-    </div> 
-   </div> 
-  </div> 
-  <div class="cr_header"> 
-   <div class="w1000"> 
-    <h1><a href="http://www.zizhiguanjia.com/"><img src="__PUBLIC__/Home/images/logo.gif" /></a></h1> 
-    <ul> 
-     <li><a href="http://www.zizhiguanjia.com">网站首页</a></li> 
-     <li class="li2"><a href="http://www.zizhiguanjia.com/baojia">资质代办</a></li> 
-     <li><a href="zizhibiaozhun.html">资质标准</a></li> 
-     <li><a href="about.html">关于我们</a></li> 
-    </ul> 
-   </div> 
-  </div> 
-  <div class="elear" style="clear:both;"></div> 
-  <div class="mion"> 
-   <div class="mion_left"> 
-    <dl> 
-     <dt>
-      <a href="http://www.zizhiguanjia.com/usercenter/brokerindex">账户中心首页</a>
-     </dt> 
-     <dd class="">
-      <a href="http://www.zizhiguanjia.com/company/companylicense"><span style="background:url(__PUBLIC__/Home/images/un.png) no-repeat; background-position:left;">实名认证</span></a>
-     </dd> 
-     <dd class="">
-      <a href="http://www.zizhiguanjia.com/company/companyinfo"><span style="background:url(__PUBLIC__/Home/images/uz.png) no-repeat; background-position:left;">公司资料</span></a>
-     </dd> 
-     <dd class="dd">
-      <a href="http://www.zizhiguanjia.com/safetyset/index"><i></i><span style="background:url(__PUBLIC__/Home/images/us.png) no-repeat; background-position:left;">安全设置</span></a>
-     </dd> 
-     <dd class="">
-      <a href="http://www.zizhiguanjia.com/usercenter/brokerorder"><i></i><span style="background:url(__PUBLIC__/Home/images/uo.png) no-repeat; background-position:left;">订单管理</span></a>
-     </dd> 
-     <dd class="">
-      <a href="http://www.zizhiguanjia.com/company/caseinfo"><i></i><span style="background:url(__PUBLIC__/Home/images/uc.png) no-repeat; background-position:left;">资质案例</span></a>
-     </dd> 
-     <dd class="">
-      <a href="http://www.zizhiguanjia.com/company/team"><i></i><span style="background:url(__PUBLIC__/Home/images/ut.png) no-repeat; background-position:left;">精英团队</span></a>
-     </dd> 
-     <dd class="">
-      <a href="http://www.zizhiguanjia.com/usercenter/Question"><i></i><span style="background:url(__PUBLIC__/Home/images/uq.png) no-repeat; background-position:left;">常见问题</span></a>
-     </dd> 
-     <div class="clear"></div> 
-    </dl> 
-   </div> 
-   <div class="mion_right"> 
-    <div class="content_box"> 
-     <h4><span></span></h4> 
-     <ul> 
-      <li> <i style="background:url(__PUBLIC__/Home/images/xt4.jpg) no-repeat; background-position:left top;"> 手机认证<br /> 
-        <lable style="color:rgb(255, 84, 0);font-weight:bold;font-size:14px">
-         18795860715
-        </lable> </i> <a style="background:#a9d86e;"><img src="__PUBLIC__/Home/images/xt6.png" />已认证</a> </li> 
-      <li> <i style="background:url(__PUBLIC__/Home/images/xt5.jpg) no-repeat; background-position:left top;"> 登陆密码<br /> ******** </i> <a href="http://www.zizhiguanjia.com/safetyset/changepassword" style="background:#59ace2;"><img src="__PUBLIC__/Home/images/xt6.png" />去修改</a> </li> 
-     </ul> 
-    </div> 
-   </div> 
-   <div class="elear" style="clear:both;"></div> 
-   <script>
-    $("#notValid").mouseover(function () {
-        $("#notValid").html("<img src='images/chahao(1).png'>去认证");
-     
-    }).mouseleave(function () {
-        $("#notValid").html("<img src='images/chahao(1).png'>未认证");
-    });
-</script> 
-   <div class="elear" style="clear:both;"></div> 
-  </div> 
-  <div class="elear" style="clear:both;"></div> 
-  <div style="   color: #999;height: 20px;margin: 20px 0;text-align: center;width: 100%;">
-   版权所有 资质管家（北京）信息技术有限公司 京ICP备16024435号-1&nbsp;&nbsp;
-   <a href="http://www.zizhiguanjia.com/sitemap.html" target="_blank" style="color: #5e5c5b;text-decoration: none !important;"></a>
-  </div>
-  <a href="http://www.zizhiguanjia.com/sitemap.html" target="_blank" style="color: #5e5c5b;text-decoration: none !important;"> <script>
-    var _hmt = _hmt || [];
-    (function () {
-        var hm = document.createElement("script");
-        hm.src = "__PUBLIC__/Home/js/hm.js?580e9422d1d340fa7711682e41256040";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
-    </script> <script>
-            (function () {
-                var bp = document.createElement('script');
-                var curProtocol = window.location.protocol.split(':')[0];
-                if (curProtocol === 'https') {
-                    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-                }
-                else {
-                    bp.src = 'js/push.js';
-                }
-                var s = document.getElementsByTagName("script")[0];
-                s.parentNode.insertBefore(bp, s);
-            })();
-        </script> <script>
-        (function (i, s, o, g, r, a, m) {
-            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date(); a = s.createElement(o),
-            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-        })(window, document, 'script', 'js/analytics.js', 'ga');
+    
+    <head>
+        <meta http-equiv="x-ua-compatible" content="ie=7" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+        <link type="text/css" rel="stylesheet" href="__PUBLIC__/Home/css/usercenter.css?v=20160601" />
+        <link href="__PUBLIC__/Home/css/broker.css" rel="stylesheet" />
+        <script async="" src="__PUBLIC__/Home/js/analytics.js"></script>
+        <script src="__PUBLIC__/Home/js/push.js"></script>
+        <script src="__PUBLIC__/Home/js/hm.js?580e9422d1d340fa7711682e41256040"></script>
+        <script type="text/javascript" src="__PUBLIC__/Home/js/jquery-1.10.2.js"></script>
+        <script type="text/javascript" src="__PUBLIC__/Home/js/jquery.validate.js"></script>
+        <script type="text/javascript" src="__PUBLIC__/Home/js/popup.js"></script>
+    </head>
+    
+    <body>
+        <!-- 头部引用 -->
+        <include file="Common/_header" />
+        <!-- cr头部引用 -->
+        <include file="Common/_cr_header" />
 
-        ga('create', 'UA-101792527-1', 'auto');
-        ga('send', 'pageview');
+        <div class="elear" style="clear:both;"></div>
+        <div class="mion">
+            <div class="mion_left">
+                <include file="Common/_left" />
+            </div>
+            <div class="mion_right">
+                <div class="content_box">
+                    <h4>
+                        <span></span>
+                    </h4>
+                    <ul>
+                        <li>
+                            <i style="background:url(__PUBLIC__/Home/images/xt4.jpg) no-repeat; background-position:left top;">手机认证
+                                <br />
+                                <lable style="color:rgb(255, 84, 0);font-weight:bold;font-size:14px">18795860715</lable></i>
+                            <a style="background:#a9d86e;">
+                                <img src="__PUBLIC__/Home/images/xt6.png" />已认证</a></li>
+                        <li>
+                            <i style="background:url(__PUBLIC__/Home/images/xt5.jpg) no-repeat; background-position:left top;">登陆密码
+                                <br />********</i>
+                            <a href="{:U('Home/Safetyset/changepassword')}" style="background:#59ace2;">
+                                <img src="__PUBLIC__/Home/images/xt6.png" />去修改</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="elear" style="clear:both;"></div>
+            <script>$("#notValid").mouseover(function() {
+                    $("#notValid").html("<img src='images/chahao(1).png'>去认证");
 
-    </script> </a>
-  <div style="display: none">
-   <a href="http://www.zizhiguanjia.com/sitemap.html" target="_blank" style="color: #5e5c5b;text-decoration: none !important;"> </a>
-   <a href="http://www.cnzz.com/stat/website.php?web_id=1255699131" target="_blank" title="站长统计">站长统计</a> 
-  </div> 
-  <script type="text/javascript">
-        function LoginOut() {
-            var message = "确定要退出当前用户吗？";
-            if (confirm(message)) {
-                $.post("/user/exituser", "", function (data) {
-                    if (data.IsSuccess) {
-                        location.href = "http://www.zizhiguanjia.com";
-                    }
-                })
-            }
-        };
-    </script> 
- </body>
+                }).mouseleave(function() {
+                    $("#notValid").html("<img src='images/chahao(1).png'>未认证");
+                });</script>
+            <div class="elear" style="clear:both;"></div>
+        </div>
+        <div class="elear" style="clear:both;"></div>
+        <!-- 底部引用 -->
+        <include file="Common/_footer" />
+    </body>
+
 </html>

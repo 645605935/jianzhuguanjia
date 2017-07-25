@@ -14,48 +14,11 @@
     </head>
     
     <body>
-        <div class="header">
-            <div class="header_center">
-                <div class="header_left">
-                    <h1>
-                        <a href="http://www.zizhiguanjia.com">资质代办，找资质管家</a>
-                        <a href="zizhibiaozhun.html">资质百科</a>
-                        <a href="http://www.zizhiguanjia.com/zizhi">资质代办公司</a></h1>
-                </div>
-                <div class="header_right">
-                    <ul>
-                        <li>
-                            <div id="regist" style="float:right;margin-top:5px">
-                                <em>咨询热线：
-                                    <span>010-56269198</span></em>
-                                <em style="background:none;">您好，欢迎来到资质管家！</em>
-                                <a href="http://www.zizhiguanjia.com/usercenter/brokerindex">熊丽丽</a>
-                                <span id="loginout">
-                                    <a href="javascript:void(0);" rel="nofollow" onclick="LoginOut();">(退出)</a></span>
-                                <a href="http://www.zizhiguanjia.com/usercenter/brokerorder" rel="nofollow">我的订单</a></div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="cr_header">
-            <div class="w1000">
-                <h1>
-                    <a href="http://www.zizhiguanjia.com/">
-                        <img src="__PUBLIC__/Home/images/logo.gif" /></a>
-                </h1>
-                <ul>
-                    <li>
-                        <a href="http://www.zizhiguanjia.com">网站首页</a></li>
-                    <li class="li2">
-                        <a href="http://www.zizhiguanjia.com/baojia">资质代办</a></li>
-                    <li>
-                        <a href="zizhibiaozhun.html">资质标准</a></li>
-                    <li>
-                        <a href="about.html">关于我们</a></li>
-                </ul>
-            </div>
-        </div>
+        <!-- 头部引用 -->
+        <include file="Common/_header" />
+        <!-- cr头部引用 -->
+        <include file="Common/_cr_header" />
+
         <div class="elear" style="clear:both;"></div>
         <div class="mion">
             <div class="mion_left">
@@ -98,7 +61,7 @@
                                     </div>
                                     <div class="operation">
                                         <a href="{:U('Home/Company/editcaseinfo',array('id'=>$v['id']))}">编辑</a>
-                                        <a href="javascript:void(0)" class="a1" onclick="deleteByUrl('啥大大说的','301')">删除</a></div>
+                                        <a href="javascript:void(0)" class="a1 del_btn" data-id="{$v.id}">删除</a></div>
                                 </div>
                             </li>
                         </foreach>
@@ -113,19 +76,45 @@
             <div class="elear" style="clear:both;"></div>
         </div>
         <div class="elear" style="clear:both;"></div>
-        <div style="   color: #999;height: 20px;margin: 20px 0;text-align: center;width: 100%;">版权所有 资质管家（北京）信息技术有限公司 京ICP备16024435号-1&nbsp;&nbsp;
-            <a href="http://www.zizhiguanjia.com/sitemap.html" target="_blank" style="color: #5e5c5b;text-decoration: none !important;"></a></div>
-        <script type="text/javascript">function LoginOut() {
-                var message = "确定要退出当前用户吗？";
-                if (confirm(message)) {
-                    $.post("/user/exituser", "",
-                    function(data) {
-                        if (data.IsSuccess) {
-                            location.href = "http://www.zizhiguanjia.com";
-                        }
-                    })
-                }
-            };</script>
+        <!-- 底部引用 -->
+        <include file="Common/_footer" />
     </body>
 
+
+<script type="text/javascript">
+    $(function(){
+        //删除
+        $( "body" ).on('click', '.del_btn', function() {
+          if(confirm("确定要删除？")){
+              var id=$(this).attr('data-id');
+              _ajax_del(id);
+          }
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    //异步删除
+    function _ajax_del(id){
+        $.ajax({  
+            type:'get',  
+            url : "{:U('Home/Company/ajax_del_case')}",
+            data:{
+                id:id
+            },
+            dataType : 'json',
+            success  : function(json) {  
+                if(json.code == 0){
+                    alert(json.msg);
+                    window.location.reload();
+                }else{
+                    alert(json.msg);
+                }
+            },
+            error  : function() {  
+                layer.msg('error');
+            }  
+        }); 
+    }
+</script>
 </html>

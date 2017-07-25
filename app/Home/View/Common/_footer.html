@@ -1,0 +1,17 @@
+<div style="   color: #999;height: 20px;margin: 20px 0;text-align: center;width: 100%;">
+ 版权所有 资质管家（北京）信息技术有限公司 京ICP备16024435号-1&nbsp;&nbsp;
+ <a href="http://www.zizhiguanjia.com/sitemap.html" target="_blank" style="color: #5e5c5b;text-decoration: none !important;"></a>
+</div>
+
+<script type="text/javascript">
+    function LoginOut() {
+        var message = "确定要退出当前用户吗？";
+        if (confirm(message)) {
+            $.post("/user/exituser", "", function (data) {
+                if (data.IsSuccess) {
+                    location.href = "http://www.zizhiguanjia.com";
+                }
+            })
+        }
+    };
+</script> 

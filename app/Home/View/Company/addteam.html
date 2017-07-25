@@ -20,7 +20,7 @@
   <div class="elear" style="clear:both;"></div> 
   <div class="mion"> 
    <div class="mion_left"> 
-        <include file="Common/_left" />
+      <include file="Common/_left" />
    </div> 
    <link type="text/css" rel="stylesheet" href="__PUBLIC__/Home/css/caseinfo.css" /> 
    <style>
@@ -30,11 +30,11 @@
     }
 </style> 
    <div class="mion_right"> 
-    <h4><span>资质案例</span></h4> 
+    <h4><span>精英团队</span></h4> 
 
 
         <!-- 表单开始 -->
-        <form class="layui-form layui-form-pane col-xs-12" method="post" action="" id="edit_form" enctype="multipart/form-data">
+        <form class="layui-form layui-form-pane col-xs-12" method="post" action="" id="add_form" enctype="multipart/form-data">
                                                                       
             <table class="layui-table">
               <colgroup>
@@ -48,18 +48,14 @@
                       <div class="layui-form-item">
                         <label class="layui-form-label">上传图片</label>
                         <div class="layui-input-inline">
-                          <input type="file" id="edit_upload_img" name="file" class="layui-upload-file">
+                          <input type="file" id="add_upload_img" name="file" class="layui-upload-file">
                         </div>
-                        <label class="">说明：图片不能大于2M的jpg、png图片，且清晰</label>
+                        <label class="">说明：照片不能大于2M的jpg、png图片，且清晰</label>
                       </div>
                     </div>
                   </td>
                   <td>
-                    <if condition="$row.img">
-                        <img class="show_img" data-src="holder.js/100x100" class="img-thumbnail" alt="100x100" src="{$row.img}" data-holder-rendered="true" style="width: 100px; height: 100px;">
-                    <else/>
-                        <img class="show_img" data-src="holder.js/100x100" class="img-thumbnail" alt="100x100" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgdmlld0JveD0iMCAwIDE0MCAxNDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzE0MHgxNDAKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNWQ1MzI3ODU3YiB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1ZDUzMjc4NTdiIj48cmVjdCB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjQ1IiB5PSI3NC44Ij4xNDB4MTQwPC90ZXh0PjwvZz48L2c+PC9zdmc+" data-holder-rendered="true" style="width: 100px; height: 100px;">
-                    </if>
+                    <img class="show_img" data-src="holder.js/100x100" class="img-thumbnail" alt="100x100" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgdmlld0JveD0iMCAwIDE0MCAxNDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzE0MHgxNDAKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNWQ1MzI3ODU3YiB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1ZDUzMjc4NTdiIj48cmVjdCB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjQ1IiB5PSI3NC44Ij4xNDB4MTQwPC90ZXh0PjwvZz48L2c+PC9zdmc+" data-holder-rendered="true" style="width: 100px; height: 100px;">
                   </td>
                 </tr>
                 
@@ -67,9 +63,9 @@
                   <td>
                     <div class="layui-inline">
                       <div class="layui-form-item">
-                        <label class="layui-form-label">公司名称</label>
+                        <label class="layui-form-label">姓名</label>
                         <div class="layui-input-inline">
-                          <input type="text" name="company_name" lay-verify="required" value="{$row.company_name}" autocomplete="off" class="layui-input company_name">
+                          <input type="text" name="truename" lay-verify="required" autocomplete="off" class="layui-input truename">
                         </div>
                       </div>
                     </div>
@@ -83,12 +79,28 @@
                   <td>
                     <div class="layui-inline">
                       <div class="layui-form-item">
-                        <label class="layui-form-label">资质类型</label>
+                        <label class="layui-form-label">联系方式</label>
                         <div class="layui-input-inline">
-                          <select name="zizhileixing" class="zizhileixing">
+                          <input type="text" name="phone" lay-verify="required" autocomplete="off" class="layui-input phone">
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <div class="layui-inline">
+                      <div class="layui-form-item">
+                        <label class="layui-form-label">从业经验</label>
+                        <div class="layui-input-inline">
+                          <select name="chongyejingyan" class="chongyejingyan">
                             <option value="">请选择</option>
-                            <foreach name="zizhileixing" item="v">
-                                <option value="{$v.id}" <if condition="$v['id'] eq $row['zizhileixing']">selected</if>>{$v.title}</option>
+                            <foreach name="chongyejingyan" item="v">
+                                <option value="{$v.id}">{$v.title}</option>
                             </foreach>
                           </select>
                         </div>
@@ -99,33 +111,14 @@
                     
                   </td>
                 </tr>
-
+                
                 <tr>
                   <td>
                     <div class="layui-inline">
                       <div class="layui-form-item">
-                        <label class="layui-form-label">合作业务</label>
-                        <div class="layui-input-inline" style="width:542px;">
-                          <textarea class="layui-textarea layui-hide hezuoyewu" name="hezuoyewu" lay-verify="content_1" id="editer_1">{$row['hezuoyewu']}</textarea>
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td></td>
-                </tr>
-
-                <tr>
-                  <td>
-                    <div class="layui-inline">
-                      <div class="layui-form-item">
-                        <label class="layui-form-label">办理周期</label>
+                        <label class="layui-form-label">服务理念</label>
                         <div class="layui-input-inline">
-                          <select name="banlizhouqi" class="banlizhouqi">
-                            <option value="">请选择</option>
-                            <foreach name="banlizhouqi" item="v">
-                                <option value="{$v.id}" <if condition="$v['id'] eq $row['banlizhouqi']">selected</if>>{$v.title}</option>
-                            </foreach>
-                          </select>
+                          <input type="text" name="fuwulinian" lay-verify="required" autocomplete="off" class="layui-input fuwulinian">
                         </div>
                       </div>
                     </div>
@@ -133,45 +126,14 @@
                   <td>
                     
                   </td>
-                </tr>
-
-                <tr>
-                  <td>
-                    <div class="layui-inline">
-                      <div class="layui-form-item">
-                        <label class="layui-form-label">办理价格</label>
-                        <div class="layui-input-inline">
-                          <input type="text" name="price" lay-verify="required" value="{$row.price}" autocomplete="off" class="layui-input price">
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    
-                  </td>
-                </tr>
-
-                <tr>
-                  <td>
-                    <div class="layui-inline">
-                      <div class="layui-form-item">
-                        <label class="layui-form-label">人员配置</label>
-                        <div class="layui-input-inline" style="width:542px;">
-                          <textarea class="layui-textarea layui-hide renyuanpeizhi" name="renyuanpeizhi" lay-verify="content_2" id="editer_2">{$row.renyuanpeizhi}</textarea>
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td></td>
                 </tr>
                
               </tbody>
               <tfoot>
                 <tr>
                   <td colspan="2" style="text-align:center;">
-                    <input type="hidden" name="id" lay-verify="required" value="{$row.id}" class="layui-input id">
-                    <input type="hidden" name="img" lay-verify="required" value="{$row.img}" class="layui-input img">
-                    <button class="layui-btn" lay-submit="" lay-filter="demo1_edit">确认</button>
+                    <input type="hidden" name="img" lay-verify="required" class="layui-input img">
+                    <button class="layui-btn" lay-submit="" lay-filter="demo1_add">确认</button>
                     <button type="reset" class="layui-btn layui-btn-primary reset">重置</button>
                   </td>
                 </tr>
@@ -200,18 +162,18 @@
 
 <script>
     //添加
-    function _ajax_edit(_data){
+    function _ajax_add(_data){
          $.ajax({  
              async:false,
              type:'post',  
              contentType:"application/x-www-form-urlencoded",
-             url : "{:U('Home/Company/ajax_edit_case')}",
+             url : "{:U('Home/Company/ajax_add_team')}",
              data: _data,
              dataType : 'json',
              success  : function(json) {
                  if(json.code==0){
                      alert(json.msg);
-                     window.location.href="{:U('Home/Company/caseinfo')}";
+                     window.location.href="{:U('Home/Company/team')}";
                  }else{
                      alert(json.msg);
                  }
@@ -230,7 +192,7 @@
           ,layedit = layui.layedit
           ,laydate = layui.laydate;
 
-          var form_type='edit';
+          var form_type='add';
 
           //上传文件
           layui.upload({
@@ -254,10 +216,6 @@
               }
           });
 
-          //创建编辑器
-          var editIndex_1 = layedit.build('editer_1');
-          var editIndex_2 = layedit.build('editer_2');
-
           //自定义验证规则
           form.verify({
             title: function(value){
@@ -266,17 +224,11 @@
               }
             }
             ,pass: [/(.+){6,12}$/, '密码必须6到12位']
-            ,content_1: function(value){
-              layedit.sync(editIndex_1);
-            }
-            ,content_2: function(value){
-              layedit.sync(editIndex_2);
-            }
           });
 
           //监听提交
-          form.on('submit(demo1_edit)', function(data){
-            var _json=_ajax_edit(data.field);
+          form.on('submit(demo1_add)', function(data){
+            var _json=_ajax_add(data.field);
 
             // alert(JSON.stringify(data.field));
             return false;

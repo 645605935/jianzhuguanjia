@@ -6,34 +6,32 @@
   <link type="text/css" rel="stylesheet" href="__PUBLIC__/Home/css/usercenter.css?v=20160601" /> 
   <link href="__PUBLIC__/Home/css/broker.css" rel="stylesheet" /> 
   <link rel="stylesheet" href="__PUBLIC__/Admin/layui-v1.0.4/layui/css/layui.css"  media="all">
-  <style>
-     #CaseInfo_PicurePreview img {
-         width: 100px;
-         height: 100px;
-     }
-  </style>
 
   <script src="__PUBLIC__/Admin/assets/js/jquery.min.js"></script> 
   <script src="__PUBLIC__/Admin/layui-v1.0.4/layui/layui.js"></script>
   <script src="__PUBLIC__/layer/layer.js"></script>
  </head> 
  <body> 
-
   <!-- 头部引用 -->
   <include file="Common/_header" />
   <!-- cr头部引用 -->
   <include file="Common/_cr_header" />
-  
+
   <div class="elear" style="clear:both;"></div> 
   <div class="mion"> 
    <div class="mion_left"> 
-        <!-- 左侧引用 -->
-        <include file="Common/_left" />
+      <include file="Common/_left" />
    </div> 
    <link type="text/css" rel="stylesheet" href="__PUBLIC__/Home/css/caseinfo.css" /> 
-    
+   <style>
+    #CaseInfo_PicurePreview img {
+        width: 100px;
+        height: 100px;
+    }
+</style> 
    <div class="mion_right"> 
-    <h4><span>实名认证</span></h4> 
+    <h4><span>精英团队</span></h4> 
+
 
         <!-- 表单开始 -->
         <form class="layui-form layui-form-pane col-xs-12" method="post" action="" id="edit_form" enctype="multipart/form-data">
@@ -44,115 +42,102 @@
                   <col>
               </colgroup>
               <tbody>
-
                 <tr>
                   <td>
                     <div class="layui-inline">
                       <div class="layui-form-item">
-                        <label class="layui-form-label">公司名称</label>
-                        <div class="layui-input-inline">
-                          <input type="text" name="company_name" lay-verify="required" value="{$companyinfo.company_name}" autocomplete="off" class="layui-input company_name">
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    
-                  </td>
-                </tr>
-
-                <tr>
-                  <td>
-                    <div class="layui-inline">
-                      <div class="layui-form-item">
-                        <label class="layui-form-label">公司地址</label>
-                        <div class="layui-input-inline">
-                          <select name="province" class="province" lay-filter="province">
-                            <option value="">--省/市--</option>
-                            <foreach name="province" item="v">
-                                <option value="{$v['provinceid']}" <if condition="$v['provinceid'] eq $companyinfo['company_province']">selected="selected"</if>>{$v['first_name']} {$v['province']}</option>
-                            </foreach>
-                          </select>
-                        </div>
-                        <div class="layui-input-inline">
-                          <select name="city" class="city" lay-filter="city">
-                            <option value="">--市/地区--</option>
-                            <foreach name="city" item="v">
-                                <option value="{$v['cityid']}" <if condition="$v['cityid'] eq $companyinfo['company_city']">selected="selected"</if>>{$v['first_name']} {$v['city']}</option>
-                            </foreach>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    
-                  </td>
-                </tr>
-
-                <tr>
-                  <td>
-                    <div class="layui-inline">
-                      <div class="layui-form-item">
-                        <label class="layui-form-label">详细地址</label>
-                        <div class="layui-input-inline">
-                          <input type="text" name="company_address" lay-verify="required" value="{$companyinfo.company_address}" autocomplete="off" class="layui-input company_address">
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    
-                  </td>
-                </tr>
-
-                <tr>
-                  <td>
-                    <div class="layui-inline">
-                      <div class="layui-form-item">
-                        <label class="layui-form-label">公司规模</label>
-                        <div class="layui-input-inline">
-                          <select name="company_size" class="company_size">
-                            <option value="">请选择</option>
-                            <foreach name="comanySize" item="v">
-                                <option value="{$v.id}" <if condition="$v['id'] eq $companyinfo['company_size']">selected</if>>{$v.title}</option>
-                            </foreach>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    
-                  </td>
-                </tr>
-
-                <tr>
-                  <td>
-                    <div class="layui-inline">
-                      <div class="layui-form-item">
-                        <label class="layui-form-label">营业执照</label>
+                        <label class="layui-form-label">上传图片</label>
                         <div class="layui-input-inline">
                           <input type="file" id="edit_upload_img" name="file" class="layui-upload-file">
                         </div>
-                        <label class="">说明：图片不能大于2M的jpg、png图片，且清晰</label>
+                        <label class="">说明：照片不能大于2M的jpg、png图片，且清晰</label>
                       </div>
                     </div>
                   </td>
                   <td>
-                    <if condition="$companyinfo.company_yingyezhizhao">
-                        <img class="show_img" data-src="holder.js/100x100" class="img-thumbnail" alt="100x100" src="{$companyinfo.company_yingyezhizhao}" data-holder-rendered="true" style="width: 100px; height: 100px;">
+                    <if condition="$row.img">
+                        <img class="show_img" data-src="holder.js/100x100" class="img-thumbnail" alt="100x100" src="{$row.img}" data-holder-rendered="true" style="width: 100px; height: 100px;">
                     <else/>
                         <img class="show_img" data-src="holder.js/100x100" class="img-thumbnail" alt="100x100" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgdmlld0JveD0iMCAwIDE0MCAxNDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzE0MHgxNDAKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNWQ1MzI3ODU3YiB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1ZDUzMjc4NTdiIj48cmVjdCB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjQ1IiB5PSI3NC44Ij4xNDB4MTQwPC90ZXh0PjwvZz48L2c+PC9zdmc+" data-holder-rendered="true" style="width: 100px; height: 100px;">
                     </if>
                   </td>
                 </tr>
-             
+                
+                <tr>
+                  <td>
+                    <div class="layui-inline">
+                      <div class="layui-form-item">
+                        <label class="layui-form-label">姓名</label>
+                        <div class="layui-input-inline">
+                          <input type="text" name="truename" lay-verify="required" value="{$row.truename}" autocomplete="off" class="layui-input truename">
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <div class="layui-inline">
+                      <div class="layui-form-item">
+                        <label class="layui-form-label">联系方式</label>
+                        <div class="layui-input-inline">
+                          <input type="text" name="phone" lay-verify="required" value="{$row.phone}" autocomplete="off" class="layui-input phone">
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <div class="layui-inline">
+                      <div class="layui-form-item">
+                        <label class="layui-form-label">从业经验</label>
+                        <div class="layui-input-inline">
+                          <select name="chongyejingyan" class="chongyejingyan">
+                            <option value="">请选择</option>
+                            <foreach name="chongyejingyan" item="v">
+                                <option value="{$v.id}" <if condition="$v['id'] eq $row['chongyejingyan']">selected</if>>{$v.title}</option>
+                            </foreach>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    
+                  </td>
+                </tr>
+                
+                <tr>
+                  <td>
+                    <div class="layui-inline">
+                      <div class="layui-form-item">
+                        <label class="layui-form-label">服务理念</label>
+                        <div class="layui-input-inline">
+                          <input type="text" name="fuwulinian" lay-verify="required" value="{$row.fuwulinian}" autocomplete="off" class="layui-input fuwulinian">
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    
+                  </td>
+                </tr>
+               
               </tbody>
               <tfoot>
                 <tr>
                   <td colspan="2" style="text-align:center;">
-                    <input type="hidden" name="company_yingyezhizhao" lay-verify="required" value="{$companyinfo.company_yingyezhizhao}" class="layui-input company_yingyezhizhao">
+                    <input type="hidden" name="id" value="{$row.id}" lay-verify="required" class="layui-input id">
+                    <input type="hidden" name="img" value="{$row.img}" lay-verify="required" class="layui-input img">
                     <button class="layui-btn" lay-submit="" lay-filter="demo1_edit">确认</button>
                     <button type="reset" class="layui-btn layui-btn-primary reset">重置</button>
                   </td>
@@ -168,10 +153,8 @@
    <div class="elear" style="clear:both;"></div> 
   </div> 
   <div class="elear" style="clear:both;"></div> 
-
   <!-- 底部引用 -->
   <include file="Common/_footer" />
-  
  </body>
 </html>
 
@@ -189,12 +172,13 @@
              async:false,
              type:'post',  
              contentType:"application/x-www-form-urlencoded",
-             url : "{:U('Home/Company/ajax_save_companylicense')}",
+             url : "{:U('Home/Company/ajax_edit_team')}",
              data: _data,
              dataType : 'json',
              success  : function(json) {
                  if(json.code==0){
                      alert(json.msg);
+                     window.location.href="{:U('Home/Company/team')}";
                  }else{
                      alert(json.msg);
                  }
@@ -222,7 +206,7 @@
              ,success: function(res){ //上传成功后的回调
 
                if(res.code==0){
-                  $('#'+form_type+'_form .company_yingyezhizhao').val(res.data.src);
+                  $('#'+form_type+'_form .img').val(res.data.src);
                   $('#'+form_type+'_form .show_img').attr('src', res.data.src);
                }
              }
@@ -254,51 +238,6 @@
             // alert(JSON.stringify(data.field));
             return false;
           });
-
-          form.on('select(province)', function(data){
-              var provinceid=data.value;
-              if(provinceid){
-                  _ajax_get_city_select(provinceid);
-              }else{
-                  alert('请选择省份');
-              }
-
-              return false;
-          });
-
-
-          
         });
     }
-
-    function _ajax_get_city_select(provinceid){
-        $.ajax({  
-            async:false,
-            type:'get',  
-            contentType:"application/x-www-form-urlencoded",
-            url : "{:U('Home/Index/ajax_get_city_list')}",
-            data:{
-              provinceid:provinceid
-            },
-            dataType : 'json',
-            success  : function(json) {  
-                if(json.code==0){
-                    var data=json.data;
-
-                    var str="<option value=''>--市/地区--</option>";
-                    $.each(json.data, function(key, value) {
-                         str+="<option value='"+value.cityid+"'>"+value.first_name+" "+value.city+"</option>";
-                    });
-                    $('#edit_form .city').html(str);
-                    layui.form().render();
-
-                }else{
-                    layer.msg(json.msg);
-                }
-            },
-            error  : function(json) {  
-                layer.msg(json.msg);
-            }  
-        });
-    }   
 </script>
