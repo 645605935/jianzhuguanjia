@@ -109,6 +109,27 @@ class IndexController extends CommonController{
         echo json_encode($data);
     }
 
+    public function ajax_get_type_1_list(){
+        $map=array();
+        if($type=$_GET['type']){
+            $map['pid']=$type;
+        }
+            
+        $list = M('Type')->where($map)->select();
+
+        if($list){
+            $data=array();
+            $data['code']=0;
+            $data['msg']='success';
+            $data['data']=$list;
+        }else{
+            $data=array();
+            $data['code']=1;
+            $data['msg']='empty';
+        }
+        echo json_encode($data);
+    }
+
     
    
 

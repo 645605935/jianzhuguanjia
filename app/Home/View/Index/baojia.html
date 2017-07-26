@@ -10,7 +10,9 @@
         <meta name="mobile-agent" content="format=xhtml; url=http://m.zizhiguanjia.com/baojia/" />
         <meta name="mobile-agent" content="format=html5; url=http://m.zizhiguanjia.com/baojia/" />
         <meta name="mobile-agent" content="format=wml; url=http://m.zizhiguanjia.com/baojia/" />
-        <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/new.css" /></head>
+        <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/new.css" />
+        <link rel="stylesheet" href="__PUBLIC__/Admin/layui-v1.0.4/layui/css/layui.css"  media="all">
+    </head>
     
     <body>
         <!-- 头部引用 -->
@@ -36,7 +38,62 @@
                     <div class="zzdb_left">
                         <img src="__PUBLIC__/Home/images/zzgj_02.jpg" /></div>
                     <div class="zzdb_right">
-                        <p id="baojia_text">选一选，10秒获取智能报价</p>
+
+                        <!-- 表单开始 -->
+                        <form class="layui-form layui-form-pane col-xs-12" method="post" action="" id="edit_form" enctype="multipart/form-data">
+                                                                                      
+                            <table class="layui-table">
+                              <colgroup>
+                                  <col width="100">
+                                  <col>
+                              </colgroup>
+                              <tbody>
+
+                                <tr>
+                                  <td>
+                                    公司地址
+                                  </td>
+                                  <td>
+                                    <div class="layui-inline">
+                                      <div class="layui-form-item">
+                                        <div class="layui-input-inline">
+                                          <select name="province" class="province" lay-filter="province">
+                                            <option value="">省/市</option>
+                                            <foreach name="province" item="v">
+                                                <option value="{$v['provinceid']}" <if condition="$v['provinceid'] eq $companyinfo['company_province']">selected="selected"</if>>{$v['first_name']} {$v['province']}</option>
+                                            </foreach>
+                                          </select>
+                                        </div>
+                                        <div class="layui-input-inline">
+                                          <select name="city" class="city" lay-filter="city">
+                                            <option value="">市/地区</option>
+                                            <foreach name="city" item="v">
+                                                <option value="{$v['cityid']}" <if condition="$v['cityid'] eq $companyinfo['company_city']">selected="selected"</if>>{$v['first_name']} {$v['city']}</option>
+                                            </foreach>
+                                          </select>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </td>
+                                </tr>
+
+                              </tbody>
+                              <tfoot>
+                                <tr>
+                                  <td colspan="2" style="text-align:center;">
+                                    <input type="hidden" name="company_yingyezhizhao" lay-verify="required" value="{$companyinfo.company_yingyezhizhao}" class="layui-input company_yingyezhizhao">
+                                    <button class="layui-btn" lay-submit="" lay-filter="demo1_edit">确认</button>
+                                    <button type="reset" class="layui-btn layui-btn-primary reset">重置</button>
+                                  </td>
+                                </tr>
+                              </tfoot>
+                            </table>
+
+                         </form>
+                        <!-- 表单结束 -->
+
+
+                        <!-- <p id="baojia_text">选一选，10秒获取智能报价</p>
                         <div class="ServiceProcess_login" style="border:0; padding-bottom:15px;">
                             <div class="div_03251 clearfix">
                                 <label class="zzdb_right_diz">公司地址：</label>
@@ -55,9 +112,9 @@
                             <div id="login1">
                                 <label class="zzdb_right_diz" style=" float:left;">资质类型：</label>
                                 <ul class="zzlx clearfix" id="zzlxBox">
-                                    <li class="li_cur" value="1">
+                                    <li class="li_cur" value="1292">
                                         <label class="zzdb_zhizlx" for="lable5">施工总承包资质</label></li>
-                                    <li value="2">
+                                    <li value="1293">
                                         <label class="zzdb_zhizlx" for="lable5">施工专业承包资质</label></li>
                                 </ul>
                             </div>
@@ -67,17 +124,16 @@
                                 <label class="zzdb_right_diz" style=" float:left;">专业等级：</label>
                                 <div class="baojia_zhuanydj">
                                     <div class="baojia_zizzy">
-                                        <span class="SubjectId" data-value="">资质专业</span>
-                                        <select name="SubjectId" id="SubjectId">
+                                        <span class="type_1_name" data-value="">资质专业</span>
+                                        <select name="type_1" class="type_1">
                                             <option value="">资质专业</option>
-                                            <option value="54" data-value="1">建筑工程</option>
-                                            <option value="58" data-value="1">市政公用工程</option>
-                                            <option value="56" data-value="1">机电工程</option>
-                                            <option value="112" data-value="1">矿山工程</option></select>
+                                        </select>
                                     </div>
                                     <div class="baojia_zizdj">
-                                        <span class="SubjectLv">资质等级</span>
-                                        <select name="SubjectLv" id="SubjectLv"></select>
+                                        <span class="type_2_name">资质等级</span>
+                                        <select name="type_2" class="type_2">
+                                            <option value="">资质等级</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div style="clear: both;"></div>
@@ -91,7 +147,7 @@
                         <div class="clear"></div>
                         <p class="baojia_tis">报价不精准？正规中介分别报价，代办行情轻松掌握</p>
                         <div class="mianfcxybj">
-                            <input id="baojia_btn" value="免费获取精准报价" href="javascript:;" class="btn btn-primary btn-large theme-login" style="float:left;" /></div>
+                            <input id="baojia_btn" value="免费获取精准报价" href="javascript:;" class="btn btn-primary btn-large theme-login" style="float:left;" /></div> -->
                     </div>
                     <div></div>
                     <div class="clear" style="height:0;"></div>
@@ -381,46 +437,158 @@
         <script type="text/javascript" src="__PUBLIC__/Home/js/jquery.nav.js"></script>
         <script type="text/javascript" src="__PUBLIC__/Home/js/popup.js"></script>
         <script type="text/javascript" src="__PUBLIC__/Home/js/baojia.js"></script>
+
+        <script src="__PUBLIC__/Admin/layui-v1.0.4/layui/layui.js"></script>
+        <script src="__PUBLIC__/layer/layer.js"></script>
         <!-- 资质管家:资质代办,北京资质代办,代办建筑工程资质,资质代理,工商注册,代理记账公司 资质管家,资质代办,代办资质,公司注册,代理记账,北京代办资质 资质管家(zizhiguanjia.com),靠谱的资质代办平台.北京拥有正规经营资质代办资格的资质代办公司.专注资质代办,代办建筑工程资质,资质代理,工商注册,代理记账等服务.办资质,找资质管家! --></body>
 
 </html>
 
+
+
+
 <script type="text/javascript">
-    $('select.province').change(function() {
-        var provinceid = $(this).children('option:selected').val();
-        if (provinceid) {
-            _ajax_get_city_select(provinceid);
-        }else{
-            var str = "<option value=''>市/地区</option>";
-            $('select.city').html(str);
-        }
-    });
+    $(function(){
+        init_editer();
 
-    $('#zzlxBox li').click(function(){
-        $('#zzlxBox li').removeClass('li_cur');
-        $(this).addClass('li_cur');
-    });
+        $('select.province').change(function() {
+            var provinceid = $(this).children('option:selected').val();
+            if (provinceid) {
+                _ajax_get_city_select(provinceid);
+            }else{
+                var str = "<option value=''>市/地区</option>";
+                $('select.city').html(str);
+            }
+        });
 
-    function _ajax_get_city_select(provinceid) {
+        $('#zzlxBox li').click(function(){
+            $('#zzlxBox li').removeClass('li_cur');
+            $(this).addClass('li_cur');
+            var type=$(this).attr('value');
+
+            if (type) {
+                _ajax_get_type_1_select(type);
+            }else{
+                var str = "<option value=''>资质专业</option>";
+                $('select.city').html(str);
+            }
+        });
+    });
+</script>
+
+<script>
+    //添加
+    function _ajax_edit(_data){
+         $.ajax({  
+             async:false,
+             type:'post',  
+             contentType:"application/x-www-form-urlencoded",
+             url : "{:U('Home/Company/ajax_save_companylicense')}",
+             data: _data,
+             dataType : 'json',
+             success  : function(json) {
+                 if(json.code==0){
+                     alert(json.msg);
+                 }else{
+                     alert(json.msg);
+                 }
+             },
+             error  : function() {  
+                 alert('error');
+             }  
+         }); 
+    }
+
+
+    function init_editer(){
+        layui.use(['form', 'layedit', 'laydate', 'upload'], function(){
+          var form = layui.form()
+          ,layer = layui.layer
+          ,layedit = layui.layedit
+          ,laydate = layui.laydate;
+
+          //自定义验证规则
+          form.verify({
+            title: function(value){
+              if(value.length < 5){
+                return '标题至少得5个字符啊';
+              }
+            }
+            ,pass: [/(.+){6,12}$/, '密码必须6到12位']
+          });
+
+          //监听提交
+          form.on('submit(demo1_edit)', function(data){
+            var _json=_ajax_edit(data.field);
+
+            // alert(JSON.stringify(data.field));
+            return false;
+          });
+
+          form.on('select(province)', function(data){
+              var provinceid=data.value;
+              if(provinceid){
+                  _ajax_get_city_select(provinceid);
+              }else{
+                  alert('请选择省份');
+              }
+
+              return false;
+          });
+        });
+    }
+
+    function _ajax_get_city_select(provinceid){
+        $.ajax({  
+            async:false,
+            type:'get',  
+            contentType:"application/x-www-form-urlencoded",
+            url : "{:U('Home/Index/ajax_get_city_list')}",
+            data:{
+              provinceid:provinceid
+            },
+            dataType : 'json',
+            success  : function(json) {  
+                if(json.code==0){
+                    var data=json.data;
+
+                    var str="<option value=''>市/地区</option>";
+                    $.each(json.data, function(key, value) {
+                         str+="<option value='"+value.cityid+"'>"+value.first_name+" "+value.city+"</option>";
+                    });
+                    $('#edit_form .city').html(str);
+                    layui.form().render();
+
+                }else{
+                    layer.msg(json.msg);
+                }
+            },
+            error  : function(json) {  
+                layer.msg(json.msg);
+            }  
+        });
+    }   
+
+    function _ajax_get_type_1_select(type) {
         $.ajax({
             async: false,
             type: 'get',
             contentType: "application/x-www-form-urlencoded",
-            url: "{:U('Home/Index/ajax_get_city_list')}",
+            url: "{:U('Home/Index/ajax_get_type_1_list')}",
             data: {
-                provinceid: provinceid
+                type: type
             },
             dataType: 'json',
             success: function(json) {
                 if (json.code == 0) {
                     var data = json.data;
 
-                    var str = "<option value=''>市/地区</option>";
+                    var str = "<option value=''>资质专业</option>";
                     $.each(json.data,
                     function(key, value) {
-                        str += "<option value='" + value.cityid + "'>" + value.first_name + " " + value.city + "</option>";
+                        str += "<option value='" + value.id + "'>" + value.title + "</option>";
                     });
-                    $('select.city').html(str);
+                    $('select.type_1').html(str);
 
                 } else {
                     layer.msg(json.msg);
