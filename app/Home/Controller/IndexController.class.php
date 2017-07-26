@@ -6,9 +6,25 @@ use Think\CommonController;
 class IndexController extends CommonController{
     public function _initialize(){
         parent::_initialize();
+
+        global $user;
+        $user=session('userinfo');
+        $this->user=$user;
     }
 
     public function index(){
+        $this->display();
+    }
+
+    public function baojia(){
+        global $user;
+
+
+        $province=M('Province')->select();
+        $city=M('city')->where(array('fatherid'=>$companyinfo['company_province']))->select();
+
+        $this->province=$province;
+        $this->city=$city;
         $this->display();
     }
 

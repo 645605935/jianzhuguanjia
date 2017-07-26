@@ -77,12 +77,14 @@
                             <select id="AreaPpid" class="longtext " name="AreaPpid" style="width:157px;">
                                 <option value="">--省/市--</option>
                                 <foreach name="province" item="v">
-                                    <option value="{$v['provinceid']}" <if condition="$v['provinceid'] eq $companyinfo['company_province']">selected="selected"</if>>{$v['first_name']} {$v['province']}</option></foreach>
+                                    <option value="{$v['provinceid']}" <if condition="$v['provinceid'] eq $companyinfo['company_province']">selected="selected"</if>>{$v['first_name']} {$v['province']}</option>
+                                </foreach>
                             </select>
                             <select name="AreaId" class="longtext" id="AreaPid" style="width:157px;">
                                 <option value="">--市/地区--</option>
                                 <foreach name="city" item="v">
-                                    <option value="{$v['cityid']}" <if condition="$v['cityid'] eq $companyinfo['company_city']">selected="selected"</if>>{$v['first_name']} {$v['city']}</option></foreach>
+                                    <option value="{$v['cityid']}" <if condition="$v['cityid'] eq $companyinfo['company_city']">selected="selected"</if>>{$v['first_name']} {$v['city']}</option>
+                                </foreach>
                             </select>
                             <input value="{$companyinfo.company_city}" id="InpAreaId" type="hidden" />
                             <input value="{$companyinfo.company_province}" id="InpAreaPid" type="hidden" />
@@ -115,7 +117,8 @@
     </body>
 
 </html>
-<script type="text/javascript">$('#AreaPpid').change(function() {
+<script type="text/javascript">
+    $('#AreaPpid').change(function() {
         var provinceid = $(this).children('option:selected').val();
         if (provinceid) {
             _ajax_get_city_select(provinceid);
@@ -153,4 +156,5 @@
                 layer.msg(json.msg);
             }
         });
-    }</script>
+    }
+</script>

@@ -5,10 +5,14 @@
   <div class="sidebar-shortcuts" id="sidebar-shortcuts">
     <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
       <button class="btn btn-success">
-        <i class="icon-signal"></i>
+        <a href="{:U('Admin/Index/index')}" title="首页">
+          <i class="icon-signal"></i>
+        </a>
       </button>
       <button class="btn btn-info">
-        <i class="icon-pencil"></i>
+        <a href="{:U('Admin/Config/setting')}" title="网站设置">
+          <i class="icon-pencil"></i>
+        </a>
       </button>
       <button class="btn btn-warning">
         <i class="icon-group"></i>
@@ -30,7 +34,7 @@
 
   <ul class="nav nav-list">
 
-    <?php if( name_to_status('Index') == 1 && $user['gid']==427 || in_array('Index', $user['auth_controller_names'])){ ?>
+   <!--  <?php if( name_to_status('Index') == 1 && $user['gid']==427 || in_array('Index', $user['auth_controller_names'])){ ?>
       <li <if condition="$cur_c eq 'Index'">class="active open"</if>>
         <a href="#" class="dropdown-toggle">
           <i class="icon-dashboard"></i>
@@ -50,10 +54,10 @@
         </ul>
 
       </li>
-    <?php } ?>
+    <?php } ?> -->
 
     
-
+<!-- 
     <?php if( name_to_status('Config') == 1 && $user['gid']==427 || in_array('Config', $user['auth_controller_names'])){ ?>
     <li <if condition="$cur_c eq 'Config'">class="active open"</if>>
       <a href="#" class="dropdown-toggle">
@@ -74,20 +78,20 @@
       </ul>
     </li>
     <?php } ?>
+ -->
 
-
-    <li <if condition="$cur_c eq 'Introduction'">class="active open"</if>>
+    <li <if condition="$cur_c eq 'Autoprice'">class="active open"</if>>
       <a href="#" class="dropdown-toggle">
         <i class="icon-film"></i>
-        <span class="menu-text"> 简介管理 </span>
+        <span class="menu-text"> 智能报价管理 </span>
         <b class="arrow icon-angle-down"></b>
       </a>
 
       <ul class="submenu">
-        <li <if condition="$cur_v eq 'Introduction-index'">class="active"</if>>
-          <a href="{:U('Admin/Introduction/index')}" page="Admin/Introduction/index" title="index" data-title="简介管理">
+        <li <if condition="$cur_v eq 'Autoprice-index'">class="active"</if>>
+          <a href="{:U('Admin/Autoprice/index')}" page="Admin/Autoprice/index" title="index" data-title="智能报价管理">
             <i class="icon-double-angle-right"></i>
-            简介管理
+            智能报价管理
           </a>
         </li>
       </ul>

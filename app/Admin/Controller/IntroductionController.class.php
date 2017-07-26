@@ -43,13 +43,14 @@ class IntroductionController extends AuthController {
         $field=array(
             'id',
             'company_address',
-            'company_content',
+            'company_introduction',
             'company_logo',
-            'company_phone'
+            'contact_phone'
         );
 
         if($id){
             $row = M('User')->field($field)->find($id);
+
             if($row){
                 $data=array();
                 $data['code']=0;
@@ -122,7 +123,7 @@ class IntroductionController extends AuthController {
                 $data=array();
                 $data['code']=0;
                 $data['msg']='success';
-                $data['data']["src"]='http://'.$_SERVER['HTTP_HOST'].'/Uploads/layui/'.$img;
+                $data['data']["src"]='/Uploads/layui/'.$img;
             }
 
             echo json_encode($data);

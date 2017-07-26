@@ -1,0 +1,434 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+    
+    <head>
+        <title>资质询价</title>
+        <meta name="keywords" content="资质代办费用,代办资质价格,资质办理材料" />
+        <meta name="description" content="资质管家(www.zizhiguanjia.com)咨询与报价为您提供最精准的资质代办费用明细，建筑代办资质价格、资质办理材料说明以及资质办理流程等。" />
+        <link rel="canonical" href="http://www.zizhiguanjia.cn/baojia/" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="Cache-Control" content="no-transform" />
+        <meta name="mobile-agent" content="format=xhtml; url=http://m.zizhiguanjia.com/baojia/" />
+        <meta name="mobile-agent" content="format=html5; url=http://m.zizhiguanjia.com/baojia/" />
+        <meta name="mobile-agent" content="format=wml; url=http://m.zizhiguanjia.com/baojia/" />
+        <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/new.css" /></head>
+    
+    <body>
+        <!-- 头部引用 -->
+        <include file="Common/header" />
+
+
+        <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/lanrenzhijia.css" media="all" />
+        <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/lanrenzhijia2.css" />
+        <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/css.css" />
+        <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/main.css" />
+        <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/company_form.css" />
+        <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/normal_add.css" />
+        <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/common.css" />
+        <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/inside.css" />
+        <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/www16csscom.css" />
+        <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/base.css" />
+        <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/pub.css" />
+        <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/popup.css" />
+        <style type="text/css">.clearfix li.li_cur { border: 1px solid #ff4400; color: #ff4400; } .liDie { border: #DDDDDD 1px solid !important; color: #DDDDDD !important; } #zzzyBox { margin-bottom: -17px; } #zzzyBox li:nth-child(3n) { margin-right: 0 !important; } .red { color: #ff4400 !important; } #biaozhun p span, #fanwei p span { font-family: "微软雅黑","黑体" !important; font-size: 14px; } #biaozhun p strong, #fanwei p strong { font-size: 18px; font-weight: normal; }</style>
+        <div id="CompanyContent">
+            <div class="zzdb_k">
+                <div class="zzdb_top">
+                    <div class="zzdb_left">
+                        <img src="__PUBLIC__/Home/images/zzgj_02.jpg" /></div>
+                    <div class="zzdb_right">
+                        <p id="baojia_text">选一选，10秒获取智能报价</p>
+                        <div class="ServiceProcess_login" style="border:0; padding-bottom:15px;">
+                            <div class="div_03251 clearfix">
+                                <label class="zzdb_right_diz">公司地址：</label>
+                                <select class="longtext szdq_kuang province" name="province" style="width:220px;">
+                                    <option value="">省/市</option>
+                                    <foreach name="province" item="v">
+                                        <option value="{$v['provinceid']}">{$v['first_name']} {$v['province']}</option>
+                                    </foreach>
+                                </select>
+                                <select class="longtext city" name="city" style="width:220px;">
+                                    <option value="">市/地区</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div style="border:0; padding-bottom:15px;">
+                            <div id="login1">
+                                <label class="zzdb_right_diz" style=" float:left;">资质类型：</label>
+                                <ul class="zzlx clearfix" id="zzlxBox">
+                                    <li class="li_cur" value="1">
+                                        <label class="zzdb_zhizlx" for="lable5">施工总承包资质</label></li>
+                                    <li value="2">
+                                        <label class="zzdb_zhizlx" for="lable5">施工专业承包资质</label></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div style="border:0;">
+                            <div id="login1">
+                                <label class="zzdb_right_diz" style=" float:left;">专业等级：</label>
+                                <div class="baojia_zhuanydj">
+                                    <div class="baojia_zizzy">
+                                        <span class="SubjectId" data-value="">资质专业</span>
+                                        <select name="SubjectId" id="SubjectId">
+                                            <option value="">资质专业</option>
+                                            <option value="54" data-value="1">建筑工程</option>
+                                            <option value="58" data-value="1">市政公用工程</option>
+                                            <option value="56" data-value="1">机电工程</option>
+                                            <option value="112" data-value="1">矿山工程</option></select>
+                                    </div>
+                                    <div class="baojia_zizdj">
+                                        <span class="SubjectLv">资质等级</span>
+                                        <select name="SubjectLv" id="SubjectLv"></select>
+                                    </div>
+                                </div>
+                                <div style="clear: both;"></div>
+                            </div>
+                        </div>
+                        <div id="login1" class="zhinengbaoj zhinengbaoj_style">
+                            <label class="zzdb_right_diz zhinengbaoj " style=" float:left; position:relative; bottom:4px;">智能报价：</label>
+                            <p class="zhinengbj_wenz" id="zhinengbj_wenz">
+                                <span class="baijia_wenz" id="baijia_wenz" style="font-size:14px;padding-left:10px;">请选择资质类型、专业及等级</span></p>
+                        </div>
+                        <div class="clear"></div>
+                        <p class="baojia_tis">报价不精准？正规中介分别报价，代办行情轻松掌握</p>
+                        <div class="mianfcxybj">
+                            <input id="baojia_btn" value="免费获取精准报价" href="javascript:;" class="btn btn-primary btn-large theme-login" style="float:left;" /></div>
+                    </div>
+                    <div></div>
+                    <div class="clear" style="height:0;"></div>
+                </div>
+                <!--main-->
+                <div class="zzdb_xiangqy">
+                    <div class="zzdb_xiangq_left">
+                        <div class="main content" style="width:230px;">
+                            <div class="left-sider" id="CerNav">
+                                <div class="operate" id="show">
+                                    <h3 style="text-align:center;">你可能还需要这些服务</h3>
+                                    <ul id="juheweb">
+                                        <li class="selected">
+                                            <h4 data-value="1">施工总承包资质</h4>
+                                            <div class="list-item" style="display: block;">
+                                                <p>
+                                                    <a href="javascript:void(0)" id="54_Nav" onclick="getDetail(54);">建筑工程</a></p>
+                                                <p>
+                                                    <a href="javascript:void(0)" id="58_Nav" onclick="getDetail(58);">市政公用工程</a></p>
+                                                <p>
+                                                    <a href="javascript:void(0)" id="56_Nav" onclick="getDetail(56);">机电工程</a></p>
+                                                <p>
+                                                    <a href="javascript:void(0)" id="112_Nav" onclick="getDetail(112);">矿山工程</a></p>
+                                            </div>
+                                        </li>
+                                        <li class="selected">
+                                            <h4 data-value="2">施工专业承包资质</h4>
+                                            <div class="list-item" style="display: block;">
+                                                <p>
+                                                    <a href="javascript:void(0)" id="75_Nav" onclick="getDetail(75);">防水防腐保温工程</a></p>
+                                                <p>
+                                                    <a href="javascript:void(0)" id="65_Nav" onclick="getDetail(65);">建筑装修装饰工程</a></p>
+                                                <p>
+                                                    <a href="javascript:void(0)" id="67_Nav" onclick="getDetail(67);">建筑幕墙工程</a></p>
+                                                <p>
+                                                    <a href="javascript:void(0)" id="73_Nav" onclick="getDetail(73);">电子与智能化工程</a></p>
+                                                <p>
+                                                    <a href="javascript:void(0)" id="111_Nav" onclick="getDetail(111);">消防设施工程</a></p>
+                                                <p>
+                                                    <a href="javascript:void(0)" id="60_Nav" onclick="getDetail(60);">地基基础工程</a></p>
+                                                <p>
+                                                    <a href="javascript:void(0)" id="64_Nav" onclick="getDetail(64);">钢结构工程</a></p>
+                                                <p>
+                                                    <a href="javascript:void(0)" id="80_Nav" onclick="getDetail(80);">建筑机电安装工程</a></p>
+                                                <p>
+                                                    <a href="javascript:void(0)" id="110_Nav" onclick="getDetail(110);">输变电工程</a></p>
+                                                <p>
+                                                    <a href="javascript:void(0)" id="72_Nav" onclick="getDetail(72);">环保工程</a></p>
+                                                <p>
+                                                    <a href="javascript:void(0)" id="52_Nav" onclick="getDetail(52);">特种工程</a></p>
+                                                <p>
+                                                    <a href="javascript:void(0)" id="26_Nav" onclick="getDetail(26);">模板脚手架</a></p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="zzdb_xiangq_right">
+                        <div style="box-shadow:0 0 10px  rgba(251, 94,36, 0.3);">
+                            <div id="subNav" class="chaxybj_right_nav">
+                                <ul>
+                                    <li class="zzxz">
+                                        <a href="#zizhixuzhi" class="clickstyle" id="adv_door">资质须知</a></li>
+                                    <li class="yxfw">
+                                        <a href="#yongxinfuwu" id="adv_source">用心服务</a></li>
+                                    <li class="slzs">
+                                        <a href="#shilizhanshi" id="adv_price">实力展示</a></li>
+                                    <li class="wxts">
+                                        <a href="#wenxintishi" id="adv_transfer">温馨提示</a></li>
+                                </ul>
+                            </div>
+                            <div id="zizhixuzhi">
+                                <div class="zizhixuzhi">
+                                    <h2 class="zzdb_z">平台估价</h2>
+                                    <div class="zzdb_xiangqjs" style="margin-bottom:15px;">
+                                        <p>
+                                            <span class="zzdb_xiangqzt">【 提示 】</span>(以
+                                            <font color="#ff4400;">北京</font>为参考)</p>
+                                        <p id="subsummary"></p>
+                                    </div>
+                                    <div id="baojia" style="margin-bottom:50px;padding-left:20px">获取平台估价，了解办理详情！抱歉，平台暂时无法为您提供智能报价，请您先选择要办理的资质类型、专业及等级。</div>
+                                    <div id="intro" class="zzdb_neir_ggbf2" style="display:none;">
+                                        <h2 class="zzdb_z">资质标准</h2>
+                                        <div id="biaozhun" class="zzdb_xiangqjs"></div>
+                                    </div>
+                                    <div id="usage" class="zzdb_neir_ggbf2" style="display:none;">
+                                        <h2 class="zzdb_z">工程范围</h2>
+                                        <div id="fanwei" class="zzdb_xiangqjs"></div>
+                                    </div>
+                                    <div id="options" class="zzdb_neir_ggbf2">
+                                        <h2 class="zzdb_z">办理材料</h2>
+                                        <div class="zzdb_xiangqjs" style="padding-left: 20px;">
+                                            <h2 class="tijcg_title2">办理资质资料详单:</h2>
+                                            <p>1、《营业执照》副本复印件</p>
+                                            <p>2、企业组织机构代码证书副本复印件</p>
+                                            <p>3、企业章程复印件</p>
+                                            <p>4、办公场所证明，属于自有产权的出具产权证复印件；属于租用或借用的，出具出租（借）方产权证和双方租赁合同或借用协议的复印件</p>
+                                            <p>5、标准要求的主要设备购置发票</p>
+                                            <p>6、经省级注册管理部门批准的注册建造师初始注册或变更注册材料（新企业无资质的）</p>
+                                            <p>7、中级及以上职称人员的身份证明、职称证（学历证明）复印件</p>
+                                            <p>8、现场管理人员的身份证明、岗位证书复印件</p>
+                                            <p>9、技术负责人身份证明、执业资格证书、职称证书或技能证书</p>
+                                            <p>10、技术工人的身份证明、职业培训合格证书或职业技能证书复印件</p>
+                                            <p>11、企业主要人员申报前1个月的社会保险证明</p>
+                                            <p>12、技术负责人（或注册建造师）基本情况及业绩</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="weishenmyblzz">
+                                    <ul>
+                                        <li>
+                                            <h2>谁需要</h2>
+                                            <p>建筑企业在不具备资质申请的条件下，可以通过专业的代办机构，办理企业所需要的资质。平台可为企业提供施工总承包和专业承包资质新办、增项和升级服务</p>
+                                        </li>
+                                        <li style="width:210px;">
+                                            <h2>必要性</h2>
+                                            <p>资质是建筑企业必备的证明。有资质的企业，才能保证施工的安全和质量，才能让客户放心。通过资质升级、资质增项等可以扩大自身在建筑领域的竞争力，提升企业生存空间</p>
+                                        </li>
+                                        <li>
+                                            <h2>我们的特点</h2>
+                                            <p>资质管家汇集全国顶尖资质代办公司，1小时内信息化对接客户需求，构建智能化在线资质报价系统，让企业享受成本更低、效率更高、专业更强的服务</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="yongxinfuwu">
+                            <img src="__PUBLIC__/Home/images/zzdb_zhidao.jpg" alt="资质代办要知道什么" style=" margin-top:-5px;" />
+                            <div class="zzdb_liuc">
+                                <ul>
+                                    <li class="zzdb_bllc">
+                                        <p class="zzdb_banllcbt">线上办理流程</p>
+                                        <ul class="zzdb_xianslc_list">
+                                            <li>注册登录账户</li>
+                                            <li class="xiansbllc_wenz_style">挑选靠谱中介</li>
+                                            <li class="xiansbllc_wenz_style">免费咨询报价</li>
+                                            <li style=" margin-left:11px; width:110px;">等待中介报价</li>
+                                            <li>查询对比筛选</li>
+                                            <li class="xiansbllc_wenz_style">确定合作中介</li>
+                                            <li class="xiansbllc_wenz_style">线下资质办理</li>
+                                            <li style=" margin-left:11px; width:110px;">评价中介服务</li></ul>
+                                    </li>
+                                    <li class="zzdb_bllc">
+                                        <p class="zzdb_banllcbt2">线下办理流程</p>
+                                        <ul class="zzdb_xianslc_list zzdb_xianslc_list2">
+                                            <li>登录建委网站
+                                                <br />注册企业</li>
+                                            <li>登录帐号填写
+                                                <br />相关信息</li>
+                                            <li>收集资料
+                                                <br />整理卷宗</li>
+                                            <li style="padding-left:3px;">携带卷宗和原件
+                                                <br />到区建委初审</li>
+                                            <li style="padding-top:7px;">受理结束</li>
+                                            <li>携带通知书到
+                                                <br />建委领取证书</li>
+                                            <li>市建委受理
+                                                <br />抽查人员到岗</li>
+                                            <li style="padding-left:3px;">区建委到
+                                                <br />现场核查</li></ul>
+                                    </li>
+                                    <li class="zzdb_bllc">
+                                        <p class="zzdb_banllcbt">办完后拿到哪些材料？</p>
+                                        <p style="margin-top:30px; text-align:center !important;" align="center">
+                                            <img src="__PUBLIC__/Home/images/jianzzz.png" /></p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div id="shilizhanshi">
+                            <div id="intro" class="zzdb_neir_ggbf">
+                                <img src="__PUBLIC__/Home/images/wsmxzzzgj.jpg" alt="为什么选择资质管家" />
+                                <div class="zzdb_xuanzly">
+                                    <table width="640" cellspacing="0" cellpadding="0">
+                                        <tbody>
+                                            <tr>
+                                                <td class="zzdb_biaoglt">过去（传统代理所）</td>
+                                                <td class="zzdb_biaogrt">现在（资质管家）</td></tr>
+                                            <tr>
+                                                <td class="zzdb_biaogl">费时费力，线下多家考察</td>
+                                                <td class="zzdb_biaogr">汇集各地代办公司，一站式快速挑选</td></tr>
+                                            <tr>
+                                                <td class="zzdb_biaogl">市场混乱，需要用心甄别</td>
+                                                <td class="zzdb_biaogr">平台监管，筛选后的靠谱代理公司可供选择</td></tr>
+                                            <tr>
+                                                <td class="zzdb_biaogl">决策时间：1个月以上</td>
+                                                <td class="zzdb_biaogr">决策时间：5分钟</td></tr>
+                                            <tr>
+                                                <td class="zzdb_biaogl">获取价格渠道困难</td>
+                                                <td class="zzdb_biaogr">线上对接资质报价信息</td></tr>
+                                            <tr>
+                                                <td colspan="2" class="zzdv_biaoglbr" style="color:#ff4400;" align="center">通过整合线下资源及搭建网上系统，资质管家降低资质代办成本
+                                                    <br />开拓整合行业的资源，信息化对接客户需求</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div id="usage" class="zzdb_neir_ggbf">
+                                <img src="__PUBLIC__/Home/images/zzgjdsms.jpg" alt="资质管家开创建筑业电商模式" />
+                                <div class="zzdgj_diansms1">
+                                    <div class="zzdb_dians_huij">
+                                        <h2 class="zzgj_diansbt">汇集</h2>
+                                        <span class="zzgj_diansdbgs">全国靠谱资质代办公司</span>
+                                        <br />
+                                        <span class="zzgj_diansdbyw">Collection of the country ty the reliable agent</span></div>
+                                </div>
+                                <div class="zzdgj_diansms2">
+                                    <div class="zzdb_dians_zhuany">
+                                        <h2 class="zzgj_diansbt">专业</h2>
+                                        <span class="zzgj_diansdbgs" style="letter-spacing:6px;">代理人免费咨询</span>
+                                        <br />
+                                        <span class="zzgj_diansdbyw">Professional agent firee consultation</span></div>
+                                </div>
+                                <div class="zzdgj_diansms1 zzdgj_diansms3">
+                                    <div class="zzdb_dians_huij">
+                                        <h2 class="zzgj_diansbt">线上</h2>
+                                        <span class="zzgj_diansdbgs" style="letter-spacing:2px;">对接资质报价信息</span>
+                                        <br />
+                                        <span class="zzgj_diansdbyw">Online docking qualification infomation</span></div>
+                                </div>
+                                <div class="zzdgj_diansms2 zzdgj_diansms4">
+                                    <div class="zzdb_dians_zhuany" style="padding-top:20px;">
+                                        <h2 class="zzgj_diansbt">快速</h2>
+                                        <span class="zzgj_diansdbgs" style="letter-spacing:5px;">了解市场价格</span>
+                                        <br />
+                                        <span class="zzgj_diansdbyw">Quick to know the market price</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="wenxintishi">
+                            <div id="options2">
+                                <div class="wenxts">
+                                    <p>信息保密：资质管家平台保证将严格保密您的信息，避免外泄</p>
+                                    <p>避免骚扰：对推销电话敏感的客户，在免费获取报价时，建议使用独立工作手机号，避免受到广告骚扰</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+        <!--免费咨询与报价弹窗开始-->
+        <div class="theme-popover">
+            <div class="theme-poptit">
+                <a href="javascript:;" title="关闭" class="close">
+                    <img src="__PUBLIC__/Home/images/guanbcon.png" /></a>
+            </div>
+            <div class="theme-popbod dform">
+                <div id="tank_wenz">
+                    <span class="baojbjz">报价不精准？</span>
+                    <br />1小时内代办公司为您提供精准报价</div>
+                <form class="theme-signin" id="sub_from" action="zzdb_tijym.html" method="post">
+                    <input name="TypeId" id="TypeId" value="1" type="hidden" />
+                    <input name="AreaPid" id="HidAreaPid" value="" type="hidden" />
+                    <input name="AreaId" id="HidAreaId" value="" type="hidden" />
+                    <input name="SubjectPid" id="HidSubjectPid" value="1" type="hidden" />
+                    <input name="UserId" id="UserId" value="0" type="hidden" />
+                    <input name="SubjectId" id="HidSubjectId" value="0" type="hidden" />
+                    <input name="SubjectLv" id="HidSubjectLv" value="0" type="hidden" />
+                    <ol>
+                        <li>手机号码：
+                            <input class="ipt" name="Phone" id="Phone" placeholder="输入号码，获取精准报价" type="text" />
+                            <p class="error_baojia" id="phone_err"></p></li>
+                        <li style="text-align:center; margin-top:5px;">
+                            <input id="fromSubBtn" class="btn btn-primary" value="免费获取精准报价" type="button" /></li>
+                    </ol>
+                </form>
+            </div>
+        </div>
+        <div class="theme-popover-mask"></div>
+        <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/main.css" />
+
+
+        <!-- 头部引用 -->
+        <include file="Common/footer" />
+
+
+        <script type="text/javascript" src="__PUBLIC__/Home/js/jquery-1.10.2.min.js"></script>
+        <script type="text/javascript" src="__PUBLIC__/Home/js/header.js"></script>
+        <script type="text/javascript" src="__PUBLIC__/Home/js/area_data.js"></script>
+        <script type="text/javascript" src="__PUBLIC__/Home/js/Area.js"></script>
+        <script type="text/javascript" src="__PUBLIC__/Home/js/subject_data.js"></script>
+        <script type="text/javascript" src="__PUBLIC__/Home/js/subject_data_method.js"></script>
+        <script type="text/javascript" src="__PUBLIC__/Home/js/jquery.nav.js"></script>
+        <script type="text/javascript" src="__PUBLIC__/Home/js/popup.js"></script>
+        <script type="text/javascript" src="__PUBLIC__/Home/js/baojia.js"></script>
+        <!-- 资质管家:资质代办,北京资质代办,代办建筑工程资质,资质代理,工商注册,代理记账公司 资质管家,资质代办,代办资质,公司注册,代理记账,北京代办资质 资质管家(zizhiguanjia.com),靠谱的资质代办平台.北京拥有正规经营资质代办资格的资质代办公司.专注资质代办,代办建筑工程资质,资质代理,工商注册,代理记账等服务.办资质,找资质管家! --></body>
+
+</html>
+
+<script type="text/javascript">
+    $('select.province').change(function() {
+        var provinceid = $(this).children('option:selected').val();
+        if (provinceid) {
+            _ajax_get_city_select(provinceid);
+        }else{
+            var str = "<option value=''>市/地区</option>";
+            $('select.city').html(str);
+        }
+    });
+
+    $('#zzlxBox li').click(function(){
+        $('#zzlxBox li').removeClass('li_cur');
+        $(this).addClass('li_cur');
+    });
+
+    function _ajax_get_city_select(provinceid) {
+        $.ajax({
+            async: false,
+            type: 'get',
+            contentType: "application/x-www-form-urlencoded",
+            url: "{:U('Home/Index/ajax_get_city_list')}",
+            data: {
+                provinceid: provinceid
+            },
+            dataType: 'json',
+            success: function(json) {
+                if (json.code == 0) {
+                    var data = json.data;
+
+                    var str = "<option value=''>市/地区</option>";
+                    $.each(json.data,
+                    function(key, value) {
+                        str += "<option value='" + value.cityid + "'>" + value.first_name + " " + value.city + "</option>";
+                    });
+                    $('select.city').html(str);
+
+                } else {
+                    layer.msg(json.msg);
+                }
+            },
+            error: function(json) {
+                layer.msg(json.msg);
+            }
+        });
+    }
+</script>
