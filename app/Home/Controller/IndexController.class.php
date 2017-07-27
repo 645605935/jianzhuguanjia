@@ -16,6 +16,8 @@ class IndexController extends CommonController{
         $this->display();
     }
 
+
+
     public function baojia(){
         global $user;
 
@@ -32,6 +34,26 @@ class IndexController extends CommonController{
         $this->type=$type;
         $this->province=$province;
         $this->zhuanyedengji=$zhuanyedengji;
+        $this->display();
+    }
+
+    public function daiban(){
+        global $user;
+
+        $province=M('Province')->select();
+        if($_GET['fit_3']){
+            $city=M('City')->where(array('fatherid'=>$_GET['fit_3']))->select();
+        }
+
+        $type_1=M('Type')->where(array('pid'=>1273))->select();
+        if($_GET['fit_1']){
+            $type_2=M('Type')->where(array('pid'=>$_GET['fit_1']))->select();
+        }
+
+        $this->type_1=$type_1;
+        $this->type_2=$type_2;
+        $this->province=$province;
+        $this->city=$city;
         $this->display();
     }
 

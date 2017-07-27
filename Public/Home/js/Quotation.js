@@ -3,11 +3,7 @@
     NavSubject_Click: 2
 }
 $(function () {
-    //初始化地区
-    var area = new Area();
-    areaData = $.parseJSON(areaData);
-    area.CallArea("AreaPid", "AreaId", 0, 0);
-
+    
     //枚举点击类型(1:专业点击 ; 2：左侧导航点击）
     
 
@@ -340,19 +336,16 @@ var Boajia_PageSlide = {
 //免费获取精准报价
 $('#baojia_btn').click(function () {
 
-    var subjectPid = $("#HidSubjectPid").val();
-    var subjectId = $("#HidSubjectId").val();
-    var subjectLv = $("#HidSubjectLv").val();
+    var type = $("#baojia_form .type").val();
+    var zhuanye = $("#baojia_form .zhuanye").val();
+    var dengji = $("#baojia_form .dengji").val();
 
-    $("#HidAreaId").val($("#AreaId  option:selected").val());
-    $("#HidAreaPid").val($("#AreaPid  option:selected").val());
-    var areaId = $("#HidAreaId").val();
-    var areaPid = $("#HidAreaPid").val();
+    var province = $("#baojia_form .province").val();
+    var city = $("#baojia_form .city").val();
 
-
-    if (areaId == '' || areaPid == '') {
+    if (province == '' || city == '') {
         popup.msgPopup("请选择地区！");
-    } else if (subjectId == '' || subjectId == null || subjectId == 0) {
+    } else if (type == '' || zhuanye == '' || dengji == '') {
         popup.msgPopup("请选择资质专业！")
     } else if ($("#UserId").val() > 0) {
         $("#fromSubBtn").click();

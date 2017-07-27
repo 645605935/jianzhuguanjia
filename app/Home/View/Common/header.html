@@ -1,3 +1,9 @@
+<?php
+    $_page_=$_SERVER['PATH_INFO'];
+?>
+
+
+
 <div class="header">
     <div class="header_top">
         <div class="header_top_center">
@@ -6,9 +12,9 @@
                     <li>
                         <div id="regist" style="float:right">
                             <span>您好，请</span>
-                            <a target="_blank" href="login.html" rel="nofollow">
+                            <a target="_blank" href="{:U('Home/User/login')}" rel="nofollow">
                                 <span style="color:#ff4400;">&nbsp;登录</span></a>
-                            <a target="_blank" href="reg.html" rel="nofollow">｜　注册　｜</a>
+                            <a target="_blank" href="{:U('Home/User/register')}" rel="nofollow">｜　注册　｜</a>
                             <span class="head_jianzqy">
                                 <a class="head_jianzqy_a">我是建筑企业</a>
                                 <div class="head_jianzqy_content">
@@ -243,19 +249,19 @@
                 </div>
                 <ul class="main_menu">
                     <li>
-                        <a class="" href="index.html">首　页</a></li>
+                        <a class="<if condition="$_page_ eq 'Index/index'">on</if>" href="{:U('Home/Index/index')}">首　页</a></li>
                     <li>
-                        <a class="on" href="{:U('Home/Index/baojia')}">资质询价</a></li>
+                        <a class="<if condition="$_page_ eq 'Index/baojia'">on</if>" href="{:U('Home/Index/baojia')}">资质询价</a></li>
                     <li>
-                        <a class="" href="daiban.html" id="zzarea">资质代办</a></li>
+                        <a class="<if condition="$_page_ eq 'Index/daiban'">on</if>" href="{:U('Home/Index/daiban')}" id="zzarea">资质代办</a></li>
                     <li>
-                        <a class="" href="safe.html" id="azarea">安证办理</a></li>
+                        <a class="<if condition="$_page_ eq 'Index/safe'">on</if>" href="{:U('Home/Index/safe')}" id="azarea">安证办理</a></li>
                     <li>
-                        <a class="" href="zizhibiaozhun.html">资质标准</a></li>
+                        <a class="<if condition="$_page_ eq 'Company/companylicense'">on</if>" href="zizhibiaozhun.html">资质标准</a></li>
                     <li>
-                        <a class="" href="news.html">行业资讯</a></li>
+                        <a class="<if condition="$_page_ eq 'Company/companylicense'">on</if>" href="news.html">行业资讯</a></li>
                     <li>
-                        <a class="" href="about.html">关于我们</a></li>
+                        <a class="<if condition="$_page_ eq 'Company/companylicense'">on</if>" href="about.html">关于我们</a></li>
                 </ul>
                 <div class="nav_58logo">
                     <a target="_blank" href="http://www.58guakao.com">

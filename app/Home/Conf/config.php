@@ -3,6 +3,7 @@
 $SITE_URL = "http://ek.zhangtengrui.com/";
 define('URL_CALLBACK', "" . $SITE_URL . "index.php?s=/Admin/Site/banliao.html&type=");
 
+
 return array(
     'URL_ROUTER_ON' => true,
     'URL_ROUTE_RULES' => array(
@@ -25,7 +26,15 @@ return array(
         'APP_KEY' => '', //应用注册成功后分配的 APP ID
         'APP_SECRET' => '', //应用注册成功后分配的KEY
         'CALLBACK' => URL_CALLBACK . 'renren',
-    )
+    ),
+
+
+
+
+
+
+
+    'URL_MODEL'  => 2,          //URL模式：0 :普通模式 1 :PATHINFO 2 :REWRITE 3 :兼容模式
 );
 
 
