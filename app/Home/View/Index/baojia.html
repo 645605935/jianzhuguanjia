@@ -12,6 +12,10 @@
         <meta name="mobile-agent" content="format=wml; url=http://m.zizhiguanjia.com/baojia/" />
         <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/new.css" />
         <link rel="stylesheet" href="__PUBLIC__/Admin/layui-v1.0.4/layui/css/layui.css"  media="all">
+
+        <style>
+            .layui-form-item{margin-bottom: 0px;}
+        </style>
     </head>
     
     <body>
@@ -40,18 +44,18 @@
                     <div class="zzdb_right">
 
                         <!-- 表单开始 -->
-                        <form class="layui-form layui-form-pane col-xs-12" method="post" action="" id="edit_form" enctype="multipart/form-data">
-                                                                                      
+                        <form class="layui-form layui-form-pane col-xs-12" method="post" action="" id="baojia_form" enctype="multipart/form-data">
+                             <p id="baojia_text">选一选，10秒获取智能报价</p>                                                         
                             <table class="layui-table">
                               <colgroup>
-                                  <col width="100">
+                                  <col width="110">
                                   <col>
                               </colgroup>
                               <tbody>
 
                                 <tr>
-                                  <td>
-                                    公司地址
+                                  <td align="center">
+                                    公司地址：
                                   </td>
                                   <td>
                                     <div class="layui-inline">
@@ -60,16 +64,13 @@
                                           <select name="province" class="province" lay-filter="province">
                                             <option value="">省/市</option>
                                             <foreach name="province" item="v">
-                                                <option value="{$v['provinceid']}" <if condition="$v['provinceid'] eq $companyinfo['company_province']">selected="selected"</if>>{$v['first_name']} {$v['province']}</option>
+                                                <option value="{$v['provinceid']}">{$v['first_name']} {$v['province']}</option>
                                             </foreach>
                                           </select>
                                         </div>
                                         <div class="layui-input-inline">
                                           <select name="city" class="city" lay-filter="city">
                                             <option value="">市/地区</option>
-                                            <foreach name="city" item="v">
-                                                <option value="{$v['cityid']}" <if condition="$v['cityid'] eq $companyinfo['company_city']">selected="selected"</if>>{$v['first_name']} {$v['city']}</option>
-                                            </foreach>
                                           </select>
                                         </div>
                                       </div>
@@ -77,13 +78,68 @@
                                   </td>
                                 </tr>
 
+                                <tr>
+                                  <td align="center">
+                                    资质类型：
+                                  </td>
+                                  <td>
+                                    <div class="layui-inline">
+                                      <div class="layui-form-item" id="type_box">
+                                        <div class="layui-input-inline">
+                                            <input type="radio" name="type" class="type" lay-filter="type" value="1292" title="施工总承包资质" checked="">
+                                        </div>
+                                        <div class="layui-input-inline">
+                                            <input type="radio" name="type" class="type" lay-filter="type" value="1293" title="施工专业承包资质">
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </td>
+                                </tr>
+
+                                <tr>
+                                  <td align="center">
+                                    专业等级：
+                                  </td>
+                                  <td>
+                                    <div class="layui-inline">
+                                      <div class="layui-form-item">
+                                        <div class="layui-input-inline">
+                                          <select name="zhuanye" class="zhuanye" lay-filter="zhuanye">
+                                            <option value="">资质专业</option>
+                                            <foreach name="zhuanyedengji" item="v">
+                                                <option value="{$v['id']}">{$v['title']}</option>
+                                            </foreach>
+                                          </select>
+                                        </div>
+                                        <div class="layui-input-inline">
+                                          <select name="dengji" class="dengji" lay-filter="dengji">
+                                            <option value="">资质等级</option>
+                                          </select>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </td>
+                                </tr>
+
+                                <tr>
+                                  <td align="center">
+                                    智能报价：
+                                  </td>
+                                  <td>
+                                    <p class="zhinengbj_wenz" id="zhinengbj_wenz">
+                                        <span class="baijia_wenz" id="baijia_wenz" style="font-size:14px;padding-left:10px;">请选择资质类型、专业及等级</span>
+                                    </p>
+                                  </td>
+                                </tr>
+
                               </tbody>
                               <tfoot>
                                 <tr>
                                   <td colspan="2" style="text-align:center;">
-                                    <input type="hidden" name="company_yingyezhizhao" lay-verify="required" value="{$companyinfo.company_yingyezhizhao}" class="layui-input company_yingyezhizhao">
-                                    <button class="layui-btn" lay-submit="" lay-filter="demo1_edit">确认</button>
-                                    <button type="reset" class="layui-btn layui-btn-primary reset">重置</button>
+                                    <p class="baojia_tis">报价不精准？正规中介分别报价，代办行情轻松掌握</p>
+                                    <div class="mianfcxybj">
+                                        <input id="baojia_btn" value="免费获取精准报价" href="javascript:;" class="btn btn-primary btn-large theme-login" style="float:left;" />
+                                    </div>
                                   </td>
                                 </tr>
                               </tfoot>
@@ -160,48 +216,20 @@
                                 <div class="operate" id="show">
                                     <h3 style="text-align:center;">你可能还需要这些服务</h3>
                                     <ul id="juheweb">
-                                        <li class="selected">
-                                            <h4 data-value="1">施工总承包资质</h4>
-                                            <div class="list-item" style="display: block;">
-                                                <p>
-                                                    <a href="javascript:void(0)" id="54_Nav" onclick="getDetail(54);">建筑工程</a></p>
-                                                <p>
-                                                    <a href="javascript:void(0)" id="58_Nav" onclick="getDetail(58);">市政公用工程</a></p>
-                                                <p>
-                                                    <a href="javascript:void(0)" id="56_Nav" onclick="getDetail(56);">机电工程</a></p>
-                                                <p>
-                                                    <a href="javascript:void(0)" id="112_Nav" onclick="getDetail(112);">矿山工程</a></p>
-                                            </div>
-                                        </li>
-                                        <li class="selected">
-                                            <h4 data-value="2">施工专业承包资质</h4>
-                                            <div class="list-item" style="display: block;">
-                                                <p>
-                                                    <a href="javascript:void(0)" id="75_Nav" onclick="getDetail(75);">防水防腐保温工程</a></p>
-                                                <p>
-                                                    <a href="javascript:void(0)" id="65_Nav" onclick="getDetail(65);">建筑装修装饰工程</a></p>
-                                                <p>
-                                                    <a href="javascript:void(0)" id="67_Nav" onclick="getDetail(67);">建筑幕墙工程</a></p>
-                                                <p>
-                                                    <a href="javascript:void(0)" id="73_Nav" onclick="getDetail(73);">电子与智能化工程</a></p>
-                                                <p>
-                                                    <a href="javascript:void(0)" id="111_Nav" onclick="getDetail(111);">消防设施工程</a></p>
-                                                <p>
-                                                    <a href="javascript:void(0)" id="60_Nav" onclick="getDetail(60);">地基基础工程</a></p>
-                                                <p>
-                                                    <a href="javascript:void(0)" id="64_Nav" onclick="getDetail(64);">钢结构工程</a></p>
-                                                <p>
-                                                    <a href="javascript:void(0)" id="80_Nav" onclick="getDetail(80);">建筑机电安装工程</a></p>
-                                                <p>
-                                                    <a href="javascript:void(0)" id="110_Nav" onclick="getDetail(110);">输变电工程</a></p>
-                                                <p>
-                                                    <a href="javascript:void(0)" id="72_Nav" onclick="getDetail(72);">环保工程</a></p>
-                                                <p>
-                                                    <a href="javascript:void(0)" id="52_Nav" onclick="getDetail(52);">特种工程</a></p>
-                                                <p>
-                                                    <a href="javascript:void(0)" id="26_Nav" onclick="getDetail(26);">模板脚手架</a></p>
-                                            </div>
-                                        </li>
+
+                                           <foreach name="type" item="vo">
+                                                <li>
+                                                    <h4>{$vo.title}</h4>
+                                                    <div class="list-item" style="display: block;">
+                                                        <foreach name="vo['_child']" item="v">
+                                                            <p>
+                                                                <a href="javascript:void(0)" onclick="render_detail({$v.id}, {$vo.id})">{$v.title}</a>
+                                                            </p>
+                                                        </foreach>
+                                                    </div>
+                                                </li>
+                                           </foreach>
+
                                     </ul>
                                 </div>
                             </div>
@@ -450,33 +478,24 @@
 <script type="text/javascript">
     $(function(){
         init_editer();
-
-        $('select.province').change(function() {
-            var provinceid = $(this).children('option:selected').val();
-            if (provinceid) {
-                _ajax_get_city_select(provinceid);
-            }else{
-                var str = "<option value=''>市/地区</option>";
-                $('select.city').html(str);
-            }
-        });
-
-        $('#zzlxBox li').click(function(){
-            $('#zzlxBox li').removeClass('li_cur');
-            $(this).addClass('li_cur');
-            var type=$(this).attr('value');
-
-            if (type) {
-                _ajax_get_type_1_select(type);
-            }else{
-                var str = "<option value=''>资质专业</option>";
-                $('select.city').html(str);
-            }
-        });
     });
 </script>
 
 <script>
+    function render_detail(type, father_type){
+        _ajax_get_autoprice_info(type);
+        var str='';
+        if(father_type==1292){
+            str+='<div class="layui-input-inline"><input type="radio" name="type" class="type" lay-filter="type" value="1292" title="施工总承包资质" checked=""></div>';
+            str+='<div class="layui-input-inline"><input type="radio" name="type" class="type" lay-filter="type" value="1293" title="施工专业承包资质"></div>';
+        }else{
+            str+='<div class="layui-input-inline"><input type="radio" name="type" class="type" lay-filter="type" value="1292" title="施工总承包资质"></div>';
+            str+='<div class="layui-input-inline"><input type="radio" name="type" class="type" lay-filter="type" value="1293" title="施工专业承包资质" checked=""></div>';
+        }
+        $('#type_box').html(str);
+        _ajax_get_zhuanye_select(father_type);
+    }
+
     //添加
     function _ajax_edit(_data){
          $.ajax({  
@@ -517,20 +536,31 @@
             ,pass: [/(.+){6,12}$/, '密码必须6到12位']
           });
 
-          //监听提交
-          form.on('submit(demo1_edit)', function(data){
-            var _json=_ajax_edit(data.field);
-
-            // alert(JSON.stringify(data.field));
-            return false;
-          });
-
           form.on('select(province)', function(data){
               var provinceid=data.value;
               if(provinceid){
                   _ajax_get_city_select(provinceid);
               }else{
                   alert('请选择省份');
+              }
+
+              return false;
+          });
+
+          form.on('radio(type)', function(data){
+            alert(1)
+              var type=data.value;
+              if(type){
+                    _ajax_get_zhuanye_select(type);
+              }
+              return false;
+          });
+
+          form.on('select(zhuanye)', function(data){
+              var type=data.value;
+              if(type){
+                  _ajax_get_dengji_select(type);
+                  _ajax_get_autoprice_info(type);
               }
 
               return false;
@@ -556,7 +586,7 @@
                     $.each(json.data, function(key, value) {
                          str+="<option value='"+value.cityid+"'>"+value.first_name+" "+value.city+"</option>";
                     });
-                    $('#edit_form .city').html(str);
+                    $('#baojia_form .city').html(str);
                     layui.form().render();
 
                 }else{
@@ -569,12 +599,50 @@
         });
     }   
 
-    function _ajax_get_type_1_select(type) {
+    
+    function _ajax_get_autoprice_info(type) {
         $.ajax({
             async: false,
             type: 'get',
             contentType: "application/x-www-form-urlencoded",
-            url: "{:U('Home/Index/ajax_get_type_1_list')}",
+            url: "{:U('Home/Index/ajax_get_autoprice_info')}",
+            data: {
+                type: type
+            },
+            dataType: 'json',
+            success: function(json) {
+                if (json.code == 0) {
+                    var data = json.data;
+
+                    var title=data.title;
+                    var content_1=data.content_1;
+                    var content_2=data.content_2;
+                    var content_3=data.content_3;
+                    var content_4=data.content_4;
+                    
+                    $('#baijia_wenz').html(title);
+                    $('#baojia').html(content_1);
+                    $('#intro').show();
+                    $('#usage').show();
+                    $('#intro .zzdb_xiangqjs').html(content_2);
+                    $('#usage .zzdb_xiangqjs').html(content_3);
+                    $('#options .zzdb_xiangqjs').html(content_4);
+                } else {
+                    alert(json.msg);
+                }
+            },
+            error: function(json) {
+                layer.msg(json.msg);
+            }
+        });
+    }
+
+    function _ajax_get_zhuanye_select(type) {
+        $.ajax({
+            async: false,
+            type: 'get',
+            contentType: "application/x-www-form-urlencoded",
+            url: "{:U('Home/Index/ajax_get_type_list')}",
             data: {
                 type: type
             },
@@ -588,8 +656,41 @@
                     function(key, value) {
                         str += "<option value='" + value.id + "'>" + value.title + "</option>";
                     });
-                    $('select.type_1').html(str);
 
+                    $('#baojia_form .zhuanye').html(str);
+                    layui.form().render();
+                } else {
+                    layer.msg(json.msg);
+                }
+            },
+            error: function(json) {
+                layer.msg(json.msg);
+            }
+        });
+    }
+
+    function _ajax_get_dengji_select(type) {
+        $.ajax({
+            async: false,
+            type: 'get',
+            contentType: "application/x-www-form-urlencoded",
+            url: "{:U('Home/Index/ajax_get_type_list')}",
+            data: {
+                type: type
+            },
+            dataType: 'json',
+            success: function(json) {
+                if (json.code == 0) {
+                    var data = json.data;
+
+                    var str = "";
+                    $.each(json.data,
+                    function(key, value) {
+                        str += "<option value='" + value.id + "'>" + value.title + "</option>";
+                    });
+
+                    $('#baojia_form .dengji').html(str);
+                    layui.form().render();
                 } else {
                     layer.msg(json.msg);
                 }

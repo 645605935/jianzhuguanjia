@@ -19,12 +19,19 @@ class IndexController extends CommonController{
     public function baojia(){
         global $user;
 
-
         $province=M('Province')->select();
-        $city=M('city')->where(array('fatherid'=>$companyinfo['company_province']))->select();
 
+        $zhuanyedengji=M('Type')->where(array('pid'=>1292))->select();
+
+        //左侧分类菜单
+        $type=M('Type')->where(array('pid'=>1275,'id'=>array('in',array('1292','1293'))))->select();
+        foreach ($type as $key => $value) {
+            $type[$key]['_child']=M('Type')->where(array('pid'=>$value['id']))->select();
+        }
+
+        $this->type=$type;
         $this->province=$province;
-        $this->city=$city;
+        $this->zhuanyedengji=$zhuanyedengji;
         $this->display();
     }
 
@@ -109,7 +116,8 @@ class IndexController extends CommonController{
         echo json_encode($data);
     }
 
-    public function ajax_get_type_1_list(){
+
+    public function ajax_get_type_list(){
         $map=array();
         if($type=$_GET['type']){
             $map['pid']=$type;
@@ -122,6 +130,27 @@ class IndexController extends CommonController{
             $data['code']=0;
             $data['msg']='success';
             $data['data']=$list;
+        }else{
+            $data=array();
+            $data['code']=1;
+            $data['msg']='empty';
+        }
+        echo json_encode($data);
+    }
+
+    public function ajax_get_autoprice_info(){
+        $map=array();
+        if($type=$_GET['type']){
+            $map['type']=$type;
+        }
+
+        $row = M('Autoprice')->where($map)->find();
+
+        if($row){
+            $data=array();
+            $data['code']=0;
+            $data['msg']='success';
+            $data['data']=$row;
         }else{
             $data=array();
             $data['code']=1;
