@@ -133,13 +133,11 @@ function formSubmit() {
     $.post(""+Home_User_register+"", $("#register_form").serialize(), function (data) {
         var data=JSON.parse(data);
         if (data.IsSuccess) {
-            if (data.CompanyType == 0) {
-                location.href = "/accountinfor/personalinfo";
-            }
-            else {
-                //location.href = "/usercenter/brokerindex";
+            if (data.CompanyType == 1) {
                 var strPhone = data.Phone.substring(0,3);
-                location.href = "/user/agententer?isPerfect=true&Phone=" + strPhone;
+                location.href = ""+HTTP_HOST+"/Home/Agententer/ruzhu_success.html?phone=" + strPhone;
+            }else {
+                location.href = ""+Home_Accountinfor_personalinfo+"";
             }
         }
     });

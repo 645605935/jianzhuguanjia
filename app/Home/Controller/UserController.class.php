@@ -7,6 +7,8 @@ class UserController extends CommonController{
 
     public function _initialize(){
         parent::_initialize();
+
+        $this->HTTP_HOST=$_SERVER['HTTP_HOST'];
     }
 
     public function register(){
