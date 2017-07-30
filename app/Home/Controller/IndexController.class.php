@@ -50,10 +50,19 @@ class IndexController extends CommonController{
             $type_2=M('Type')->where(array('pid'=>$_GET['fit_1']))->select();
         }
 
-
-
         // 右侧分类
         $right_type_1=M('Type')->where(array('pid'=>1275))->select();
+
+        $where=array();
+        $count      = M('User')->where($where)->count();
+        $Page       = new \Common\Extend\Page($count,3);
+        $nowPage = isset($_GET['p'])?$_GET['p']:1;
+        $list=D('User')->page($nowPage.','.$Page->listRows)->where($where)->relation(true)->select();
+
+        $this->page=$Page->show();
+        $this->list=$list;
+
+        
 
         $this->type_1=$type_1;
         $this->type_2=$type_2;
@@ -72,10 +81,7 @@ class IndexController extends CommonController{
             $city=M('City')->where(array('fatherid'=>$_GET['fit_3']))->select();
         }
 
-        $type_1=M('Type')->where(array('pid'=>1273))->select();
-        if($_GET['fit_1']){
-            $type_2=M('Type')->where(array('pid'=>$_GET['fit_1']))->select();
-        }
+        $type=M('Type')->where(array('pid'=>1377))->select();
 
         // 右侧分类
         $right_type_1=M('Type')->where(array('pid'=>1377))->select();//办理类型
@@ -83,8 +89,17 @@ class IndexController extends CommonController{
         $right_type_3=M('Type')->where(array('pid'=>1379))->select();//人员情况
 
 
-        $this->type_1=$type_1;
-        $this->type_2=$type_2;
+        $where=array();
+        $count      = M('User')->where($where)->count();
+        $Page       = new \Common\Extend\Page($count,3);
+        $nowPage = isset($_GET['p'])?$_GET['p']:1;
+        $list=D('User')->page($nowPage.','.$Page->listRows)->where($where)->relation(true)->select();
+
+        $this->page=$Page->show();
+        $this->list=$list;
+
+
+        $this->type=$type;
         $this->province=$province;
         $this->city=$city;
 

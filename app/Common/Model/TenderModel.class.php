@@ -1,6 +1,7 @@
 <?php
 namespace Common\Model;
 use Think\Model\RelationModel;
+
 class TenderModel extends RelationModel{
 	protected $_link=array(
 		'_user'=>array(
