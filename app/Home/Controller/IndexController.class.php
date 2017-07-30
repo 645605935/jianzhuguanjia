@@ -50,10 +50,17 @@ class IndexController extends CommonController{
             $type_2=M('Type')->where(array('pid'=>$_GET['fit_1']))->select();
         }
 
+
+
+        // 右侧分类
+        $right_type_1=M('Type')->where(array('pid'=>1275))->select();
+
         $this->type_1=$type_1;
         $this->type_2=$type_2;
         $this->province=$province;
         $this->city=$city;
+
+        $this->right_type_1=$right_type_1;
         $this->display();
     }
 
@@ -70,10 +77,20 @@ class IndexController extends CommonController{
             $type_2=M('Type')->where(array('pid'=>$_GET['fit_1']))->select();
         }
 
+        // 右侧分类
+        $right_type_1=M('Type')->where(array('pid'=>1377))->select();//办理类型
+        $right_type_2=M('Type')->where(array('pid'=>1378))->select();//资质情况
+        $right_type_3=M('Type')->where(array('pid'=>1379))->select();//人员情况
+
+
         $this->type_1=$type_1;
         $this->type_2=$type_2;
         $this->province=$province;
         $this->city=$city;
+
+        $this->right_type_1=$right_type_1;
+        $this->right_type_2=$right_type_2;
+        $this->right_type_3=$right_type_3;
         $this->display();
     }
 
@@ -92,6 +109,75 @@ class IndexController extends CommonController{
             }
             echo json_encode($data);
         }
+    }
+
+
+
+    public function ajax_check_code(){
+        global $user;
+
+        if($code=$_GET['code']){
+            $votelog=M('Order')->where(array('uid'=>$user['id'],'bid'=>$id))->find();
+            if($votelog){
+                $data=array();
+                $data['code']=1;
+                $data['msg']='您已投过！';
+            }else{
+                $where=array();
+                $where['id']=$id;
+
+
+                $data=array();
+                $data['uid']=$user['id'];
+                $data['bid']=$id;
+                $data['time']=time();
+                M('Votelog')->add($data);
+
+                $res = M('Baoming')->where($where)->setInc('vote');
+                if($res){
+                    $data=array();
+                    $data['code']=0;
+                    $data['msg']='success';
+                    $data['data']=$row;
+                }else{
+                    $data=array();
+                    $data['code']=1;
+                    $data['msg']='error';
+                }
+            }
+        }else{
+            $data=array();
+            $data['code']=2;
+            $data['msg']='error';
+        }
+
+        echo json_encode($data);
+    }
+    
+    public function ajax_apply_baojia(){
+        global $user;
+
+        if($_POST){
+            $data=$_POST;
+            $data['time']=time();
+
+            $id=M('Order')->add($data);
+            if($id){
+                $data=array();
+                $data['code']=0;
+                $data['msg']='申请成功';
+            }else{
+                $data=array();
+                $data['code']=1;
+                $data['msg']='申请失败';
+            }
+        }else{
+            $data=array();
+            $data['code']=2;
+            $data['msg']='error';
+        }
+
+        echo json_encode($data);
     }
 
     public function news(){
@@ -210,7 +296,67 @@ class IndexController extends CommonController{
     }
 
     
-   
+    // 上传单图
+    public function lay_upload_img(){
+        if($_FILES['img']['size']>0){
+            $upload = new \Think\Upload();// 实例化上传类
+            $upload->maxSize   =     31457280 ;// 设置附件上传大小
+            $upload->exts      =     array('jpg','png','jpeg','gif');// 设置附件上传类型
+            $upload->uploadReplace  = false;// 存在同名文件是否覆盖
+            $upload->autoSub   =     false;//是否启用子目录保存
+            $upload->rootPath  =     './Uploads/'; // 设置附件上传根目录
+            $upload->savePath  =     'layui/'; // 设置附件上传（子）目录
+            $upload->saveRule  =     ''; // 设置附件上传（子）目录
+             
+            // 上传文件 
+            $info   =   $upload->upload();
+
+            if(!$info) {
+                $data=array();
+                $data['code']=0;
+                $data['msg']=$upload->getError();
+            }else{
+                $img=$info['img']['savename'];
+                $data=array();
+                $data['code']=0;
+                $data['msg']='success';
+                $data['data']["src"]='/Uploads/layui/'.$img;
+            }
+
+            echo json_encode($data);
+        }
+    }
+
+    // 上传多图
+    public function lay_upload_images(){
+        if($_FILES['images']['size']>0){
+            $upload = new \Think\Upload();// 实例化上传类
+            $upload->maxSize   =     31457280 ;// 设置附件上传大小
+            $upload->exts      =     array('jpg','png','jpeg','gif');// 设置附件上传类型
+            $upload->uploadReplace  = false;// 存在同名文件是否覆盖
+            $upload->autoSub   =     false;//是否启用子目录保存
+            $upload->rootPath  =     './Uploads/'; // 设置附件上传根目录
+            $upload->savePath  =     'layui/'; // 设置附件上传（子）目录
+            $upload->saveRule  =     ''; // 设置附件上传（子）目录
+             
+            // 上传文件 
+            $info   =   $upload->upload();
+
+            if(!$info) {
+                $data=array();
+                $data['code']=0;
+                $data['msg']=$upload->getError();
+            }else{
+                $img=$info['images']['savename'];
+                $data=array();
+                $data['code']=0;
+                $data['msg']='success';
+                $data['data']["src"]='/Uploads/layui/'.$img;
+            }
+
+            echo json_encode($data);
+        }
+    }
 
 
     // 上传文件

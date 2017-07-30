@@ -17,6 +17,17 @@ class CompanyController extends CommonController{
 
     //公司资料
     public function companyinfo(){
+        global $user;
+        
+        $province=M('Province')->select();
+
+        $company_types=M('Type')->where(array('pid'=>1275))->select();
+        foreach ($company_types as $key => $value) {
+            $company_types[$key]['_child']=M('Type')->where(array('pid'=>$value['id']))->select();
+        }
+
+        $this->province=$province;
+        $this->company_types=$company_types;
         $this->display();
     }
 

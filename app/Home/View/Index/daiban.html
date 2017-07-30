@@ -13,7 +13,11 @@
   <meta name="mobile-agent" content="format=xhtml; url=http://m.zizhiguanjia.com/zizhi/" /> 
   <meta name="mobile-agent" content="format=html5; url=http://m.zizhiguanjia.com/zizhi/" /> 
   <meta name="mobile-agent" content="format=wml; url=http://m.zizhiguanjia.com/zizhi/" /> 
-<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/new.css" /> 
+  <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/new.css" /> 
+  <link rel="stylesheet" href="__PUBLIC__/Admin/layui-v1.0.4/layui/css/layui.css"  media="all">
+  <style>
+      .layui-form-item{margin-bottom: 0px;}
+  </style>
  </head> 
  <body> 
   <!-- 头部引用 -->
@@ -87,7 +91,7 @@
      <ul style="position:relative;"> 
       <li> <a class="on " href="daiban.html"> <h3>综合排序</h3> </a> </li> 
       <li> <a class="" href="http://www.zizhiguanjia.com/koubei/"> <h3>口碑飙升榜</h3> <i></i> </a> </li> 
-      <li class="rz" style="position: absolute; right: 10px; top: -7px; border: 0; "> <a href="http://www.zizhiguanjia.com/user/agententer/" target="_blank" rel="nofollow"> <img alt="我要入驻" src="__PUBLIC__/Home/images/rz.png" onclick="Add(2,1)" /> </a> </li> 
+      <li class="rz" style="position: absolute; right: 10px; top: -7px; border: 0; "> <a href="{:U('Home/Agententer/step_1')}" target="_blank" rel="nofollow"> <img alt="我要入驻" src="__PUBLIC__/Home/images/rz.png" onclick="Add(2,1)" /> </a> </li> 
      </ul> 
     </div> 
     <div class="company_list"> 
@@ -524,124 +528,8 @@
    </div> 
    <!--左侧模块结束--> 
    <div class="company_r"> 
-    <div class="sec_topr_bd"> 
-     <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/popup.css" /> 
-     <div id="zhizgj_left"> 
-      <div class="mfhqbj"> 
-       <div class="mfhqbj_num"> 
-        <em>万元</em> 
-        <div class="mfhqbj_jiagesz"> 
-         <span class="mfhqbj_jiagesz_box">13.9</span> 
-         <span class="mfhqbj_jiagesz_box">17.8</span> 
-         <span class="mfhqbj_jiagesz_box">6.8</span> 
-         <span class="mfhqbj_jiagesz_box">33.6</span> 
-         <span class="mfhqbj_jiagesz_box">16.4</span> 
-         <span class="mfhqbj_jiagesz_box">18.1</span> 
-         <span class="mfhqbj_jiagesz_box">37.5</span> 
-         <span class="mfhqbj_jiagesz_box">12.1</span> 
-         <span class="mfhqbj_jiagesz_box">13.9</span> 
-        </div> 
-        <em>最近成交价</em> 
-       </div> 
-      </div> 
-      <form name="user_form" id="user_form" method="post" action="/index/addapplication" novalidate="novalidate"> 
-       <input value="1" name="TypeId" type="hidden" /> 
-       <input name="IdempotentRequestId" value="8bfe02a2-4922-4682-9729-dcac62d40c68" type="hidden" /> 
-       <div class="huoqlxfs"> 
-        <ul> 
-         <li> <select name="SubjectPid" id="SubjectPType" class="zzgj_index_btn zzgj_index_btn_xialk certificateType"><option value="">资质类型</option><option value="1">施工总承包资质</option><option value="2">施工专业承包资质</option><option value="3">施工劳务承包资质</option><option value="201">工程设计综合资质</option><option value="212">工程设计行业资质</option><option value="213">工程设计专业资质</option><option value="214">工程设计专项资质</option><option value="215">建筑工程设计事务所资质</option><option value="114">工程勘察综合资质</option><option value="600">工程勘察专业资质</option><option value="620">工程勘察劳务资质</option><option value="102">工程监理综合资质</option><option value="700">工程监理专业资质</option><option value="720">工程监理事务所资质</option><option value="113">工程造价咨询资质</option><option value="115">安防工程资质</option><option value="117">承装电力设施许可证</option><option value="11100">工程招标代理机构资格</option><option value="12100">劳务派遣经营许可证</option><option value="302">房地产开发企业资质</option><option value="303">房地产经纪机构资质</option><option value="304">房地产估价机构资质</option><option value="14100">计算机信息系统集成资质</option><option value="211">环境影响评价资质</option><option value="402">城乡规划编制资质</option><option value="17100">ISO质量管理体系</option><option value="17200">ISO环境管理体系</option><option value="18100">3C产品认证</option><option value="18200">CEP中国环保产品认证</option><option value="18300">欧盟CE产品安全认证</option><option value="18400">中国环境标志认证（十环）</option><option value="18500">ISCCC电子产品认证</option></select> </li> 
-         <li> <select name="SubjectId" id="SubjectType" class="zzgj_index_btn_xialk zzgj_index_btn "><option value="">资质专业</option></select> </li> 
-         <li> <select name="SubjectLv" id="SubjectLv" class="zzgj_index_btn_xialk zzgj_index_btn "><option value="">资质等级</option></select> </li> 
-         <li> <select name="AreaPid" id="IndexRegAreaPid" class="zzgj_index_btn_xialk zzgj_suozdq"> <option value="">省/市</option> <option value="12">安徽</option><option value="1">北京</option><option value="22">重庆</option><option value="13">福建</option><option value="19">广东</option><option value="20">广西</option><option value="24">贵州</option><option value="28">甘肃</option><option value="3">河北</option><option value="8">黑龙江</option><option value="16">河南</option><option value="17">湖北</option><option value="18">湖南</option><option value="21">海南</option><option value="7">吉林</option><option value="10">江苏</option><option value="14">江西</option><option value="6">辽宁</option><option value="5">内蒙古</option><option value="30">宁夏</option><option value="29">青海</option><option value="4">山西</option><option value="9">上海</option><option value="15">山东</option><option value="23">四川</option><option value="27">陕西</option><option value="2">天津</option><option value="26">西藏</option><option value="31">新疆</option><option value="25">云南</option><option value="11">浙江</option></select> <select name="AreaId" id="IndexRegAreaId" class="zzgj_index_btn_xialk zzgj_suozdq"> <option value="">市/地区</option> </select> </li> 
-         <li> <input name="Phone" id="Phone" class="zzgj_index_btn" placeholder=" 填写手机号码，轻松获精准报价" type="text" /> </li> 
-         <li> 
-          <div class="uform-err uform-err-subptype"></div> 
-          <div class="uform-err uform-err-subtype"></div> 
-          <div class="uform-err uform-err-sublv"></div> 
-          <div class="uform-err uform-err-areapid"></div> 
-          <div class="uform-err uform-err-areaid"></div> 
-          <div class="uform-err uform-err-phone"></div> 
-          <div style="float:right;">
-           <input value="免费获取报价" class="zzgj_index_ljsqbtn IndexRegSubmitBtn" style="margin:auto" onclick="Add(2,4)" type="submit" />
-          </div> 
-          <div class="clear"></div> </li> 
-        </ul> 
-       </div> 
-      </form> 
-     </div> 
-     <!-- 管家推荐 --> 
-     <div class="guanj_Recommend"> 
-      <h2>管家推荐</h2> 
-      <div class="guanj_Recommend_list"> 
-       <ul> 
-        <li> <img alt="资质管家" src="__PUBLIC__/Home/images/20151201163557940.jpg" /> <span class="guanj_tuij_name">资质管家</span> 
-         <div class="guanjia_tuij_zhubyw"> 
-          <p class="tuij_diq">北京</p> 
-          <p>施工总承包</p> 
-          <p>专业承包</p> 
-          <p><a href="/gongsi/4417/" target="_blank" title="资质管家（北京）信息技术有限公司">免费获取报价</a></p> 
-         </div> </li> 
-        <li> <img alt="广州携众" src="__PUBLIC__/Home/images/20170516151515875.jpg" /> <span class="guanj_tuij_name">广州携众</span> 
-         <div class="guanjia_tuij_zhubyw"> 
-          <p class="tuij_diq">广东</p> 
-          <p>施工总承包</p> 
-          <p>安全生产许可</p> 
-          <p><a href="/gongsi/7382/" target="_blank" title="广州携众建筑工程咨询有限公司">获取报价</a></p> 
-         </div> </li> 
-        <li> <img alt="山东同聚" src="__PUBLIC__/Home/images/20170519110951515.jpg" /> <span class="guanj_tuij_name">山东同聚</span> 
-         <div class="guanjia_tuij_zhubyw"> 
-          <p class="tuij_diq">山东</p> 
-          <p>施工总承包</p> 
-          <p>专业承包</p> 
-          <p><a href="/gongsi/6199/" target="_blank" title="山东省同聚工程咨询有限公司">获取报价</a></p> 
-         </div> </li> 
-        <li> <img alt="黑龙江宝骏" src="__PUBLIC__/Home/images/20170417180236452.jpg" /> <span class="guanj_tuij_name">黑龙江宝骏</span> 
-         <div class="guanjia_tuij_zhubyw"> 
-          <p class="tuij_diq">黑龙江</p> 
-          <p>专业承包</p> 
-          <p>劳务</p> 
-          <p><a href="/gongsi/6760/" target="_blank" title="黑龙江宝骏建设工程有限公司">获取报价</a></p> 
-         </div> </li> 
-        <li style="margin-bottom: 0px;"> <img alt="上海搜搜" src="__PUBLIC__/Home/images/20160601161405924.jpg" /> <span class="guanj_tuij_name">上海搜搜</span> 
-         <div class="guanjia_tuij_zhubyw"> 
-          <p class="tuij_diq">上海-闸北</p> 
-          <p>施工总承包</p> 
-          <p>专业承包</p> 
-          <p><a href="/gongsi/5847/" target="_blank" title="上海搜搜投资咨询有限公司">获取报价</a></p> 
-         </div> </li> 
-        <li> <img alt="天津尼西" src="__PUBLIC__/Home/images/20170508101500818.jpg" /> <span class="guanj_tuij_name">天津尼西</span> 
-         <div class="guanjia_tuij_zhubyw"> 
-          <p class="tuij_diq">天津</p> 
-          <p>施工总承包</p> 
-          <p>专业承包</p> 
-          <p><a href="/gongsi/7199/" target="_blank" title="尼西（天津）工程管理有限公司">获取报价</a></p> 
-         </div> </li> 
-       </ul> 
-      </div> 
-     </div> 
-     <div class="zgs_clr_fc"> 
-      <span class="zcf_title">如何选择资质代办公司？</span> 
-      <ul> 
-       <li> <span class="zcf_kxy"></span> <b>看口碑</b> <em>数万家企业真实见证</em> </li> 
-       <li> <span class="zcf_bfa"></span> <b>比方案</b> <em>注册/安证方案鼎力支持</em> </li> 
-       <li> <span class="zcf_bbj"></span> <b>比报价</b> <em>多家报价横向对比 0水分</em> </li> 
-       <li> <span class="zcf_bbz"></span> <b>比保障</b> <em>规模/案例 实力应证</em> </li> 
-      </ul> 
-     </div> 
-     <div class="right-bd" style="margin-top:0px;background:none"> 
-      <div class="right-bd-p"> 
-       <p>最新行业资讯</p> 
-       <span><a href="news.html" title="查看更多最新文章" rel="nofollow">更多</a></span> 
-      </div> 
-      <ul> 
-       <li><span>01</span><a href="news_detail.html?7396.html" title="市政资质代理">市政资质代理</a></li> 
-       <li><span>02</span><a href="news_detail.html?7395.html" title="建筑企业资质年审">建筑企业资质年审</a></li> 
-       <li><span>03</span><a href="news_detail.html?7394.html" title="承装修试电力资质代办">承装修试电力资质代办</a></li> 
-       <li><span class="span1">04</span><a href="news_detail.html?7393.html" title="公路工程资质等级标准">公路工程资质等级标准</a></li> 
-       <li><span class="span1">05</span><a href="news_detail.html?7392.html" title="电子与智能化资质代办">电子与智能化资质代办</a></li> 
-      </ul> 
-     </div> 
-    </div> 
+        <!-- 右侧引用 -->
+        <include file="_company_r_daiban" />
    </div> 
    <div class="clear"></div> 
   </div> 
@@ -652,106 +540,9 @@
   <include file="Common/footer" />
 
 
-  <div class="order-popover"> 
-   <div class="pop-close"> 
-    <a href="javascript:void(0)"><img src="__PUBLIC__/Home/images/guanbcon.png" /></a> 
-   </div> 
-   <div class="pop-form"> 
-    <form class="get-price-form" method="post" novalidate="novalidate"> 
-     <input name="IdempotentRequestId" value="22dee109-6d30-4473-a31d-73f55ba57a7e" type="hidden" /> 
-     <input name="CompanyId" value="0" id="pop-companyid" type="hidden" /> 
-     <input value="1" name="TypeId" type="hidden" /> 
-     <div class="pop-row"> 
-      <input name="Phone" class="pop-phone" id="pop-phone" placeholder="请填写手机号码，免费获取精确报价" type="text" /> 
-      <div class="pop-err pop-phone-err error_bg"></div> 
-     </div> 
-     <div class="pop-row"> 
-      <select name="SubjectPid" class="pop-subptype" id="pop-subptype"><option value="">资质类型</option><option value="1">施工总承包资质</option><option value="2">施工专业承包资质</option><option value="3">施工劳务承包资质</option><option value="201">工程设计综合资质</option><option value="212">工程设计行业资质</option><option value="213">工程设计专业资质</option><option value="214">工程设计专项资质</option><option value="215">建筑工程设计事务所资质</option><option value="114">工程勘察综合资质</option><option value="600">工程勘察专业资质</option><option value="620">工程勘察劳务资质</option><option value="102">工程监理综合资质</option><option value="700">工程监理专业资质</option><option value="720">工程监理事务所资质</option><option value="113">工程造价咨询资质</option><option value="115">安防工程资质</option><option value="117">承装电力设施许可证</option><option value="11100">工程招标代理机构资格</option><option value="12100">劳务派遣经营许可证</option><option value="302">房地产开发企业资质</option><option value="303">房地产经纪机构资质</option><option value="304">房地产估价机构资质</option><option value="14100">计算机信息系统集成资质</option><option value="211">环境影响评价资质</option><option value="402">城乡规划编制资质</option><option value="17100">ISO质量管理体系</option><option value="17200">ISO环境管理体系</option><option value="18100">3C产品认证</option><option value="18200">CEP中国环保产品认证</option><option value="18300">欧盟CE产品安全认证</option><option value="18400">中国环境标志认证（十环）</option><option value="18500">ISCCC电子产品认证</option></select> 
-      <div class="pop-err pop-subptype-err error_bg"></div> 
-     </div> 
-     <div class="pop-row"> 
-      <select name="SubjectId" class="pop-subtype" id="pop-subtype"> <option value="">资质专业</option> </select> 
-      <select name="SubjectLv" class="pop-sublv" id="pop-sublv"> <option value="">资质等级</option> </select> 
-      <div class="pop-err-sa pop-subtype-err error_bg"></div> 
-      <div class="pop-err-sa pop-sublv-err error_bg"></div> 
-     </div> 
-     <div class="pop-row"> 
-      <select name="AreaPid" class="pop-areapid" id="pop-areapid"> <option value="">请选择</option> </select> 
-      <select name="AreaId" class="pop-areaid" id="pop-areaid"> <option value="">请选择</option> </select> 
-      <div class="pop-err-sa pop-areapid-err error_bg"></div> 
-      <div class="pop-err-sa pop-areaid-err error_bg"></div> 
-      <div class="resp-err error_bg"></div> 
-     </div> 
-     <div class="pop-row"> 
-      <input class="pop-submit-btn" value="立即申请" type="submit" /> 
-      <input style="display:none" id="reset" type="reset" /> 
-     </div> 
-    </form> 
-   </div> 
-  </div> 
-  <div class="order-suc-popover"> 
-   <div class="pop-close"> 
-    <a href="javascript:void(0)"><img src="__PUBLIC__/Home/images/guanbcon.png" /></a> 
-   </div> 
-   <div class="pop-suc-div"> 
-    <div class="pop-suc-row1">
-     恭喜您完善资料成功
-    </div> 
-    <div class="pop-suc-row2">
-     我们会尽快联系您！
-    </div> 
-    <div class="pop-suc-row3"> 
-     <span>您还可以查看资质管家</span> 
-     <a href="/baojia/">在线委托系统</a> 
-    </div> 
-    <div class="pop-suc-row4"> 
-     <span>您也可以选择</span> 
-     <a href="http://looyuoms7802.looyu.com/chat/chat/p.do?c=20000749&amp;f=10051268&amp;n=wujunqin">人工服务</a> 
-    </div> 
-   </div> 
-  </div> 
-  <div class="theme-popover-mask"></div> 
-  <script async="" src="__PUBLIC__/Home/js/analytics.js"></script>
-  <script src="__PUBLIC__/Home/js/push.js"></script>
-  <script src="__PUBLIC__/Home/js/hm.js?580e9422d1d340fa7711682e41256040"></script>
-  <script>
-    var _hmt = _hmt || [];
-    (function () {
-        var hm = document.createElement("script");
-        hm.src = "__PUBLIC__/Home/js/hm.js?580e9422d1d340fa7711682e41256040";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
-    </script> 
-  <script>
-            (function () {
-                var bp = document.createElement('script');
-                var curProtocol = window.location.protocol.split(':')[0];
-                if (curProtocol === 'https') {
-                    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-                }
-                else {
-                    bp.src = 'js/push.js';
-                }
-                var s = document.getElementsByTagName("script")[0];
-                s.parentNode.insertBefore(bp, s);
-            })();
-        </script> 
-  <script>
-        (function (i, s, o, g, r, a, m) {
-            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date(); a = s.createElement(o),
-            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-        })(window, document, 'script', 'js/analytics.js', 'ga');
+ 
 
-        ga('create', 'UA-101792527-1', 'auto');
-        ga('send', 'pageview');
 
-    </script> 
-  <div style="display: none"> 
-   <a href="http://www.cnzz.com/stat/website.php?web_id=1255699131" target="_blank" title="站长统计">站长统计</a> 
-  </div> 
   <script type="text/javascript" src="__PUBLIC__/Home/js/jquery-1.10.2.min.js"></script> 
   <script type="text/javascript" src="__PUBLIC__/Home/js/header.js"></script> 
   <script type="text/javascript" src="__PUBLIC__/Home/js/roll.js"></script> 
@@ -759,98 +550,16 @@
   <script src="__PUBLIC__/Home/js/jquery.validate.min.js"></script> 
   <script src="__PUBLIC__/Home/js/CompanyList.js"></script> 
   <script type="text/javascript" charset="utf-8" src="__PUBLIC__/Home/js/10051268.js"></script>
-  <div id="doyoo_panel" style="position: fixed; top: 150px; right: 5px; width: 144px;">
-   <div id="ohead" style="background: rgba(0, 0, 0, 0) url(" http:="" yun-static.soperson.com="" 31221="" .="" efault="" mages="" loatwin="" ead_1.gif?131127")="" no-repeat="" scroll="" 0%="" 0%;="" cursor:="" move;"="">
-    <div id="ocls"></div>
-    <div id="omin" onclick=""></div>
-    <div id="otitle">
-     在线客服
-    </div>
-    <div id="oentrance"></div>
-   </div>
-   <div id="ocontent" style="background: rgba(0, 0, 0, 0) url(" http:="" yun-static.soperson.com="" 31221="" .="" efault="" mages="" loatwin="" ack_1.gif?131127")="" repeat-y="" scroll="" 0%="" 0%;="" height:="" 240px;"="">
-    <div id="allcontent">
-     <div class="group_title">
-      <span class="doyoo_group_name">北京资质办理咨询</span>
-     </div>
-     <div class="group_content">
-      <a href="javascript:;" class="doyoo_link doyoo_other" onclick="javascript:doyoo.util.openChat(" n="gouyan&quot;)&quot;">
-       <div class="doyoo_status">
-        电话
-       </div><span class="doyoo_group_name">勾老师</span> </a>
-     </div>
-     <div class="group_content">
-      <a href="javascript:;" class="doyoo_link doyoo_offline" onclick="javascript:doyoo.util.openChat(" n="zhoujianping001&quot;)&quot;">
-       <div class="doyoo_status">
-        留言
-       </div><span class="doyoo_group_name">红彩老师</span> </a>
-     </div>
-     <div class="group_content">
-      <a href="javascript:;" class="doyoo_link doyoo_offline" onclick="javascript:doyoo.util.openChat(" n="why&quot;)&quot;">
-       <div class="doyoo_status">
-        留言
-       </div><span class="doyoo_group_name">宏岩老师</span> </a>
-     </div>
-     <div class="group_content">
-      <a href="javascript:;" class="doyoo_link doyoo_offline" onclick="javascript:doyoo.util.openChat(" n="zhouguomei&quot;)&quot;">
-       <div class="doyoo_status">
-        留言
-       </div><span class="doyoo_group_name">周老师</span> </a>
-     </div>
-     <div class="group_title">
-      <span class="doyoo_group_name">河北资质办理咨询</span>
-     </div>
-     <div class="group_content">
-      <a href="javascript:;" class="doyoo_link doyoo_offline" onclick="javascript:doyoo.util.openChat(" n="licuiping&quot;)&quot;">
-       <div class="doyoo_status">
-        留言
-       </div><span class="doyoo_group_name">李老师</span> </a>
-     </div>
-     <div class="group_title">
-      <span class="doyoo_group_name">财税咨询专区</span>
-     </div>
-     <div class="group_content">
-      <a href="javascript:;" class="doyoo_link doyoo_offline" onclick="javascript:doyoo.util.openChat(" n="caishuizx&quot;)&quot;">
-       <div class="doyoo_status">
-        留言
-       </div><span class="doyoo_group_name">财税咨询</span> </a>
-     </div>
-     <div class="group_title">
-      <span class="doyoo_group_name">法律咨询专区</span>
-     </div>
-     <div class="group_content">
-      <a href="javascript:;" class="doyoo_link doyoo_offline" onclick="javascript:doyoo.util.openChat(" n="falvzx&quot;)&quot;">
-       <div class="doyoo_status">
-        留言
-       </div><span class="doyoo_group_name">法律咨询</span> </a>
-     </div>
-    </div>
-   </div>
-   <div id="ofoot" style="background: rgba(0, 0, 0, 0) url(" http:="" yun-static.soperson.com="" 31221="" .="" efault="" mages="" loatwin="" oot_1.gif?131127")="" no-repeat="" scroll="" 0%="" 0%;"="">
-    <div onclick="javascript:window.open(" http:="" www.looyuoms.com")"=""></div>
-   </div>
-  </div> 
-  <div id="doyoo_monitor" style="background: rgba(0, 0, 0, 0) url(__PUBLIC__/Home/images/dn_sc.gif?131127" );"=""></div>
-  <div id="doyoo_mon_closer"></div> 
-  <div id="talk99_message"></div> 
-  <div id="doyoo_share" style="display:none;"></div> 
-  <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/oms.css?17070503" /> 
-  <script type="text/javascript" src="__PUBLIC__/Home/js/oms.js?170704" charset="utf-8"></script> 
-  <script>
-        var isLogin = "False" == "True" ? true : false;
-        var isBroker = "False" == "True" ? true : false;
-    </script> 
+  <script src="__PUBLIC__/Admin/layui-v1.0.4/layui/layui.js"></script>
+  <script src="__PUBLIC__/layer/layer.js"></script>
+
+
   <script type="text/javascript" src="__PUBLIC__/Home/js/popup.js"></script> 
   <script type="text/javascript" src="__PUBLIC__/Home/js/area_data.js"></script> 
   <script type="text/javascript" src="__PUBLIC__/Home/js/Area.js"></script> 
-  <script type="text/javascript" src="__PUBLIC__/Home/js/index_reg.js?v=20151110"></script> 
   <script src="__PUBLIC__/Home/js/subject_data.js"></script> 
   <script src="__PUBLIC__/Home/js/subject_data_method.js"></script> 
-  <!--
-    资质管家:资质代办,北京资质代办,代办建筑工程资质,资质代理,工商注册,代理记账公司
-    资质管家,资质代办,代办资质,公司注册,代理记账,北京代办资质
-    资质管家(zizhiguanjia.com),靠谱的资质代办平台.北京拥有正规经营资质代办资格的资质代办公司.专注资质代办,代办建筑工程资质,资质代理,工商注册,代理记账等服务.办资质,找资质管家!
-    --> 
+
  </body>
 </html>
 
@@ -891,4 +600,209 @@
       }
       return false;
       } 
+</script>
+
+
+<script type="text/javascript">
+    $(function(){
+        init_editer();
+
+        $('#phone_code').blur(function(){
+            var code=$(this).val();
+            if(code.length==4){
+                _ajax_check_code(code);
+            }
+        });
+    });
+</script>
+
+<script>
+    function _ajax_apply_baojia(_data){
+         $.ajax({  
+             async:false,
+             type:'post',  
+             contentType:"application/x-www-form-urlencoded",
+             url : "{:U('Home/Index/ajax_apply_baojia')}",
+             data: _data,
+             dataType : 'json',
+             success  : function(json) {
+                 if(json.code==0){
+                     alert(json.msg);
+                 }else{
+                     alert(json.msg);
+                 }
+             },
+             error  : function() {  
+                 alert('error');
+             }  
+         }); 
+    }
+
+    function _ajax_check_code(code){
+         $.ajax({  
+             async:false,
+             type:'get',  
+             contentType:"application/x-www-form-urlencoded",
+             url : "{:U('Home/Index/ajax_check_code')}",
+             data: {
+                code:code
+             },
+             dataType : 'json',
+             success  : function(json) {
+                 if(json.code==0){
+                     alert(json.msg);
+                 }else{
+                     alert(json.msg);
+                 }
+             },
+             error  : function() {  
+                 alert('error');
+             }  
+         }); 
+    }
+
+    function init_editer(){
+        layui.use(['form', 'layedit', 'laydate', 'upload'], function(){
+          var form = layui.form()
+          ,layer = layui.layer
+          ,layedit = layui.layedit
+          ,laydate = layui.laydate;
+
+          //自定义验证规则
+          form.verify({
+            title: function(value){
+              if(value.length < 5){
+                return '标题至少得5个字符啊';
+              }
+            }
+            ,pass: [/(.+){6,12}$/, '密码必须6到12位']
+          });
+
+          form.on('select(province)', function(data){
+              var provinceid=data.value;
+              if(provinceid){
+                  _ajax_get_city_select(provinceid);
+              }
+              return false;
+          });
+
+          form.on('select(type_1)', function(data){
+              var type_1=data.value;
+              if(type_1){
+                  _ajax_get_type_2_select(type_1);
+              }
+              return false;
+          });
+
+          form.on('select(type_2)', function(data){
+              var type_2=data.value;
+              if(type_2){
+                  _ajax_get_type_3_select(type_2);
+              }
+              return false;
+          });
+
+          //监听提交
+          form.on('submit(demo1_apply_baojia)', function(data){
+            // console.log(data.field);
+            var _json=_ajax_apply_baojia(data.field);
+            return false;
+          });
+        });
+    }
+
+    function _ajax_get_city_select(provinceid){
+        $.ajax({  
+            async:false,
+            type:'get',  
+            contentType:"application/x-www-form-urlencoded",
+            url : "{:U('Home/Index/ajax_get_city_list')}",
+            data:{
+              provinceid:provinceid
+            },
+            dataType : 'json',
+            success  : function(json) {  
+                if(json.code==0){
+                    var data=json.data;
+
+                    var str="<option value=''>市/地区</option>";
+                    $.each(json.data, function(key, value) {
+                         str+="<option value='"+value.cityid+"'>"+value.first_name+" "+value.city+"</option>";
+                    });
+                    $('#baojia_form .city').html(str);
+                    layui.form().render();
+
+                }else{
+                    layer.msg(json.msg);
+                }
+            },
+            error  : function(json) {  
+                layer.msg(json.msg);
+            }  
+        });
+    }   
+
+    function _ajax_get_type_2_select(type_1) {
+        $.ajax({
+            async: false,
+            type: 'get',
+            contentType: "application/x-www-form-urlencoded",
+            url: "{:U('Home/Index/ajax_get_type_list')}",
+            data: {
+                type: type_1
+            },
+            dataType: 'json',
+            success: function(json) {
+                if (json.code == 0) {
+                    var data = json.data;
+
+                    var str = "<option value=''>资质专业</option>";
+                    $.each(json.data,
+                    function(key, value) {
+                        str += "<option value='" + value.id + "'>" + value.title + "</option>";
+                    });
+
+                    $('#baojia_form .type_2').html(str);
+                    layui.form().render();
+                } else {
+                    layer.msg(json.msg);
+                }
+            },
+            error: function(json) {
+                layer.msg(json.msg);
+            }
+        });
+    }
+
+    function _ajax_get_type_3_select(type_2) {
+        $.ajax({
+            async: false,
+            type: 'get',
+            contentType: "application/x-www-form-urlencoded",
+            url: "{:U('Home/Index/ajax_get_type_list')}",
+            data: {
+                type: type_2
+            },
+            dataType: 'json',
+            success: function(json) {
+                if (json.code == 0) {
+                    var data = json.data;
+
+                    var str = "";
+                    $.each(json.data,
+                    function(key, value) {
+                        str += "<option value='" + value.id + "'>" + value.title + "</option>";
+                    });
+
+                    $('#baojia_form .type_3').html(str);
+                    layui.form().render();
+                } else {
+                    layer.msg(json.msg);
+                }
+            },
+            error: function(json) {
+                layer.msg(json.msg);
+            }
+        });
+    }
 </script>

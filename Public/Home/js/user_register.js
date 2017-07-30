@@ -34,7 +34,7 @@ $("#agententer_form").validate({
             required: true,
             isMobile: true,
             remote: {
-                url: "/user/userbasicisexist",
+                url: ""+Home_User_userbasicisexist+"",
                 type: "post",
                 dataType: "json",
                 data: { phone: function () { return $("#Phone").val(); } }
@@ -105,7 +105,6 @@ $("#agententer_form").validate({
     success: function (element) {
     },
     submitHandler: function () {
-        alert(1111)
         if (!$("#hint").is(":hidden") && $("#IdentifyingCode").val() == "") {
             formSubmit();
         } else {
@@ -126,10 +125,12 @@ $("#agententer_form").validate({
 function formSubmit() {
     $("#identifyingCode_error").text("");
     $("#identifyingCode_error").removeClass("error_bg");
-    $.post("/user/agententer", $("#agententer_form").serialize(), function (data) {
+    $.post(""+Home_User_agent_register+"", $("#agententer_form").serialize(), function (data) {
+        var data=JSON.parse(data);
+        // console.log(data);return;
         if (data.IsSuccess) {
             var strPhone = $("#Phone").val().substring(0, 3);
-            location.href = "/user/agententer?isperfect=true&phone=" + strPhone;
+            location.href = "ruzhu_success.html?phone=" + strPhone;
         }
     });
 }

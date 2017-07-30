@@ -12,8 +12,8 @@ class UserController extends CommonController{
     public function register(){
         if($_POST){
             $data=array();
-            $data['Contact']=$_POST['Contact'];
-            $data['Phone']=$_POST['Phone'];
+            $data['truename']=$_POST['Contact'];
+            $data['phone']=$_POST['Phone'];
             $data['password']=md5($_POST['password']);
             if($_POST['CompanyType']==0){
                 $gid=22;//建筑企业
@@ -25,6 +25,9 @@ class UserController extends CommonController{
 
             $id=M('User')->add($data);
             if($id){
+                $row=M('User')->find($id);
+                session('userinfo',$row);
+
                 $data=array();
                 $data['IsSuccess']=true;
                 $data['CompanyType']=$_POST['CompanyType'];
@@ -80,35 +83,87 @@ class UserController extends CommonController{
 
     public function userbasicisexist(){
         $phone=$_POST['phone'];
-        // send_code($phone);
-        if(1){
-            echo 'true';
-        }else{
-            echo 'false';
+        if($phone){
+            $row=M('User')->where(array('phone'=>$phone))->find();
+            if(!$row){
+                echo 'true';
+            }else{
+                echo 'false';
+            }
         }
-        
     }
 
 
     public function getvalidatecode(){
         $phone=$_POST['phone'];
 
-        $data=array();
-        $data['IsSuccess']=true;
-        $data['Msg']='发送短信并添加记录成功';
+        if($phone){
+            $res= send_code($phone);
+            if($res['http_code']==200){
+                $body_data=json_decode($res['body'],true);
 
-        echo json_encode($data);
-        // send_code($phone);
+                //记录短信验证码信息
+                $data=array();
+                $data['phone']=$phone;
+                $data['msg_id']=$body_data['msg_id'];
+                $data['time']=time();
+                $data['ip']=get_client_ip();
+
+                $id=M('JsmsLog')->add($data);
+                if($id){
+                    $data=array();
+                    $data['IsSuccess']=true;
+                    $data['Msg']='发送短信并添加记录成功';
+                }else{
+                    $data=array();
+                    $data['IsSuccess']=false;
+                    $data['Msg']='发送成功但记录日志失败';
+                }
+            }else{
+                $data=array();
+                $data['IsSuccess']=false;
+                $data['Msg']=$res['error']['msg'];
+            }
+
+            echo json_encode($data);
+        }
     }
 
     public function checkvalidatecode(){
         $phone=$_POST['phone'];
+        $code=$_POST['code'];
 
-        $data=array();
-        $data['IsSuccess']=true;
-        $data['Msg']='手机验证成功';
+        if($phone&&$code){
 
-        echo json_encode($data);
+            $row=M('JsmsLog')->where(array('phone'=>$phone))->order('id desc')->find();
+            if($row){
+                $msg_id=$row['msg_id'];
+
+                $res=check_code($msg_id, $code);
+                if($res['http_code']==200){
+                    $body_data=json_decode($res['body'],true);
+                    if($body_data['is_valid']==true){
+                        $data=array();
+                        $data['IsSuccess']=true;
+                        $data['Msg']='验证成功'; 
+                    }else{
+                        $data=array();
+                        $data['IsSuccess']=false;
+                        $data['Msg']='验证失败'; 
+                    }
+                }else{
+                    $data=array();
+                    $data['IsSuccess']=false;
+                    $data['Msg']='验证失败'; 
+                }
+            }else{
+                $data=array();
+                $data['IsSuccess']=false;
+                $data['Msg']='验证失败'; 
+            }
+
+            echo json_encode($data);
+        }
     }
 
 
