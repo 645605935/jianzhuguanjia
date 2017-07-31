@@ -13,6 +13,23 @@ class IndexController extends CommonController{
     }
 
     public function index(){
+
+        $province=M('Province')->select();
+
+        // 右侧分类
+        $daiban_type=M('Type')->where(array('pid'=>1275))->select();
+
+        // 右侧分类
+        $safe_type_1=M('Type')->where(array('pid'=>1377))->select();//办理类型
+        $safe_type_2=M('Type')->where(array('pid'=>1378))->select();//资质情况
+        $safe_type_3=M('Type')->where(array('pid'=>1379))->select();//人员情况
+
+        $this->province=$province;
+        $this->daiban_type=$daiban_type;
+        $this->safe_type_1=$safe_type_1;
+        $this->safe_type_2=$safe_type_2;
+        $this->safe_type_3=$safe_type_3;
+        $this->index="首页";
         $this->display();
     }
 

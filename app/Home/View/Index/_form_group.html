@@ -1,0 +1,315 @@
+<style type="text/css">
+	.banner_content .banner_content_form{width: auto!important;top:6px;height: 338px;}
+	.banner_content .banner_content_form .layui-tab-content{padding: 0px;}
+	.banner_content .banner_content_form .layui-table{margin: 0px;}
+	
+    #daiban_form table{width: 300px;background: none;}
+    #daiban_form .div_300{width: 100%;}
+    #daiban_form .div_150{width: 125px;}
+    #daiban_form .div_180{width: 150px;}
+    #daiban_form .layui-table td{padding:5px 12px;border: 0px;}
+
+    #safe_form table{width: 300px;background: none;}
+    #safe_form .div_300{width: 100%;}
+    #safe_form .div_150{width: 125px;}
+    #safe_form .div_180{width: 150px;}
+    #safe_form .layui-table td{padding:5px 12px;border: 0px;}
+
+
+    #zhizgj_left{height: auto!important;}
+</style>
+
+
+<div class="layui-tab">
+    <ul class="layui-tab-title">
+        <li class="layui-this">办资质</li>
+        <li>办安证</li>
+        <li>开公司</li>
+    </ul>
+    <div class="layui-tab-content">
+        <div class="layui-tab-item layui-show">
+        	<!-- 表单开始【代办】 -->
+        	<form class="layui-form layui-form-pane col-xs-12" method="post" action="" id="daiban_form" enctype="multipart/form-data">
+        	    <table class="layui-table">
+        	      <colgroup>
+        	          <col width="50%">
+        	          <col>
+        	      </colgroup>
+        	      <tbody>
+
+        	        <tr>
+        	          <td colspan="2">
+        	            <div class="layui-input-inline div_300">
+        	              <select name="type_1" class="type_1" lay-filter="daiban_type_1" lay-verify="required" >
+        	                <option value="">资质类型</option>
+        	                <foreach name="daiban_type" item="v">
+        	                    <option value="{$v['id']}">{$v['title']}</option>
+        	                </foreach>
+        	              </select>
+        	            </div>
+        	          </td>
+        	        </tr>
+
+        	        <tr>
+        	          <td>
+        	            <div class="layui-input-inline div_150">
+        	              <select name="type_2" class="type_2" lay-filter="daiban_type_2" lay-verify="required" >
+        	                <option value="">资质专业</option>
+        	              </select>
+        	            </div>
+        	          </td>
+        	          <td>
+        	            <div class="layui-input-inline div_150">
+        	              <select name="type_3" class="type_3" lay-verify="required" >
+        	                <option value="">资质等级</option>
+        	              </select>
+        	            </div>
+        	          </td>
+        	        </tr>
+
+        	        <tr>
+        	          <td>
+        	            <div class="layui-input-inline div_150">
+        	              <select name="province" class="province" lay-filter="daiban_province" lay-verify="required" >
+        	                <option value="">省/市</option>
+        	                <foreach name="province" item="v">
+        	                    <option value="{$v['provinceid']}">{$v['first_name']} {$v['province']}</option>
+        	                </foreach>
+        	              </select>
+        	            </div>
+        	          </td>
+        	          <td>
+        	            <div class="layui-input-inline div_150">
+        	              <select name="city" class="city" lay-filter="city" lay-verify="required" >
+        	                <option value="">市/地区</option>
+        	              </select>
+        	            </div>
+        	          </td>
+        	        </tr>
+
+        	        <tr>
+        	          <td colspan="2">
+        	            <div class="layui-input-inline div_300">
+        	              <input type="tel" name="phone" lay-verify="phone" placeholder="填写手机号码，轻松获精准报价" class="layui-input phone">
+        	            </div>
+        	          </td>
+        	        </tr>
+        	        <tr>
+        	          <td colspan="2">
+        	            <div class="layui-input-inline div_180">
+        	              <input type="text" name="code" autocomplete="off" placeholder="手机验证码" class="layui-input code" id="phone_code">
+        	            </div>
+        	            <label class="layui-form-label" style="float:right;width:103px;">获取验证码</label>
+        	          </td>
+        	        </tr>
+
+        	      </tbody>
+        	      <tfoot>
+        	        <tr>
+        	          <td colspan="2" style="text-align:center;">
+        	             <input type="hidden" name="type" value='1' placeholder="资质代办" autocomplete="off" class="layui-input">
+        	             <input id="apply_daiban" value="免费获取精准报价" lay-submit="" lay-filter="demo1_apply_daiban" class="btn btn-primary btn-large" />
+        	          </td>
+        	        </tr>
+        	      </tfoot>
+        	    </table>
+
+        	 </form>
+        	<!-- 表单结束 【代办】-->
+        </div>
+        <div class="layui-tab-item">
+			<!-- 表单开始 【安证】-->
+			<form class="layui-form layui-form-pane col-xs-12" method="post" action="" id="safe_form" enctype="multipart/form-data">
+			    <table class="layui-table">
+			      <colgroup>
+			          <col width="50%">
+			          <col>
+			      </colgroup>
+			      <tbody>
+
+			        <tr>
+			          <td colspan="2">
+			            <div class="layui-input-inline div_300">
+			              <select name="type_1" class="type_1" lay-filter="type_1" lay-verify="required" >
+			                <option value="">办理类型</option>
+			                <foreach name="safe_type_1" item="v">
+			                    <option value="{$v['id']}">{$v['title']}</option>
+			                </foreach>
+			              </select>
+			            </div>
+			          </td>
+			        </tr>
+
+			        <tr>
+			          <td>
+			            <div class="layui-input-inline div_150">
+			              <select name="type_2" class="type_2" lay-filter="type_2" lay-verify="required" >
+                            <option value="">资质情况</option>
+                            <foreach name="safe_type_2" item="v">
+                                <option value="{$v['id']}">{$v['title']}</option>
+                            </foreach>
+                          </select>
+			            </div>
+			          </td>
+			          <td>
+			            <div class="layui-input-inline div_150">
+			              <select name="type_3" class="type_3" lay-filter="type_3" lay-verify="required" >
+                            <option value="">人员情况</option>
+                            <foreach name="safe_type_2" item="v">
+                                <option value="{$v['id']}">{$v['title']}</option>
+                            </foreach>
+                          </select>
+			            </div>
+			          </td>
+			        </tr>
+
+			        <tr>
+			          <td>
+			            <div class="layui-input-inline div_150">
+			              <select name="province" class="province" lay-filter="safe_province" lay-verify="required" >
+			                <option value="">省/市</option>
+			                <foreach name="province" item="v">
+			                    <option value="{$v['provinceid']}">{$v['first_name']} {$v['province']}</option>
+			                </foreach>
+			              </select>
+			            </div>
+			          </td>
+			          <td>
+			            <div class="layui-input-inline div_150">
+			              <select name="city" class="city" lay-filter="city" lay-verify="required" >
+			                <option value="">市/地区</option>
+			              </select>
+			            </div>
+			          </td>
+			        </tr>
+
+			        <tr>
+			          <td colspan="2">
+			            <div class="layui-input-inline div_300">
+			              <input type="tel" name="phone" lay-verify="phone" placeholder="填写手机号码，轻松获精准报价" class="layui-input phone">
+			            </div>
+			          </td>
+			        </tr>
+			        <tr>
+			          <td colspan="2">
+			            <div class="layui-input-inline div_180">
+			              <input type="text" name="code" autocomplete="off" placeholder="手机验证码" class="layui-input code" id="phone_code">
+			            </div>
+			            <label class="layui-form-label" style="float:right;width:103px;">获取验证码</label>
+			          </td>
+			        </tr>
+
+			      </tbody>
+			      <tfoot>
+			        <tr>
+			          <td colspan="2" style="text-align:center;">
+			             <input type="hidden" name="type" value='1' placeholder="资质代办" autocomplete="off" class="layui-input">
+			             <input id="right_apply_baojia" value="免费获取精准报价" lay-submit="" lay-filter="demo1_apply_baojia" class="btn btn-primary btn-large" />
+			          </td>
+			        </tr>
+			      </tfoot>
+			    </table>
+
+			 </form>
+			<!-- 表单结束 【安证】-->
+        </div>
+        <div class="layui-tab-item">
+			<!-- 表单开始 -->
+			<form class="layui-form layui-form-pane col-xs-12" method="post" action="" id="baojia_form" enctype="multipart/form-data">
+			    <table class="layui-table">
+			      <colgroup>
+			          <col width="50%">
+			          <col>
+			      </colgroup>
+			      <tbody>
+
+			        <tr>
+			          <td colspan="2">
+			            <div class="layui-input-inline div_300">
+			              <select name="type_1" class="type_1" lay-filter="type_1" lay-verify="required" >
+			                <option value="">办理类型</option>
+			                <foreach name="safe_type_1" item="v">
+			                    <option value="{$v['id']}">{$v['title']}</option>
+			                </foreach>
+			              </select>
+			            </div>
+			          </td>
+			        </tr>
+
+			        <tr>
+			          <td>
+			            <div class="layui-input-inline div_150">
+			              <select name="type_2" class="type_2" lay-filter="type_2" lay-verify="required" >
+                            <option value="">资质情况</option>
+                            <foreach name="safe_type_2" item="v">
+                                <option value="{$v['id']}">{$v['title']}</option>
+                            </foreach>
+                          </select>
+			            </div>
+			          </td>
+			          <td>
+			            <div class="layui-input-inline div_150">
+			              <select name="type_3" class="type_3" lay-filter="type_3" lay-verify="required" >
+                            <option value="">人员情况</option>
+                            <foreach name="safe_type_2" item="v">
+                                <option value="{$v['id']}">{$v['title']}</option>
+                            </foreach>
+                          </select>
+			            </div>
+			          </td>
+			        </tr>
+
+			        <tr>
+			          <td>
+			            <div class="layui-input-inline div_150">
+			              <select name="province" class="province" lay-filter="province" lay-verify="required" >
+			                <option value="">省/市</option>
+			                <foreach name="province" item="v">
+			                    <option value="{$v['provinceid']}">{$v['first_name']} {$v['province']}</option>
+			                </foreach>
+			              </select>
+			            </div>
+			          </td>
+			          <td>
+			            <div class="layui-input-inline div_150">
+			              <select name="city" class="city" lay-filter="city" lay-verify="required" >
+			                <option value="">市/地区</option>
+			              </select>
+			            </div>
+			          </td>
+			        </tr>
+
+			        <tr>
+			          <td colspan="2">
+			            <div class="layui-input-inline div_300">
+			              <input type="tel" name="phone" lay-verify="phone" placeholder="填写手机号码，轻松获精准报价" class="layui-input phone">
+			            </div>
+			          </td>
+			        </tr>
+			        <tr>
+			          <td colspan="2">
+			            <div class="layui-input-inline div_180">
+			              <input type="text" name="code" autocomplete="off" placeholder="手机验证码" class="layui-input code" id="phone_code">
+			            </div>
+			            <label class="layui-form-label" style="float:right;width:103px;">获取验证码</label>
+			          </td>
+			        </tr>
+
+			      </tbody>
+			      <tfoot>
+			        <tr>
+			          <td colspan="2" style="text-align:center;">
+			             <input type="hidden" name="type" value='1' placeholder="资质代办" autocomplete="off" class="layui-input">
+			             <input id="right_apply_baojia" value="免费获取精准报价" lay-submit="" lay-filter="demo1_apply_baojia" class="btn btn-primary btn-large" />
+			          </td>
+			        </tr>
+			      </tfoot>
+			    </table>
+
+			 </form>
+			<!-- 表单结束 -->
+        </div>
+    </div>
+</div>
+
+
