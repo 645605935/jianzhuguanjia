@@ -34,7 +34,13 @@
       <div class="icon-knowl1"></div> 
       <div class="icon-knowl2"></div> 
       <b>知识库<span style="display:inline">knowledge base</span></b> 
-      <span style="display:block"> <h2><a href="news_detail.html?zzdb/" title="行业新闻">行业新闻</a></h2> <h2><a href="news_detail.html?zzzc/" title="政策动态">政策动态</a></h2> <h2><a href="news_detail.html?zzwd/" title="资质百科">资质百科</a></h2> </span> 
+          <span style="display:block">
+
+              <foreach name="news_type" item="v">
+                  <h2><a href="{:U('Home/Index/news_detail',array('id'=>$v['id']))}" title="{$v.title}">{$v.title}</a></h2>
+              </foreach>
+             
+          </span>
      </div> 
      <div class="zsbase-l" style="margin-top:10px;"> 
       <div class="icon-knowl1"></div> 
@@ -91,71 +97,29 @@
     </div> 
     <div class="zsbase-r"> 
      <ul style="margin:25px;"> 
-      <li> 
-       <div class="kn-time"> 
-        <h3> <a style="width: 600px; color: #333;" href="news_detail.html?7273.html" title="装修施工资质等级标准是什么？" target="_blank">装修施工资质等级标准是什么？</a> <span><i class="icon-k2"></i>发布时间：2017-06-27</span> <span><i class="icon-k1"></i>浏览：964</span> <span> <i class="icon-k3"></i>标签： 装饰装修资质<label>&nbsp;&nbsp;</label> </span> </h3> 
-       </div> <p>　　在装修这个行业，要求是很严格的，不是谁想装修就能装修的，就算能装修也要有一定的资质，而且装修施工资质也是有分级的，建筑装饰工程施工企业资质等级标准，是具有良好的社会信誉和相应的经济实力的企业等级测定标准。那么装修施工资质分几级?今天就由....</p> </li> 
-      <li> 
-       <div class="kn-time"> 
-        <h3> <a style="width: 600px; color: #333;" href="news_detail.html?7193.html" title="劳务承包需要资质吗" target="_blank">劳务承包需要资质吗</a> <span><i class="icon-k2"></i>发布时间：2017-06-12</span> <span><i class="icon-k1"></i>浏览：735</span> <span> <i class="icon-k3"></i>标签： 施工劳务资质<label>&nbsp;&nbsp;</label> </span> </h3> 
-       </div> <p>劳务承包需要施工劳务资质，资质不分类别和等级。　　资质标准　　1、 企业资产 ：　　(1)净资产 200 万元以上。　　(2)具有固定的经营场所。　　2、 企业主要人员 ：　　(1)技术负责人具有工程序列中级以上职称或高级工以上资格。　　(....</p> </li> 
-      <li> 
-       <div class="kn-time"> 
-        <h3> <a style="width: 600px; color: #333;" href="news_detail.html?7186.html" title="全面解析2017年安全生产许可证延期办理材料！" target="_blank">全面解析2017年安全生产许可证延期办理材料！</a> <span><i class="icon-k2"></i>发布时间：2017-06-10</span> <span><i class="icon-k1"></i>浏览：738</span> <span> <i class="icon-k3"></i>标签： 安全生产许可证<label>&nbsp;&nbsp;</label> </span> </h3> 
-       </div> <p>有些建筑企业在承接工程的时候是需要办理安全生产许可证的，办理资质之后办理安全生产许可证才能够承接工程，到期之后也是需要办理延期的，2017年安全生产许可证延期需要提交哪些材料呢?资质管家小编来为为您解答。　　郑州市建筑安全生产许可证办理资料....</p> </li> 
-      <li> 
-       <div class="kn-time"> 
-        <h3> <a style="width: 600px; color: #333;" href="news_detail.html?7182.html" title="建筑企业怎么有效管理建筑资质" target="_blank">建筑企业怎么有效管理建筑资质</a> <span><i class="icon-k2"></i>发布时间：2017-06-09</span> <span><i class="icon-k1"></i>浏览：752</span> <span> <i class="icon-k3"></i>标签： 建筑资质<label>&nbsp;&nbsp;</label> </span> </h3> 
-       </div> <p>　　建筑资质对于一家企业来说有着很大的作用，如果企业没有建筑资质，就不能承接工程施工，也无法证明企业的实力，别人就无法信任你的企业。所以现在建筑企业很重视资质办理，那么拿到建筑资质后建筑企业应该怎么有效管理建筑资质呢?下面资质管家就针对建筑....</p> </li> 
-      <li> 
-       <div class="kn-time"> 
-        <h3> <a style="width: 600px; color: #333;" href="news_detail.html?7175.html" title="冶金工程施工总承包二级资质2017最新标准" target="_blank">冶金工程施工总承包二级资质2017最新标准</a> <span><i class="icon-k2"></i>发布时间：2017-06-08</span> <span><i class="icon-k1"></i>浏览：600</span> <span> <i class="icon-k3"></i>标签： 冶金工程施工资质<label>&nbsp;&nbsp;</label> </span> </h3> 
-       </div> <p>我国的冶金工程长期以来对国外技术装备都很依赖，国内冶金技术自主创新能力没有很大的提升，但是相信未来我国冶金技术经过自主创新后肯定会有质的飞跃。企业要承包冶金工程施工就需要办理相关资质，冶金工程施工是总承包资质中的一项，有四个等级之分。那么冶....</p> </li> 
-      <li> 
-       <div class="kn-time"> 
-        <h3> <a style="width: 600px; color: #333;" href="news_detail.html?7174.html" title="建筑幕墙工程专业承包一级资质申请办理标准" target="_blank">建筑幕墙工程专业承包一级资质申请办理标准</a> <span><i class="icon-k2"></i>发布时间：2017-06-08</span> <span><i class="icon-k1"></i>浏览：773</span> <span> <i class="icon-k3"></i>标签： 幕墙资质<label>&nbsp;&nbsp;</label> </span> </h3> 
-       </div> <p>任何建筑物都需要建筑幕墙，建筑幕墙是指建筑物不承重的外墙维护。随着建筑行业的不断规范，完成不同的工程项目都需要具备相关的建筑企业资质。办理建筑企业资质肯定需要达到相关的资质标准要求。那么办理建筑幕墙工程专业承包一级资质有哪些标准呢?　　建筑....</p> </li> 
-      <li> 
-       <div class="kn-time"> 
-        <h3> <a style="width: 600px; color: #333;" href="news_detail.html?7173.html" title="特级房屋建筑工程施工总承包企业资质标准" target="_blank">特级房屋建筑工程施工总承包企业资质标准</a> <span><i class="icon-k2"></i>发布时间：2017-06-08</span> <span><i class="icon-k1"></i>浏览：564</span> <span> <i class="icon-k3"></i>标签： 建筑施工资质<label>&nbsp;&nbsp;</label> </span> </h3> 
-       </div> <p>总承包资质一般都会有资质等级，而且常常有特级资质，房屋建筑工程施工总承包资质也不例外。房屋建筑工程施工总承包企业资质有特级、一级、二级、三级的等级之分，不同的等级肯定有不同的标准。那么特级房屋建筑工程施工总承包资质标准有哪些呢?资质管家将在....</p> </li> 
-      <li> 
-       <div class="kn-time"> 
-        <h3> <a style="width: 600px; color: #333;" href="news_detail.html?7172.html" title="申请承装修试电力设施许可证需要具备哪些条件" target="_blank">申请承装修试电力设施许可证需要具备哪些条件</a> <span><i class="icon-k2"></i>发布时间：2017-06-08</span> <span><i class="icon-k1"></i>浏览：1127</span> <span> <i class="icon-k3"></i>标签： 电力施工资质<label>&nbsp;&nbsp;</label> </span> </h3> 
-       </div> <p>电力设施是我们生活的一部分，企业想要承接电力设施承装、承修、承试业务就需要具备相关的资质，也就是我们说的承装修试电力设施许可证，而承装修试电力设施许可证有承装、承修、承试三个类别，办理不同类别的资质需要具备不同的条件。那么申请承装修试电力设....</p> </li> 
-      <li> 
-       <div class="kn-time"> 
-        <h3> <a style="width: 600px; color: #333;" href="news_detail.html?7171.html" title="办理工程设计综合资质需要具备哪些条件" target="_blank">办理工程设计综合资质需要具备哪些条件</a> <span><i class="icon-k2"></i>发布时间：2017-06-08</span> <span><i class="icon-k1"></i>浏览：683</span> <span> <i class="icon-k3"></i>标签： 工程设计资质<label>&nbsp;&nbsp;</label> </span> </h3> 
-       </div> <p>　　根据工程设计资质标准的相关规定，工程设计综合资质只设立甲级资质一个级别，工程设计综合资质是涵盖21个行业的设计资质。　　工程设计资质根据涵盖行业的不同分为四个序列，不同序列的工程设计资质可以承接不同的工程项目，所以在办理工程设计资质的时....</p> </li> 
-      <li> 
-       <div class="kn-time"> 
-        <h3> <a style="width: 600px; color: #333;" href="news_detail.html?7170.html" title="造成监理企业资质升级不成功有哪些原因" target="_blank">造成监理企业资质升级不成功有哪些原因</a> <span><i class="icon-k2"></i>发布时间：2017-06-08</span> <span><i class="icon-k1"></i>浏览：598</span> <span> <i class="icon-k3"></i>标签： 工程监理资质<label>&nbsp;&nbsp;</label> </span> </h3> 
-       </div> <p>　　住建部定期会对申请建筑企业资质的材料进行审查然后对审查意见进行公示。近日住建部发布了建筑工程企业资质申请专家审查意见公示，根据《行政许可法》及有关建设工程企业资质管理规定，对近期申请建设工程企业资质的申报材料进行了审查。工程监理企业资质....</p> </li> 
-      <li> 
-       <div class="kn-time"> 
-        <h3> <a style="width: 600px; color: #333;" href="news_detail.html?7166.html" title="建筑施工企业怎么办理安全生产许可证" target="_blank">建筑施工企业怎么办理安全生产许可证</a> <span><i class="icon-k2"></i>发布时间：2017-06-06</span> <span><i class="icon-k1"></i>浏览：535</span> <span> <i class="icon-k3"></i>标签： 安全生产许可证<label>&nbsp;&nbsp;</label> </span> </h3> 
-       </div> <p>安全生产许可证是建筑施工企业必须要有的资质，不然企业就不能进行生产施工活动，但办理安全生产许可证并不是一件很简单的事情，需要准备的东西有很多，从人员配置到各种规章制度，整个流程下来也需要几个月的时间，而企业自己办理安全许可证常常因为准备不充....</p> </li> 
-      <li> 
-       <div class="kn-time"> 
-        <h3> <a style="width: 600px; color: #333;" href="news_detail.html?7164.html" title="办理施工总承包资质全流程" target="_blank">办理施工总承包资质全流程</a> <span><i class="icon-k2"></i>发布时间：2017-06-06</span> <span><i class="icon-k1"></i>浏览：864</span> <span> <i class="icon-k3"></i>标签： 建筑施工资质<label>&nbsp;&nbsp;</label> </span> </h3> 
-       </div> <p>众所周知建筑资质对于建筑企业来说有着至关重要的作用，如果建筑企业没有资质那么就没有办法施工，对企业的发展有很大的影响，而资质办理并非我们想的那么简单，特别是对于资质的管理是需要随时留意的。企业资质管理包括了资质办理、升级、增项等内容，不同的....</p> </li> 
+
+          <foreach name="list" item="v">
+              <li>
+                  <div class="kn-time">
+                      <h3>
+                          <a style="width: 600px; color: #333;" href="news_detail.html?7273.html" title="{$v.title}" target="_blank">{$v.title}</a>
+                          <span>
+                              <i class="icon-k2"></i>发布时间：{$v.time}</span>
+                          <span>
+                              <i class="icon-k1"></i>浏览：{$v.eye}</span>
+                          <span>
+                              <i class="icon-k3"></i>标签： {$v.tag}
+                              <label>&nbsp;&nbsp;</label></span>
+                      </h3>
+                  </div>
+                  <p>{$v.desc}</p>
+              </li>
+          </foreach>
+          
      </ul> 
      <link href="__PUBLIC__/Home/css/Page.css" rel="stylesheet" type="text/css" /> 
      <div class="pages"> 
-      <span>1</span> 
-      <a href="/zs/pn2/">2</a> 
-      <a href="/zs/pn3/">3</a> 
-      <a href="/zs/pn4/">4</a> 
-      <a href="/zs/pn5/">5</a> 
-      <a href="/zs/pn6/">6</a> 
-      <a href="/zs/pn7/">7</a> 
-      <a href="/zs/pn8/">8</a> 
-      <a href="/zs/pn9/">9</a> 
-      <a href="/zs/pn10/">10</a> 
-      <span class="point">..</span> 
-      <a href="/zs/pn589/">589</a> 
-      <a href="/zs/pn2/" class="a1 next">下一页</a> 
-      <a class="a1 counts">共7064条</a> 
+        {$page}
      </div> 
     </div> 
     <div class="clear"></div> 
