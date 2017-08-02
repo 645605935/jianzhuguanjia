@@ -5,12 +5,18 @@
   <title></title> 
   <link type="text/css" rel="stylesheet" href="__PUBLIC__/Home/css/usercenter.css?v=20160601" /> 
   <link href="__PUBLIC__/Home/css/broker.css" rel="stylesheet" /> 
-  <script async="" src="__PUBLIC__/Home/js/analytics.js"></script>
-  <script src="__PUBLIC__/Home/js/push.js"></script>
-  <script src="__PUBLIC__/Home/js/hm.js?580e9422d1d340fa7711682e41256040"></script>
+  <link rel="stylesheet" href="__PUBLIC__/Admin/layui-v1.0.4/layui/css/layui.css"  media="all">
+
+  <style type="text/css">
+      #search_table .layui-form-item{margin-bottom: 0px;}
+  </style>
+
+
   <script type="text/javascript" src="__PUBLIC__/Home/js/jquery-1.10.2.js"></script> 
   <script type="text/javascript" src="__PUBLIC__/Home/js/jquery.validate.js"></script> 
   <script type="text/javascript" src="__PUBLIC__/Home/js/popup.js"></script> 
+  <script src="__PUBLIC__/Admin/layui-v1.0.4/layui/layui.js"></script>
+  <script src="__PUBLIC__/layer/layer.js"></script>
  </head> 
  <body> 
   <!-- 头部引用 -->
@@ -29,19 +35,140 @@
    <link href="__PUBLIC__/Home/css/css.css" rel="stylesheet" /> 
    <link href="__PUBLIC__/Home/css/lanrenzhijia2.css" rel="stylesheet" /> 
    <div class="mion_right" style="margin-top: 0;"> 
-    <div class="content_box"> 
-     <input id="show" value="" type="hidden" /> 
-     <input id="selectedOrderUid" value="" type="hidden" /> 
-     <input id="NowTicketCount" value="3" type="hidden" /> 
-     <h4><span></span></h4> 
-     <form method="post" action="/usercenter/brokerorder" id="search_form">
-       日期查询：
-      <select class="text" name="TimeType" id="TimeType"> <option value="0">全部类型</option> <option value="1">一天内</option> <option value="7">一周内</option> <option value="30">最近一个月</option> <option value="180">最近半年</option> <option value="365">最近一年</option> </select> 订单号：
-      <input class="text" id="OrderNum" name="OrderNum" type="text" /> 
-      <input value="查询" class="button" id="Search" type="submit" /> 
-     </form> 
-     <span>您还没有任何订单。</span> 
-    </div> 
+      <div class="content_box">
+          <input id="show" value="" type="hidden" />
+          <input id="selectedOrderUid" value="" type="hidden" />
+          <input id="NowTicketCount" value="3" type="hidden" />
+          <h4>
+              <span>订单管理</span>
+          </h4>
+
+
+
+          <form class="layui-form layui-form-pane col-xs-12" action="" method="post">
+              <table class="layui-table" id="search_table">
+                <thead>
+                  <tr>
+                    <th>搜索</th>
+                  </tr> 
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                        <div class="layui-inline" style="margin-top: 5px;">
+                          <div class="layui-form-item">
+                            <label class="layui-form-label">订单号</label>
+                            <div class="layui-input-inline">
+                              <input type="text" name="order_no" value="{$_POST['order_no']}" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input order_no">
+                            </div>
+                          </div>
+                        </div>  
+
+                        <div class="layui-inline" style="margin-top: 5px;">
+                          <div class="layui-form-item">
+                            <label class="layui-form-label">订单状态</label>
+                            <div class="layui-input-inline">
+                              <select name="status" class="status">
+                                <option value="请选择">全部</option>
+                                <option value="未维护" <if condition="$_POST['status'] eq '未维护'">selected</if>>未维护</option>
+                                <option value="未解决" <if condition="$_POST['status'] eq '未解决'">selected</if>>未解决</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div> 
+
+                        <div class="layui-inline" style="margin-top: 5px;">
+                          <div class="layui-form-item">
+                            <label class="layui-form-label">日期查询</label>
+                            <div class="layui-input-inline">
+                              <input class="layui-input Date1" name="Date1" value="{$_POST['Date1']}" placeholder="开始日" id="LAY_demorange_s">
+                            </div>
+                            <div class="layui-input-inline">
+                              <input class="layui-input Date2" name="Date2" value="{$_POST['Date2']}" placeholder="截止日" id="LAY_demorange_e">
+                            </div>
+                          </div>
+                        </div> 
+                    </td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <td>
+                      <button style="float:right;" class="layui-btn" type="submit" title="搜索">搜索</button>
+                    </td>
+                  </tr> 
+                </tfoot>
+              </table>
+          </form>
+
+
+          <div class="layui-form">
+              <table class="layui-table">
+                <!-- <colgroup>
+                  <col width="150">
+                  <col width="150">
+                  <col width="150">
+                  <col width="200">
+                  <col width="200">
+                  <col width="200">
+                  <col width="200">
+                  <col>
+                </colgroup> -->
+                <thead>
+                  <tr>
+                    <th>订单号</th>
+                    <th>联系方式</th>
+                    <th>管家认证</th>
+                    <th>下单内容</th>
+                    <th>公司地址</th>
+                    <th>下单时间</th>
+                    <th>备注</th>
+                  </tr> 
+                </thead>
+                <if condition="$list">
+                    <tbody>
+                        <foreach name="list" item="v">
+                            <tr>
+                              <td>{$v.order_no}</td>
+                              <td>
+                                  <if condition="$v['see'] eq 1">
+                                      {$v.phone}
+                                  <else/>
+                                      {$v.phone}<button class="layui-btn layui-btn-mini layui-btn-normal" style="float: right;">查看</button>
+                                  </if>
+                              </td>
+                              <td>
+                                  <if condition="$v['status'] eq 1">
+                                      <button class="layui-btn layui-btn-mini layui-btn-danger">已审核</button>
+                                  <else/>
+                                      未审核
+                                  </if>
+                              </td>
+                              <td>人生似修行</td>
+                              <td>人生似修行</td>
+                              <td>{$v.time}</td>
+                              <td>{$v.remark}</td>
+                            </tr>
+                        </foreach>
+                    </tbody>
+                    <tfoot>
+                      <tr>
+                        <td colspan="8" align="center">{$page}</td>
+                      </tr>
+                    </tfoot>
+                <else/>
+                    <tbody>
+                        <foreach name="list" item="v">
+                            <tr>
+                              <td colspan="8" align="center">您还没有任何订单。</td>
+                            </tr>
+                        </foreach>
+                    </tbody>
+                </if>
+                
+              </table>
+          </div>
+      </div>
    </div> 
    <!--订单券弹幕--> 
    <div class="theme-popover popover-gerzx "> 
@@ -71,7 +198,61 @@
    <div class="elear" style="clear:both;"></div> 
   </div> 
   <div class="elear" style="clear:both;"></div> 
-  <!-- 底部引用 -->
+
+
+  <!-- 引用 -->
   <include file="Common/_footer" />
+
+
  </body>
 </html>
+
+
+<script>
+      layui.use(['form', 'laydate'], function(){
+        var form = layui.form()
+        ,layer = layui.layer
+        ,layedit = layui.layedit
+        ,laydate = layui.laydate;
+
+        //自定义验证规则
+        form.verify({
+          title: function(value){
+            if(value.length < 5){
+              return '标题至少得5个字符啊';
+            }
+          }
+          ,pass: [/(.+){6,12}$/, '密码必须6到12位']
+          ,content: function(value){
+            layedit.sync(editIndex);
+          }
+        });
+
+        var start = {
+          max: '2099-06-16 23:59:59'
+          ,istoday: false
+          ,choose: function(datas){
+            end.min = datas; //开始日选好后，重置结束日的最小日期
+            end.start = datas //将结束日的初始值设定为开始日
+          }
+        };
+
+        var end = {
+          max: '2099-06-16 23:59:59'
+          ,istoday: false
+          ,choose: function(datas){
+            start.max = datas; //结束日选好后，重置开始日的最大日期
+          }
+        };
+
+        document.getElementById('LAY_demorange_s').onclick = function(){
+          start.elem = this;
+          laydate(start);
+        }
+
+        document.getElementById('LAY_demorange_e').onclick = function(){
+          end.elem = this
+          laydate(end);
+        }
+      });
+</script>

@@ -1,5 +1,7 @@
 <?php
     $_page_=$_SERVER['PATH_INFO'];
+    $_province_=M('Province')->select();
+    $_cur_page_="http://".$_SERVER['HTTP_HOST']."".$_SERVER['REDIRECT_URL'];
 ?>
 
 
@@ -54,37 +56,9 @@
                     <div class="city_list" id="city_list">
                         <a href="javascript:void(0)">全国</a>
                         <div class="clear"></div>
-                        <a href="javascript:void(0)" data-area="beijing">北京</a>
-                        <a href="javascript:void(0)" data-area="tianjin">天津</a>
-                        <a href="javascript:void(0)" data-area="hebei">河北</a>
-                        <a href="javascript:void(0)" data-area="shanxi">山西</a>
-                        <a href="javascript:void(0)" data-area="namenggu">内蒙古</a>
-                        <a href="javascript:void(0)" data-area="liaoning">辽宁</a>
-                        <a href="javascript:void(0)" data-area="jilin">吉林</a>
-                        <a href="javascript:void(0)" data-area="heilongjiang">黑龙江</a>
-                        <a href="javascript:void(0)" data-area="shanghai">上海</a>
-                        <a href="javascript:void(0)" data-area="jiangsu">江苏</a>
-                        <a href="javascript:void(0)" data-area="zhejiang">浙江</a>
-                        <a href="javascript:void(0)" data-area="anhui">安徽</a>
-                        <a href="javascript:void(0)" data-area="fujiang">福建</a>
-                        <a href="javascript:void(0)" data-area="jiangxi">江西</a>
-                        <a href="javascript:void(0)" data-area="shandong">山东</a>
-                        <a href="javascript:void(0)" data-area="henan">河南</a>
-                        <a href="javascript:void(0)" data-area="hubei">湖北</a>
-                        <a href="javascript:void(0)" data-area="hunan">湖南</a>
-                        <a href="javascript:void(0)" data-area="guangdong">广东</a>
-                        <a href="javascript:void(0)" data-area="guangxi">广西</a>
-                        <a href="javascript:void(0)" data-area="hainanf">海南</a>
-                        <a href="javascript:void(0)" data-area="zhongqing">重庆</a>
-                        <a href="javascript:void(0)" data-area="sichuan">四川</a>
-                        <a href="javascript:void(0)" data-area="guizhou">贵州</a>
-                        <a href="javascript:void(0)" data-area="yunnan">云南</a>
-                        <a href="javascript:void(0)" data-area="xizang">西藏</a>
-                        <a href="javascript:void(0)" data-area="shanxii">陕西</a>
-                        <a href="javascript:void(0)" data-area="gansu">甘肃</a>
-                        <a href="javascript:void(0)" data-area="shanxi">青海</a>
-                        <a href="javascript:void(0)" data-area="ningxia">宁夏</a>
-                        <a href="javascript:void(0)" data-area="xinjiang">新疆</a>
+                        <foreach name="_province_" item="v">
+                            <a href="{:U('Home/Index/change_province',array('provinceid'=>$v['provinceid']))}">{$v.province}</a>
+                        </foreach>
                         <div style="clear:both"></div>
                     </div>
                 </div>

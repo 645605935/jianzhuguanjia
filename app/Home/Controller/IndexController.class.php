@@ -10,10 +10,11 @@ class IndexController extends CommonController{
         global $user;
         $user=session('userinfo');
         $this->user=$user;
+
+        // dump($_SERVER);DIE;
     }
 
     public function index(){
-
         $province=M('Province')->select();
 
         // 右侧分类
@@ -31,6 +32,17 @@ class IndexController extends CommonController{
         $this->safe_type_3=$safe_type_3;
         $this->index="首页";
         $this->display();
+    }
+
+    public function change_province(){
+        global $user;
+
+        $provinceid=$_GET['provinceid'];
+
+        if($provinceid){
+            $_SESSION['cur_province_info']=M('Province')->where(array('provinceid'=>$_GET['provinceid']))->find();
+            $this->redirect('Home/Index/index');
+        }
     }
 
 
