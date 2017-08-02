@@ -33,7 +33,8 @@ class ActivityController extends AuthController {
         $this->page_buttons=$page_buttons;
         $this->page=$page;
 
-        $this->type=A('Communal/Type')->getSon(1239);
+        $this->type=M('Type')->where(array('pid'=>1239))->select();
+
         $this->display();
     }
 

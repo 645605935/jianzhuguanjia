@@ -1,0 +1,10 @@
+<?php
+    $_page_=$_SERVER['PATH_INFO'];
+?>
+
+<li class="<if condition="$_page_ eq 'Index/aboutus'">on</if>"><a rel="nofollow" href="{:U('Home/Index/aboutus')}" title="公司简介">公司简介</a></li> 
+<li class="<if condition="$_page_ eq 'Index/team'">on</if>"><a ref="nofollow" href="{:U('Home/Index/team')}" title="精英团队">精英团队</a></li> 
+<li class="<if condition="$_page_ eq 'Index/join'">on</if>"><a ref="nofollow" href="{:U('Home/Index/join')}" title="加入我们">加入我们</a></li> 
+<li class="<if condition="$_page_ eq 'Index/mzsm'">on</if>"><a ref="nofollow" href="{:U('Home/Index/mzsm')}" title="免责声明">免责声明</a></li> 
+<li class="<if condition="$_page_ eq 'Index/contact'">on</if>"><a ref="nofollow" href="{:U('Home/Index/contact')}" title="联系我们">联系我们</a></li> 
+<li class="<if condition="$_page_ eq 'Index/tuiguang'">on</if>"><a ref="nofollow" href="{:U('Home/Index/tuiguang')}" title="推广服务">推广服务</a></li> 

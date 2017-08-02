@@ -33,11 +33,12 @@ class ArticleController extends AuthController {
         $this->page_buttons=$page_buttons;
         $this->page=$page;
 
-        $type=A('Communal/Type')->getSon(1346);
+        $type= M('Type')->where(array('pid'=>1346))->select();
         foreach ($type as $key => $value) {
             $type[$key]['_child']=M('Type')->where(array('pid'=>$value['id']))->select();
         }
         $this->type=$type;
+
         $this->display();
     }
 

@@ -300,14 +300,20 @@ class IndexController extends CommonController{
     }
 
     public function baike_detail(){
+        $type=M('Type')->where(array('pid'=>array('in',array('1347','1349'))))->select();
+        foreach ($type as $key => $value) {
+            $type[$key]['_child']=M('Article')->where(array('type'=>$value['id']))->select();
+        }
+
         $id=$_GET['id'];
         if($id){
             $row=M('Article')->find($id);
             $row['time']=date('Y-m-d H:i:s', $row['time']);
-
-            $this->row=$row;
-            $this->display();
         }
+
+        $this->row=$row;
+        $this->type=$type;
+        $this->display();
     }
 
     public function ajax_get_city_list(){
