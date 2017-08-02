@@ -232,7 +232,14 @@ class IndexController extends CommonController{
     }
 
     public function news_detail(){
-        $this->display();
+        $id=$_GET['id'];
+        if($id){
+            $row=M('News')->find($id);
+            $row['time']=date('Y-m-d H:i:s', $row['time']);
+
+            $this->row=$row;
+            $this->display();
+        }
     }
 
     //临时接口
@@ -275,7 +282,32 @@ class IndexController extends CommonController{
     }
 
     public function baike(){
+        //四类
+        $list_1=M('Type')->where(array('pid'=>1347))->select();
+        foreach ($list_1 as $key => $value) {
+            $list_1[$key]['_child']=M('Article')->where(array('type'=>$value['id']))->select();
+        }
+        //三资质
+        $list_2=M('Type')->where(array('pid'=>1349))->select();
+        foreach ($list_2 as $key => $value) {
+            $list_2[$key]['_child']=M('Article')->where(array('type'=>$value['id']))->select();
+        }
+
+        $this->list_1=$list_1;
+        $this->list_2=$list_2;
+
         $this->display();
+    }
+
+    public function baike_detail(){
+        $id=$_GET['id'];
+        if($id){
+            $row=M('Article')->find($id);
+            $row['time']=date('Y-m-d H:i:s', $row['time']);
+
+            $this->row=$row;
+            $this->display();
+        }
     }
 
     public function ajax_get_city_list(){
