@@ -334,6 +334,16 @@
                     <td>
                       <div class="layui-inline">
                         <div class="layui-form-item">
+                          <label class="layui-form-label">关键词</label>
+                          <div class="layui-input-inline">
+                            <input type="text" name="keyword" lay-verify="required" placeholder="" class="layui-input keyword">
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="layui-inline">
+                        <div class="layui-form-item">
                           <label class="layui-form-label">分类</label>
                           <div class="layui-input-inline">
                             <select name="type" class="type" lay-verify="required">
@@ -353,7 +363,7 @@
                   </tr>
                   
                   <tr>
-                    <td class="center" colspan="2">
+                    <td class="center" colspan="3">
                       <div class="layui-form-item layui-form-text">
                           <label class="layui-form-label" style="width: 100%!important;text-align: left;">文章详情</label>
                           <div class="layui-input-block">
@@ -365,7 +375,7 @@
                 </tbody>
                 <tfoot>
                   <tr>
-                    <td colspan="2" style="text-align:right;">
+                    <td colspan="3" style="text-align:right;">
                       <button class="layui-btn" lay-submit="" lay-filter="demo1_add">确认</button>
                       <button type="reset" class="layui-btn layui-btn-primary reset">重置</button>
                     </td>
@@ -400,6 +410,16 @@
                     <td>
                       <div class="layui-inline">
                         <div class="layui-form-item">
+                          <label class="layui-form-label">关键词</label>
+                          <div class="layui-input-inline">
+                            <input type="text" name="keyword" lay-verify="required" placeholder="" class="layui-input keyword">
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="layui-inline">
+                        <div class="layui-form-item">
                           <label class="layui-form-label">分类</label>
                           <div class="layui-input-inline">
                             <select name="type" class="type" lay-verify="required">
@@ -419,7 +439,7 @@
                   </tr>
                   
                   <tr>
-                    <td class="center" colspan="2">
+                    <td class="center" colspan="3">
                       <div class="layui-form-item layui-form-text">
                           <label class="layui-form-label" style="width: 100%!important;text-align: left;">文章详情</label>
                           <div class="layui-input-block">
@@ -483,11 +503,13 @@
 
             init_editer('editer_add');
 
+            layui.form().render();
+
             $( "#dialog-confirm_add" ).removeClass('hide').dialog({
               resizable: false,
               modal: true,
               title: "",
-              width:800,
+              width:1000,
               title_html: true,
             });
 
@@ -508,7 +530,7 @@
                       resizable: false,
                       modal: true,
                       title: "",
-                      width:800,
+                      width:1000,
                       title_html: true,
                     });
 
@@ -589,6 +611,7 @@
 
                       $('#edit_form .id').val(data.id);
                       $('#edit_form .title').val(data.title);
+                      $('#edit_form .keyword').val(data.keyword);
 
                       $.each($("#edit_form .type option"), function(name, value){
                           if($(value).attr('alt')==data.type){
@@ -720,11 +743,12 @@
               data: grid_data,
               datatype: "local",
               height: 430,
-              colNames:['id', '标题','分类','状态','点击量','操作'],
+              colNames:['id', '标题','关键词','分类','状态','点击量','操作'],
               colModel:[
                 {name:'id',index:'id',  sorttype:"int",align : "center", hidden: true},
 
                 {name:'title',index:'title', align : "center"},
+                {name:'keyword',index:'keyword', align : "center"},
                 {name:'type',index:'type', align : "center"},
                 {name:'show',index:'show', align : "center", formatter: showFormatter},
                 {name:'eye',index:'eye', align : "center"},

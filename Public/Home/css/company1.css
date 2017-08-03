@@ -137,12 +137,16 @@ span.nav_arrow_right{margin:10px 0 0 4px; font-size:14px; background-position:-3
 .company_r .zgs_clr_fc input.zcz_btn:hover{background-color: #e7691e}
 
 /* 合并css(page.css) 张晓亮15.10.19 */
-.pages{width:100%;text-align: center;overflow: hidden;clear: both;overflow: hidden;margin: 50px auto;}
-.pages a,.pages span{margin:0 3px;display:inline-block;padding:8px 10px;border-radius: 3px;overflow: hidden; color:#555}
-.pages a{background:#E5E5E5;}
-.pages a:hover{background-color:#EDEDED;}
-.pages span{background:#ff4400;color: #fff;}
-.pages .point{background:none;color: #555;padding:8px 0;}
+.pages {padding:10px 0 10px 0;text-align:center;font-size:12px;margin-top: 20px;}
+.pages a:link,.pages a:visited,.pages a:active  {background:#FFFFFF;border:#E6E6E6 1px solid;padding:1px;text-decoration:none;}
+.pages a:hover  {background:#FFFFFF;border:#CCCCCC 1px solid;color:#FF6600;padding:1px;text-decoration:none;}
+.pages strong {background:#2E6AB1;padding:1px;border:#CCCCCC 1px solid;color:#FFFFFF;}
+.pages_inp {border:#CCCCCC 1px solid;padding:1px;width:30px;text-align:center;color:#666666;}
+.pages_btn {width:26px;background:#F6F6F6;border:#CCCCCC 1px solid;font-weight:bold;font-size:11px;}
+.pages label {background:#FFFFFF;border:#CCCCCC 1px solid;padding:1px 5px 1px 5px;}
+.pages label em {color:red;font-weight:bold;font-style:normal;}
+.pages label span {font-weight:bold;}
+.pages label span.current {font-weight:bold; padding:8px 10px;color: white;}
 
 /* 黄页改版，新加代码 张晓亮15.10.19 */
 .zgsclc_data span.zd_three p{width:435px; height:24px; overflow:hidden; margin-top:5px; color:#333;}

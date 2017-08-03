@@ -55,6 +55,26 @@ class IndexController extends CommonController{
         $type_list=M('Type')->where(array('pid'=>1275))->select();
 
 
+        //行业新闻
+        $news_list=M('Type')->where(array('pid'=>1350))->select();
+        foreach ($news_list as $key => $value) {
+            $temp=M('News')->where(array('type'=>$value['id']))->limit(5)->select();
+            foreach ($temp as $k => $v) {
+                $temp[$k]['time']=date('m-d', $v['time']);
+            }
+            $news_list[$key]['_child']=$temp;
+        }
+
+        //总承包资质
+        $zizhi_1_list=M('Article')->where(array('type'=>1390))->limit(11)->select();
+
+        //专业承包资质
+        $zizhi_2_list=M('Article')->where(array('type'=>1391))->limit(8)->select();
+
+        //更多资质
+        $zizhi_3_list=M('Article')->where(array('type'=>1392))->limit(7)->select();
+
+
         $this->province=$province;
         $this->daiban_type=$daiban_type;
         $this->safe_type_1=$safe_type_1;
@@ -64,6 +84,10 @@ class IndexController extends CommonController{
         $this->order_list=$order_list;
         $this->voice_list=$voice_list;
         $this->type_list=$type_list;
+        $this->news_list=$news_list;
+        $this->zizhi_1_list=$zizhi_1_list;
+        $this->zizhi_2_list=$zizhi_2_list;
+        $this->zizhi_3_list=$zizhi_3_list;
         $this->index="首页";
         $this->display();
     }

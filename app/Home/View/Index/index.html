@@ -165,30 +165,20 @@
      <h2>建筑行业资讯</h2> 
      <p>海量资质资讯实时推荐，不为办资质烦恼</p> 
     </div> 
-    <ul class="hangy_news" style="margin-left: 0px;"> 
-     <h3><span>|</span>行业新闻<a taget="_blank" href="/zs/zzdb/">更多&gt;&gt;</a></h3> 
-     <li> <a taget="_blank" href="news_detail.html?7273.html" title="装修施工资质等级标准是什么？">装修施工资质等级标准是什么？ <i style="background:url(__PUBLIC__/Home/images/global.png) no-repeat scroll -239px -57px; display:inline-block; padding:0 15px;width:22px;height:18px"></i> </a> <span class="index_news_shij">06-27</span> </li> 
-     <li> <a taget="_blank" href="news_detail.html?7193.html" title="劳务承包需要资质吗">劳务承包需要资质吗 <i style="background:url(__PUBLIC__/Home/images/global.png) no-repeat scroll -239px -57px; display:inline-block; padding:0 15px;width:22px;height:18px"></i> </a> <span class="index_news_shij">06-12</span> </li> 
-     <li> <a taget="_blank" href="news_detail.html?7186.html" title="全面解析2017年安全生产许可证延期办理材料！">全面解析2017年安全生产许可证延期办理材料！ <i style="background:url(__PUBLIC__/Home/images/global.png) no-repeat scroll -239px -57px; display:inline-block; padding:0 15px;width:22px;height:18px"></i> </a> <span class="index_news_shij">06-10</span> </li> 
-     <li> <a taget="_blank" href="news_detail.html?7182.html" title="建筑企业怎么有效管理建筑资质">建筑企业怎么有效管理建筑资质 <i style="background:url(__PUBLIC__/Home/images/global.png) no-repeat scroll -239px -57px; display:inline-block; padding:0 15px;width:22px;height:18px"></i> </a> <span class="index_news_shij">06-09</span> </li> 
-     <li> <a taget="_blank" href="news_detail.html?7175.html" title="冶金工程施工总承包二级资质2017最新标准">冶金工程施工总承包二级资质2017最新标准 <i style="background:url(__PUBLIC__/Home/images/global.png) no-repeat scroll -239px -57px; display:inline-block; padding:0 15px;width:22px;height:18px"></i> </a> <span class="index_news_shij">06-08</span> </li> 
-    </ul> 
-    <ul class="hangy_news"> 
-     <h3><span>|</span>政策动态<a taget="_blank" href="/zs/zzzc/">更多&gt;&gt;</a></h3> 
-     <li> <a taget="_blank" href="news_detail.html?7145.html" title="公司注册类型是什么意思？初创公司该注册哪一种？">公司注册类型是什么意思？初创公司该注册哪一种？</a> <span class="index_news_shij">05-27</span> </li> 
-     <li> <a taget="_blank" href="news_detail.html?7142.html" title="3分钟搞清公司注册地址（像集中办公区）那些事">3分钟搞清公司注册地址（像集中办公区）那些事</a> <span class="index_news_shij">05-27</span> </li> 
-     <li> <a taget="_blank" href="news_detail.html?7105.html" title="2017年工程监理资质的办理材料汇总！">2017年工程监理资质的办理材料汇总！</a> <span class="index_news_shij">05-19</span> </li> 
-     <li> <a taget="_blank" href="news_detail.html?7139.html" title="园林资质取消对建筑企业的这两点影响">园林资质取消对建筑企业的这两点影响</a> <span class="index_news_shij">05-27</span> </li> 
-     <li> <a taget="_blank" href="news_detail.html?5585.html" title="2016年招标师改革未来前景无限">2016年招标师改革未来前景无限</a> <span class="index_news_shij">05-17</span> </li> 
-    </ul> 
-    <ul class="hangy_news"> 
-     <h3><span>|</span>资质百科<a taget="_blank" href="/zs/zzwd/">更多&gt;&gt;</a></h3> 
-     <li> <a taget="_blank" href="news_detail.html?7141.html" title="2017年注册一家公司需要多少钱？">2017年注册一家公司需要多少钱？</a> <span class="index_news_shij">05-27</span> </li> 
-     <li> <a taget="_blank" href="news_detail.html?7140.html" title="分析最新办理建筑企业资质升级的12大禁区">分析最新办理建筑企业资质升级的12大禁区</a> <span class="index_news_shij">05-27</span> </li> 
-     <li> <a taget="_blank" href="news_detail.html?7066.html" title="建筑工程施工总承包三级资质代办需要多少钱？">建筑工程施工总承包三级资质代办需要多少钱？</a> <span class="index_news_shij">05-04</span> </li> 
-     <li> <a taget="_blank" href="news_detail.html?7055.html" title="2017注册三级建筑公司的最新办理流程">2017注册三级建筑公司的最新办理流程</a> <span class="index_news_shij">04-28</span> </li> 
-     <li> <a taget="_blank" href="news_detail.html?7054.html" title="园林绿化资质取消了，施工劳务资质也会取消吗">园林绿化资质取消了，施工劳务资质也会取消吗</a> <span class="index_news_shij">04-28</span> </li> 
-    </ul> 
+
+    <foreach name="news_list" item="vo">
+        <ul class="hangy_news" <if condition="$key eq 0">style="margin-left: 0px;"</if>> 
+           <h3><span>|</span>{$vo.title}<a taget="_blank" href="/zs/zzzc/">更多&gt;&gt;</a></h3> 
+           <foreach name="vo['_child']" item="v">
+               <li>
+                   <a taget="_blank" href="news_detail.html?7273.html" title="{$v.title}">{$v.title}
+                       <i style="background:url(__PUBLIC__/Home/images/global.png) no-repeat scroll -239px -57px; display:inline-block; padding:0 15px;width:22px;height:18px"></i></a>
+                   <span class="index_news_shij">{$v.time}</span>
+               </li>
+           </foreach>
+        </ul> 
+    </foreach>
+ 
     <div class="clear"></div> 
    </div> 
   </div> 
@@ -203,18 +193,10 @@
      <h3>总承包资质</h3> 
     </div> 
     <ul class="index_zzbz_left_list"> 
-     <li><a title="建筑工程总承包资质标准" href="/zzbz/54.html" target="_blank">建筑工程</a></li> 
-     <li><a title="市政公用工程总承包资质标准" href="/zzbz/58.html" target="_blank">市政公用工程</a></li> 
-     <li><a title="机电工程总承包资质标准" href="/zzbz/56.html" target="_blank">机电工程</a></li> 
-     <li><a title="电力工程总承包资质标准" href="/zzbz/10.html" target="_blank">电力工程</a></li> 
-     <li><a title="通信工程总承包资质标准" href="/zzbz/15.html" target="_blank">通信工程</a></li> 
-     <li><a title="公路工程总承包资质标准" href="/zzbz/6.html" target="_blank">公路工程</a></li> 
-     <li><a title="铁路工程总承包资质标准" href="/zzbz/7.html" target="_blank">铁路工程</a></li> 
-     <li><a title="水利水电工程总承包资质标准" href="/zzbz/9.html" target="_blank">水利水电工程</a></li> 
-     <li><a title="矿山工程总承包资质标准" href="/zzbz/112.html" target="_blank">矿山工程</a></li> 
-     <li><a title="石油化工程总承包资质标准" href="/zzbz/13.html" target="_blank">石油化工程</a></li> 
-     <li><a title="冶金工程总承包资质标准" href="/zzbz/12.html" target="_blank">冶金工程</a></li> 
-     <li><a href="/zzbz/1.html" rel="nofollow" target="_blank">更多&gt;&gt;</a></li> 
+        <foreach name="zizhi_1_list" item="v">
+            <li><a title="{$v.title}" href="{:U('Home/Index/baike_detail',array('id'=>$v['id']))}" target="_blank">{$v.title}</a></li> 
+        </foreach>
+        <li><a href="{:U('Home/Index/baike')}" rel="nofollow" target="_blank">更多&gt;&gt;</a></li> 
     </ul> 
    </div> 
    <div class="index_zizbz_right"> 
@@ -223,27 +205,18 @@
      <h3>专业承包资质</h3> 
     </div> 
     <ul class="index_zzbz_left_list"> 
-     <li><a title="地基基础工程专业承包资质标准" href="/zzbz/60.html" target="_blank">地基基础工程</a></li> 
-     <li><a title="预拌混泥土专业承包资质标准" href="/zzbz/19.html" target="_blank">预拌混泥土</a></li> 
-     <li><a title="电子与智能化工程专业承包资质标准" href="/zzbz/73.html" target="_blank">电子与智能化工程</a></li> 
-     <li><a title="模版脚手架专业承包资质标准" href="/zzbz/26.html" target="_blank">模版脚手架</a></li> 
-     <li><a title="钢结构工程专业承包资质标准" href="/zzbz/64.html" target="_blank">钢结构工程</a></li> 
-     <li><a title="防水防腐保温工程专业承包资质标准" href="/zzbz/75.html" target="_blank">防水防腐保温工程</a></li> 
-     <li><a title="建筑装饰装修专业承包资质标准" href="/zzbz/65.html" target="_blank">建筑装饰装修</a></li> 
-     <li><a title="建筑机电安装专业承包资质标准" href="/zzbz/80.html" target="_blank">建筑机电安装</a></li> 
-     <li><a href="/zzbz/2.html" rel="nofollow" target="_blank">更多&gt;&gt;</a></li> 
+        <foreach name="zizhi_2_list" item="v">
+            <li><a title="{$v.title}" href="{:U('Home/Index/baike_detail',array('id'=>$v['id']))}" target="_blank">{$v.title}</a></li> 
+        </foreach>
+        <li><a href="{:U('Home/Index/baike')}" rel="nofollow" target="_blank">更多&gt;&gt;</a></li> 
     </ul> 
    </div> 
    <div class="clear"></div> 
    <div class="more_ziz"> 
-    <a href="/baike/">更多资质</a> 
-    <a href="/zzbz/201.html" target="_blank">工程设计资质</a> 
-    <a href="/zzbz/211.html" target="_blank">环境影响评价资质</a> 
-    <a href="/zzbz/401.html" target="_blank">城市园林绿化资质</a> 
-    <a href="/zzbz/301.html" target="_blank">物业管理资质</a> 
-    <a href="/zzbz/302.html" target="_blank">房地产开发资质</a> 
-    <a href="/zzbz/303.html" target="_blank">房地产经纪资质</a> 
-    <a href="/zzbz/402.html" target="_blank">城乡规划编制资质</a> 
+        <a href="{:U('Home/Index/baike')}">更多资质</a> 
+        <foreach name="zizhi_3_list" item="v">
+            <li><a title="{$v.title}" href="{:U('Home/Index/baike_detail',array('id'=>$v['id']))}" target="_blank">{$v.title}</a></li> 
+        </foreach>
    </div> 
    <div class="clear"></div> 
   </div> 
