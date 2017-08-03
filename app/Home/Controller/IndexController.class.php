@@ -41,6 +41,9 @@ class IndexController extends CommonController{
             $zhongjie_list[$key]['company_types']=$str;
         }
 
+        //焦点图
+        $focus_list=M('Focus')->where(array('type'=>1398))->limit(5)->select();
+
         // 最新申请服务
         $order_list=D('Order')->limit(5)->relation(true)->select();
         foreach ($order_list as $key => $value) {
@@ -86,6 +89,7 @@ class IndexController extends CommonController{
         $this->safe_type_2=$safe_type_2;
         $this->safe_type_3=$safe_type_3;
         $this->zhongjie_list=$zhongjie_list;
+        $this->focus_list=$focus_list;
         $this->order_list=$order_list;
         $this->voice_list=$voice_list;
         $this->type_list=$type_list;
@@ -114,6 +118,44 @@ class IndexController extends CommonController{
 
 
     public function baojia(){
+        global $user;
+
+        $province=M('Province')->select();
+
+        $zhuanyedengji=M('Type')->where(array('pid'=>1292))->select();
+
+        //左侧分类菜单
+        $type=M('Type')->where(array('pid'=>1275,'id'=>array('in',array('1292','1293'))))->select();
+        foreach ($type as $key => $value) {
+            $type[$key]['_child']=M('Type')->where(array('pid'=>$value['id']))->select();
+        }
+
+        $this->type=$type;
+        $this->province=$province;
+        $this->zhuanyedengji=$zhuanyedengji;
+        $this->display();
+    }
+
+    public function gongsizhuce(){
+        global $user;
+
+        $province=M('Province')->select();
+
+        $zhuanyedengji=M('Type')->where(array('pid'=>1292))->select();
+
+        //左侧分类菜单
+        $type=M('Type')->where(array('pid'=>1275,'id'=>array('in',array('1292','1293'))))->select();
+        foreach ($type as $key => $value) {
+            $type[$key]['_child']=M('Type')->where(array('pid'=>$value['id']))->select();
+        }
+
+        $this->type=$type;
+        $this->province=$province;
+        $this->zhuanyedengji=$zhuanyedengji;
+        $this->display();
+    }
+
+    public function anzheng(){
         global $user;
 
         $province=M('Province')->select();

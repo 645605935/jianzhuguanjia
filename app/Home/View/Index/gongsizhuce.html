@@ -138,8 +138,7 @@
                                   <td colspan="2" style="text-align:center;">
                                     <p class="baojia_tis">报价不精准？正规中介分别报价，代办行情轻松掌握</p>
                                     <div class="mianfcxybj">
-                                        <input type="hidden" name="type" value='1' placeholder="资质代办" autocomplete="off" class="layui-input">
-                                        <input id="right_apply_baojia" value="免费获取精准报价" lay-submit="" lay-filter="demo1_apply_baojia" class="btn btn-primary btn-large" />
+                                        <input id="baojia_btn" value="免费获取精准报价" href="javascript:;" class="btn btn-primary btn-large theme-login" style="float:left;" />
                                     </div>
                                   </td>
                                 </tr>
@@ -441,12 +440,12 @@
     }
 
     //添加
-    function _ajax_apply_baojia(_data){
+    function _ajax_edit(_data){
          $.ajax({  
              async:false,
              type:'post',  
              contentType:"application/x-www-form-urlencoded",
-             url : "{:U('Home/Index/ajax_apply_baojia')}",
+             url : "{:U('Home/Company/ajax_save_companylicense')}",
              data: _data,
              dataType : 'json',
              success  : function(json) {
@@ -507,21 +506,6 @@
               }
 
               return false;
-          });
-
-          form.on('radio(type)', function(data){
-              var type=data.value;
-              if(type){
-                    _ajax_get_zhuanye_select(type);
-              }
-              return false;
-          });
-
-          //监听提交
-          form.on('submit(demo1_apply_baojia)', function(data){
-            // console.log(data.field);
-            var _json=_ajax_apply_baojia(data.field);
-            return false;
           });
         });
     }
