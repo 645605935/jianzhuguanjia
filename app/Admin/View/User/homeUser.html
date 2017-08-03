@@ -193,10 +193,7 @@
                 <div class="row">
                     <div class="col-xs-7">
                         <div class="panel panel-default">
-                          <div class="panel-heading">会员列表
-                              <!-- <a href="javascript:void(0)" id="hcg">隐藏列</a> -->
-                              <!-- <a href="javascript:void(0)" id="scg">显示列</a> -->
-                          </div>
+                          <div class="panel-heading">会员列表</div>
                           <div class="panel-body">
                             <table id="grid-table"></table>
                             <div id="grid-pager"></div>
@@ -375,13 +372,8 @@
           var _gid="{$_POST['gid']}";
 
           pageInit(_username, _gid);
-
-          //初使化按钮操作权限
-          var page="{$page}";
-          _init_button_operate(page);
       });
 
-      //自定义报警列格式
       function imgFormatter(cellvalue, options, rowdata){ 
           if (cellvalue != "0"){
               return '<img class="avatar" style="width:30px;height:30px;" src="'+cellvalue+'" alt="' + cellvalue + '" />';
@@ -391,23 +383,19 @@
       }
 
       function pageInit(_username, _gid){
-        var grid_selector = "#grid-table";
-        var pager_selector = "#grid-pager";
-
-        var grid_data=_ajax_list_device(_username,_gid);
+        var grid_data=_ajax_get_list(_username,_gid);
 
         jQuery(grid_selector).jqGrid({
           caption: "用户列表",
           data: grid_data,
           datatype: "local",
-          colNames:['id', '姓名', '用户名','用户组', '头像', '注册时间', '操作'],
+          colNames:['id', '公司名称','用户组', '公司LOGO', '时间', '操作'],
           colModel:[
             {name:'id', index:'id', sorttype:"int", align:"center", hidden: true},
 
-            {name:'truename',index:'truename',align:"center"},
-            {name:'username',index:'username',align:"center"},
+            {name:'company_name',index:'company_name',align:"center"},
             {name:'_auth_group_title',index:'_auth_group_title',align:"center"},
-            {name:'img',index:'img',align:"center", formatter: imgFormatter },
+            {name:'company_logo',index:'company_logo',align:"center", formatter: imgFormatter },
             {name:'time',index:'time',align:"center",hidden: true},
 
             {name:'operates',index:'operates',align:'center',sortable:false,width:200}
@@ -478,62 +466,13 @@
   	        refresh: false
         });
 
-        //显示隐藏列
-        jQuery("#hcg").click(function() {
-            var len=$(grid_selector).getGridParam("width");
-            $(grid_selector).setGridParam().hideCol("username");
-            $(grid_selector).setGridWidth(len);
-        });
-        jQuery("#scg").click(function() {
-            var len=$(grid_selector).getGridParam("width");
-            $(grid_selector).setGridParam().showCol("username");
-            $(grid_selector).setGridWidth(len);
-        });
         jQuery(grid_selector).closest(".ui-jqgrid-bdiv").css({ "overflow-x" : "hidden" });//去除jqgrid横向滚动条
-
-        //选择列显示与隐藏
-        $(grid_selector).jqGrid('navButtonAdd', pager_selector, {
-            caption: "Columns",
-            buttonicon: "ui-icon-calculator",
-            title: "Choose columns", 
-            onClickButton: function () {
-                $(grid_selector).jqGrid('columnChooser',{
-        					width: 550, 
-        					dialog_opts: {
-        						modal: true,
-        						minWidth: 470,
-        						height: 470,
-        						show: 'blind',
-        						hide: 'explode',
-        						dividerLocation: 0.5
-        					},
-        					done : function (perm) {
-
-        						// var len=$(grid_selector).getGridParam("width");
-        						// $(grid_selector).setGridParam().hideCol("username");
-        						// $(grid_selector).setGridWidth(len);
-
-        						console.log(perm);
-        						if (perm) {
-        						  // "OK" button are clicked
-        						  this.jqGrid("remapColumns", perm, true);
-        						  // the grid width is probably changed co we can get new width
-        						  // and adjust the width of other elements on the page
-        						  var gwdth = this.jqGrid("getGridParam","width");
-        						  this.jqGrid("setGridWidth",gwdth);
-        						} else {
-        						  // we can do some action in case of "Cancel" button clicked
-        						}
-        				    }
-        				});
-        			}
-        });
 
         
         jQuery("#grid-table-2").jqGrid({
           url : "index.php?s=/Admin/User/ajax_get_user_relation_logs.html&id=0",
           datatype: "json",
-          colNames:['id', '用户名', '时间', '操作'],
+          colNames:['id', '页面', '时间', '操作'],
           colModel:[
             {name:'id', index:'id', sorttype:"int", align:"center", hidden: true, editable: true ,sortable: false},
 
@@ -559,57 +498,7 @@
             }, 0);
           },
 
-          onSelectRow : function(ids) {
-            $('#grid-table-3').jqGrid('clearGridData');
-
-            if (ids == null) {
-              ids = 0;
-              if (jQuery("#grid-table-3").jqGrid('getGridParam','records') > 0) {
-                jQuery("#grid-table-3").jqGrid('setGridParam', {
-                      url : "index.php?s=/Admin/User/ajax_get_user_relation_cases.html&id=" + ids,
-                      page : 1
-                    });
-                jQuery("#grid-table-3").jqGrid('setCaption',"案例: " + ids).trigger('reloadGrid');
-              }
-            } else {
-              jQuery("#grid-table-3").jqGrid('setGridParam', {
-                url : "index.php?s=/Admin/User/ajax_get_user_relation_cases.html&id=" + ids,
-                page : 1
-              });
-              jQuery("#grid-table-3").jqGrid('setCaption',"案例: " + ids).trigger('reloadGrid');
-            }
-          },
-
         }).navGrid('#grid-pager-2', {
-          add : false,
-          edit : false,
-          del : false
-        });
-
-
-
-        jQuery("#grid-table-3").jqGrid({
-          url : "index.php?s=/Admin/User/ajax_get_user_relation_cases.html&id=0",
-          datatype: "json",
-          colNames:['id', '标题', '时间', '操作'],
-          colModel:[
-            {name:'id', index:'id', sorttype:"int", align:"center", hidden: true, editable: true ,sortable: false},
-
-            {name:'title',index:'title',align:"center", editable: true,editrules: { required: true }},
-            {name:'time',index:'time',align:"center", editable: true,editrules: { required: true }},
-            {name:'url',index:'url',align:'center',sortable:false}
-          ], 
-          rownumbers:true,
-          rownumWidth:50,//设置行号列宽度
-          rowNum:10,
-          rowList:[10,100,1000],
-          // pager : '#grid-pager-3',
-          viewrecords : true,
-          autowidth:true,
-          shrinkToFit:true,//ture，则按比例初始化列宽度。如果为false，则列宽度使用colModel指定的宽度
-          height : 250,
-          caption : "案例",
-        }).navGrid('#grid-pager-3', {
           add : false,
           edit : false,
           del : false
@@ -706,178 +595,21 @@
 
     
     <script src="__PUBLIC__/Admin/doT-master/doT.js"></script>
-    <script type="text/javascript">
-        $(function(){
-            //smartMenu右键自定义上下文菜单插件初使化
-            Fn_Init_smartMenu();
-            
-            //表格头部排序点击
-            $('.ui-state-default.ui-jqgrid-hdiv').click(function(){
-                Fn_Init_smartMenu();
-            });
-
-            //表格头部排序点击
-            $('.ui-jqgrid-bdiv').click(function(){
-                Fn_Init_smartMenu();
-            });
-
-            //表格头部排序点击
-            $('#grid-pager').click(function(){
-                Fn_Init_smartMenu();
-            });
-
-            
-        });
-    </script>
     <!-- 模板引擎doT.js    end -->
 
-    <!-- jQuery smartMenu右键自定义上下文菜单插件  start -->
-    <script type="text/javascript" src="__PUBLIC__/Admin/jquery-smartMenu/js/jquery-smartMenu.js"></script>
-    <script>
-        function Fn_Init_smartMenu(){
-            var chkSingle = $("th input"), chkGroup = $("td input");
-            var funTrStyle = function() {
-              chkGroup.each(function() {
-                if ($(this).attr("checked")) {
-                  $(this).parents("tr").addClass("bg"); 
-                } else {
-                  $(this).parents("tr").removeClass("bg");  
-                }
-              });
-            }, funTrGet = function() {
-              return  $("td input:checked").parents("tr");
-            };
-
-            chkSingle.bind("click", function() {
-              if ($(this).attr("checked")) {
-                chkGroup.attr("checked", "checked");
-              } else {
-                chkGroup.attr("checked", "");
-              }
-              funTrStyle(); 
-            });
-
-            chkGroup.bind("click", funTrStyle);
-            funTrStyle();
-
-            //自定义右键上下文
-            var objDelete = {
-              text: "删除",
-              func: function() {
-                  $('#del_grid-table').trigger('click');
-              } 
-            }, objShow = {
-              text: "查看",
-              func: function() {
-                  $('#view_grid-table').trigger('click');
-              } 
-            }, objEdit = {
-              text: "编辑",
-              func: function() {
-                  $('#edit_grid-table').trigger('click');
-              }
-            }, objUnRead = {}, objSend = {};
-
-            var mailMenuData = [
-              [objDelete, objShow]
-            ];
-
-            $("#grid-table>tbody>tr").smartMenu(mailMenuData, {
-              name: "mail",
-              beforeShow: function() {    
-                //根据选中的是否是已读显示不同的上下文菜单
-                $(this).find("input").attr("checked", "checked"); 
-                funTrStyle();
-
-                //动态数据，及时清除
-                $.smartMenu.remove();
-
-                //确定显示数据 - 主要是已读与未读
-                var numTrBold = 0, numTrNormal = 0, eleTr = funTrGet();
-                eleTr.each(function() {
-                  if ($(this).css("font-weight") === "700") {
-                    numTrBold++; 
-                  } 
-                  if ($(this).css("font-weight") === "400") {
-                    numTrNormal++;  
-                  }
-                });
-
-                if (eleTr.size() === numTrBold) {
-                  //全是粗体  
-                  mailMenuData[1] = [objEdit];
-                } else if (eleTr.size() === numTrNormal) {
-                  //全是正常
-                  mailMenuData[1] = [objEdit];
-                } else {
-                  //混杂
-                  mailMenuData[1] = [objEdit];
-                }
-              }
-            });
-        }
-    </script>
-    <!-- jQuery smartMenu右键自定义上下文菜单插件  end -->
-
-
-    <!-- ============================= -->
-    <style type="text/css">
-        .site-demo-upload,
-        .site-demo-upload img{width: 200px; height: 200px; border-radius: 100%;margin:0 auto;}
-        .site-demo-upload{position: relative; background: #e2e2e2;}
-        .site-demo-upload .site-demo-upbar{position: absolute; top: 50%; left: 50%; margin: -18px 0 0 -56px;}
-        .site-demo-upload .layui-upload-button{background-color: rgba(0,0,0,.2); color: rgba(255,255,255,1);}
-    </style>
-    <!-- 确认弹框 start-->
     <div id="dialog-confirm_add" class="hide">
        <div class="row">
-              <table class="table table-striped table-bordered table-hover">
-                <tbody id="update_img_block">
-                  <tr>
-                    <td colspan="2" style="text-align:center;">
-                      <div class="site-demo-upload">
-                        <img id="LAY_demo_upload_add" src="__PUBLIC__/Admin/images/avatar.png">
-                        <div class="site-demo-upbar">
-                          <input type="file" name="img" class="layui-upload-file avatar" id="add_upload_img">
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-
-             <form class="layui-form layui-form-pane col-xs-12">
-                <table id="sample-table_add" class="table table-striped table-bordered table-hover">
+             <form class="layui-form layui-form-pane col-xs-12" method="post" action="" id="add_form" enctype="multipart/form-data">
+              
+                <table class="table table-striped table-bordered table-hover">
                   <tbody>
                     <tr>
-                      <td class="center">
-                        <div class="layui-inline">
-                          <div class="layui-form-item">
-                            <label class="layui-form-label">姓名</label>
-                            <div class="layui-input-inline">
-                              <input type="text" name="truename" lay-verify="truename" placeholder="" autocomplete="off" class="layui-input">
-                            </div>
-                          </div>
-                        </div>
-                      </td>
                       <td>
                         <div class="layui-inline">
                           <div class="layui-form-item">
                             <label class="layui-form-label">用户名</label>
                             <div class="layui-input-inline">
-                              <input type="text" name="username" lay-verify="username" placeholder="" autocomplete="off" class="layui-input">
-                            </div>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="center">
-                        <div class="layui-inline">
-                          <div class="layui-form-item">
-                            <label class="layui-form-label">密码</label>
-                            <div class="layui-input-inline">
-                              <input type="text" name="password" lay-verify="password" placeholder="" autocomplete="off" class="layui-input">
+                              <input type="text" name="username" lay-verify="required" placeholder="" class="layui-input username">
                             </div>
                           </div>
                         </div>
@@ -887,7 +619,7 @@
                           <div class="layui-form-item">
                             <label class="layui-form-label">用户组</label>
                             <div class="layui-input-inline">
-                              <select name="gid" lay-filter="group">
+                              <select name="gid" class="gid">
                                 <option value="请选择">请选择</option>
                                 <foreach name="group" item="vo">
                                    <optgroup label="{$vo['title']}">
@@ -902,13 +634,37 @@
                         </div>
                       </td>
                     </tr>
+
                     <tr>
-                      <td class="center">
+                      <td>
+                        <div class="layui-inline">
+                          <div class="layui-form-item">
+                            <label class="layui-form-label">公司名称</label>
+                            <div class="layui-input-inline">
+                              <input type="text" name="company_name" lay-verify="required" placeholder="" class="layui-input company_name">
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="layui-inline">
+                          <div class="layui-form-item">
+                            <label class="layui-form-label">密码</label>
+                            <div class="layui-input-inline">
+                              <input type="text" name="password" lay-verify="required" placeholder="" class="layui-input password">
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
                         <div class="layui-inline">
                           <div class="layui-form-item">
                             <label class="layui-form-label">邮箱</label>
                             <div class="layui-input-inline">
-                              <input type="text" name="email" placeholder="" autocomplete="off" class="layui-input">
+                              <input type="text" name="email" lay-verify="required" placeholder="" class="layui-input email">
                             </div>
                           </div>
                         </div>
@@ -918,150 +674,209 @@
                           <div class="layui-form-item">
                             <label class="layui-form-label">手机</label>
                             <div class="layui-input-inline">
-                              <input type="text" name="phone" placeholder="" autocomplete="off" class="layui-input">
+                              <input type="text" name="phone" lay-verify="required" placeholder="" class="layui-input phone">
                             </div>
                           </div>
                         </div>
                       </td>
                     </tr>
+
+                    <tr>
+                      <td>
+                        <div class="layui-inline">
+                          <div class="layui-form-item">
+                            <label class="layui-form-label">LOGO</label>
+                            <div class="layui-input-inline">
+                              <input type="file" id="add_upload_img" name="file" class="layui-upload-file">
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <img class="show_img" data-src="holder.js/140x140" class="img-thumbnail" alt="140x140" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgdmlld0JveD0iMCAwIDE0MCAxNDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzE0MHgxNDAKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNWQ1MzI3ODU3YiB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1ZDUzMjc4NTdiIj48cmVjdCB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjQ1IiB5PSI3NC44Ij4xNDB4MTQwPC90ZXh0PjwvZz48L2c+PC9zdmc+" data-holder-rendered="true" style="width: 140px; height: 140px;">
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td class="center" colspan="2">
+                        <div class="layui-form-item layui-form-text">
+                            <label class="layui-form-label" style="width: 100%!important;text-align: left;">简介</label>
+                            <div class="layui-input-block">
+                                <textarea class="layui-textarea layui-hide company_introduction" name="company_introduction" lay-verify="content" id="editer_add"></textarea>
+                            </div>
+                        </div>
+                      </td>
+                    </tr>
+                    
                     <tr>
                       <td colspan="2">
-                        <div class="layui-form-item layui-form-text">
-                          <div class="layui-input-block">
-                            <textarea placeholder="简介" class="layui-textarea"></textarea>
+                        <div class="layui-inline">
+                          <div class="layui-form-item">
+                            <label class="layui-form-label">状态</label>
+                            <div class="layui-input-inline">
+                              <input type="radio" name="open" class="open" value="1" title="开" checked="">
+                              <input type="radio" name="open" class="open" value="0" title="关">
+                            </div>
                           </div>
                         </div>
                       </td>
                     </tr>
-                    <!-- <tr>
-                      <td colspan="2" align="center">
-                        <div class="layui-form-item layui-form-text">
-                          <div class="layui-input-block">
-                            <a class="layui-btn layui-btn-normal id-btn-dialog2_editer" data-url="{:U('Admin/Index/baidu_editer')}">百度编辑器</a>
-                            <a class="layui-btn layui-btn-warm id-btn-dialog2_editer" data-url="{:U('Admin/Index/layui_editer')}">Layui编辑器</a>
-                            <a class="layui-btn layui-btn-danger id-btn-dialog2_editer" data-url="{:U('Admin/Index/ace_editer')}">ace编辑器</a>
-                          </div>
-                        </div>
-                      </td>
-                    </tr> -->
+                   
                   </tbody>
                   <tfoot>
                     <tr>
                       <td colspan="2" style="text-align:right;">
-                        <input type="text" name="img" id="add_img" class="layui-input" style="display:none;">
-                        <button class="layui-btn" lay-submit="" lay-filter="demo1_add">添加</button>
+                        <input type="hidden" name="company_logo" lay-verify="required" class="layui-input company_logo" readonly>
+                        <button class="layui-btn" lay-submit="" lay-filter="demo1_add">确认</button>
+                        <button type="reset" class="layui-btn layui-btn-primary reset">重置</button>
                       </td>
                     </tr>
                   </tfoot>
                 </table>
-             </form>
-        </div>
-    </div><!-- #dialog-confirm -->
 
-    <!-- 确认弹框 start-->
-    <div id="dialog-confirm_del" class="hide">
-       <div class="row">
-           <form class="layui-form layui-form-pane col-xs-12">
-            
-            <table id="sample-table_del" class="table table-striped table-bordered table-hover">
-                <tbody id="liaoliao_box">
-                  <tr>
-                    <td>
-                      <div class="layui-inline">
-                        <div class="layui-form-item">
-                          <label class="layui-form-label">扫码</label>
-                          <div class="layui-input-inline">
-                            <input type="text" name="keyword" lay-verify="required" placeholder="" autocomplete="off" class="layui-input item-4">
-                          </div>
-                        </div>
-                      </div> 
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-           </form>
+             </form>
         </div>
     </div><!-- #dialog-confirm -->
 
     <!-- 确认弹框 start-->
     <div id="dialog-confirm_edit" class="hide">
        <div class="row">
-              <table class="table table-striped table-bordered table-hover">
-                <tbody id="update_img_block">
-                  <tr>
-                    <td colspan="2" style="text-align:center;">
-                      <div class="site-demo-upload">
-                        <img id="LAY_demo_upload_edit" src="__PUBLIC__/Admin/images/avatar.png">
-                        <div class="site-demo-upbar">
-                          <input type="file" name="img" class="layui-upload-file avatar" id="edit_upload_img">
+             <form class="layui-form layui-form-pane col-xs-12" method="post" action="" id="edit_form" enctype="multipart/form-data">
+                            
+                <table class="table table-striped table-bordered table-hover">
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div class="layui-inline">
+                          <div class="layui-form-item">
+                            <label class="layui-form-label">用户名</label>
+                            <div class="layui-input-inline">
+                              <input type="text" name="username" lay-verify="required" placeholder="" class="layui-input username">
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+                      </td>
+                      <td>
+                        <div class="layui-inline">
+                          <div class="layui-form-item">
+                            <label class="layui-form-label">用户组</label>
+                            <div class="layui-input-inline">
+                              <select name="gid" class="gid">
+                                <option value="请选择">请选择</option>
+                                <foreach name="group" item="vo">
+                                   <optgroup label="{$vo['title']}">
+                                     <foreach name="vo['_child']" item="v">
+                                       <option value="{$v.id}" alt="{$v.id}">{$v.title}</option>
+                                     </foreach>
+                                   </optgroup>
+                                </foreach>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    
+                    <tr>
+                      <td>
+                        <div class="layui-inline">
+                          <div class="layui-form-item">
+                            <label class="layui-form-label">公司名称</label>
+                            <div class="layui-input-inline">
+                              <input type="text" name="company_name" lay-verify="required" placeholder="" class="layui-input company_name">
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="layui-inline">
+                          <div class="layui-form-item">
+                            <label class="layui-form-label">密码</label>
+                            <div class="layui-input-inline">
+                              <input type="text" name="password" placeholder="如果密码不保持不变，则不用填写" class="layui-input password">
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
 
-              <form class="layui-form layui-form-pane col-xs-12">
-                  <table class="table table-striped table-bordered table-hover">
-                      <tbody id="edit_form_block">
-                        <tr>
-                          <td>
-                            <div class="layui-inline">
-                              <div class="layui-form-item">
-                                <label class="layui-form-label">姓名</label>
-                                <div class="layui-input-inline">
-                                  <input type="text" name="truename" placeholder="" autocomplete="off" class="layui-input">
-                                </div>
-                              </div>
+                    <tr>
+                      <td>
+                        <div class="layui-inline">
+                          <div class="layui-form-item">
+                            <label class="layui-form-label">邮箱</label>
+                            <div class="layui-input-inline">
+                              <input type="text" name="email" lay-verify="required" placeholder="" class="layui-input email">
                             </div>
-                          </td>
-                          <td>
-                            <div class="layui-inline">
-                              <div class="layui-form-item">
-                                <label class="layui-form-label">用户名</label>
-                                <div class="layui-input-inline">
-                                  <input type="text" name="username" placeholder="" autocomplete="off" class="layui-input">
-                                </div>
-                              </div>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="layui-inline">
+                          <div class="layui-form-item">
+                            <label class="layui-form-label">手机</label>
+                            <div class="layui-input-inline">
+                              <input type="text" name="phone" lay-verify="required" placeholder="" class="layui-input phone">
                             </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <div class="layui-inline">
-                              <div class="layui-form-item">
-                                <label class="layui-form-label">用户组</label>
-                                <div class="layui-input-inline">
-                                  <select name="gid" id="edit_select_group">
-                                    <option value="请选择">请选择</option>
-                                    <foreach name="group" item="vo">
-                                       <optgroup label="{$vo['title']}">
-                                         <foreach name="vo['_child']" item="v">
-                                           <option value="{$v.id}">{$v.title}</option>
-                                         </foreach>
-                                       </optgroup>
-                                    </foreach>
-                                  </select>
-                                </div>
-                              </div>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <div class="layui-inline">
+                          <div class="layui-form-item">
+                            <label class="layui-form-label">LOGO</label>
+                            <div class="layui-input-inline">
+                              <input type="file" id="edit_upload_img" name="file" class="layui-upload-file">
                             </div>
-                          </td>
-                          <td>
-                           
-                          </td>
-                        </tr>
-                      </tbody>
-                      <tfoot>
-                        <tr>
-                          <td colspan="2" style="text-align:right;">
-                            <input type="hidden" name="img" id="edit_img" class="layui-input">
-                            <input type="hidden" name="id" id="edit_id" class="layui-input">
-                            <button class="layui-btn" lay-submit="" lay-filter="demo1_edit">保存</button>
-                          </td>
-                        </tr>
-                      </tfoot>
-                  </table>
-              </form>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <img class="show_img" data-src="holder.js/140x140" class="img-thumbnail" alt="140x140" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgdmlld0JveD0iMCAwIDE0MCAxNDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzE0MHgxNDAKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNWQ1MzI3ODU3YiB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1ZDUzMjc4NTdiIj48cmVjdCB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjQ1IiB5PSI3NC44Ij4xNDB4MTQwPC90ZXh0PjwvZz48L2c+PC9zdmc+" data-holder-rendered="true" style="width: 140px; height: 140px;">
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td class="center" colspan="2">
+                        <div class="layui-form-item layui-form-text">
+                            <label class="layui-form-label" style="width: 100%!important;text-align: left;">简介</label>
+                            <div class="layui-input-block">
+                                <textarea class="layui-textarea layui-hide company_introduction" name="company_introduction" lay-verify="content" id="editer_edit"></textarea>
+                            </div>
+                        </div>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td colspan="2">
+                        <div class="layui-inline">
+                          <div class="layui-form-item">
+                            <label class="layui-form-label">状态</label>
+                            <div class="layui-input-inline status_box">
+                              
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                   
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <td colspan="2" style="text-align:right;">
+                        <input type="hidden" name="id" lay-verify="required" class="layui-input id" readonly>
+                        <input type="hidden" name="company_logo" lay-verify="required" class="layui-input company_logo" readonly>
+                        <button class="layui-btn" lay-submit="" lay-filter="demo1_edit">确认</button>
+                        <button type="reset" class="layui-btn layui-btn-primary reset">重置</button>
+                      </td>
+                    </tr>
+                  </tfoot>
+                </table>
+
+             </form>
            
         </div>
     </div><!-- #dialog-confirm -->
@@ -1083,6 +898,8 @@
             $( "body" ).on('click', '.id-btn-dialog2_add', function(e) {
               e.preventDefault();
               
+              init_editer('editer_add');
+
               $( "#dialog-confirm_add" ).removeClass('hide').dialog({
                 resizable: false,
                 modal: true,
@@ -1095,111 +912,42 @@
             });
 
             //编辑
-            $( "body" ).on('click', '.id-btn-dialog2_edit', function(e) {
+            $( "body" ).on('click','.id-btn-dialog2_edit', function(e) {
               e.preventDefault();
 
-              var _id  = $(this).attr('data-id');
-              var _json = _ajax_get_user_info(_id);
+              var id=$(this).attr('data-id');
+              if(id){
+                  var _json=_ajax_get_row_info(id);
+                  if(_json.code==0){
+                      init_editer('editer_edit');
 
-              if(_json.code==0){
-                  var _user=_json.data;
+                      $( "#dialog-confirm_edit" ).removeClass('hide').dialog({
+                        resizable: false,
+                        modal: true,
+                        title: "",
+                        width:800,
+                        title_html: true,
+                      });
 
-                  $('#LAY_demo_upload_edit').attr('src','/Uploads'+_user.img);
-                  $('#edit_form_block input[name=truename]').val(_user.truename);
-                  $('#edit_form_block input[name=username]').val(_user.username);
-                  $('#edit_id').val(_user.id);
-
-                  if(_user.gid>0){
-                      $('#edit_select_group option[value='+_user.gid+']').attr('selected',true);
+                      $("div[aria-describedby='dialog-confirm_edit'] div span.ui-dialog-title").html("<div class='widget-header'><h4 class='smaller'><i class='icon-warning-sign red'></i> 编辑：</h4></div>");
                   }
-
-                  var form = layui.form();
-                  form.render();
-                   
               }
-
-              $( "#dialog-confirm_edit" ).removeClass('hide').dialog({
-                resizable: false,
-                modal: true,
-                title: "",
-                width:800,
-                title_html: true,
-              });
-
-              $("div[aria-describedby='dialog-confirm_edit'] div span.ui-dialog-title").html("<div class='widget-header'><h4 class='smaller'><i class='icon-warning-sign red'></i> 编辑：</h4></div>");
-            });
-
-            //编辑器弹框
-            $( "body" ).on('click', '.id-btn-dialog2_editer', function(e) {
-              e.preventDefault();
-
-              $('#editer').attr('src',$(this).attr('data-url'));
-              var _editer_url=$(this).attr('data-url');
-
-              //弹出即全屏
-              var index = layer.open({
-                type: 2,
-                content: _editer_url,
-                area: ['800px', '500px'],
-                maxmin: true
-              });
-            });
-
-            //查看
-            $( "body" ).on('click', '.id-btn-dialog2_show', function(e) {
-              e.preventDefault();
-
-              var _id  = $(this).attr('data-id');
-              var _json = _ajax_get_user_info(_id);
-
-              if(_json.code==0){
-                  var _user=_json.data;
-
-                  var tmpl = document.getElementById('j-tmpl_detail_show').innerHTML;
-                  var doTtmpl = doT.template(tmpl);
-                  var doT_Str=doTtmpl(_json);
-                  $('#dialog-confirm_show').html(doT_Str);
-              }
-
-              
-              $( "#dialog-confirm_show" ).removeClass('hide').dialog({
-                resizable: false,
-                modal: true,
-                title: "",
-                width:800,
-                height:500,
-                title_html: true,
-                buttons: [
-                  {
-                    html: "<i class='icon-remove bigger-110'></i>&nbsp; 取消",
-                    "class" : "btn btn-xs auto_close",
-                    click: function() {
-                      $( this ).dialog( "close" );
-                    }
-                  }
-                ]
-              });
-
-              $("div[aria-describedby='dialog-confirm_show'] div span.ui-dialog-title").html("<div class='widget-header'><h4 class='smaller'><i class='icon-warning-sign red'></i> 查看：</h4></div>");
             });
 
             //删除
-            $( "body" ).on('click', '.id-btn-dialog2_del', function(e) {
-              e.preventDefault();
-
+            $( "body" ).on('click', '.id-btn-dialog2_del', function() {
               if(confirm("确定要删除？")){
                   var ids=$(this).attr('data-id');
                   _ajax_del(ids);
               }
             });
-
         });
     </script>
     <!-- 确认弹框 end-->
 
     <script type="text/javascript">
        //获取列表
-       function _ajax_list_device(_username,_gid){
+       function _ajax_get_list(_username,_gid){
           var grid_data;
           $.ajax({  
               async:false,
@@ -1248,64 +996,90 @@
            return _json;  
        }
 
-       //异步获取一条信息
-       function _ajax_get_user_info(id){
-           var _edit_data  ='{';
-           _edit_data     +='"id":'+id;
-           _edit_data     +='}';
-
+       //获取单条信息
+       function _ajax_get_row_info(id){
            var _json;
            $.ajax({  
                async:false,
-               type:'post',  
-               contentType:"application/x-www-form-urlencoded",
-               url : "{:U('Admin/User/ajax_get_user_info_by_id')}",
-               data: _edit_data,
+               type:'get',  
+               url : "{:U('Admin/User/ajax_get_row_info')}",
+               data:{
+                 id:id
+               },
                dataType : 'json',
                success  : function(json) {  
                    if(json.code == 0){
-                       // layer.msg(json.msg);
+                       var data=json.data;
+
+                       $('#edit_form .id').val(data.id);
+                       $('#edit_form .username').val(data.username);
+                       $('#edit_form .company_name').val(data.company_name);
+                       $('#edit_form .email').val(data.email);
+                       $('#edit_form .phone').val(data.phone);
+                       
+                       
+                       if(data.company_logo){
+                           $('#edit_form .company_logo').val(data.company_logo);
+                           $('#edit_form .show_img').attr('src', data.company_logo).show();
+                       }else{
+                           $('#edit_form .company_logo').val('');
+                           $('#edit_form .show_img').attr('src', '').hide();
+                       }
+
+                       $('#edit_form .gid').val(data.gid);
+                       $.each($("#edit_form .gid option"), function(name, value){
+                           if($(value).attr('alt')==data.gid){
+                               $(value).attr('selected','selected');
+                           }else{
+                               $(value).removeAttr('selected');
+                           }
+                       });
+
+                       $('#edit_form .company_introduction').val(data.company_introduction);
+
+                       var str='';
+                       if(1==data.status){
+                           str+='<input type="radio" name="status" class="status" value="1" title="禁止" checked="checked">';
+                           str+='<input type="radio" name="status" class="status" value="0" title="正常">';
+                       }else{
+                           str+='<input type="radio" name="status" class="status" value="1" title="禁止">';
+                           str+='<input type="radio" name="status" class="status" value="0" title="禁止" checked="checked">';
+                       }
+                       $("#edit_form .status_box").html(str);
+                       
                        _json=json;
+
+                       layui.form().render();
                    }else{
                        layer.msg(json.msg);
-                       _json=json;
                    }
                },
                error  : function() {  
-                   alert('error');
+                   layer.msg('error');
                }  
            }); 
-           return _json;  
+           return _json;
        }
 
        //异步编辑信息
-       function _ajax_edit_user(data){
-
-           var truename=data.truename;
-           var gid=data.gid;
-           var username=data.username;
-           var img=data.img;
-           var id=data.id;
-
-           var _edit_data ='{';
-               _edit_data+='"truename":"'+truename+'","gid":"'+gid+'","username":"'+username+'","img":"'+img+'","id":"'+id+'"';
-               _edit_data+='}';
-
+       function _ajax_edit(_data){
            var _json;
            $.ajax({  
                async:false,
                type:'post',  
                contentType:"application/x-www-form-urlencoded",
-               url : "{:U('Admin/User/ajax_edit_user')}",
-               data: _edit_data,
+               url : "{:U('Admin/User/ajax_edit')}",
+               data: _data,
                dataType : 'json',
                success  : function(json) {  
                    if(json.code == 0){
-                       // layer.msg(json.msg);
-                       _json=json;
+                        layer.msg(json.msg);
+                        var selectID=$("#grid-table").getGridParam("selrow");
+                        $("#grid-table").setRowData(selectID, json.data);
+                        $("div[aria-describedby='dialog-confirm_edit'] .ui-dialog-titlebar-close").trigger("click");
                    }else{
-                       layer.msg(json.msg);
-                       _json=json;
+                        layer.msg(json.msg);
+                        _json=json;
                    }
                },
                error  : function() {  
@@ -1316,40 +1090,21 @@
        }
 
        //异步添加信息
-       function _ajax_add_user(data){
-
-           var truename=data.truename;
-           var password=data.password;
-           var username=data.username;
-           var gid=data.gid;
-           var img=data.img;
-
-           var _edit_data ='{';
-               _edit_data+='"truename":"'+truename+'","password":"'+password+'","username":"'+username+'","img":"'+img+'","gid":"'+gid+'"';
-               _edit_data+='}';
-
+       function _ajax_add(_data){
            var _json;
            $.ajax({  
                async:false,
                type:'post',  
                contentType:"application/x-www-form-urlencoded",
-               url : "{:U('Admin/User/ajax_add_user')}",
-               data: _edit_data,
+               url : "{:U('Admin/User/ajax_add')}",
+               data: _data,
                dataType : 'json',
                success  : function(json) {  
                    if(json.code == 0){
                        layer.msg(json.msg);
-                       _json=json;
-
-                       var _row=json.data;
-                       console.log(_row);
-                       var operate =""; 
-                       operate  = "<button style='margin-right:5px;' class='btn btn-warm btn-xs id-btn-dialog2_show' data-id='"+_row.id+"'>查看</button>";
-                       operate += "<button style='margin-right:5px;' class='btn btn-primary btn-xs id-btn-dialog2_edit' data-id='"+_row.id+"'>编辑</button>";
-                       operate += "<button class='btn btn-danger btn-xs id-btn-dialog2_del' data-id='"+_row.id+"'>删除</button>";
-
-                       $("#grid-table").addRowData("1", {"id":_row.id,"truename":_row.truename,"_auth_group_title":_row._auth_group_title,"username":_row.username,"time":_row.time,"img":"./Uploads"+_row.img,"operates":_row.operate}, "first");  
-
+                       $("#grid-table").addRowData(1, json.data, "first");
+                       $("#add_form .reset").trigger('click');
+                       $("div[aria-describedby='dialog-confirm_add'] .ui-dialog-titlebar-close").trigger("click");
                    }else{
                        layer.msg(json.msg);
                        _json=json;
@@ -1389,163 +1144,99 @@
        }
     </script>
 
+
     <script>
-        //layui表单
-        layui.use(['form', 'layedit', 'laydate'], function(){
-          var form = layui.form()
-            ,layer = layui.layer
-            ,layedit = layui.layedit
-            ,laydate = layui.laydate;
-
-          //创建一个编辑器
-          var editIndex = layedit.build('LAY_demo_editor');
-
-          //自定义验证规则
-          form.verify({
-            title: function(value){
-              if(value.length < 5){
-                return '标题至少得5个字符啊';
+        layui.use('laydate', function(){
+            var laydate = layui.laydate;
+            var start = {
+              istoday: false
+              ,choose: function(datas){
+                end.min = datas; //开始日选好后，重置结束日的最小日期
+                end.start = datas //将结束日的初始值设定为开始日
               }
-            }
-            ,truename: function(value){  
-              if(value.length < 2){  
-                return '请输入真实姓名';  
-              }  
-            }
-            ,username: function(value){  
-              if(value.length < 4){  
-                return '请输入至少4位的用户名';  
-              }  
-            }
-            ,password: [/(.+){6,12}$/, '密码必须6到12位']
-            ,content: function(value){
-              layedit.sync(editIndex);
-            }
-          });
+            };
 
+            var end = {
+              istoday: false
+              ,choose: function(datas){
+                start.max = datas; //结束日选好后，重置开始日的最大日期
+              }
+            };
 
-          //监听提交
-          form.on('submit(demo1)', function(data){
-            var _keyword=data.field.keyword;
-            get_bl_list(_keyword);
-            return false;
-          });
+            $('.LAY_demorange_s').click(function(){
+                start.elem = this;
+                laydate(start);
+            });
 
-
-          //监听提交
-          form.on('submit(demo1_search)', function(data){
-            layer.alert(JSON.stringify(data.field), {
-              title: '最终的提交信息'
-            })
-            pageInit(_username, _gid);
-            return false;
-          });
-
-          //监听提交
-          form.on('submit(demo1_detail)', function(data){
-            alert('demo1_detail');
-            console.log(data.field);
-            return false;
-          });
-
-          //监听提交
-          form.on('submit(demo1_add)', function(data){
-            var _json=_ajax_add_user(data.field);
-
-            if(_json.code==0){
-                $("div[aria-describedby='dialog-confirm_add'] .ui-dialog-titlebar-close").trigger("click");
-            }
-            return false;
-          });
-
-          //监听提交
-          form.on('submit(demo1_edit)', function(data){
-            var _json=_ajax_edit_user(data.field);
-
-            var _data=_json.data;
-            var selectID=$("#grid-table").getGridParam("selrow");
-
-            $("#grid-table").setRowData(selectID,{"truename":_data.truename,"_auth_group_title":_data._auth_group_title, "username":_data.username, "img":"./Uploads"+_data.img});
-
-            if(_json.code==0){
-                $("div[aria-describedby='dialog-confirm_edit'] .ui-dialog-titlebar-close").trigger("click");
-            }
-            return false;
-          });
-
-          //监听提交
-          // form.on('submit(demo1)', function(data){
-          //   layer.alert(JSON.stringify(data.field), {
-          //     title: '最终的提交信息'
-          //   })
-          //   return false;
-          // });
+            $('.LAY_demorange_e').click(function(){
+                end.elem = this;
+                laydate(end);
+            });
         });
+
     </script>
-
-
+    
     <script>
-        layui.use('upload', function(){
-          //上传文件
-          layui.upload({
-             url: "{:U('Admin/User/upload_img')}" //上传接口
-             ,elem: '#edit_upload_img' //指定原始元素，默认直接查找class="layui-upload-file"
-             ,success: function(res){ //上传成功后的回调
-               console.log(res);
-               if(res.code==0){
-                  $('#LAY_demo_upload_edit').attr('src','/Uploads'+res.data);
-                  $('#edit_img').val(res.data);
-               }
-             }
-           });
+        function init_editer(edit_type){
+            layui.use(['form', 'layedit', 'laydate', 'upload'], function(){
+              var form = layui.form()
+              ,layer = layui.layer
+              ,layedit = layui.layedit
+              ,laydate = layui.laydate;
 
-          //上传文件
-          layui.upload({
-             url: "{:U('Admin/User/upload_img')}" //上传接口
-             ,elem: '#add_upload_img' //指定原始元素，默认直接查找class="layui-upload-file"
-             ,success: function(res){ //上传成功后的回调
-               console.log(res);
-               if(res.code==0){
-                  $('#LAY_demo_upload_add').attr('src','/Uploads'+res.data);
-                  $('#add_img').val(res.data);
-               }
-             }
-           });
-        });
-    </script>
 
-    <script>
-        layui.use('layedit', function(){
-          var layedit = layui.layedit
-          ,$ = layui.jquery;
-          
-          //构建一个默认的编辑器
-          var index = layedit.build('LAY_demo1');
-          
-          //编辑器外部操作
-          var active = {
-            content: function(){
-              alert(layedit.getContent(index)); //获取编辑器内容
-            }
-            ,text: function(){
-              alert(layedit.getText(index)); //获取编辑器纯文本内容
-            }
-            ,selection: function(){
-              alert(layedit.getSelection(index));
-            }
-          };
-          
-          $('.site-demo-layedit').on('click', function(){
-            var type = $(this).data('type');
-            active[type] ? active[type].call(this) : '';
-          });
-          
-          //自定义工具栏
-          layedit.build('LAY_demo2', {
-            tool: ['face', 'link', 'unlink', '|', 'left', 'center', 'right']
-            ,height: 100
-          })
-        });
+              var arr=edit_type.split('_');
+              var form_type=arr[1];
+
+              //上传图片
+              layui.upload({
+                 url: "{:U('Admin/User/lay_upload_file')}" //上传接口
+                 ,elem: '#'+form_type+'_upload_img' //指定原始元素，默认直接查找class="layui-upload-file"
+                 ,success: function(res){ //上传成功后的回调
+                   if(res.code==0){
+                      $('#'+form_type+'_form .company_logo').val(res.data.src);
+                      $('#'+form_type+'_form .show_img').show().attr('src', res.data.src);
+                   }
+                 }
+              });
+              
+              //上传图片接口：注意：layedit.set 一定要放在 build前面，否则配置全局接口将无效
+              layedit.set({
+                  uploadImage: {
+                      url: "{:U('Admin/User/lay_upload_file')}", //接口url
+                      type: 'post', //默认post
+                  }
+              });
+
+              //创建一个编辑器
+              var editIndex = layedit.build(edit_type);
+
+              //自定义验证规则
+              form.verify({
+                title: function(value){
+                  if(value.length < 5){
+                    return '标题至少得5个字符啊';
+                  }
+                }
+                ,pass: [/(.+){6,12}$/, '密码必须6到12位']
+                ,content: function(value){
+                  layedit.sync(editIndex);
+                }
+              });
+
+              //监听提交
+              form.on('submit(demo1_add)', function(data){
+                var _json=_ajax_add(data.field);
+                return false;
+              });
+
+              //监听提交
+              form.on('submit(demo1_edit)', function(data){
+                var _json=_ajax_edit(data.field);
+                return false;
+              });
+            });
+        }
     </script>
   </body>
 </html>

@@ -25,11 +25,28 @@ class IndexController extends CommonController{
         $safe_type_2=M('Type')->where(array('pid'=>1378))->select();//资质情况
         $safe_type_3=M('Type')->where(array('pid'=>1379))->select();//人员情况
 
+        //金牌中介
+        $zhongjie_list=D('User')->where(array('gid'=>33))->limit(10)->relation(true)->select();
+        foreach ($zhongjie_list as $key => $value) {
+            $str='';
+            $arr=[];
+            if($value['company_types']){
+                $temp=explode('#', $value['company_types']);
+                foreach ($temp as $k => $v) {
+                    $row=M('Type')->find($v);
+                    $arr[]=$row['title'];
+                }
+            }
+            $str=implode('，', $arr);
+            $zhongjie_list[$key]['company_types']=$str;
+        }
+
         $this->province=$province;
         $this->daiban_type=$daiban_type;
         $this->safe_type_1=$safe_type_1;
         $this->safe_type_2=$safe_type_2;
         $this->safe_type_3=$safe_type_3;
+        $this->zhongjie_list=$zhongjie_list;
         $this->index="首页";
         $this->display();
     }

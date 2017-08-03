@@ -165,9 +165,8 @@
     <?php } ?> -->
 
     
-<!-- 
-    <?php if( name_to_status('User') == 1 && $user['gid']==427 || in_array('User', $user['auth_controller_names'])){ ?>
-    <li <if condition="$cur_c eq 'User'">class="active open"</if> style="display:none;">
+
+    <li <if condition="$cur_c eq 'User'">class="active open"</if>>
       <a href="#" class="dropdown-toggle">
         <i class="icon-eye-open"></i>
         <span class="menu-text"> 
@@ -177,53 +176,14 @@
       </a>
 
       <ul class="submenu">
-        <?php if( name_to_status('Admin/User/homeUser') == 1 && $user['gid']==427 || in_array('Admin/User/homeUser', $user['auth_action_names'])){ ?>
         <li <if condition="$cur_v eq 'User-homeUser'">class="active"</if>>
-          <a href="{:U('Admin/User/homeUser')}" page="Admin/User/homeUser" title="homeUser" data-title="用户列表">
+          <a href="{:U('Admin/User/homeUser')}" page="Admin/User/homeUser" title="homeUser" data-title="企业用户">
             <i class="icon-double-angle-right"></i>
-            用户列表
+            用户管理
           </a>
         </li>
-        <?php } ?>
-
-        <?php if( name_to_status('Admin/User/userAdd') == 1 && $user['gid']==427 || in_array('Admin/User/userAdd', $user['auth_action_names'])){ ?>
-        <li <if condition="$cur_v eq 'User-userAdd'">class="active"</if>>
-          <a href="{:U('Admin/User/userAdd')}" page="Admin/User/userAdd" title="userAdd" data-title="添加系统用户">
-            <i class="icon-double-angle-right"></i>
-            添加系统用户
-          </a>
-        </li>
-        <?php } ?>
-
-        <?php if( name_to_status('Admin/User/usersAdd') == 1 && $user['gid']==427 || in_array('Admin/User/usersAdd', $user['auth_action_names'])){ ?>
-        <li <if condition="$cur_v eq 'User-usersAdd'">class="active"</if> <if condition="$user['gid'] eq 1">style="display:none;"<elseif condition="$user['gid'] eq 2"/>style="display:none;"</if>>
-          <a href="{:U('Admin/User/usersAdd')}" page="Admin/User/usersAdd" title="usersAdd" data-title="批量添加学生">
-            <i class="icon-double-angle-right"></i>
-            批量添加学生
-          </a>
-        </li>
-        <?php } ?>
-
-        <?php if( name_to_status('Admin/User/students') == 1 && $user['gid']==427 || in_array('Admin/User/students', $user['auth_action_names'])){ ?>
-        <li <if condition="$cur_v eq 'AuthRule-index'">class="active"</if> <if condition="$user['gid'] eq 1">style="display:none;"<elseif condition="$user['gid'] eq 2"/>style="display:none;"</if>>
-          <a href="{:U('Admin/User/students')}" page="Admin/User/students" title="students" data-title="学生列表">
-            <i class="icon-double-angle-right"></i>
-            学生列表
-          </a>
-        </li>
-        <?php } ?>
-
-        <?php if( name_to_status('Admin/User/addStudent') == 1 && $user['gid']==427 || in_array('Admin/User/addStudent', $user['auth_action_names'])){ ?>
-        <li <if condition="$cur_v eq 'AuthRule-index'">class="active"</if> <if condition="$user['gid'] eq 1">style="display:none;"<elseif condition="$user['gid'] eq 2"/>style="display:none;"</if>>
-          <a href="{:U('Admin/User/addStudent')}" page="Admin/User/addStudent" title="addStudent" data-title="添加学生">
-            <i class="icon-double-angle-right"></i>
-            添加学生
-          </a>
-        </li>
-        <?php } ?>
       </ul>
     </li>
-    <?php } ?> -->
 
     
 

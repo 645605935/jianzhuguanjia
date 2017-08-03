@@ -11,17 +11,11 @@ class UserModel extends RelationModel{
 			'foreign_key'=>'gid',
 			'as_fields' => 'title:_auth_group_title,id:_auth_group_id',
 		),
-		'province'=>array(
+		'company_service_province'=>array(
 			'mapping_type'=>self::BELONGS_TO,
 			'class_name'=>'Province',
-			'foreign_key'=>'company_province',
-			'as_fields' => 'province:_province_name',
-		),
-		'city'=>array(
-			'mapping_type'=>self::BELONGS_TO,
-			'class_name'=>'City',
-			'foreign_key'=>'company_city',
-			'as_fields' => 'city:_city_name',
+			'foreign_key'=>'company_service_province',
+			'as_fields' => 'province:company_service_province',
 		)
 	);
 

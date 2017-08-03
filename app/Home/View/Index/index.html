@@ -78,66 +78,18 @@
   <div class="gold_zhongj"> 
    <span> <img src="__PUBLIC__/Home/images/gold_zhongj.gif" /> </span> 
    <ul class="gold_zhongj_list"> 
-    <li> <img src="__PUBLIC__/Home/images/vip_01.gif" /> 
-     <div class="jianpzj_text" title="资质管家（北京）信息技术有限公司"> 
-      <p>北京</p> 
-      <p>擅长施工总承包、专业承包</p>
-      <p> <a target="_blank" rel="nofollow" href="/gongsi/4417/">获取报价</a> </p>
-     </div> </li> 
-    <li> <img src="__PUBLIC__/Home/images/vip_21.jpg" /> 
-     <div class="jianpzj_text" title="上海爱应投资管理咨询有限公司"> 
-      <p>上海-宝山</p> 
-      <p>擅长监理、设计、施工资质</p>
-      <p> <a target="_blank" rel="nofollow" href="/gongsi/4829/">获取报价</a> </p>
-     </div> </li> 
-    <li> <img src="__PUBLIC__/Home/images/vip_14.jpg" /> 
-     <div class="jianpzj_text" title="西藏岦洋建设有限公司"> 
-      <p>西藏-拉萨</p> 
-      <p>擅长施工总承包、专业承包</p>
-      <p> <a target="_blank" rel="nofollow" href="/gongsi/6800/">获取报价</a> </p>
-     </div> </li> 
-    <li> <img src="__PUBLIC__/Home/images/vip_17.jpg" /> 
-     <div class="jianpzj_text" title="上海搜搜投资咨询有限公司"> 
-      <p>上海-闸北</p> 
-      <p>擅长施工总承包、专业承包</p>
-      <p> <a target="_blank" rel="nofollow" href="/gongsi/5847/">获取报价</a> </p>
-     </div> </li> 
-    <li> <img src="__PUBLIC__/Home/images/vip_19.jpg" /> 
-     <div class="jianpzj_text" title="中建宏业（北京）建筑咨询有限公司"> 
-      <p>北京</p> 
-      <p>擅长工程设计、房地产开发</p>
-      <p> <a target="_blank" rel="nofollow" href="/gongsi/8407/">获取报价</a> </p>
-     </div> </li> 
-    <li> <img src="__PUBLIC__/Home/images/vip_20.jpg" /> 
-     <div class="jianpzj_text" title="广州海煌信息科技有限公司"> 
-      <p>广东</p> 
-      <p>擅长施工总承包、专业承包</p>
-      <p> <a target="_blank" rel="nofollow" href="/gongsi/8592/">获取报价</a> </p>
-     </div> </li> 
-    <li> <img src="__PUBLIC__/Home/images/vip_16.jpg" /> 
-     <div class="jianpzj_text" title="黑龙江宝骏建设工程有限公司"> 
-      <p>黑龙江</p> 
-      <p>擅长施工专业承包、劳务</p>
-      <p> <a target="_blank" rel="nofollow" href="/gongsi/6760/">获取报价</a> </p>
-     </div> </li> 
-    <li> <img src="__PUBLIC__/Home/images/vip_22.jpg" /> 
-     <div class="jianpzj_text" title="哈尔滨皓盈企业管理咨询有限公司"> 
-      <p>黑龙江</p> 
-      <p>擅长施工总承包、专业承包</p> 
-      <p><a target="_blank" rel="nofollow" href="/gongsi/8680/">获取报价</a></p> 
-     </div> </li> 
-    <li> <img src="__PUBLIC__/Home/images/vip_15.jpg" /> 
-     <div class="jianpzj_text" title="成都沧鑫企业管理咨询有限公司"> 
-      <p>四川</p> 
-      <p>擅长施工总承包、专业承包</p>
-      <p> <a target="_blank" rel="nofollow" href="/gongsi/6098/">获取报价</a> </p>
-     </div> </li> 
-    <li> <img src="__PUBLIC__/Home/images/vip_18.jpg" /> 
-     <div class="jianpzj_text" title="尼西（天津）工程管理有限公司"> 
-      <p>天津</p> 
-      <p>擅长施工总承包、专业承包</p>
-      <p> <a target="_blank" rel="nofollow" href="/gongsi/7199/">获取报价</a> </p>
-     </div> </li> 
+      <foreach name="zhongjie_list" item="v">
+          <li>
+              <img style="width:100%;height:100%;" src="{$v.company_logo}" />
+              <div class="jianpzj_text" title="{$v.company_name}">
+                  <p>{$v.company_service_province}</p>
+                  <p>{$v.company_types}</p>
+                  <p>
+                      <a target="_blank" rel="nofollow" href="{:U('Home/Gongsi/index',array('id'=>$v['id']))}">获取报价</a>
+                  </p>
+              </div>
+          </li>
+      </foreach>
    </ul> 
    <div class="clear"></div> 
   </div> 

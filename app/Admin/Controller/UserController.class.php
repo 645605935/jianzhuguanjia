@@ -71,13 +71,6 @@ class UserController extends AuthController {
 
 
         $this->cur_v='User-homeUser';
-
-        $page="User/index3_1";
-        $page_buttons=M('PageButtons')->where(array('page'=>$page))->select();
-        $this->page_buttons=$page_buttons;
-        $this->page=$page;
-
-        
         $this->display();
     }
 
@@ -174,16 +167,14 @@ class UserController extends AuthController {
         echo json_encode($list);
     }
 
-    //根据ID获取用户信息
-    public function ajax_get_user_info_by_id(){
+    //获取单条信息
+    public function ajax_get_row_info(){
+        $id=I('id');
 
-        $_json=file_get_contents('php://input');
-        $_arr=json_decode($_json,true);
+        if($id){
+            $row = D('User')->relation(true)->find($id);
+            $row['time']=date('Y-m-d H:i',$row['time']);
 
-        if($_arr){
-            $id=$_arr['id'];
-
-            $row = D('User')->find($id);
             if($row){
                 $data=array();
                 $data['code']=0;
@@ -203,87 +194,26 @@ class UserController extends AuthController {
         echo json_encode($data);
     }
 
-    //编辑用户信息
-    public function ajax_edit_user(){
 
-        $_json=file_get_contents('php://input');
-        $_arr=json_decode($_json,true);
+    //编辑
+    public function ajax_edit(){
+        global $user;
 
-        if($_arr){
-            $id=$_arr['id'];
-            $where=array('id'=>$id);
+        $data=array();
+        $data=$_POST;
 
-            $data=array();
-            $data['truename']=$_arr['truename'];
-            $data['username']=$_arr['username'];
-            $data['gid']=$_arr['gid'];
-            if($_arr['img']!=''){
-                //删除原来的图片
-                $_old_img = D('User')->where('id='.$id)->getField('img');
-                unlink('./Uploads'.$_old_img);
-
-                $data['img']=$_arr['img'];
-            }
-            
-
-            $res = D('User')->where($where)->save($data);
-            $row = D('User')->relation(true)->find($id);
-            if($res){
-                // 赋权限,如果没有则添加
-                if( !$_row_=M('AuthGroupAccess')->where(array('uid'=>$id))->find() ){
-                    $ga_data=array();
-                    $ga_data['uid']=$id;
-                    $ga_data['group_id']=$_arr['gid'];
-                    M('AuthGroupAccess')->add($ga_data);
-                }else{
-                    $ga_data=array();
-                    $ga_data['group_id']=$_arr['gid'];
-                    M('AuthGroupAccess')->where(array('uid'=>$id))->save($ga_data);
-                }
-
-                $data=array();
-                $data['code']=0;
-                $data['msg']='success';
-                $data['data']=$row;
-            }else{
-                $data=array();
-                $data['code']=1;
-                $data['msg']='error';
-            }
-        }else{
-            $data=array();
-            $data['code']=2;
-            $data['msg']='error';
+        if($_POST['password']==''){
+            unset($data['password']);
         }
-
-        echo json_encode($data);
-    }
-
-    //添加用户信息
-    public function ajax_add_user(){
-        $_json=file_get_contents('php://input');
-        $_arr=json_decode($_json,true);
-
-        if($_arr){
-            $data=array();
-            $data['truename']=$_arr['truename'];
-            $data['password']=md5($_arr['password']);
-            $data['username']=$_arr['username'];
-            $data['gid']=$_arr['gid'];
-            $data['img']=$_arr['img'];
+        if($data){
             $data['time']=time();
-
-
-            if($id = D('User')->where($where)->add($data)){
+            $res = M('User')->save($data);
+            if($res){
+                $id=$data['id'];
                 $row= D('User')->relation(true)->find($id);
-                if($row){
-                    // 赋权限,如果没有则添加
-                    $ga_data=array();
-                    $ga_data['uid']=$id;
-                    $ga_data['group_id']=$_arr['gid'];
-                    M('AuthGroupAccess')->add($ga_data);
-                    
+                $row['time']=date('Y-m-d H:i',$value['time']);
 
+                if($row){
                     $data=array();
                     $data['code']=0;
                     $data['msg']='success';
@@ -298,8 +228,45 @@ class UserController extends AuthController {
                 $data['code']=1;
                 $data['msg']='error';
             }
-            
-            
+        }else{
+            $data=array();
+            $data['code']=2;
+            $data['msg']='error';
+        }
+
+        echo json_encode($data);
+    }
+
+    //添加
+    public function ajax_add(){
+        global $user;
+
+        $data=array();
+        $data=$_POST;
+        if($data){
+            $data['time']=time();
+
+            $id = M('User')->add($data);
+            if($id){
+                $row= D('User')->relation(true)->find($id);
+
+                $row['time']=date('Y-m-d H:i',$row['time']);
+
+                if($row){
+                    $data=array();
+                    $data['code']=0;
+                    $data['msg']='success';
+                    $data['data']=$row;
+                }else{
+                    $data=array();
+                    $data['code']=1;
+                    $data['msg']='error';
+                }
+            }else{
+                $data=array();
+                $data['code']=1;
+                $data['msg']='error';
+            }
         }else{
             $data=array();
             $data['code']=2;
@@ -311,173 +278,32 @@ class UserController extends AuthController {
 
     //删除
     public function ajax_del(){
-        $_json=file_get_contents('php://input');
-        $_arr=json_decode($_json,true);
+        $id=I('id'); 
 
+        if($id){
+            $res=M('User')->where(array('id'=>$id))->delete();
 
-        $ids=$_arr['ids']; 
-
-        $ids_arr=explode(',', $ids);
-
-        if(is_array($ids_arr)){
-            foreach ($ids_arr as $key => $value) {
-                $_uid=$value;
-                $_user_info=M('User')->where(array('id'=>$_uid))->find();
-                unlink('./Uploads'.$_user_info['img']);
-                //删除相关数据表里的数据
-                if(M('User')->where(array('id'=>$_uid))->delete()){
-                    M('AuthGroupAccess')->where(array('uid'=>$_uid))->delete();
-                    unlink($_SERVER['HTTP_ORIGIN'].'/Uploads'.$_user_info);
-                }
+            if($res){
+                $data=array();
+                $data['code']=0;
+                $data['msg']='success';
+            }else{
+                $data=array();
+                $data['code']=1;
+                $data['msg']='error';
             }
+        }else{
+            $data=array();
+            $data['code']=2;
+            $data['msg']='error';
         }
 
-        $data=array();
-        $data['code']=0;
-        $data['msg']='success';
-        
         echo json_encode($data);
     }
 
-    //删除
-    public function ajax_del1111(){
-
-        if( IS_POST && $_POST['oper']=='del' ){
-            $ids=$_POST['id']; 
-
-            $ids_arr=explode(',', $ids);
-
-            if(is_array($ids_arr)){
-                foreach ($ids_arr as $key => $value) {
-                    $_uid=$value;
-                    $_user_info=M('User')->where(array('id'=>$_uid))->find();
-                    //删除相关数据表里的数据
-                    if(M('User')->where(array('id'=>$_uid))->delete()){
-                        M('AuthGroupAccess')->where(array('uid'=>$_uid))->delete();
-                        // unlink($file); 
-                    }
-                }
-            }else{
-                $map['id'] = $ids;
-                $map2['uid'] = $ids;
-                if($result=M('User')->where($map)->delete()){
-                    M('AuthGroupAccess')->where($map2)->delete();
-                }
-                // $dir=STATIC_PATH.filePath2($ids,'Banji');
-                // delDir( $dir );
-            }
-
-            $data=array();
-            $data['code']=0;
-            $data['msg']='删除成功';
-        }
-        
-        echo json_encode($data);
-    }
-
-    
 
 
-    //编辑用户信息
-    public function userEdit(){
-        global $user;
-        $this->user=$user;
-
-        $d=D('User');
-        if(IS_POST){
-           
-            $data=array();
-            $data['id']             =   I('post.id');
-            $data['truename']       =   I('post.truename');
-            I('post.password')?$data['password'] = md5(I('post.password')):null;
-            $data['gid']       =   I('post.gid');
-            $data['email']       =   I('post.email');
-            $data['phone']       =   I('post.phone');
-            // $data['status']         =   I('post.status');
-            if ($d->save($data)){            
-                // 付权限
-                //如果没有则添加
-                if(!$row=M('AuthGroupAccess')->find(I('id'))){
-                    $ga_data['uid']=I('id');
-                    $ga_data['group_id']=I('post.gid');
-                    M('AuthGroupAccess')->add($ga_data);
-                }else{
-                    $ga_data['uid']=I('post.gid');
-                    M('AuthGroupAccess')->where(array('uid'=>I('post.id')))->save($ga_data);
-                }
-                
-                // 日志记录  start
-                $url = MODULE_NAME."/".CONTROLLER_NAME."/".ACTION_NAME;
-                $model=MODULE_NAME;
-                $controller=CONTROLLER_NAME;
-                $action=ACTION_NAME;
-                $title = D('AuthRule')->field('title')->where(array('name'=>$url))->find();
-                if(!$title){$title['title']="暂无规则";}
-                D('Log')->addLog($title,$url,$model,$controller,$action);
-                // 日志记录  end
-
-                $this->success('编辑成功');
-            }else{
-                $this->error('编辑失败');
-            }
-        }else{
-            $id=I('get.id');
-            $row=M('User')->find($id);
-            $this->row=$row;
-            $group=M('AuthGroup')->select();
-            $this->group=$group;
-            $this->cur_v='User-userEdit';
-            $this->display();
-        }
-    }
-
-    //添加用户信息
-    public function useradd(){
-        global $user;
-
-        $d=D('User');
-        if(IS_POST){
-           // 用户是否存在
-            if($d->where(array('username'=>I('username')))->find()){
-                $this->error("该用户名已存在,请更换用户名");
-            }
-            
-            $data=array();
-            $data['username']       =   I('post.username');
-            $data['truename']       =   I('post.truename');
-            $data['gid']       =   I('post.gid');
-            $data['email']       =   I('post.email');
-            $data['phone']       =   I('post.phone');
-            $data['register_time']     =   time();
-            $data['time']     =   time();
-            I('post.password')?$data['password'] = md5(I('post.password')):null;
-            if ($id=$d->add($data)){
-                 // 赋予权限
-                $ga_data['uid']=$id;
-                $ga_data['group_id']=I('post.gid');
-                M('AuthGroupAccess')->add($ga_data);
-
-                // 日志记录  start
-                $url = MODULE_NAME."/".CONTROLLER_NAME."/".ACTION_NAME;
-                $model=MODULE_NAME;
-                $controller=CONTROLLER_NAME;
-                $action=ACTION_NAME;
-                $title = D('AuthRule')->field('title')->where(array('name'=>$url))->find();
-                if(!$title){$title['title']="暂无规则";}
-                D('Log')->addLog($title,$url,$model,$controller,$action);
-                // 日志记录  end
-                $this->success('添加成功');
-            }else{
-                $this->error('添加失败');
-            }
-        }else{
-            $group=M('AuthGroup')->select();
-            $this->group=$group;
-            $this->cur_v='User-userAdd';
-            $this->display();
-        }
-    }
-
+ 
     //批量添加用户信息
     public function usersAdd(){
         global $user;
@@ -944,92 +770,63 @@ class UserController extends AuthController {
 
 
 
-      //==============================================================================================================================================
-      // 上传图片--不对图进行任何处理
-      public function upload_img(){
-          if($_FILES['img']['size']>0){
-              $upload = new \Think\Upload();// 实例化上传类
-              $upload->maxSize   =     31457280 ;// 设置附件上传大小
-              $upload->exts      =     array('zip', 'rar', 'xls','xlsx', 'doc','docx','ppt','pptx','pdf','jpg','png','jpeg','gif');// 设置附件上传类型
-              $upload->uploadReplace  = false;// 存在同名文件是否覆盖
-              $upload->autoSub   =     false;//是否启用子目录保存
-              $upload->rootPath  =     './Uploads/'; // 设置附件上传根目录
-              $upload->savePath  =     'layui/'; // 设置附件上传（子）目录
-              $upload->saveRule  =     ''; // 设置附件上传（子）目录
-               
-              // 上传文件 
-              $info   =   $upload->upload();
+    //==============================================================================================================================================
+    // 上传图片
+    public function lay_upload_file(){
+        if($_FILES['file']['size']>0){
+            $upload = new \Think\Upload();// 实例化上传类
+            $upload->maxSize   =     31457280 ;// 设置附件上传大小
+            $upload->exts      =     array('zip', 'rar', 'xls','xlsx', 'doc','docx','ppt','pptx','pdf','jpg','png','jpeg','gif');// 设置附件上传类型
+            $upload->uploadReplace  = false;// 存在同名文件是否覆盖
+            $upload->autoSub   =     false;//是否启用子目录保存
+            $upload->rootPath  =     './Uploads/'; // 设置附件上传根目录
+            $upload->savePath  =     'layui/'; // 设置附件上传（子）目录
+            $upload->saveRule  =     ''; // 设置附件上传（子）目录
+             
+            // 上传文件 
+            $info   =   $upload->upload();
 
-              if(!$info) {
-                  $data=array();
-                  $data['code']=0;
-                  $data['msg']=$upload->getError();
-              }else{
-                  $img=$info['img']['savename'];
-                  $data=array();
-                  $data['code']=0;
-                  $data['msg']='success';
-                  $data['data']='/layui/'.$img;
-              }
+            if(!$info) {
+                $data=array();
+                $data['code']=0;
+                $data['msg']=$upload->getError();
+            }else{
+                $img=$info['file']['savename'];
+                $data=array();
+                $data['code']=0;
+                $data['msg']='success';
+                $data['data']["src"]='/Uploads/layui/'.$img;
+            }
 
-              echo json_encode($data);
+            //上传到阿里云OSS
+            // oss_upload( '/Uploads/layui/'.$img );
+
+            echo json_encode($data);
+        }
+    }
+
+    // 上传图片--生成三种大小的图片
+    public function upload_img_3(){
+      global $user;
+      $uid=$user['uid'];
+
+      if($_FILES['img']['size']>0){
+          $image=new \Common\Extend\Image();
+          $img=$image->upload($_FILES['img'],filePath($uid,'layui_3'),'thumb');
+
+          if(!$img) {
+              $data=array();
+              $data['code']=0;
+              $data['msg']=$image->getError();
+          }else{
+              $data=array();
+              $data['code']=0;
+              $data['msg']='上传成功';
+              $data['data']=$img;
           }
+
+          echo json_encode($data);
       }
-
-      // 上传图片--不对图进行任何处理
-      public function upload_img_editer(){
-          if($_FILES['img']['size']>0){
-              $upload = new \Think\Upload();// 实例化上传类
-              $upload->maxSize   =     31457280 ;// 设置附件上传大小
-              $upload->exts      =     array('zip', 'rar', 'xls','xlsx', 'doc','docx','ppt','pptx','pdf','jpg','png','jpeg','gif');// 设置附件上传类型
-              $upload->uploadReplace  = false;// 存在同名文件是否覆盖
-              $upload->autoSub   =     false;//是否启用子目录保存
-              $upload->rootPath  =     './Uploads/'; // 设置附件上传根目录
-              $upload->savePath  =     'layui/'; // 设置附件上传（子）目录
-              $upload->saveRule  =     ''; // 设置附件上传（子）目录
-               
-              // 上传文件 
-              $info   =   $upload->upload();
-
-              if(!$info) {
-                  $data=array();
-                  $data['code']=0;
-                  $data['msg']=$upload->getError();
-              }else{
-                  $img=$info['img']['savename'];
-                  $data=array();
-                  $data['code']=0;
-                  $data['msg']='success';
-                  $data['data']['src']='/layui/'.$img;
-                  $data['data']['title']='11111';
-              }
-
-              echo json_encode($data);
-          }
-      }
-
-      // 上传图片--生成三种大小的图片
-      public function upload_img_3(){
-          global $user;
-          $uid=$user['uid'];
-
-          if($_FILES['img']['size']>0){
-              $image=new \Common\Extend\Image();
-              $img=$image->upload($_FILES['img'],filePath($uid,'layui_3'),'thumb');
-
-              if(!$img) {
-                  $data=array();
-                  $data['code']=0;
-                  $data['msg']=$image->getError();
-              }else{
-                  $data=array();
-                  $data['code']=0;
-                  $data['msg']='上传成功';
-                  $data['data']=$img;
-              }
-
-              echo json_encode($data);
-          }
-      }
+    }
 
 }

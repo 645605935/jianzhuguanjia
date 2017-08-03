@@ -49,11 +49,14 @@
     <!-- layui.js   -->
     <script src="__PUBLIC__/Admin/layui-v1.0.4/layui/layui.js"></script>
     <script src="__PUBLIC__/layer/layer.js"></script>
-<script>
 
-  
-
-</script>
+    <!-- jquery获取地址栏参数 -->
+    <script src="__PUBLIC__/js/jquery_get.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        console.log($.request.queryString);
+      });
+    </script>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 
 
@@ -90,7 +93,7 @@
         </div>
         
         <!-- 右侧主要内容 start-->
-        <div class="main-content" style="overflow: hidden;">
+        <div class="main-content">
           
 
           <!-- 右block_1  start -->
@@ -113,17 +116,23 @@
             </div><!-- #nav-search -->
           </div>
           <!-- 右block_1  end -->
-          
-
-          <!-- <a href="javascript:void(0)" id="hcg">隐藏列</a>
-          <a href="javascript:void(0)" id="scg">显示列</a> -->
-
 
           <div class="page-content">
+            <!-- 权限设置  start -->
+            <include file="Public/role_page_setting"/>
+            <!-- 权限设置  end -->
 
             <div class="row">
               <div class="col-xs-12">
-             
+
+                <style>
+                  .layui-form-item .layui-input-inline{width: auto!important;}
+                  .layui-form-item{margin-bottom: 0px;}
+                  #gbox_grid-table{width: 100%!important;}
+                  #gview_grid-table{width: 100%!important;}
+                  #gview_grid-table>div{width: 100%!important;}
+                </style>
+
                 <!-- 搜索  start -->
                 <div class="row">
                     <form class="layui-form layui-form-pane col-xs-12" action="" method="post">
@@ -152,8 +161,12 @@
                                     <div class="layui-input-inline">
                                       <select name="gid">
                                         <option value="请选择">请选择</option>
-                                        <foreach name="group" item="v">
-                                            <option value="{$v.id}" <if condition="$v.id eq $_POST['gid']">selected</if>>{$v.title}</option>
+                                        <foreach name="group" item="vo">
+                                           <optgroup label="{$vo['title']}">
+                                             <foreach name="vo['_child']" item="v">
+                                               <option value="{$v.id}" <if condition="$v.id eq $_POST['gid']">selected</if>>{$v.title}</option>
+                                             </foreach>
+                                           </optgroup>
                                         </foreach>
                                       </select>
                                     </div>
@@ -166,9 +179,9 @@
                           <tfoot>
                             <tr>
                               <td>
-                                <button style="float:left;" class="layui-btn" id="id-btn-dialog2_add"> 添加 </button>
-                                <button style="float:right;" type="submit" class="layui-btn" id="search_submit" name="submit" title="搜索">搜索</button>
-                                <button class="layui-btn" lay-submit="" lay-filter="demo1_search">立即提交</button>
+                                <button style="float:left;" class="layui-btn id-btn-dialog2_add" title="id-btn-dialog2_add"> 添加 </button>
+                                <a style="float:right;" href="{:U('Admin/User/homeUser')}" class="layui-btn search_btn" >重置</a>
+                                <button style="float:right;" type="submit" class="layui-btn search_btn" id="search_submit" name="submit" title="search_btn">搜索</button>
                               </td>
                             </tr> 
                           </tfoot>
@@ -178,19 +191,37 @@
                 <!-- 搜索  end -->
 
                 <div class="row">
-                    <div class="col-xs-6">
-                        <table id="grid-table"></table>
-                        <div id="grid-pager"></div>
+                    <div class="col-xs-7">
+                        <div class="panel panel-default">
+                          <div class="panel-heading">会员列表
+                              <!-- <a href="javascript:void(0)" id="hcg">隐藏列</a> -->
+                              <!-- <a href="javascript:void(0)" id="scg">显示列</a> -->
+                          </div>
+                          <div class="panel-body">
+                            <table id="grid-table"></table>
+                            <div id="grid-pager"></div>
+                          </div>
+                        </div>
                     </div>
 
-                    <div class="col-xs-6">
-                        <table id="grid-table-2"></table>
-                        <div id="grid-pager-2"></div>
+                    <div class="col-xs-5">
+                        <div class="panel panel-default">
+                          <div class="panel-heading">操作日志</div>
+                          <div class="panel-body">
+                            <table id="grid-table-2"></table>
+                            <div id="grid-pager-2"></div>
+                          </div>
+                        </div>
                     </div>
 
-                    <div class="col-xs-6">
-                        <table id="grid-table-3"></table>
-                        <div id="grid-pager-3"></div>
+                    <div class="col-xs-5" style="display: none;">
+                        <div class="panel panel-default">
+                          <div class="panel-heading">发布文章</div>
+                          <div class="panel-body">
+                            <table id="grid-table-3"></table>
+                            <div id="grid-pager-3"></div>
+                          </div>
+                        </div>
                     </div>
                 </div>
 
@@ -344,20 +375,20 @@
           var _gid="{$_POST['gid']}";
 
           pageInit(_username, _gid);
-      });
 
+          //初使化按钮操作权限
+          var page="{$page}";
+          _init_button_operate(page);
+      });
 
       //自定义报警列格式
       function imgFormatter(cellvalue, options, rowdata){ 
-        console.log(cellvalue);
-        console.log(options);
-        console.log(rowdata);
-          if (cellvalue != "0")
+          if (cellvalue != "0"){
               return '<img class="avatar" style="width:30px;height:30px;" src="'+cellvalue+'" alt="' + cellvalue + '" />';
-          else 
+          }else{
               return '<img class="avatar" style="width:30px;height:30px;" src="'+cellvalue+'" alt="' + cellvalue + '" />';
+          }
       }
-
 
       function pageInit(_username, _gid){
         var grid_selector = "#grid-table";
@@ -371,36 +402,30 @@
           datatype: "local",
           colNames:['id', '姓名', '用户名','用户组', '头像', '注册时间', '操作'],
           colModel:[
-            {name:'id', index:'id', sorttype:"int", align:"center", hidden: true, editable: true ,sortable: false},
+            {name:'id', index:'id', sorttype:"int", align:"center", hidden: true},
 
             {name:'truename',index:'truename',align:"center"},
             {name:'username',index:'username',align:"center"},
             {name:'_auth_group_title',index:'_auth_group_title',align:"center"},
             {name:'img',index:'img',align:"center", formatter: imgFormatter },
-            {name:'register_time',index:'register_time',align:"center"},
+            {name:'time',index:'time',align:"center",hidden: true},
 
-            {name:'Operates',index:'Operates',align:'center',sortable:false,width:200}
+            {name:'operates',index:'operates',align:'center',sortable:false,width:200}
           ], 
           rownumbers:true,
           rownumWidth:50,//设置行号列宽度
-          sortname:"id",//指定默认排序的列
-          sortorder:"asc",//指定默认排序方式
           shrinkToFit:true,//ture，则按比例初始化列宽度。如果为false，则列宽度使用colModel指定的宽度
           autowidth:true,
-          // width:window.srceen.availWidth-20,
           viewrecords : true,
           rowNum:10,
           rowList:[10,20,30],
           pager : pager_selector,
           altRows: true,
-          //toppager: true,
           width:'100%',
-          height: 450,
-          multiselect: true,
+          height: 700,
+          multiselect: false,
           multiboxonly: true,
           sortable: true,
-
-
       
           loadComplete : function() {
             var table = this;
@@ -437,20 +462,20 @@
                   var id=ids[i];   
                   var _rowData = $(grid_selector).jqGrid('getRowData',id);
 
-                  var operate =""; 
-                  operate += "<button style='margin-right:5px;' class='btn btn-warm btn-xs id-btn-dialog2_show operate_btn' data-id='"+_rowData.id+"'>查看</button>";
-                  operate += "<button style='margin-right:5px;' class='btn btn-primary btn-xs id-btn-dialog2_edit operate_btn' data-id='"+_rowData.id+"'>编辑</button>";
-                  operate += "<button class='btn btn-danger btn-xs id-btn-dialog2_del operate_btn' data-id='"+_rowData.id+"'>删除</button>";
+                  var operates =""; 
+                      operates += "<button style='margin-right:5px;' class='btn btn-warm btn-xs id-btn-dialog2_show' data-id='"+_rowData.id+"'>查看</button>";
+                      operates += "<button style='margin-right:5px;' class='btn btn-primary btn-xs id-btn-dialog2_edit' data-id='"+_rowData.id+"'>编辑</button>";
+                      operates += "<button class='btn btn-danger btn-xs id-btn-dialog2_del' data-id='"+_rowData.id+"'>删除</button>";
 
-                  jQuery(grid_selector).jqGrid('setRowData', ids[i], { Operates: operate });
+                  jQuery(grid_selector).jqGrid('setRowData', ids[i], { operates: operates });
               }
           },
         }).navGrid(pager_selector, {
           	search: false,
-	        add: false,
-	        edit: false,
-	        del: false,
-	        refresh: false
+  	        add: false,
+  	        edit: false,
+  	        del: false,
+  	        refresh: false
         });
 
         //显示隐藏列
@@ -473,35 +498,35 @@
             title: "Choose columns", 
             onClickButton: function () {
                 $(grid_selector).jqGrid('columnChooser',{
-					width: 550, 
-					dialog_opts: {
-						modal: true,
-						minWidth: 470,
-						height: 470,
-						show: 'blind',
-						hide: 'explode',
-						dividerLocation: 0.5
-					},
-					done : function (perm) {
+        					width: 550, 
+        					dialog_opts: {
+        						modal: true,
+        						minWidth: 470,
+        						height: 470,
+        						show: 'blind',
+        						hide: 'explode',
+        						dividerLocation: 0.5
+        					},
+        					done : function (perm) {
 
-						// var len=$(grid_selector).getGridParam("width");
-						// $(grid_selector).setGridParam().hideCol("username");
-						// $(grid_selector).setGridWidth(len);
+        						// var len=$(grid_selector).getGridParam("width");
+        						// $(grid_selector).setGridParam().hideCol("username");
+        						// $(grid_selector).setGridWidth(len);
 
-						console.log(perm);
-						if (perm) {
-						  // "OK" button are clicked
-						  this.jqGrid("remapColumns", perm, true);
-						  // the grid width is probably changed co we can get new width
-						  // and adjust the width of other elements on the page
-						  var gwdth = this.jqGrid("getGridParam","width");
-						  this.jqGrid("setGridWidth",gwdth);
-						} else {
-						  // we can do some action in case of "Cancel" button clicked
-						}
-				    }
-				});
-			}
+        						console.log(perm);
+        						if (perm) {
+        						  // "OK" button are clicked
+        						  this.jqGrid("remapColumns", perm, true);
+        						  // the grid width is probably changed co we can get new width
+        						  // and adjust the width of other elements on the page
+        						  var gwdth = this.jqGrid("getGridParam","width");
+        						  this.jqGrid("setGridWidth",gwdth);
+        						} else {
+        						  // we can do some action in case of "Cancel" button clicked
+        						}
+        				    }
+        				});
+        			}
         });
 
         
@@ -520,11 +545,11 @@
           rownumWidth:50,//设置行号列宽度
           rowNum:10,
           rowList:[10,100,1000],
-          pager : '#grid-pager-2',
+          // pager : '#grid-pager-2',
           viewrecords : true,
           autowidth:true,
           shrinkToFit:true,//ture，则按比例初始化列宽度。如果为false，则列宽度使用colModel指定的宽度
-          height : 300,
+          height : 250,
           caption : "操作日志",
 
           loadComplete : function(data) {
@@ -578,11 +603,11 @@
           rownumWidth:50,//设置行号列宽度
           rowNum:10,
           rowList:[10,100,1000],
-          pager : '#grid-pager-3',
+          // pager : '#grid-pager-3',
           viewrecords : true,
           autowidth:true,
           shrinkToFit:true,//ture，则按比例初始化列宽度。如果为false，则列宽度使用colModel指定的宽度
-          height : 300,
+          height : 250,
           caption : "案例",
         }).navGrid('#grid-pager-3', {
           add : false,
@@ -590,15 +615,7 @@
           del : false
         });
 
-
-
-        jQuery("#ms1").click(function() {
-          var s;
-          s = jQuery("#grid-table-2").jqGrid('getGridParam', 'selarrrow');
-          alert(s);
-        });
-      
-        //replace icons with FontAwesome icons like above   //更新分页图标  
+        //更新分页图标  
         function updatePagerIcons(table) {
           var replacement = 
           {
@@ -614,7 +631,6 @@
             if($class in replacement) icon.attr('class', 'ui-icon '+replacement[$class]);
           })
         }
-      
       }
     </script>
    
@@ -695,13 +711,22 @@
             //smartMenu右键自定义上下文菜单插件初使化
             Fn_Init_smartMenu();
             
+            //表格头部排序点击
             $('.ui-state-default.ui-jqgrid-hdiv').click(function(){
                 Fn_Init_smartMenu();
             });
 
+            //表格头部排序点击
             $('.ui-jqgrid-bdiv').click(function(){
                 Fn_Init_smartMenu();
             });
+
+            //表格头部排序点击
+            $('#grid-pager').click(function(){
+                Fn_Init_smartMenu();
+            });
+
+            
         });
     </script>
     <!-- 模板引擎doT.js    end -->
@@ -811,7 +836,7 @@
                   <tr>
                     <td colspan="2" style="text-align:center;">
                       <div class="site-demo-upload">
-                        <img id="LAY_demo_upload_add" src="__PUBLIC__/Admin/images/tong.jpg">
+                        <img id="LAY_demo_upload_add" src="__PUBLIC__/Admin/images/avatar.png">
                         <div class="site-demo-upbar">
                           <input type="file" name="img" class="layui-upload-file avatar" id="add_upload_img">
                         </div>
@@ -862,10 +887,14 @@
                           <div class="layui-form-item">
                             <label class="layui-form-label">用户组</label>
                             <div class="layui-input-inline">
-                              <select name="interest" lay-filter="group">
+                              <select name="gid" lay-filter="group">
                                 <option value="请选择">请选择</option>
-                                <foreach name="group" item="v">
-                                  <option value="{$v.id}">{$v.title}</option>
+                                <foreach name="group" item="vo">
+                                   <optgroup label="{$vo['title']}">
+                                     <foreach name="vo['_child']" item="v">
+                                       <option value="{$v.id}">{$v.title}</option>
+                                     </foreach>
+                                   </optgroup>
                                 </foreach>
                               </select>
                             </div>
@@ -904,7 +933,7 @@
                         </div>
                       </td>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                       <td colspan="2" align="center">
                         <div class="layui-form-item layui-form-text">
                           <div class="layui-input-block">
@@ -914,7 +943,7 @@
                           </div>
                         </div>
                       </td>
-                    </tr>
+                    </tr> -->
                   </tbody>
                   <tfoot>
                     <tr>
@@ -962,7 +991,7 @@
                   <tr>
                     <td colspan="2" style="text-align:center;">
                       <div class="site-demo-upload">
-                        <img id="LAY_demo_upload_edit" src="__PUBLIC__/Admin/images/tong.jpg">
+                        <img id="LAY_demo_upload_edit" src="__PUBLIC__/Admin/images/avatar.png">
                         <div class="site-demo-upbar">
                           <input type="file" name="img" class="layui-upload-file avatar" id="edit_upload_img">
                         </div>
@@ -976,7 +1005,7 @@
                   <table class="table table-striped table-bordered table-hover">
                       <tbody id="edit_form_block">
                         <tr>
-                          <td class="center">
+                          <td>
                             <div class="layui-inline">
                               <div class="layui-form-item">
                                 <label class="layui-form-label">姓名</label>
@@ -998,15 +1027,19 @@
                           </td>
                         </tr>
                         <tr>
-                          <td class="center">
+                          <td>
                             <div class="layui-inline">
                               <div class="layui-form-item">
                                 <label class="layui-form-label">用户组</label>
                                 <div class="layui-input-inline">
                                   <select name="gid" id="edit_select_group">
                                     <option value="请选择">请选择</option>
-                                    <foreach name="group" item="v">
-                                        <option value="{$v.id}">{$v.title}</option>
+                                    <foreach name="group" item="vo">
+                                       <optgroup label="{$vo['title']}">
+                                         <foreach name="vo['_child']" item="v">
+                                           <option value="{$v.id}">{$v.title}</option>
+                                         </foreach>
+                                       </optgroup>
                                     </foreach>
                                   </select>
                                 </div>
@@ -1046,112 +1079,8 @@
   
     <script type="text/javascript">
         $(function(){
-            //layui表单
-            layui.use(['form', 'layedit', 'laydate'], function(){
-              var form = layui.form()
-                ,layer = layui.layer
-                ,layedit = layui.layedit
-                ,laydate = layui.laydate;
-
-              //创建一个编辑器
-              var editIndex = layedit.build('LAY_demo_editor');
-
-              //自定义验证规则
-              form.verify({
-                title: function(value){
-                  if(value.length < 5){
-                    return '标题至少得5个字符啊';
-                  }
-                }
-                ,truename: function(value){  
-                  if(value.length < 2){  
-                    return '请输入真实姓名';  
-                  }  
-                }
-                ,username: function(value){  
-                  if(value.length < 4){  
-                    return '请输入至少4位的用户名';  
-                  }  
-                }
-                ,password: [/(.+){6,12}$/, '密码必须6到12位']
-                ,content: function(value){
-                  layedit.sync(editIndex);
-                }
-              });
-
-
-              //监听提交
-              form.on('submit(demo1)', function(data){
-                var _keyword=data.field.keyword;
-                get_bl_list(_keyword);
-                return false;
-              });
-
-
-              //监听提交
-              form.on('submit(demo1_search)', function(data){
-                // layer.alert(JSON.stringify(data.field), {
-                //   title: '最终的提交信息'
-                // })
-
-                var _username=data.field.username;
-                var _gid=data.field.gid;
-
-                pageInit(_username, _gid);
-                return false;
-              });
-
-              
-
-              //监听提交
-              form.on('submit(demo1_detail)', function(data){
-                alert('demo1_detail');
-                console.log(data.field);
-                return false;
-              });
-              
-
-              //监听提交
-              form.on('submit(demo1_add)', function(data){
-                var _json=_ajax_add_user(data.field);
-
-
-                if(_json.code==0){
-                    $("div[aria-describedby='dialog-confirm_add'] .ui-dialog-titlebar-close").trigger("click");
-                }
-                return false;
-              });
-
-
-              //监听提交
-              form.on('submit(demo1_edit)', function(data){
-
-                var _json=_ajax_edit_user(data.field);
-
-                var _data=_json.data;
-                console.log(11111111111);
-                console.log(_data);
-                var selectID=$("#grid-table").getGridParam("selrow");
-
-                $("#grid-table").setRowData(selectID,{"truename":_data.truename,"_auth_group_title":_data._auth_group_title, "username":_data.username, "img":"./Uploads"+_data.img});
-
-                if(_json.code==0){
-                    $("div[aria-describedby='dialog-confirm_edit'] .ui-dialog-titlebar-close").trigger("click");
-                }
-                return false;
-              });
-
-              //监听提交
-              // form.on('submit(demo1)', function(data){
-              //   layer.alert(JSON.stringify(data.field), {
-              //     title: '最终的提交信息'
-              //   })
-              //   return false;
-              // });
-            });
-
-            //添加：
-            $( "body" ).on('click', '#id-btn-dialog2_add', function(e) {
+            //添加
+            $( "body" ).on('click', '.id-btn-dialog2_add', function(e) {
               e.preventDefault();
               
               $( "#dialog-confirm_add" ).removeClass('hide').dialog({
@@ -1216,8 +1145,6 @@
               });
             });
 
-
-
             //查看
             $( "body" ).on('click', '.id-btn-dialog2_show', function(e) {
               e.preventDefault();
@@ -1264,7 +1191,6 @@
                   var ids=$(this).attr('data-id');
                   _ajax_del(ids);
               }
-
             });
 
         });
@@ -1272,10 +1198,6 @@
     <!-- 确认弹框 end-->
 
     <script type="text/javascript">
-       jQuery.support.cors=true;
-       //初使化析料列表
-
-
        //获取列表
        function _ajax_list_device(_username,_gid){
           var grid_data;
@@ -1397,11 +1319,13 @@
        function _ajax_add_user(data){
 
            var truename=data.truename;
+           var password=data.password;
            var username=data.username;
+           var gid=data.gid;
            var img=data.img;
 
            var _edit_data ='{';
-               _edit_data+='"truename":"'+truename+'","username":"'+username+'","img":"'+img+'"';
+               _edit_data+='"truename":"'+truename+'","password":"'+password+'","username":"'+username+'","img":"'+img+'","gid":"'+gid+'"';
                _edit_data+='}';
 
            var _json;
@@ -1414,17 +1338,17 @@
                dataType : 'json',
                success  : function(json) {  
                    if(json.code == 0){
-                       // layer.msg(json.msg);
+                       layer.msg(json.msg);
                        _json=json;
 
                        var _row=json.data;
                        console.log(_row);
                        var operate =""; 
-                       operate  = "<button style='margin-right:5px;' class='btn btn-warm btn-xs id-btn-dialog2_show operate_btn' data-id='"+_row.id+"'>查看</button>";
-                       operate += "<button style='margin-right:5px;' class='btn btn-primary btn-xs id-btn-dialog2_edit operate_btn' data-id='"+_row.id+"'>编辑</button>";
-                       operate += "<button class='btn btn-danger btn-xs id-btn-dialog2_del operate_btn' data-id='"+_row.id+"'>删除</button>";
+                       operate  = "<button style='margin-right:5px;' class='btn btn-warm btn-xs id-btn-dialog2_show' data-id='"+_row.id+"'>查看</button>";
+                       operate += "<button style='margin-right:5px;' class='btn btn-primary btn-xs id-btn-dialog2_edit' data-id='"+_row.id+"'>编辑</button>";
+                       operate += "<button class='btn btn-danger btn-xs id-btn-dialog2_del' data-id='"+_row.id+"'>删除</button>";
 
-                       $("#grid-table").addRowData("1", {"id":_row.id,"truename":_row.truename,"username":_row.username,"register_time":_row.register_time,"operates":_row.operate}, "first");  
+                       $("#grid-table").addRowData("1", {"id":_row.id,"truename":_row.truename,"_auth_group_title":_row._auth_group_title,"username":_row.username,"time":_row.time,"img":"./Uploads"+_row.img,"operates":_row.operate}, "first");  
 
                    }else{
                        layer.msg(json.msg);
@@ -1463,6 +1387,100 @@
                }  
            }); 
        }
+    </script>
+
+    <script>
+        //layui表单
+        layui.use(['form', 'layedit', 'laydate'], function(){
+          var form = layui.form()
+            ,layer = layui.layer
+            ,layedit = layui.layedit
+            ,laydate = layui.laydate;
+
+          //创建一个编辑器
+          var editIndex = layedit.build('LAY_demo_editor');
+
+          //自定义验证规则
+          form.verify({
+            title: function(value){
+              if(value.length < 5){
+                return '标题至少得5个字符啊';
+              }
+            }
+            ,truename: function(value){  
+              if(value.length < 2){  
+                return '请输入真实姓名';  
+              }  
+            }
+            ,username: function(value){  
+              if(value.length < 4){  
+                return '请输入至少4位的用户名';  
+              }  
+            }
+            ,password: [/(.+){6,12}$/, '密码必须6到12位']
+            ,content: function(value){
+              layedit.sync(editIndex);
+            }
+          });
+
+
+          //监听提交
+          form.on('submit(demo1)', function(data){
+            var _keyword=data.field.keyword;
+            get_bl_list(_keyword);
+            return false;
+          });
+
+
+          //监听提交
+          form.on('submit(demo1_search)', function(data){
+            layer.alert(JSON.stringify(data.field), {
+              title: '最终的提交信息'
+            })
+            pageInit(_username, _gid);
+            return false;
+          });
+
+          //监听提交
+          form.on('submit(demo1_detail)', function(data){
+            alert('demo1_detail');
+            console.log(data.field);
+            return false;
+          });
+
+          //监听提交
+          form.on('submit(demo1_add)', function(data){
+            var _json=_ajax_add_user(data.field);
+
+            if(_json.code==0){
+                $("div[aria-describedby='dialog-confirm_add'] .ui-dialog-titlebar-close").trigger("click");
+            }
+            return false;
+          });
+
+          //监听提交
+          form.on('submit(demo1_edit)', function(data){
+            var _json=_ajax_edit_user(data.field);
+
+            var _data=_json.data;
+            var selectID=$("#grid-table").getGridParam("selrow");
+
+            $("#grid-table").setRowData(selectID,{"truename":_data.truename,"_auth_group_title":_data._auth_group_title, "username":_data.username, "img":"./Uploads"+_data.img});
+
+            if(_json.code==0){
+                $("div[aria-describedby='dialog-confirm_edit'] .ui-dialog-titlebar-close").trigger("click");
+            }
+            return false;
+          });
+
+          //监听提交
+          // form.on('submit(demo1)', function(data){
+          //   layer.alert(JSON.stringify(data.field), {
+          //     title: '最终的提交信息'
+          //   })
+          //   return false;
+          // });
+        });
     </script>
 
 
