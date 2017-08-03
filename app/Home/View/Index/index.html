@@ -115,36 +115,14 @@
          <th width="14%" valign="middle" align="center"> 地区 </th> 
          <th width="14%" valign="middle" align="center"> 发布时间 </th> 
         </tr> 
-        <tr> 
-         <td valign="middle" align="center">155****8880</td> 
-         <td valign="middle" align="center">施工总承包资质<br />建筑工程 三级</td> 
-         <td valign="middle" align="center">山东-青岛</td> 
-         <td valign="middle" align="center">07<i>月</i>13日</td> 
-        </tr> 
-        <tr> 
-         <td valign="middle" align="center">158****2719</td> 
-         <td valign="middle" align="center">施工劳务承包资质 不分等级</td> 
-         <td valign="middle" align="center">四川-成都</td> 
-         <td valign="middle" align="center">07<i>月</i>13日</td> 
-        </tr> 
-        <tr> 
-         <td valign="middle" align="center">137****3289</td> 
-         <td valign="middle" align="center">施工专业承包资质<br />建筑幕墙工程 二级</td> 
-         <td valign="middle" align="center">云南-昆明</td> 
-         <td valign="middle" align="center">07<i>月</i>13日</td> 
-        </tr> 
-        <tr> 
-         <td valign="middle" align="center">139****4847</td> 
-         <td valign="middle" align="center">施工专业承包资质<br />建筑装修装饰工程 二级</td> 
-         <td valign="middle" align="center">广西</td> 
-         <td valign="middle" align="center">07<i>月</i>13日</td> 
-        </tr> 
-        <tr> 
-         <td valign="middle" align="center">180****1555</td> 
-         <td valign="middle" align="center">施工总承包资质<br />建筑工程 三级</td> 
-         <td valign="middle" align="center">河北-石家庄</td> 
-         <td valign="middle" align="center">07<i>月</i>13日</td> 
-        </tr> 
+        <foreach name="order_list" item="v">
+            <tr> 
+             <td valign="middle" align="center">{$v.phone}</td> 
+             <td valign="middle" align="center">{$v.type_1}<br />{$v.type_2} {$v.type_2}</td> 
+             <td valign="middle" align="center">{$v.province}-{$v.city}</td> 
+             <td valign="middle" align="center">{$v.time}</td> 
+            </tr> 
+        </foreach>
        </tbody>
       </table> 
      </div> 
@@ -152,82 +130,17 @@
     <div class="modulat-index-city modulat-order modulat-evaluate"> 
      <div class="modulat-evaluate-list"> 
       <ul> 
-       <li> 
-        <div class="modulat-evaluate-icon">
-         <img src="__PUBLIC__/Home/images/keh_ico1.png" />
-        </div> <p>资质代办<span class="special-text">订单经过审核</span>后再分发，极大提高了资质代办效率，降低了办理成本。</p> 
-        <div class="clear"></div> </li> 
-       <li> 
-        <div class="modulat-evaluate-icon">
-         <img src="__PUBLIC__/Home/images/evaluate-icon2.gif" />
-        </div> <p>推荐的资质代办公司比较靠谱，也可以直接在平台自主挑选，<span class="special-text">省事、省力、省时间。</span></p> 
-        <div class="clear"></div> </li> 
-       <li> 
-        <div class="modulat-evaluate-icon">
-         <img src="__PUBLIC__/Home/images/evaluate-icon3.gif" />
-        </div> <p>专注于建筑行业服务，是优质的合作伙伴，提供的<span class="special-text">服务体验一流</span>，期待继续深入合作！</p> 
-        <div class="clear"></div> </li> 
-       <li> 
-        <div class="modulat-evaluate-icon">
-         <img src="__PUBLIC__/Home/images/evaluate-icon5.gif" />
-        </div> <p>资质管家<span class="special-text">服务贴心，靠谱，速度快，</span>给我们节省了很多精力。</p> 
-        <div class="clear"></div> </li> 
-       <li> 
-        <div class="modulat-evaluate-icon">
-         <img src="__PUBLIC__/Home/images/evaluate-icon6.gif" />
-        </div> <p>既可以<span class="special-text">办资质，也可以找人才</span>，不用到处挑选，大力推荐！</p> 
-        <div class="clear"></div> </li> 
-       <li> 
-        <div class="modulat-evaluate-icon">
-         <img src="__PUBLIC__/Home/images/evaluate-icon4.gif" />
-        </div> <p><span class="special-text">订单推送很及时</span>，我们不用再为没有资质单子发愁了，点赞！</p> 
-        <div class="clear"></div> </li> 
-       <li> 
-        <div class="modulat-evaluate-icon">
-         <img src="__PUBLIC__/Home/images/evaluate-icon7.gif" />
-        </div> <p>真心为建筑行业服务的好平台！</p> 
-        <div class="clear"></div> </li> 
-       <li> 
-        <div class="modulat-evaluate-icon">
-         <img src="__PUBLIC__/Home/images/evaluate-icon9.gif" />
-        </div> <p>购买了<span class="special-text">平台套餐，不存在乱收费</span>情况，订单也真实有效，员工服务态度很好。</p> 
-        <div class="clear"></div> </li> 
-       <li> 
-        <div class="modulat-evaluate-icon">
-         <img src="__PUBLIC__/Home/images/evaluate-icon10.gif" />
-        </div> <p>服务态度好，细心、及时、快速、周到，办事认真负责，真心为用户着想，全五星。</p> 
-        <div class="clear"></div> </li> 
-       <li> 
-        <div class="modulat-evaluate-icon">
-         <img src="__PUBLIC__/Home/images/evaluate-icon8.gif" />
-        </div> <p>资质单子已经有中介接了，正在办理中，人才也是在这里找的，放心，靠谱。</p> 
-        <div class="clear"></div> </li> 
-       <li> 
-        <div class="modulat-evaluate-icon">
-         <img src="__PUBLIC__/Home/images/evaluate-icon.gif" />
-        </div> <p>资质代办<span class="special-text">订单经过审核</span>后再分发，极大提高了资质代办效率，降低了办理成本。</p> 
-        <div class="clear"></div> </li> 
-       <li> 
-        <div class="modulat-evaluate-icon">
-         <img src="__PUBLIC__/Home/images/evaluate-icon2.gif" />
-        </div> <p>推荐的资质代办公司比较靠谱，也可以直接在平台自主挑选，<span class="special-text">省事、省力、省时间。</span></p> 
-        <div class="clear"></div> </li> 
-       <li> 
-        <div class="modulat-evaluate-icon">
-         <img src="__PUBLIC__/Home/images/evaluate-icon3.gif" />
-        </div> <p>专注于建筑行业服务，是优质的合作伙伴，提供的<span class="special-text">服务体验一流</span>，期待继续深入合作！</p> 
-        <div class="clear"></div> </li> 
-       <li> 
-        <div class="modulat-evaluate-icon">
-         <img src="__PUBLIC__/Home/images/evaluate-icon5.gif" />
-        </div> <p>资质管家<span class="special-text">服务贴心，靠谱，速度快，</span>给我们节省了很多精力。</p> 
-        <div class="clear"></div> </li> 
-       <li> 
-        <div class="modulat-evaluate-icon">
-         <img src="__PUBLIC__/Home/images/evaluate-icon6.gif" />
-        </div> <p>既可以<span class="special-text">办资质，也可以找人才</span>，不用到处挑选，大力推荐！</p> 
-        <div class="clear"></div> </li> 
-       <div class="clear"></div> 
+          <foreach name="voice_list" item="v">
+              <li>
+                  <div class="modulat-evaluate-icon">
+                      <img style="width: 36px;height: 40px;" src="{$v.img}" />
+                  </div>
+                  {$v.content}
+                  <div class="clear"></div>
+              </li>
+          </foreach>
+          
+          <div class="clear"></div> 
       </ul> 
      </div> 
     </div> 
@@ -240,38 +153,9 @@
     <span>正规中介公司分别报价，资质代办行情轻松掌握</span> 
    </div> 
    <div class="fulx_list"> 
-    <a target="_blank" href="http://www.zizhiguanjia.com/zizhi/sgzcbzz/">施工总承包资质<i></i></a> 
-    <a target="_blank" href="http://www.zizhiguanjia.com/zizhi/sgzycbzz/">施工专业承包资质<i></i></a> 
-    <a target="_blank" href="http://www.zizhiguanjia.com/zizhi/sglwcbzz/">施工劳务承包资质</a> 
-    <a target="_blank" href="http://www.zizhiguanjia.com/zizhi/czxs/">承装电力设施许可证</a> 
-    <a target="_blank" href="http://www.zizhiguanjia.com/zizhi/gcsjzh/">工程设计综合资质</a> 
-    <a target="_blank" href="http://www.zizhiguanjia.com/zizhi/gcsjhy/">工程设计行业资质</a> 
-    <a target="_blank" href="http://www.zizhiguanjia.com/zizhi/gcsjzy/">工程设计专业资质</a> 
-    <a target="_blank" href="http://www.zizhiguanjia.com/zizhi/gcsjzx/">工程设计专项资质</a> 
-    <a target="_blank" href="http://www.zizhiguanjia.com/zizhi/jzgcsjsws/">建筑工程设计事务所资质</a> 
-    <a target="_blank" href="http://www.zizhiguanjia.com/zizhi/gckczh/">工程勘察综合资质</a> 
-    <a target="_blank" href="http://www.zizhiguanjia.com/zizhi/gckczy/">工程勘察专业资质</a> 
-    <a target="_blank" href="http://www.zizhiguanjia.com/zizhi/gckclw/">工程勘察劳务资质</a> 
-    <a target="_blank" href="http://www.zizhiguanjia.com/zizhi/zlgl/">ISO质量管理体系</a> 
-    <a target="_blank" href="http://www.zizhiguanjia.com/zizhi/hjgl/">ISO环境管理体系</a> 
-    <a target="_blank" href="http://www.zizhiguanjia.com/zizhi/gcjlzh/">工程监理综合资质</a> 
-    <a target="_blank" href="http://www.zizhiguanjia.com/zizhi/gcjlzy/">工程监理专业资质</a> 
-    <a target="_blank" href="http://www.zizhiguanjia.com/zizhi/gcjlsws/">工程监理事务所资质</a> 
-    <a target="_blank" href="http://www.zizhiguanjia.com/zizhi/afgczz/">安防工程资质</a> 
-    <a target="_blank" href="http://www.zizhiguanjia.com/zizhi/gczjzxzz/">工程造价咨询资质</a> 
-    <a target="_blank" href="http://www.zizhiguanjia.com/zizhi/gczb/">工程招标代理机构资格</a> 
-    <a target="_blank" href="http://www.zizhiguanjia.com/zizhi/fdcjjjgzz/">房地产经纪机构资质</a> 
-    <a target="_blank" href="http://www.zizhiguanjia.com/zizhi/fdckfqyzz/">房地产开发企业资质</a> 
-    <a target="_blank" href="http://www.zizhiguanjia.com/zizhi/fdcgjjg/">房地产估价机构资质</a> 
-    <a target="_blank" href="http://www.zizhiguanjia.com/zizhi/lwpq/">劳务派遣经营许可证</a> 
-    <a target="_blank" href="http://www.zizhiguanjia.com/zizhi/hjyxpjzz/">环境影响评价资质</a> 
-    <a target="_blank" href="http://www.zizhiguanjia.com/zizhi/guihua/">城乡规划编制资质</a> 
-    <a target="_blank" href="http://www.zizhiguanjia.com/zizhi/xtjc/">计算机信息系统集成资质</a> 
-    <a target="_blank" href="http://www.zizhiguanjia.com/zizhi/omcpaq/">欧盟CE产品安全认证</a> 
-    <a target="_blank" href="http://www.zizhiguanjia.com/zizhi/zghbcp/">CEP中国环保产品认证</a> 
-    <a target="_blank" href="http://www.zizhiguanjia.com/zizhi/zghjbz/">中国环境标志认证（十环）</a> 
-    <a target="_blank" href="http://www.zizhiguanjia.com/zizhi/cp/">3C产品认证</a> 
-    <a target="_blank" href="http://www.zizhiguanjia.com/zizhi/dzcp/">ISCCC电子产品认证</a> 
+        <foreach name="type_list" item="v">
+            <a target="_blank" href="{:U('Home/Index/baojia')}">{$v.title}<i></i></a> 
+        </foreach>
    </div> 
    <div class="clear"></div> 
   </div> 

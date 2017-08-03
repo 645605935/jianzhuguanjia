@@ -41,12 +41,29 @@ class IndexController extends CommonController{
             $zhongjie_list[$key]['company_types']=$str;
         }
 
+        // 最新申请服务
+        $order_list=D('Order')->limit(5)->relation(true)->select();
+        foreach ($order_list as $key => $value) {
+            $order_list[$key]['time']=date('m月d日', $value['time']);
+            $order_list[$key]['phone']=hidtel($value['time']);
+        }
+
+        // 最新申请服务
+        $voice_list=D('Voice')->limit(15)->relation(true)->select();
+
+        //资质代办服务类型
+        $type_list=M('Type')->where(array('pid'=>1275))->select();
+
+
         $this->province=$province;
         $this->daiban_type=$daiban_type;
         $this->safe_type_1=$safe_type_1;
         $this->safe_type_2=$safe_type_2;
         $this->safe_type_3=$safe_type_3;
         $this->zhongjie_list=$zhongjie_list;
+        $this->order_list=$order_list;
+        $this->voice_list=$voice_list;
+        $this->type_list=$type_list;
         $this->index="首页";
         $this->display();
     }

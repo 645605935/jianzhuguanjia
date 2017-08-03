@@ -2159,6 +2159,16 @@ function xCopy($source, $destination, $child){
     return 1;
 }
 
+//屏蔽电话号码中间四位
+function hidtel($phone){
+    $IsWhat = preg_match('/(0[0-9]{2,3}[\-]?[2-9][0-9]{6,7}[\-]?[0-9]?)/i',$phone); //固定电话
+    if($IsWhat == 1){
+        return preg_replace('/(0[0-9]{2,3}[\-]?[2-9])[0-9]{3,4}([0-9]{3}[\-]?[0-9]?)/i','$1****$2',$phone);
+    }else{
+        return  preg_replace('/(1[358]{1}[0-9])[0-9]{4}([0-9]{4})/i','$1****$2',$phone);
+    }
+}
+
 require './app/Common/Common/cache.php';
 require './app/Common/Common/oss.php';
 require './app/Common/Common/zhangtengrui.php';

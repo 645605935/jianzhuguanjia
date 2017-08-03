@@ -71,6 +71,22 @@
       </ul>
     </li>
 
+    <li <if condition="$cur_c eq 'Voice'">class="active open"</if>>
+      <a href="#" class="dropdown-toggle">
+        <i class="icon-film"></i>
+        <span class="menu-text"> 客户心声管理 </span>
+        <b class="arrow icon-angle-down"></b>
+      </a>
+
+      <ul class="submenu">
+        <li <if condition="$cur_v eq 'Voice-index'">class="active"</if>>
+          <a href="{:U('Admin/Voice/index')}" page="Admin/Voice/index" title="index" data-title="客户心声管理">
+            <i class="icon-double-angle-right"></i>
+            客户心声管理
+          </a>
+        </li>
+      </ul>
+    </li>
 
     <li <if condition="$cur_c eq 'Autoprice'">class="active open"</if>>
       <a href="#" class="dropdown-toggle">
