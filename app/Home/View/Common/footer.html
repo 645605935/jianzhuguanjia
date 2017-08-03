@@ -2,41 +2,67 @@
  <div class="footer-warp"> 
 
     <if condition="$index eq '首页'">
-        <div class="footer_bg"> 
-         <div class="footer-con"> 
-          <div class="con2 clear"> 
-           <div id="foot_youqlj_nav" class="foot_youqlj_nav"> 
-            <ul> 
-            <foreach name="friendlink_list" item="vo">
-                <li class="<if condition='$key eq 0'>foot_youqlj_nav_on</if>">{$vo.title}</li> 
-            </foreach>
-            </ul> 
-            <div id="tab_con">
-              <foreach name="friendlink_list" item="vo">
-                  <div class="<if condition='$key eq 0'>footer_youqlj<else/>footer-con-link</if>"> 
-                      <foreach name="vo['_child']" item="vo">
-                          <a rel="nofollow" href="{$v.url}">{$v.title}</a> 
-                      </foreach>
-                      <i style="color: #666666;margin-right: 18px;float: left;display: block;white-space: nowrap;">申请链接QQ:3267485428</i> 
-                  </div> 
-              </foreach>
-             </div> 
-            </div> 
-           </div> 
-           <div class="footer_guanzwm"> 
-            <h3>关注我们</h3> 
-            <ul> 
-             <li><a rel="nofollow" href="http://weibo.com/izizhiguanjia"> &gt; 资质管家微博</a></li> 
-             <li><a rel="nofollow" href="http://tieba.baidu.com/f?kw=%E8%B5%84%E8%B4%A8%E7%AE%A1%E5%AE%B6">&gt; 资质管家吧</a></li> 
-            </ul> 
-           </div> 
-           <ul class="r"> 
-            <li class="l1"> <img src="__PUBLIC__/Home/images/wx.jpg" title="资质管家微信二维码" alt="资质管家微信二维码" width="150" height="150" /> </li> 
-            <li class="l2"> <p><i class="i1"></i><span><strong class="s1">13371739040 </strong>资质办理咨询电话(全天)</span></p> <p><i class="i2"></i><span><strong class="s2">资质咨询</strong><a rel="nofollow" target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=2064508537&amp;site=qq&amp;menu=yes"><img src="http://wpa.qq.com/pa?p=2:2064508537:51" alt="办资质，找资质管家QQ交谈" title="办资质，找资质管家QQ交谈" border="0" /></a></span></p> <p><i class="i3"></i><span><strong class="s3">资质合作 </strong>3267485428@qq.com</span></p> </li> 
-           </ul> 
-          </div> 
-         </div> 
-        </div> 
+        <div class="footer_bg">
+            <div class="footer-con">
+                <div class="con2 clear">
+                    <div id="foot_youqlj_nav" class="foot_youqlj_nav">
+                        <ul>
+                            <li class="foot_youqlj_nav_on">常用网站</li>
+                            <li>热门页面</li>
+                            <li>友情链接</li></ul>
+                        <div id="tab_con">
+                            <div class="footer_youqlj">
+                                <foreach name="friendlink_list_1" item="v">
+                                    <a rel="nofollow" href="{$v.url}">{$v.title}</a>
+                                </foreach>
+                            </div>
+                            <div class="footer-con-link">
+                                <foreach name="friendlink_list_2" item="v">
+                                    <a rel="nofollow" href="{$v.url}">{$v.title}</a>
+                                </foreach>
+                            </div>
+                            <div class="footer-con-link">
+                                <foreach name="friendlink_list_3" item="v">
+                                    <a rel="nofollow" href="{$v.url}">{$v.title}</a>
+                                </foreach>
+                                <i style="color: #666666;margin-right: 18px;float: left;display: block;white-space: nowrap;">申请链接QQ:3267485428</i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer_guanzwm">
+                        <h3>关注我们</h3>
+                        <ul>
+                            <li>
+                                <a rel="nofollow" href="http://weibo.com/izizhiguanjia">&gt; 资质管家微博</a></li>
+                            <li>
+                                <a rel="nofollow" href="http://tieba.baidu.com/f?kw=%E8%B5%84%E8%B4%A8%E7%AE%A1%E5%AE%B6">&gt; 资质管家吧</a></li>
+                        </ul>
+                    </div>
+                    <ul class="r">
+                        <li class="l1">
+                            <img src="http://www.zizhiguanjia.com/Images/wx.jpg" width="150" height="150" title="资质管家微信二维码" alt="资质管家微信二维码"></li>
+                        <li class="l2">
+                            <p>
+                                <i class="i1"></i>
+                                <span>
+                                    <strong class="s1">13371739040</strong>资质办理咨询电话(全天)</span></p>
+                            <p>
+                                <i class="i2"></i>
+                                <span>
+                                    <strong class="s2">资质咨询</strong>
+                                    <a rel="nofollow" target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=2064508537&amp;site=qq&amp;menu=yes">
+                                        <img border="0" src="http://wpa.qq.com/pa?p=2:2064508537:51" alt="办资质，找资质管家QQ交谈" title="办资质，找资质管家QQ交谈"></a>
+                                </span>
+                            </p>
+                            <p>
+                                <i class="i3"></i>
+                                <span>
+                                    <strong class="s3">资质合作</strong>3267485428@qq.com</span></p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </if>
   
   <div class="footer-bq"> 
