@@ -7,71 +7,19 @@
           <div class="con2 clear"> 
            <div id="foot_youqlj_nav" class="foot_youqlj_nav"> 
             <ul> 
-             <li class="foot_youqlj_nav_on">常用网站</li> 
-             <li>热门页面</li> 
-             <li>友情链接</li> 
+            <foreach name="friendlink_list" item="vo">
+                <li class="<if condition='$key eq 0'>foot_youqlj_nav_on</if>">{$vo.title}</li> 
+            </foreach>
             </ul> 
-            <div id="tab_con"> 
-             <div class="footer_youqlj"> 
-              <a rel="nofollow" href="http://www.mohurd.gov.cn/">住房和城乡建设部</a> 
-              <a rel="nofollow" href="http://www.bjjs.gov.cn/tabid/1627/Default.aspx">安全生产许可查询</a> 
-              <a rel="nofollow" href="http://kscg.bjghw.gov.cn/surveyoa/ywcx.html">勘察设计城市规划单位资质查询</a> 
-              <a rel="nofollow" href="http://jzsgl.coc.gov.cn/archisearch/">建造师查询系统</a> 
-              <a rel="nofollow" href="http://jlgcs.cein.gov.cn/jlgcsSearch/index.aspx">监理工程师执业注册查询</a> 
-              <a rel="nofollow" href="http://jzsgl.coc.gov.cn/smartclient/index.htm">二级建造师注册管理系统</a> 
-              <a rel="nofollow" href="http://www.hr-build.com/">建设人才网</a> 
-              <a rel="nofollow" href="http://www.zizhiguanjia.com/zt/">专题列表</a> 
-             </div> 
-             <div class="footer-con-link"> 
-              <a href="zizhibiaozhun.html">建筑资质标准</a> 
-              <a href="daiban.html">资质代办公司</a> 
-              <a href="http://www.zizhiguanjia.com/anhui-zizhi/">安徽建筑资质代办</a> 
-              <a href="http://www.zizhiguanjia.com/beijing-zizhi/">北京建筑资质代办</a> 
-              <a href="http://www.zizhiguanjia.com/chengdou-zizhi/">成都建筑资质代办</a> 
-              <a href="http://www.zizhiguanjia.com/fuzhou-zizhi/">福州建筑资质代办</a> 
-              <a href="http://www.zizhiguanjia.com/gansu-zizhi/">甘肃建筑资质代办</a> 
-              <a href="http://www.zizhiguanjia.com/guangxi-zizhi/">广西建筑资质代办</a> 
-              <a href="http://www.zizhiguanjia.com/guiyang-zizhi/">贵阳建筑资质代办</a> 
-              <a href="http://www.zizhiguanjia.com/guizhou-zizhi/">贵州建筑资质代办</a> 
-              <a href="http://www.zizhiguanjia.com/hefei-zizhi/">合肥建筑资质代办</a> 
-              <a href="http://www.zizhiguanjia.com/hebei-zizhi/">河北建筑资质代办</a> 
-              <a href="http://www.zizhiguanjia.com/hubei-zizhi/">湖北建筑资质代办</a> 
-              <a href="http://www.zizhiguanjia.com/hunan-zizhi/">湖南建筑资质代办</a> 
-              <a href="http://www.zizhiguanjia.com/kunming-zizhi/">昆明建筑资质代办</a> 
-              <a href="http://www.zizhiguanjia.com/shanxi-zizhi/">山西建筑资质代办</a> 
-              <a href="http://www.zizhiguanjia.com/shanxii-zizhi/">陕西建筑资质代办</a> 
-              <a href="http://www.zizhiguanjia.com/xian-zizhi/">西安建筑资质代办</a> 
-              <a href="http://www.zizhiguanjia.com/zt/">专题列表</a> 
-             </div> 
-             <div class="footer-con-link"> 
-              <a href="http://www.58guakao.com">一级建造师挂靠</a> 
-              <a href="http://www.guajob.com">挂靠人才网</a> 
-              <a href="http://www.tmxxw.com">天贸钢铁网</a> 
-              <a href="http://acc.tedu.cn">会计培训学校</a> 
-              <a href="http://xa.jianzhi8.com/">西安兼职吧</a> 
-              <a href="http://nj.jiajiao114.com/">南京家教</a> 
-              <a href="http://www.eduour.com/">在职研究生</a> 
-              <a href="http://www.xyyck.com">通州资质审批</a> 
-              <a href="http://www.jiaotou.org/">教育培训机构</a> 
-              <a href="http://www.qianinfo.com/">可行性研究报告</a> 
-              <a href="http://www.caikepass.com">注册会计师培训</a> 
-              <a href="http://www.lie2lie.com">猎中猎-证书人才</a> 
-              <a href="http://www.360guakao.com">二级建造师挂靠</a> 
-              <a href="http://www.58zsgk.com">注册证书挂靠</a> 
-              <a href="http://www.bjob100.com">百分百证书挂靠</a> 
-              <a href="http://gz.58.com/zhuce/">广州公司注册</a> 
-              <a href="http://www.cnffww.com/">模板脚手架网</a> 
-              <a href="http://www.zxzhijia.com/">装修网</a> 
-              <a href="http://www.ht.cn">商标转让</a> 
-              <a href="http://0609.com/">分类信息网</a> 
-              <a href="http://www.shzh.net/">装修投诉</a> 
-              <a href="http://www.133229.com/">论文投稿</a> 
-              <a href="http://www.jiazhuang.com/">家装网 </a> 
-              <a href="http://wlmq.focus.cn/">乌市房产</a> 
-              <a href="http://www.cszht.com/">长沙人才网</a> 
-              <a href="http://www.weaoo.com/">天气预报</a> 
-              <a href="http://www.58guakao.com/zhaopin/">建筑公司招聘</a> 
-              <i style="color: #666666;margin-right: 18px;float: left;display: block;white-space: nowrap;">申请链接QQ:3267485428</i> 
+            <div id="tab_con">
+              <foreach name="friendlink_list" item="vo">
+                  <div class="<if condition='$key eq 0'>footer_youqlj<else/>footer-con-link</if>"> 
+                      <foreach name="vo['_child']" item="vo">
+                          <a rel="nofollow" href="{$v.url}">{$v.title}</a> 
+                      </foreach>
+                      <i style="color: #666666;margin-right: 18px;float: left;display: block;white-space: nowrap;">申请链接QQ:3267485428</i> 
+                  </div> 
+              </foreach>
              </div> 
             </div> 
            </div> 

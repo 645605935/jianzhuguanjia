@@ -74,6 +74,13 @@ class IndexController extends CommonController{
         //更多资质
         $zizhi_3_list=M('Article')->where(array('type'=>1392))->limit(7)->select();
 
+        //链接管理
+        $friendlink_list=M('Type')->where(array('pid'=>1393))->select();
+        foreach ($friendlink_list as $key => $value) {
+            $temp=M('Friendlink')->where(array('type'=>$value['id']))->select();
+            $friendlink_list[$key]['_child']=$temp;
+        }
+
 
         $this->province=$province;
         $this->daiban_type=$daiban_type;
@@ -88,6 +95,7 @@ class IndexController extends CommonController{
         $this->zizhi_1_list=$zizhi_1_list;
         $this->zizhi_2_list=$zizhi_2_list;
         $this->zizhi_3_list=$zizhi_3_list;
+        $this->friendlink_list=$friendlink_list;
         $this->index="首页";
         $this->display();
     }
