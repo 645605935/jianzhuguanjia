@@ -5,9 +5,6 @@
   <title>常见问题</title> 
   <link type="text/css" rel="stylesheet" href="__PUBLIC__/Home/css/usercenter.css?v=20160601" /> 
   <link href="__PUBLIC__/Home/css/broker.css" rel="stylesheet" /> 
-  <script async="" src="__PUBLIC__/Home/js/analytics.js"></script>
-  <script src="__PUBLIC__/Home/js/push.js"></script>
-  <script src="__PUBLIC__/Home/js/hm.js?580e9422d1d340fa7711682e41256040"></script>
   <script type="text/javascript" src="__PUBLIC__/Home/js/jquery-1.10.2.js"></script> 
   <script type="text/javascript" src="__PUBLIC__/Home/js/jquery.validate.js"></script> 
   <script type="text/javascript" src="__PUBLIC__/Home/js/popup.js"></script> 
@@ -41,22 +38,22 @@
       <li> 
        <lable class="lab" style="margin-left:50px;">
          第一，注册手机号是否完成验证。如未验证，可前往
-        <a href="http://www.zizhiguanjia.com/safetyset/index" style="font-size:16px;">账户安全</a>进行验证。
+        <a href="{:U('Home/Safetyset/index')}" style="font-size:16px;">账户安全</a>进行验证。
        </lable> </li> 
       <li> 
        <lable class="lab" style="margin-left:50px;">
-        第二，公司是否已完成
-        <a href="http://www.zizhiguanjia.com/company/companylicense" style="font-size:16px;">实名认证</a>。
+        第二，公司是否已完成          
+        <a href="{:U('Home/Company/companylicense')}" style="font-size:16px;">实名认证</a>。
        </lable> </li> 
       <li> 
        <lable class="lab" style="margin-left:50px;">
         第三，
-        <a href="http://www.zizhiguanjia.com/company/companyinfo" style="font-size:16px;">公司资料</a>是否完善。
+        <a href="{:U('Home/Company/company_info')}" style="font-size:16px;">公司资料</a>是否完善。
        </lable> </li> 
       <li> 
        <lable class="lab" style="margin-left:50px;">
          第四，
-        <a href="http://www.zizhiguanjia.com/company/team" style="font-size:16px;">精英团队</a>是否添加至少1人作为热线联系人。
+        <a href="{:U('Home/Company/team')}" style="font-size:16px;">精英团队</a>是否添加至少1人作为热线联系人。
        </lable> </li> 
      </ul> 
     </div> 
