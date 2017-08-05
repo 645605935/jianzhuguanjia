@@ -179,7 +179,7 @@
                           <tfoot>
                             <tr>
                               <td>
-                                <button style="float:left;" class="layui-btn id-btn-dialog2_add" title="id-btn-dialog2_add"> 添加 </button>
+                                <!-- <button style="float:left;" class="layui-btn id-btn-dialog2_add" title="id-btn-dialog2_add"> 添加用户 </button> -->
                                 <a style="float:right;" href="{:U('Admin/User/homeUser')}" class="layui-btn search_btn" >重置</a>
                                 <button style="float:right;" type="submit" class="layui-btn search_btn" id="search_submit" name="submit" title="search_btn">搜索</button>
                               </td>
@@ -202,22 +202,56 @@
                     </div>
 
                     <div class="col-xs-5">
-                        <div class="panel panel-default">
-                          <div class="panel-heading">操作日志</div>
-                          <div class="panel-body">
-                            <table id="grid-table-2"></table>
-                            <div id="grid-pager-2"></div>
-                          </div>
-                        </div>
-                    </div>
+                        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
-                    <div class="col-xs-5" style="display: none;">
-                        <div class="panel panel-default">
-                          <div class="panel-heading">发布文章</div>
-                          <div class="panel-body">
-                            <table id="grid-table-3"></table>
-                            <div id="grid-pager-3"></div>
+                          <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingOne">
+                              <h4 class="panel-title">
+                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne" class="collapsed">
+                                  操作日志
+                                </a>
+                              </h4>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne" aria-expanded="false" style="height: 0px;">
+                              <div class="panel-body">
+                                 <table id="grid-table-2"></table>
+                                 <div id="grid-pager-2"></div>
+                              </div>
+                            </div>
                           </div>
+
+                          <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingTwo">
+                              <h4 class="panel-title">
+                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                  买券记录
+                                </a>
+                              </h4>
+                            </div>
+                            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo" aria-expanded="false" style="height: 0px;">
+                              <div class="panel-body">
+                                 <table id="grid-table-3"></table>
+                                 <div id="grid-pager-3"></div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingTwo">
+                              <h4 class="panel-title">
+                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                  用券记录
+                                </a>
+                              </h4>
+                            </div>
+                            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo" aria-expanded="false" style="height: 0px;">
+                              <div class="panel-body">
+                                 <table id="grid-table-4"></table>
+                                 <div id="grid-pager-4"></div>
+                              </div>
+                            </div>
+                          </div>
+
                         </div>
                     </div>
                 </div>
@@ -423,6 +457,10 @@
           },
 
           onSelectRow : function(ids) {
+            var _rowData = $('#grid-table').jqGrid('getRowData',ids); 
+            var company_name=_rowData.company_name;
+
+            //操作日志
             $('#grid-table-2').jqGrid('clearGridData');
 
             if (ids == null) {
@@ -432,14 +470,54 @@
                       url : "index.php?s=/Admin/User/ajax_get_user_relation_logs.html&id=" + ids,
                       page : 1
                     });
-                jQuery("#grid-table-2").jqGrid('setCaption',"操作日志: " + ids).trigger('reloadGrid');
+                jQuery("#grid-table-2").jqGrid('setCaption',"操作日志: " + company_name).trigger('reloadGrid');
               }
             } else {
               jQuery("#grid-table-2").jqGrid('setGridParam', {
                 url : "index.php?s=/Admin/User/ajax_get_user_relation_logs.html&id=" + ids,
                 page : 1
               });
-              jQuery("#grid-table-2").jqGrid('setCaption',"操作日志: " + ids).trigger('reloadGrid');
+              jQuery("#grid-table-2").jqGrid('setCaption',"操作日志: " + company_name).trigger('reloadGrid');
+            }
+
+            //买券记录
+            $('#grid-table-3').jqGrid('clearGridData');
+
+            if (ids == null) {
+              ids = 0;
+              if (jQuery("#grid-table-3").jqGrid('getGridParam','records') > 0) {
+                jQuery("#grid-table-3").jqGrid('setGridParam', {
+                      url : "index.php?s=/Admin/User/ajax_get_user_relation_coupon.html&id=" + ids,
+                      page : 1
+                    });
+                jQuery("#grid-table-3").jqGrid('setCaption',"买券记录: " + company_name).trigger('reloadGrid');
+              }
+            } else {
+              jQuery("#grid-table-3").jqGrid('setGridParam', {
+                url : "index.php?s=/Admin/User/ajax_get_user_relation_coupon.html&id=" + ids,
+                page : 1
+              });
+              jQuery("#grid-table-3").jqGrid('setCaption',"买券记录: " + company_name).trigger('reloadGrid');
+            }
+
+            //用券记录
+            $('#grid-table-4').jqGrid('clearGridData');
+
+            if (ids == null) {
+              ids = 0;
+              if (jQuery("#grid-table-4").jqGrid('getGridParam','records') > 0) {
+                jQuery("#grid-table-4").jqGrid('setGridParam', {
+                      url : "index.php?s=/Admin/User/ajax_get_user_relation_logs.html&id=" + ids,
+                      page : 1
+                    });
+                jQuery("#grid-table-4").jqGrid('setCaption',"用券记录: " + company_name).trigger('reloadGrid');
+              }
+            } else {
+              jQuery("#grid-table-4").jqGrid('setGridParam', {
+                url : "index.php?s=/Admin/User/ajax_get_user_relation_logs.html&id=" + ids,
+                page : 1
+              });
+              jQuery("#grid-table-4").jqGrid('setCaption',"用券记录: " + company_name).trigger('reloadGrid');
             }
           },
 
@@ -451,7 +529,7 @@
                   var _rowData = $(grid_selector).jqGrid('getRowData',id);
 
                   var operates =""; 
-                      operates += "<button style='margin-right:5px;' class='btn btn-warm btn-xs id-btn-dialog2_show' data-id='"+_rowData.id+"'>查看</button>";
+                      operates += "<button style='margin-right:5px;' class='btn btn-warm btn-xs id-btn-dialog2_add-coupon' data-id='"+_rowData.id+"'>买券</button>";
                       operates += "<button style='margin-right:5px;' class='btn btn-primary btn-xs id-btn-dialog2_edit' data-id='"+_rowData.id+"'>编辑</button>";
                       operates += "<button class='btn btn-danger btn-xs id-btn-dialog2_del' data-id='"+_rowData.id+"'>删除</button>";
 
@@ -484,7 +562,46 @@
           rownumWidth:50,//设置行号列宽度
           rowNum:10,
           rowList:[10,100,1000],
-          // pager : '#grid-pager-2',
+          pager : '#grid-pager-2',
+          viewrecords : true,
+          autowidth:true,
+          shrinkToFit:true,//ture，则按比例初始化列宽度。如果为false，则列宽度使用colModel指定的宽度
+          height : 250,
+          caption : "操作日志",
+
+          loadComplete : function(data) {
+            var table = this;
+            setTimeout(function(){
+              updatePagerIcons(table);
+            }, 0);
+          }
+
+        }).navGrid('#grid-pager-2', {
+          add : false,
+          edit : false,
+          del : false
+        });
+
+
+        //优惠券
+        jQuery("#grid-table-3").jqGrid({
+          url : "index.php?s=/Admin/User/ajax_get_user_relation_coupon.html&id=0",
+          datatype: "json",
+          colNames:['id', '优惠券', '可用数量【张】', '到期时间', '操作'],
+          colModel:[
+            {name:'id', index:'id', sorttype:"int", align:"center", hidden: true, editable: true ,sortable: false},
+
+            {name:'type',index:'type',align:"center", editable: true,editrules: { required: true }},
+            {name:'num',index:'num',align:"center", editable: true,editrules: { required: true }},
+            {name:'end_time',index:'end_time',align:"center", editable: true,editrules: { required: true }},
+
+            {name:'options',index:'options',align:'center',sortable:false}
+          ], 
+          rownumbers:true,
+          rownumWidth:50,//设置行号列宽度
+          rowNum:10,
+          rowList:[10,100,1000],
+          pager : '#grid-pager-3',
           viewrecords : true,
           autowidth:true,
           shrinkToFit:true,//ture，则按比例初始化列宽度。如果为false，则列宽度使用colModel指定的宽度
@@ -498,7 +615,57 @@
             }, 0);
           },
 
-        }).navGrid('#grid-pager-2', {
+          gridComplete:function(){  //在此事件中循环为每一行添加修改和删除链接
+              var ids=jQuery("#grid-table-3").jqGrid('getDataIDs');
+              for(var i=0; i<ids.length; i++){
+
+                  var id=ids[i];   
+                  var _rowData = $("#grid-table-3").jqGrid('getRowData',id);
+
+                  var options =""; 
+                      options += "<button style='margin-right:5px;' class='btn btn-primary btn-xs id-btn-dialog2_edit_coupon' data-id='"+_rowData.id+"'>编辑</button>";
+                      options += "<button class='btn btn-danger btn-xs id-btn-dialog2_del_coupon' data-id='"+_rowData.id+"'>删除</button>";
+
+                  jQuery("#grid-table-3").jqGrid('setRowData', ids[i], { options: options });
+              }
+          },
+
+        }).navGrid('#grid-pager-3', {
+          add : false,
+          edit : false,
+          del : false
+        });
+
+        jQuery("#grid-table-4").jqGrid({
+          url : "index.php?s=/Admin/User/ajax_get_user_relation_logs.html&id=0",
+          datatype: "json",
+          colNames:['id', '页面', '时间', '操作'],
+          colModel:[
+            {name:'id', index:'id', sorttype:"int", align:"center", hidden: true, editable: true ,sortable: false},
+
+            {name:'username',index:'username',align:"center", editable: true,editrules: { required: true }},
+            {name:'time',index:'time',align:"center", editable: true,editrules: { required: true }},
+            {name:'url',index:'url',align:'center',sortable:false}
+          ], 
+          rownumbers:true,
+          rownumWidth:50,//设置行号列宽度
+          rowNum:10,
+          rowList:[10,100,1000],
+          pager : '#grid-pager-4',
+          viewrecords : true,
+          autowidth:true,
+          shrinkToFit:true,//ture，则按比例初始化列宽度。如果为false，则列宽度使用colModel指定的宽度
+          height : 250,
+          caption : "操作日志",
+
+          loadComplete : function(data) {
+            var table = this;
+            setTimeout(function(){
+              updatePagerIcons(table);
+            }, 0);
+          }
+
+        }).navGrid('#grid-pager-4', {
           add : false,
           edit : false,
           del : false
@@ -738,6 +905,60 @@
         </div>
     </div><!-- #dialog-confirm -->
 
+    <div id="dialog-confirm_add-coupon" class="hide">
+       <div class="row">
+             <form class="layui-form layui-form-pane col-xs-12" method="post" action="" id="add_form-coupon" enctype="multipart/form-data">
+              
+                <table class="table table-striped table-bordered table-hover">
+                  <tbody>
+                    <tr>
+                      <td colspan="2">
+                        <div class="layui-inline">
+                          <div class="layui-form-item">
+                            <label class="layui-form-label">优惠券类型</label>
+                            <div class="layui-input-inline">
+                              <select name="type" class="type" lay-verify="required" >
+                                <option value="">请选择</option>
+                                <foreach name="coupon_type" item="v">
+                                    <option value="{$v.id}">{$v.title}【{$v.num}张】【{$v.day}天】【{$v.price}元】</option>
+                                </foreach>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    
+                    <tr>
+                      <td colspan="2">
+                        <div class="layui-inline">
+                          <div class="layui-form-item">
+                            <label class="layui-form-label">状态</label>
+                            <div class="layui-input-inline">
+                              <input type="radio" name="status" class="status" value="1" title="正常" checked="">
+                              <input type="radio" name="status" class="status" value="0" title="禁止">
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                   
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <td colspan="2" style="text-align:right;">
+                        <input type="hidden" name="uid" lay-verify="required" class="layui-input uid" readonly>
+                        <button class="layui-btn" lay-submit="" lay-filter="demo1_add-coupon">确认</button>
+                        <button type="reset" class="layui-btn layui-btn-primary reset">重置</button>
+                      </td>
+                    </tr>
+                  </tfoot>
+                </table>
+
+             </form>
+        </div>
+    </div><!-- #dialog-confirm -->
+
     <!-- 确认弹框 start-->
     <div id="dialog-confirm_edit" class="hide">
        <div class="row">
@@ -894,7 +1115,7 @@
   
     <script type="text/javascript">
         $(function(){
-            //添加
+            //添加用户
             $( "body" ).on('click', '.id-btn-dialog2_add', function(e) {
               e.preventDefault();
               
@@ -908,7 +1129,25 @@
                 title_html: true,
               });
 
-              $("div[aria-describedby='dialog-confirm_add'] div span.ui-dialog-title").html("<div class='widget-header'><h4 class='smaller'><i class='icon-warning-sign red'></i> 添加：</h4></div>");
+              $("div[aria-describedby='dialog-confirm_add'] div span.ui-dialog-title").html("<div class='widget-header'><h4 class='smaller'><i class='icon-warning-sign red'></i> 添加用户：</h4></div>");
+            });
+
+            //买券
+            $( "body" ).on('click', '.id-btn-dialog2_add-coupon', function(e) {
+              e.preventDefault();
+              
+              $('#add_form-coupon .uid').val($(this).attr('data-id'));
+              init_editer('editer_add-coupon');
+
+              $( "#dialog-confirm_add-coupon" ).removeClass('hide').dialog({
+                resizable: false,
+                modal: true,
+                title: "",
+                width:800,
+                title_html: true,
+              });
+
+              $("div[aria-describedby='dialog-confirm_add-coupon'] div span.ui-dialog-title").html("<div class='widget-header'><h4 class='smaller'><i class='icon-warning-sign red'></i> 添加买券记录：</h4></div>");
             });
 
             //编辑
@@ -936,6 +1175,37 @@
 
             //删除
             $( "body" ).on('click', '.id-btn-dialog2_del', function() {
+              if(confirm("确定要删除？")){
+                  var ids=$(this).attr('data-id');
+                  _ajax_del(ids);
+              }
+            });
+
+            //编辑优惠券
+            $( "body" ).on('click','.id-btn-dialog2_edit_coupon', function(e) {
+              e.preventDefault();
+
+              var id=$(this).attr('data-id');
+              if(id){
+                  var _json=_ajax_get_row_info(id);
+                  if(_json.code==0){
+                      init_editer('editer_edit');
+
+                      $( "#dialog-confirm_edit" ).removeClass('hide').dialog({
+                        resizable: false,
+                        modal: true,
+                        title: "",
+                        width:800,
+                        title_html: true,
+                      });
+
+                      $("div[aria-describedby='dialog-confirm_edit'] div span.ui-dialog-title").html("<div class='widget-header'><h4 class='smaller'><i class='icon-warning-sign red'></i> 编辑：</h4></div>");
+                  }
+              }
+            });
+
+            //删除优惠券
+            $( "body" ).on('click', '.id-btn-dialog2_del_coupon', function() {
               if(confirm("确定要删除？")){
                   var ids=$(this).attr('data-id');
                   _ajax_del(ids);
@@ -1117,6 +1387,34 @@
            return _json;  
        }
 
+       //异步添加优惠券
+       function _ajax_add_coupon(_data){
+           var _json;
+           $.ajax({  
+               async:false,
+               type:'post',  
+               contentType:"application/x-www-form-urlencoded",
+               url : "{:U('Admin/User/ajax_add_coupon')}",
+               data: _data,
+               dataType : 'json',
+               success  : function(json) {  
+                   if(json.code == 0){
+                       layer.msg(json.msg);
+                       $("#grid-table").addRowData(1, json.data, "first");
+                       $("#add_form .reset").trigger('click');
+                       $("div[aria-describedby='dialog-confirm_add'] .ui-dialog-titlebar-close").trigger("click");
+                   }else{
+                       layer.msg(json.msg);
+                       _json=json;
+                   }
+               },
+               error  : function() {  
+                   alert('error');
+               }  
+           }); 
+           return _json;  
+       }
+
        //异步删除
        function _ajax_del(ids){
            var _RowID='{"ids":"'+ids+'"}';
@@ -1227,6 +1525,12 @@
               //监听提交
               form.on('submit(demo1_add)', function(data){
                 var _json=_ajax_add(data.field);
+                return false;
+              });
+
+              //监听提交
+              form.on('submit(demo1_add-coupon)', function(data){
+                var _json=_ajax_add_coupon(data.field);
                 return false;
               });
 

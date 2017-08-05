@@ -47,6 +47,17 @@ class UserController extends CommonController{
         }
     }
 
+    // 用户登出
+    public function exituser() {
+        $res=session();
+        
+        $data=array();
+        $data['IsSuccess']=true;
+        $data['Msg']='退出成功';
+        
+        echo json_encode($data);
+    }   
+
     public function login(){
         $this->display();
     }

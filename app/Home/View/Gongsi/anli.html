@@ -37,8 +37,9 @@
         <em class="em"></em>
        </dt> 
        <dd id="dd"> 
-        <a name="sub1" href="/gongsi/5847/301/anli/">施工总承包资质</a> 
-        <a name="sub2" href="/gongsi/5847/302/anli/">专业承包资质</a> 
+          <foreach name="zizhileixing" item="v">
+              <a name="sub{$key+1}" href="{:U('Home/Gongsi/anli',array('cid'=>$_GET['cid'],'type'=>$v['id']))}">{$v.title}</a> 
+          </foreach>
        </dd> 
       </dl> 
      </div> 
@@ -46,320 +47,23 @@
       <div class="successful_title"> 
        <ul> 
         <div style="display:inline-block;margin-bottom:20px;"> 
-         <li style="height:auto"> <img src="__PUBLIC__/Home/images/20170222122620552.png" /> 
-          <div>
-           公司名称：
-           <div style="margin:-25px 0 0 60px;margin-left:60px;margin-top:-25px;width:160px;word-wrap:break-word">
-            上海****工程有限公司
-           </div>
-          </div> 
-          <div>
-           资质类型：施工专业承包资质
-          </div> 
-          <div>
-           合作业务：
-           <div style="margin:-25px 0 0 60px;margin-left:60px;margin-top:-25px;width:160px;word-wrap:break-word">
-            城市及道路照明工程施工专业承包三级
-           </div>
-          </div> 
-          <div>
-           办理周期：3-6个月
-          </div> 
-          <div>
-           办理价格：1
-          </div> 
-          <div>
-           人员配置：
-           <div style="margin:-25px 0 0 60px;margin-left:60px;margin-top:-25px;width:160px;word-wrap:break-word">
-            未填写
-           </div>
-          </div> </li> 
-         <li style="height:auto"> <img src="__PUBLIC__/Home/images/20170222122443458.png" /> 
-          <div>
-           公司名称：
-           <div style="margin:-25px 0 0 60px;margin-left:60px;margin-top:-25px;width:160px;word-wrap:break-word">
-            上海****科技有限公司
-           </div>
-          </div> 
-          <div>
-           资质类型：施工专业承包资质
-          </div> 
-          <div>
-           合作业务：
-           <div style="margin:-25px 0 0 60px;margin-left:60px;margin-top:-25px;width:160px;word-wrap:break-word">
-            环保工程施工专业承包三级
-           </div>
-          </div> 
-          <div>
-           办理周期：3-6个月
-          </div> 
-          <div>
-           办理价格：1
-          </div> 
-          <div>
-           人员配置：
-           <div style="margin:-25px 0 0 60px;margin-left:60px;margin-top:-25px;width:160px;word-wrap:break-word">
-            未填写
-           </div>
-          </div> </li> 
-         <li style="height:auto"> <img src="__PUBLIC__/Home/images/20170222122251522.png" /> 
-          <div>
-           公司名称：
-           <div style="margin:-25px 0 0 60px;margin-left:60px;margin-top:-25px;width:160px;word-wrap:break-word">
-            上海****设工程有限公司
-           </div>
-          </div> 
-          <div>
-           资质类型：施工总承包资质
-          </div> 
-          <div>
-           合作业务：
-           <div style="margin:-25px 0 0 60px;margin-left:60px;margin-top:-25px;width:160px;word-wrap:break-word">
-            建筑工程施工总承包三级，建筑装修装饰工程施工专业承包二级
-           </div>
-          </div> 
-          <div>
-           办理周期：3-6个月
-          </div> 
-          <div>
-           办理价格：1
-          </div> 
-          <div>
-           人员配置：
-           <div style="margin:-25px 0 0 60px;margin-left:60px;margin-top:-25px;width:160px;word-wrap:break-word">
-            未填写
-           </div>
-          </div> </li> 
-        </div>
-        <div style="display:inline-block;margin-bottom:20px;"> 
-         <li style="height:auto"> <img src="__PUBLIC__/Home/images/20170222121453478.png" /> 
-          <div>
-           公司名称：
-           <div style="margin:-25px 0 0 60px;margin-left:60px;margin-top:-25px;width:160px;word-wrap:break-word">
-            上海****水安装工程有限公司
-           </div>
-          </div> 
-          <div>
-           资质类型：施工总承包资质
-          </div> 
-          <div>
-           合作业务：
-           <div style="margin:-25px 0 0 60px;margin-left:60px;margin-top:-25px;width:160px;word-wrap:break-word">
-            市政公用工程施工总承包三级
-           </div>
-          </div> 
-          <div>
-           办理周期：6个月-1年
-          </div> 
-          <div>
-           办理价格：1
-          </div> 
-          <div>
-           人员配置：
-           <div style="margin:-25px 0 0 60px;margin-left:60px;margin-top:-25px;width:160px;word-wrap:break-word">
-            未填写
-           </div>
-          </div> </li> 
-         <li style="height:auto"> <img src="__PUBLIC__/Home/images/20170222121237010.png" /> 
-          <div>
-           公司名称：
-           <div style="margin:-25px 0 0 60px;margin-left:60px;margin-top:-25px;width:160px;word-wrap:break-word">
-            上海****安装工程有限公司
-           </div>
-          </div> 
-          <div>
-           资质类型：施工专业承包资质
-          </div> 
-          <div>
-           合作业务：
-           <div style="margin:-25px 0 0 60px;margin-left:60px;margin-top:-25px;width:160px;word-wrap:break-word">
-            模板脚手架施工专业承包不分级，施工劳务企业资质劳务分包不分级
-           </div>
-          </div> 
-          <div>
-           办理周期：3-6个月
-          </div> 
-          <div>
-           办理价格：1
-          </div> 
-          <div>
-           人员配置：
-           <div style="margin:-25px 0 0 60px;margin-left:60px;margin-top:-25px;width:160px;word-wrap:break-word">
-            未填写
-           </div>
-          </div> </li> 
-         <li style="height:auto"> <img src="__PUBLIC__/Home/images/20170222121021105.png" /> 
-          <div>
-           公司名称：
-           <div style="margin:-25px 0 0 60px;margin-left:60px;margin-top:-25px;width:160px;word-wrap:break-word">
-            上海****科技有限公司
-           </div>
-          </div> 
-          <div>
-           资质类型：施工专业承包资质
-          </div> 
-          <div>
-           合作业务：
-           <div style="margin:-25px 0 0 60px;margin-left:60px;margin-top:-25px;width:160px;word-wrap:break-word">
-            建筑装修装饰工程专业承包二级
-           </div>
-          </div> 
-          <div>
-           办理周期：6个月-1年
-          </div> 
-          <div>
-           办理价格：1
-          </div> 
-          <div>
-           人员配置：
-           <div style="margin:-25px 0 0 60px;margin-left:60px;margin-top:-25px;width:160px;word-wrap:break-word">
-            未填写
-           </div>
-          </div> </li> 
-        </div>
-        <div style="display:inline-block;margin-bottom:20px;"> 
-         <li style="height:auto"> <img src="__PUBLIC__/Home/images/20170222120742137.png" /> 
-          <div>
-           公司名称：
-           <div style="margin:-25px 0 0 60px;margin-left:60px;margin-top:-25px;width:160px;word-wrap:break-word">
-            上海****工程有限公司
-           </div>
-          </div> 
-          <div>
-           资质类型：施工总承包资质
-          </div> 
-          <div>
-           合作业务：
-           <div style="margin:-25px 0 0 60px;margin-left:60px;margin-top:-25px;width:160px;word-wrap:break-word">
-            建筑工程施工总承包三级，建筑装修装饰工程施工专业承包，建筑机电安装工程施工专业承包三级
-           </div>
-          </div> 
-          <div>
-           办理周期：3-6个月
-          </div> 
-          <div>
-           办理价格：1
-          </div> 
-          <div>
-           人员配置：
-           <div style="margin:-25px 0 0 60px;margin-left:60px;margin-top:-25px;width:160px;word-wrap:break-word">
-            未填写
-           </div>
-          </div> </li> 
-         <li style="height:auto"> <img src="__PUBLIC__/Home/images/20170222120429451.png" /> 
-          <div>
-           公司名称：
-           <div style="margin:-25px 0 0 60px;margin-left:60px;margin-top:-25px;width:160px;word-wrap:break-word">
-            上海****装饰工程有限公司
-           </div>
-          </div> 
-          <div>
-           资质类型：施工总承包资质
-          </div> 
-          <div>
-           合作业务：
-           <div style="margin:-25px 0 0 60px;margin-left:60px;margin-top:-25px;width:160px;word-wrap:break-word">
-            建筑装饰工程设计专项乙级
-           </div>
-          </div> 
-          <div>
-           办理周期：3-6个月
-          </div> 
-          <div>
-           办理价格：1
-          </div> 
-          <div>
-           人员配置：
-           <div style="margin:-25px 0 0 60px;margin-left:60px;margin-top:-25px;width:160px;word-wrap:break-word">
-            未填写
-           </div>
-          </div> </li> 
-         <li style="height:auto"> <img src="__PUBLIC__/Home/images/20170222115951281.png" /> 
-          <div>
-           公司名称：
-           <div style="margin:-25px 0 0 60px;margin-left:60px;margin-top:-25px;width:160px;word-wrap:break-word">
-            上海****建设有限公司
-           </div>
-          </div> 
-          <div>
-           资质类型：施工专业承包资质
-          </div> 
-          <div>
-           合作业务：
-           <div style="margin:-25px 0 0 60px;margin-left:60px;margin-top:-25px;width:160px;word-wrap:break-word">
-            模板脚手架施工专业承包不分级
-           </div>
-          </div> 
-          <div>
-           办理周期：3-6个月
-          </div> 
-          <div>
-           办理价格：1
-          </div> 
-          <div>
-           人员配置：
-           <div style="margin:-25px 0 0 60px;margin-left:60px;margin-top:-25px;width:160px;word-wrap:break-word">
-            未填写
-           </div>
-          </div> </li> 
-        </div>
-        <div style="display:inline-block;margin-bottom:20px;"> 
-         <li style="height:auto"> <img src="__PUBLIC__/Home/images/20170222115636688.png" /> 
-          <div>
-           公司名称：
-           <div style="margin:-25px 0 0 60px;margin-left:60px;margin-top:-25px;width:160px;word-wrap:break-word">
-            上海****工程有限公司
-           </div>
-          </div> 
-          <div>
-           资质类型：施工专业承包资质
-          </div> 
-          <div>
-           合作业务：
-           <div style="margin:-25px 0 0 60px;margin-left:60px;margin-top:-25px;width:160px;word-wrap:break-word">
-            建筑装修装饰工程施工专业承包二级，建筑机电安装工程施工专业承包三级
-           </div>
-          </div> 
-          <div>
-           办理周期：3-6个月
-          </div> 
-          <div>
-           办理价格：1
-          </div> 
-          <div>
-           人员配置：
-           <div style="margin:-25px 0 0 60px;margin-left:60px;margin-top:-25px;width:160px;word-wrap:break-word">
-            未填写
-           </div>
-          </div> </li> 
-         <li style="height:auto"> <img src="__PUBLIC__/Home/images/20160801165132768.jpg" /> 
-          <div>
-           公司名称：
-           <div style="margin:-25px 0 0 60px;margin-left:60px;margin-top:-25px;width:160px;word-wrap:break-word">
-            上海****工程有限公司
-           </div>
-          </div> 
-          <div>
-           资质类型：施工专业承包资质
-          </div> 
-          <div>
-           合作业务：
-           <div style="margin:-25px 0 0 60px;margin-left:60px;margin-top:-25px;width:160px;word-wrap:break-word">
-            劳务资质
-           </div>
-          </div> 
-          <div>
-           办理周期：3-6个月
-          </div> 
-          <div>
-           办理价格：5
-          </div> 
-          <div>
-           人员配置：
-           <div style="margin:-25px 0 0 60px;margin-left:60px;margin-top:-25px;width:160px;word-wrap:break-word">
-            未填写
-           </div>
-          </div> </li> 
+
+
+            <foreach name="list" item="v">
+                <li style="height:auto">
+                    <img src="__PUBLIC__/Home/images/20160801165132768.jpg" />
+                    <div>公司名称：
+                        <div style="margin:-25px 0 0 60px;margin-left:60px;margin-top:-25px;width:160px;word-wrap:break-word">{$v.company_name}</div></div>
+                    <div>资质类型：{$v.zizhileixing}</div>
+                    <div>合作业务：
+                        <div style="margin:-25px 0 0 60px;margin-left:60px;margin-top:-25px;width:160px;word-wrap:break-word">{$v.hezuoyewu}</div></div>
+                    <div>办理周期：{$v.banlizhouqi}</div>
+                    <div>办理价格：{$v.price}</div>
+                    <div>人员配置：
+                        <div style="margin:-25px 0 0 60px;margin-left:60px;margin-top:-25px;width:160px;word-wrap:break-word">{$v.renyuanpeizhi}</div></div>
+                </li>
+            </foreach>
+         
         </div>
        </ul> 
       </div> 
@@ -399,18 +103,6 @@
   <!-- 引用 -->
   <include file="Common/footer" />
 
- 
-  <script type="text/javascript">
-    function LoginOut() {
-        var message = "确定要退出当前用户吗？";
-        if (confirm(message)) {
-            $.post("/user/exituser", "", function (data) {
-                if (data.IsSuccess) {
-                    location.href = "http://www.zizhiguanjia.com";
-                }
-            })
-        }
-    };
-    </script> 
+
  </body>
 </html>

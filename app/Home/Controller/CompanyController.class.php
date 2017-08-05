@@ -37,10 +37,10 @@ class CompanyController extends CommonController{
         $where['uid']=$user['id'];
 
 
-        $count      = M('Cases')->where($where)->count();
+        $count      = M('Case')->where($where)->count();
         $Page       = new \Common\Extend\Page($count,6);
         $nowPage = isset($_GET['p'])?$_GET['p']:1;
-        $list=M('Cases')->page($nowPage.','.$Page->listRows)->where($where)->select();
+        $list=M('Case')->page($nowPage.','.$Page->listRows)->where($where)->select();
         foreach ($list as $key => $value) {
             $list[$key]['time']=date('Y-m-d',$value['time']);
             if($value['zizhileixing']){
@@ -83,7 +83,7 @@ class CompanyController extends CommonController{
             $data['uid']=$user['id'];
             $data['time']=time();
 
-            $id=M('Cases')->add($data);
+            $id=M('Case')->add($data);
             if($id){
                 $data=array();
                 $data['code']=0;
@@ -105,7 +105,7 @@ class CompanyController extends CommonController{
 
     public function editcaseinfo(){
         if($id=$_GET['id']){
-            $row=M('Cases')->find($id);
+            $row=M('Case')->find($id);
             $banlizhouqi=M('Type')->where(array('pid'=>1336))->select();
             $zizhileixing=M('Type')->where(array('pid'=>1275))->select();
             
@@ -131,7 +131,7 @@ class CompanyController extends CommonController{
             $data['time']=time();
 
 
-            $res=M('Cases')->where(array('id'=>$_POST['id']))->save($data);
+            $res=M('Case')->where(array('id'=>$_POST['id']))->save($data);
             if($res){
                 $data=array();
                 $data['code']=0;
@@ -156,7 +156,7 @@ class CompanyController extends CommonController{
         $id=$_GET['id'];
         if($id && $user){
 
-            $res=M('Cases')->delete($id);
+            $res=M('Case')->delete($id);
             if($res){
                 $data=array();
                 $data['code']=0;
@@ -289,7 +289,7 @@ class CompanyController extends CommonController{
         $id=$_GET['id'];
         if($id && $user){
 
-            $res=M('Cases')->delete($id);
+            $res=M('Case')->delete($id);
             if($res){
                 $data=array();
                 $data['code']=0;

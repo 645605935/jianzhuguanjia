@@ -15,7 +15,7 @@
   <div class="header"> 
    <div class="header_center"> 
     <div class="header_left"> 
-     <h1> <a href="http://www.zizhiguanjia.com/">资质代办，找资质管家</a> </h1> 
+     <h1> <a href="{:U('Home/Index/index')}">资质代办，找资质管家</a> </h1> 
     </div> 
     <div class="header_right"> 
      <ul> 
@@ -124,17 +124,6 @@
    <a href="http://www.zizhiguanjia.com/sitemap.html" target="_blank" style="color: #5e5c5b;text-decoration: none !important;"> </a>
    <a href="http://www.cnzz.com/stat/website.php?web_id=1255699131" target="_blank" title="站长统计">站长统计</a> 
   </div> 
-  <script type="text/javascript">
-    function LoginOut() {
-        var message = "确定要退出当前用户吗？";
-        if (confirm(message)) {
-            $.post("/user/exituser", "", function (data) {
-                if (data.IsSuccess) {
-                    location.href = "http://www.zizhiguanjia.com";
-                }
-            })
-        }
-    };
-</script> 
+  
  </body>
 </html>

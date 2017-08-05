@@ -1,7 +1,7 @@
 <?php
 namespace Common\Model;
 use Think\Model\RelationModel;
-class CaseModel extends RelationModel{
+class CouponModel extends RelationModel{
 	protected $_link=array(
 		'_user'=>array(
 			'mapping_type'=>self::BELONGS_TO,
@@ -9,17 +9,11 @@ class CaseModel extends RelationModel{
 			'foreign_key'=>'uid',
 			'as_fields' => 'truename:truename',
 		),
-		'_zizhileixing'=>array(
+		'_type'=>array(
 			'mapping_type'=>self::BELONGS_TO,
 			'class_name'=>'Type',
-			'foreign_key'=>'zizhileixing',
-			'as_fields' => 'title:zizhileixing',
-		),
-		'_banlizhouqi'=>array(
-			'mapping_type'=>self::BELONGS_TO,
-			'class_name'=>'Type',
-			'foreign_key'=>'banlizhouqi',
-			'as_fields' => 'title:banlizhouqi',
+			'foreign_key'=>'type',
+			'as_fields' => 'title:type,num:_num,day:_day,price:_price',
 		)
 	);
 }

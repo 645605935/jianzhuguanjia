@@ -30,9 +30,9 @@
    <div class="cont_l"> 
     <div class="left_list"> 
      <ul> 
-      <li name="gsjs" class="on"><a href="/gongsi/5847/jianjie/"></a></li> 
-      <li name="zhengshu"><a href="/gongsi/5847/zhengshu/">营业执照</a></li> 
-      <li name="lianxi"><a href="/gongsi/5847/lianxi/">联系我们</a></li> 
+      <li name="gsjs" class="on"><a href="{:U('Home/Gongsi/jianjie',array('cid'=>$_GET['cid']))}">公司简介</a></li> 
+      <li name="zhengshu"><a href="{:U('Home/Gongsi/zhengshu',array('cid'=>$_GET['cid']))}">营业执照</a></li> 
+      <li name="lianxi"><a href="{:U('Home/Gongsi/lianxi',array('cid'=>$_GET['cid']))}">联系我们</a></li> 
      </ul> 
     </div> 
    </div> 
@@ -48,9 +48,9 @@
      <div class="content"> 
       <div class="describe" style="word-wrap: break-word;word-break: normal;"> 
        <div class="logo">
-        <img src="__PUBLIC__/Home/images/20160601161405924.jpg" width="150" height="150" />
+        <img src="{$company_info.company_logo}" width="150" height="150" />
        </div> 
-       <p style="font-size: 14px;word-wrap: break-word;word-break: normal;overflow: hidden;">搜搜投资企业发展机构自08年成立以来一直致力于企业资质申报、年检升级、安全许可证代理、建筑人才挂、企业注册增资等业务，服务客户500多家有众多大型国企、上市公司等，是上海第一批专注与资质代理的服务机构。六年的行业积淀拥有百分之百的成功代理经验，熟悉各区建委的资质要求。我们有专业工程师精通材料规范，&nbsp;为客户编制申报材料。让专业的人做专业的事，让资质审批简单化。机构下设上海建筑业资质申报咨询服务中心（www.shzizhi.net）、上海资质代理网（www.shzizhi.com）、长三角建筑人才网(www.csjhr.net)。我们以为各类企业提供最新最好的资质服务、人才服务为追求目标；将全方位为各类建筑企业、提供优质超值服务，最大程度满足客户的需求，并为其提供针对性的服务。</p> 
+       {$company_info.company_introduction}
       </div> 
      </div> 
     </div> 
@@ -62,17 +62,6 @@
   <!-- 引用 -->
   <include file="Common/footer" />
   
-  <script type="text/javascript">
-    function LoginOut() {
-        var message = "确定要退出当前用户吗？";
-        if (confirm(message)) {
-            $.post("/user/exituser", "", function (data) {
-                if (data.IsSuccess) {
-                    location.href = "http://www.zizhiguanjia.com";
-                }
-            })
-        }
-    };
-    </script> 
+
  </body>
 </html>

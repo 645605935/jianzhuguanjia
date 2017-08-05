@@ -4,14 +4,15 @@
 </div>
 
 <script type="text/javascript">
-    function LoginOut() {
-        var message = "确定要退出当前用户吗？";
-        if (confirm(message)) {
-            $.post("/user/exituser", "", function (data) {
-                if (data.IsSuccess) {
-                    location.href = "http://www.zizhiguanjia.com";
-                }
-            })
-        }
-    };
+  function LoginOut() {
+      var message = "确定要退出当前用户吗？";
+      if (confirm(message)) {
+          $.post("{:U('Home/User/exituser')}", "", function (data) {
+              var data=JSON.parse(data);
+              if (data.IsSuccess) {
+                  location.href = "{:U('Home/Index/index')}";
+              }
+          })
+      }
+  };
 </script> 

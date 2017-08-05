@@ -57,7 +57,7 @@
                         <a href="javascript:void(0)">全国</a>
                         <div class="clear"></div>
                         <foreach name="_province_" item="v">
-                            <a href="{:U('Home/Index/change_province',array('provinceid'=>$v['provinceid']))}">{$v.province}</a>
+                            <a href="{:U('Home/Index/change_province',array('provinceid'=>$v['provinceid']))}" title="{$v.province}">{$v.province}</a>
                         </foreach>
                         <div style="clear:both"></div>
                     </div>

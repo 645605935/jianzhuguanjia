@@ -14,26 +14,44 @@ class GongsiController extends CommonController{
 
         if(!$_GET['cid']){
             $this->redirect('Home/Index/index');
+        }else{
+            $company_info=D('User')->relation(true)->find($cid);
+            $types=explode('#', $company_info['company_types']);
+            foreach ($types as $key => $value) {
+                $company_info['_company_types'][]=M('Type')->find($value);
+            }
+
+            $this->company_info=$company_info;
         }
     }
 
     public function search(){
-        $cid=$_GET['cid'];
-
-        $company_info=M('User')->find($cid);
-        dump($company_info);die;
         $this->display();
     }
 
     public function index(){
         $cid=$_GET['cid'];
+        $case_list=D('Case')->where(array('uid'=>$cid))->relation(true)->limit(3)->select();
 
-        $this->company_info=M('User')->find($cid);
-        $this->company_info=$company_info;
+        $team_list=D('Team')->where(array('uid'=>$cid))->relation(true)->limit(3)->select();
+
+        $this->case_list=$case_list;
+        $this->team_list=$team_list;
         $this->display();
     }
 
     public function anli(){
+        $zizhileixing=M('Type')->where(array('pid'=>1275))->select();
+
+        $where=array();
+        $where['cid']=$_GET['cid'];
+        if($_GET['type']){
+            $where['zizhileixing']=$_GET['type'];
+        }
+        $list=D('Case')->where($where)->relation(true)->select();
+            
+        $this->zizhileixing=$zizhileixing;
+        $this->list=$list;
         $this->display();
     }
 
@@ -46,6 +64,17 @@ class GongsiController extends CommonController{
     }
 
     public function team(){
+        $chongyejingyan=M('Type')->where(array('pid'=>1341))->select();
+
+        $where=array();
+        $where['cid']=$_GET['cid'];
+        if($_GET['type']){
+            $where['chongyejingyan']=$_GET['type'];
+        }
+        $list=D('Team')->where($where)->relation(true)->select();
+            
+        $this->chongyejingyan=$chongyejingyan;
+        $this->list=$list;
         $this->display();
     }
 

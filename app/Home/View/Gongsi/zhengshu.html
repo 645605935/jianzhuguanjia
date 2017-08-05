@@ -41,7 +41,7 @@
     <div class="intro_row" id="imgDivId"> 
      <p class="intro_title">营业执照</p> 
      <ul class="clearfix"> 
-      <li style="width:230px;font-size:15px;"> <img src="__PUBLIC__/Home/images/20170221084245537.jpg" width="175" height="175" /> </li> 
+      <li style="width:230px;font-size:15px;"> <img src="{$company_info.company_yingyezhizhao}" width="175" height="175" /> </li> 
      </ul> 
     </div> 
    </div> 
@@ -70,18 +70,5 @@
   <include file="Common/footer" />
   
 
-  
-  <script type="text/javascript">
-    function LoginOut() {
-        var message = "确定要退出当前用户吗？";
-        if (confirm(message)) {
-            $.post("/user/exituser", "", function (data) {
-                if (data.IsSuccess) {
-                    location.href = "http://www.zizhiguanjia.com";
-                }
-            })
-        }
-    };
-    </script> 
  </body>
 </html>

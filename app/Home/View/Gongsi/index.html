@@ -45,21 +45,18 @@
     <input id="ServerAreaPId" value="9" type="hidden" /> 
     <input id="ServerAreaId" value="407" type="hidden" /> 
     <div class="cpy_text"> 
-     <p class="ico_p0"> 公司规模：11—50人 </p> 
-     <p class="ico_p1">公司地址：共和新路5000弄4号楼821室</p> 
-     <p class="ico_p2"> 业务范围：资质代办 </p> 
+     <p class="ico_p0"> 公司规模：{$company_info.company_size} </p> 
+     <p class="ico_p1">公司地址：{$company_info.company_address}</p> 
+     <p class="ico_p2"> 业务范围：{$company_info.company_yewufanwei} </p> 
      <!-- 给每个资质配上对应链接,并且保证缓存中删掉的三个类型不影响显示！--> 
      <!--由于资质名称过长，需要修正单个资质显示的方框长度--> 
      <div style="display:inline-block;width:475px;margin-left:25px;"> 
-      <a href="/zizhi/sgzcbzz/">施工总承包资质</a> 
-      <a href="/zizhi/sgzycbzz/">施工专业承包资质</a> 
-      <a href="/zizhi/sglwcbzz/">施工劳务承包资质</a> 
-      <a href="/zizhi/aqscxkz/">安全生产许可证</a> 
-      <a href="/zizhi/gcsjzh/">工程设计综合资质</a> 
-      <a href="/zizhi/csyllhzz/">城市园林绿化资质</a> 
+        <foreach name="company_info['_company_types']" item="v">
+            <a href="{:U('Home/Index/baojia')}">{$v.title}</a> 
+        </foreach>
      </div> 
-     <p class="ico_p3">服务区域：上海—闸北</p> 
-     <p class="ico_p4">咨询热线：15800772290</p> 
+     <p class="ico_p3">服务区域：{$company_info.company_service_province}-{$company_info.company_service_city}</p> 
+     <p class="ico_p4">咨询热线：{$company_info.contact_phone}</p> 
     </div> 
     <div class="order_free clearfix"> 
      <input class="order_btn btn-get-price" value="免费申请报价" type="button" /> 
@@ -75,7 +72,7 @@
      <h4>公司优势</h4> 
     </div> 
     <div class="scope">
-     我公司专业办理和维护上海建筑类资质。
+        {$company_info.company_youshi}
     </div> 
    </div> 
    <div class="business"> 
@@ -83,121 +80,69 @@
      <h4>公司简介</h4> 
      <a href="/gongsi/5847/jianjie/">更多&gt;</a> 
     </div> 
-    <div class="introduce" style="font-size:16px;text-indent:2em;">
-     搜搜投资企业发展机构自08年成立以来一直致力于企业资质申报、年检升级、安全许可证代理、建筑人才挂、企业注册增资等业务，服务客户500多家有众多大型国企、上市公司等，是上海第一批专注与资质代理的服务机构。六年的行业积淀拥有百分之百的成功代理经验，熟悉各区建委的资质要求。我们有专业工程师精通材料规范， 为客户编制申报材料。让专业的人做专业的事，让资质审批简单化。机构下设上海建筑业资质申报咨询服务中心（www.shzizhi.net）、上海资质代理网（www.shzizhi.com）、长三角建筑人才网(www.csjhr.net)。我们以为各类企业提供最新最好的资质服务、人才服务为追求目标；将全方位为各类建筑企业、提供优质超值服务，最大程度满足客户的需求，并为其提供针对性的服务。
+    <div class="introduce">
+        {$company_info.company_introduction}
     </div> 
    </div> 
    <div class="case"> 
     <div class="h4_title"> 
      <h4>资质案例</h4> 
-     <a href="/gongsi/5847/anli/">更多&gt;</a> 
+     <a href="{:U('Home/Gongsi/case',array('cid'=>$_GET['cid']))}">更多&gt;</a> 
     </div> 
     <div class="case_title"> 
      <ul> 
-      <li style="height:auto"> <img original="/UploadFile/caseinfo/20170222122620552.png" /> 
-       <div>
-        公司名称：
-        <div style="margin:-25px 0 0 60px;margin-left:60px;margin-top:-25px;width:220px;word-wrap:break-word">
-         上海****工程有限公司
-        </div>
-       </div> 
-       <div>
-        资质类型：施工专业承包资质
-       </div> 
-       <div>
-        合作业务：
-        <div style="margin:-25px 0 0 60px;margin-left:60px;margin-top:-25px;width:220px;word-wrap:break-word">
-         城市及道路照明工程施工专业承包三级
-        </div>
-       </div> 
-       <div>
-        办理周期：3-6个月
-       </div> 
-       <div>
-        办理价格：1
-       </div> 
-       <div>
-        人员配置：
-        <div style="margin:-25px 0 0 60px;margin-left:60px;margin-top:-25px;width:220px;word-wrap:break-word">
-         未填写
-        </div>
-       </div> </li> 
-      <li style="height:auto"> <img original="/UploadFile/caseinfo/20170222122443458.png" /> 
-       <div>
-        公司名称：
-        <div style="margin:-25px 0 0 60px;margin-left:60px;margin-top:-25px;width:220px;word-wrap:break-word">
-         上海****科技有限公司
-        </div>
-       </div> 
-       <div>
-        资质类型：施工专业承包资质
-       </div> 
-       <div>
-        合作业务：
-        <div style="margin:-25px 0 0 60px;margin-left:60px;margin-top:-25px;width:220px;word-wrap:break-word">
-         环保工程施工专业承包三级
-        </div>
-       </div> 
-       <div>
-        办理周期：3-6个月
-       </div> 
-       <div>
-        办理价格：1
-       </div> 
-       <div>
-        人员配置：
-        <div style="margin:-25px 0 0 60px;margin-left:60px;margin-top:-25px;width:220px;word-wrap:break-word">
-         未填写
-        </div>
-       </div> </li> 
-      <li style="height:auto"> <img original="/UploadFile/caseinfo/20170222122251522.png" /> 
-       <div>
-        公司名称：
-        <div style="margin:-25px 0 0 60px;margin-left:60px;margin-top:-25px;width:220px;word-wrap:break-word">
-         上海****设工程有限公司
-        </div>
-       </div> 
-       <div>
-        资质类型：施工总承包资质
-       </div> 
-       <div>
-        合作业务：
-        <div style="margin:-25px 0 0 60px;margin-left:60px;margin-top:-25px;width:220px;word-wrap:break-word">
-         建筑工程施工总承包三级，建筑装修装饰工程施工专业承包二级
-        </div>
-       </div> 
-       <div>
-        办理周期：3-6个月
-       </div> 
-       <div>
-        办理价格：1
-       </div> 
-       <div>
-        人员配置：
-        <div style="margin:-25px 0 0 60px;margin-left:60px;margin-top:-25px;width:220px;word-wrap:break-word">
-         未填写
-        </div>
-       </div> </li> 
+      <foreach name="case_list" item="v">
+          <li style="height:auto"> <img src="{$v.img}" /> 
+           <div>
+            公司名称：
+            <div style="margin:-25px 0 0 60px;margin-left:60px;margin-top:-25px;width:220px;word-wrap:break-word">
+             {$v.company_name}
+            </div>
+           </div> 
+           <div>
+            资质类型：{$v.zizhileixing}
+           </div> 
+           <div>
+            合作业务：
+            <div style="margin:-25px 0 0 60px;margin-left:60px;margin-top:-25px;width:220px;word-wrap:break-word">
+             {$v.hezuoyewu}
+            </div>
+           </div> 
+           <div>
+            办理周期：{$v.banlizhouqi}
+           </div> 
+           <div>
+            办理价格：{$v.price}
+           </div> 
+           <div>
+            人员配置：
+            {$v.renyuanpeizhi}
+           </div> 
+          </li> 
+      </foreach>
      </ul> 
     </div> 
    </div> 
    <div class="team"> 
     <div class="h4_title"> 
      <h4>精英团队</h4> 
-     <a href="/gongsi/5847/team/">更多&gt;</a> 
+     <a href="{:U('Home/Gongsi/team',array('cid'=>$_GET['cid']))}">更多&gt;</a> 
     </div> 
     <div class="team_title"> 
      <ul> 
-      <li> 
-       <div class="team_tx"> 
-        <div class="fg"></div> 
-        <img original="/images/tx.jpg" /> 
-       </div> <p>王浩仁</p> <p>18055351585</p> <p>5年以上从业经验</p> <p></p> </li> 
-      <li> 
-       <div class="team_tx"> 
-        <div class="fg"></div> 
-        <img original="/images/tx.jpg" /> 
-       </div> <p>王平</p> <p>15800772290</p> <p>5年以上从业经验</p> <p></p> </li> 
+
+      <foreach name="team_list" item="v">
+          <li>
+              <div class="team_tx">
+                  <div class="fg"></div>
+                  <img src="{$v.img}" /></div>
+              <p>{$v.truename}</p>
+              <p>{$v.phone}</p>
+              <p>{$v.chongyejingyan}</p>
+              <p>
+              </p>
+          </li>
+      </foreach>
      </ul> 
     </div> 
    </div> 
@@ -298,17 +243,5 @@
   <include file="Common/footer" />
   
 
-  <script type="text/javascript">
-    function LoginOut() {
-        var message = "确定要退出当前用户吗？";
-        if (confirm(message)) {
-            $.post("/user/exituser", "", function (data) {
-                if (data.IsSuccess) {
-                    location.href = "http://www.zizhiguanjia.com";
-                }
-            })
-        }
-    };
-    </script> 
  </body>
 </html>

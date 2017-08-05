@@ -30,9 +30,9 @@
    <div class="cont_l"> 
     <div class="left_list"> 
      <ul> 
-      <li name="gsjs"><a href="/gongsi/5847/jianjie/">公司简介</a></li> 
-      <li name="zhengshu"><a href="/gongsi/5847/zhengshu/">营业执照</a></li> 
-      <li name="lianxi" class="on"><a href="/gongsi/5847/lianxi/">联系我们</a></li> 
+      <li name="gsjs"><a href="{:U('Home/Gongsi/jianjie',array('cid'=>$_GET['cid']))}">公司简介</a></li> 
+      <li name="zhengshu"><a href="{:U('Home/Gongsi/zhengshu',array('cid'=>$_GET['cid']))}">营业执照</a></li> 
+      <li name="lianxi" class="on"><a href="{:U('Home/Gongsi/lianxi',array('cid'=>$_GET['cid']))}">联系我们</a></li> 
      </ul> 
     </div> 
    </div> 
@@ -40,18 +40,18 @@
    <div class="main_r"> 
     <div class="detail clearfix"> 
      <div class="lg">
-      <img src="__PUBLIC__/Home/images/20160601161405924.jpg" width="150" height="150" />
+      <img src="{$company_info.company_logo}" width="150" height="150" />
      </div> 
-     <p class="title">上海搜搜投资咨询有限公司</p> 
+     <p class="title">{$company_info.company_name}</p> 
      <dl> 
       <dd>
-       联系人：王平 
+       联系人：{$company_info.company_people} 
       </dd> 
       <dd>
-       手机号码：15800772290 
+       手机号码：{$company_info.company_phone}
       </dd> 
       <dd>
-       公司地址：共和新路5000弄4号楼821室
+       公司地址：{$company_info.company_address}
       </dd> 
      </dl> 
     </div> 
@@ -64,17 +64,6 @@
   <include file="Common/footer" />
 
  
-  <script type="text/javascript">
-    function LoginOut() {
-        var message = "确定要退出当前用户吗？";
-        if (confirm(message)) {
-            $.post("/user/exituser", "", function (data) {
-                if (data.IsSuccess) {
-                    location.href = "http://www.zizhiguanjia.com";
-                }
-            })
-        }
-    };
-    </script> 
+  
  </body>
 </html>

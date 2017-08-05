@@ -70,8 +70,46 @@ class UserController extends AuthController {
         $this->group=$group;
 
 
+        //优惠券分类
+        $coupon_type=M('Type')->where(array('pid'=>1400))->select();
+        $this->coupon_type=$coupon_type;
+
         $this->cur_v='User-homeUser';
         $this->display();
+    }
+
+    //添加优惠券
+    public function ajax_add_coupon(){
+        global $user;
+
+        $data=array();
+        $data=$_POST;
+        if($data){
+            $coupon_type_info=M('Type')->find($data['type']);
+            if($coupon_type_info){
+                $data['num']=$coupon_type_info['num'];
+                $data['price']=$coupon_type_info['price'];
+                $data['time']=time();
+                $data['end_time']=time() + $coupon_type_info['day']*24*60*60;
+            }
+
+            $id = M('Coupon')->add($data);
+            if($id){
+                $data=array();
+                $data['code']=0;
+                $data['msg']='success';
+            }else{
+                $data=array();
+                $data['code']=1;
+                $data['msg']='error';
+            }
+        }else{
+            $data=array();
+            $data['code']=2;
+            $data['msg']='error';
+        }
+
+        echo json_encode($data);
     }
 
     //会员列表
@@ -166,6 +204,24 @@ class UserController extends AuthController {
 
         echo json_encode($list);
     }
+
+    //根据ID获取用户关联的优惠券信息
+    public function ajax_get_user_relation_coupon(){
+        $uid=$_GET['id'];
+        if($uid==0){
+            $list = array();
+        }else{
+            $list = D('Coupon')->where(array('uid'=>$uid))->order('id desc')->relation(true)->select();
+        }
+        foreach ($list as $key => $value) {
+            $list[$key]['type']=$value['type']."【".$value['_num']."张】";
+            $list[$key]['end_time']=date('Y-m-d', $value['end_time']);
+        }
+
+        echo json_encode($list);
+    }
+
+    
 
     //获取单条信息
     public function ajax_get_row_info(){

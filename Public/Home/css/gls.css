@@ -94,7 +94,7 @@ a.intro_more:link,a .intro_more :visited{ color:#FF0000}
 .order_hotline{float:left; height:38px; font-size:12px; background-color:#f8f8f8; padding:0 7px; line-height:38px; width:292px; white-space:nowrap; overflow:hidden;text-overflow:ellipsis; }
 .order_hotline .txt1{ color: #666; font-size: 14px; }
 
-.cont_all{width:980px;min-height:338px; margin:38px auto;font-size:12px;color:#666; margin-top: 0px; }
+.cont_all{width:980px;min-height:338px; margin:38px auto;font-size:12px;color:#666; margin-top: 20px; }
 .cont_l{float:left;width:220px;}
 .cont_l .left_list ul{margin-top:-15px; margin-right:40px;}
 .cont_l .left_list ul li{margin-top:15px;;width:180px;cursor:pointer;}

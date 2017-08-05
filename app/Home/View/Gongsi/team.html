@@ -36,10 +36,10 @@
         <em class="em"></em>
        </dt> 
        <dd id="dd"> 
-        <a name="sub1" href="/gongsi/5847/1/team/">1年以下</a> 
-        <a name="sub2" href="/gongsi/5847/2/team/">1—3年</a> 
-        <a name="sub3" href="/gongsi/5847/3/team/">3—5年</a> 
-        <a name="sub4" href="/gongsi/5847/4/team/">5年以上</a> 
+
+          <foreach name="chongyejingyan" item="v">
+              <a name="sub{$key+1}" href="{:U('Home/Gongsi/case',array('cid'=>$_GET['cid'],'type'=>$v['id']))}">{$v.title}</a> 
+          </foreach>
        </dd> 
       </dl> 
      </div> 
@@ -52,16 +52,21 @@
         <dd> 
          <ul> 
           <div> 
-           <li> 
-            <div class="elite_tx"> 
-             <div class="fg"></div> 
-             <img src="__PUBLIC__/Home/images/tx.jpg" /> 
-            </div> <p>王浩仁</p> <p>18055351585</p> <p>5年以上从业经验</p> <p></p> </li> 
-           <li> 
-            <div class="elite_tx"> 
-             <div class="fg"></div> 
-             <img src="__PUBLIC__/Home/images/tx.jpg" /> 
-            </div> <p>王平</p> <p>15800772290</p> <p>5年以上从业经验</p> <p></p> </li> 
+
+            <foreach name="list" item="v">
+                <li>
+                    <div class="elite_tx">
+                        <div class="fg"></div>
+                        <img src="{$v.img}" /></div>
+                    <p>{$v.truename}</p>
+                    <p>{$v.phone}</p>
+                    <p>{$v.chongyejingyan}</p>
+                    <p>
+                    </p>
+                </li>
+            </foreach>
+
+
           </div>
          </ul> 
         </dd> 
@@ -92,17 +97,5 @@
   <include file="Common/footer" />
   
 
-  <script type="text/javascript">
-    function LoginOut() {
-        var message = "确定要退出当前用户吗？";
-        if (confirm(message)) {
-            $.post("/user/exituser", "", function (data) {
-                if (data.IsSuccess) {
-                    location.href = "http://www.zizhiguanjia.com";
-                }
-            })
-        }
-    };
-    </script> 
  </body>
 </html>

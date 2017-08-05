@@ -921,7 +921,7 @@ body{ font: 12px/180% "微软雅黑", "黑体", Arial; }
 .dingw_title .dingw_xial{ padding-left:5px;}
 #city{ width:470px; border:1px solid #ccc; padding:5px 10px;  border-top:none; box-shadow:1px 1px 2px #ccc; background:#FFF; z-index:1000; display:none; position:absolute; top:36px; left:7px;}
 #city .city_list{ color:#666; width:460px;}
-#city .city_list a{ float:left; color:#666; width:57px !important; text-align:left; padding:4px 8px; font-size:12px;}
+#city .city_list a{ float:left; color:#666; width:57px !important; text-align:left; padding:4px 8px; font-size:12px;overflow: hidden;height: 25px;}
 #city .city_list a:hover{ color:#ff4400;}
 
 
