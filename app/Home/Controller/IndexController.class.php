@@ -336,6 +336,9 @@ class IndexController extends CommonController{
         // 分类
         $news_type=M('Type')->where(array('pid'=>1350))->select();
 
+        $where=array();
+        $where['type']=$_GET['type'];
+        
         $count      = M('News')->where($where)->count();
         $Page       = new \Common\Extend\Page($count,6);
         $nowPage = isset($_GET['p'])?$_GET['p']:1;

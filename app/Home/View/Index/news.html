@@ -11,6 +11,10 @@
   <meta name="mobile-agent" content="format=html5; url=http://m.zizhiguanjia.com/zs/" /> 
   <meta name="mobile-agent" content="format=wml; url=http://m.zizhiguanjia.com/zs/" /> 
 <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/new.css" /> 
+
+<style type="text/css">
+    
+</style>
  </head> 
  <body> 
   <!-- 头部引用 -->
@@ -28,13 +32,13 @@
    <div class="zsbase-con"> 
     <div class="zsbase-b"> 
      <div class="zzbz" style="background-color:#fff;"> 
-      <div class="icon-knowl1"></div> 
-      <div class="icon-knowl2"></div> 
-      <b>知识库<span style="display:inline">knowledge base</span></b> 
+          <div class="icon-knowl1"></div> 
+          <div class="icon-knowl2"></div> 
+          <b>知识库<span style="display:inline">knowledge base</span></b>
           <span style="display:block">
 
               <foreach name="news_type" item="v">
-                  <h2><a href="{:U('Home/Index/news_detail',array('id'=>$v['id']))}" title="{$v.title}">{$v.title}</a></h2>
+                  <h2 <if condition="$_GET['type'] eq $v['id']">class="on"</if>><a href="{:U('Home/Index/news',array('type'=>$v['id']))}" title="{$v.title}">{$v.title}</a></h2>
               </foreach>
              
           </span>
