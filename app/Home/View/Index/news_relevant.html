@@ -31,45 +31,59 @@
    </div> 
    <div class="zsbase-con"> 
     <div class="zsbase-b"> 
-      
-          <!-- 引用 -->
-          <include file="_news_left" />
+
+
+        <!-- 引用 -->
+        <include file="_news_left" />
+
 
     </div> 
-    <div class="zsbase-r"> 
-     <ul style="margin:25px;"> 
 
-          <foreach name="list" item="v">
-              <li>
+
+    <div class="zsbase-r">
+        <ul style="margin:25px;">
+            <li class="li" style="background:url(__PUBLIC__/Home/images/xtb1.gif) no-repeat; background-position:left;">和“{$tags_info.title}”相关的文章</li>
+
+            <foreach name="list" item="vo">
+                <li>
                   <div class="kn-time">
+                      <a href="{:U('Home/Index/news',array('type'=>$vo['type']))}" style="color:#fff; margin:0; padding:0;">
+                          <span class="span" style="background:url(__PUBLIC__/Home/images/xtb2.gif) no-repeat; background-position:left;width: 105px;">{$vo._type}</span></a>
                       <h3>
-                          <a style="width: 600px; color: #333;" href="{:U('Home/Index/news_detail',array('id'=>$v['id']))}" title="{$v.title}" target="_blank">{$v.title}</a>
+                          <a style="width: 600px; color: #333;" href="{:U('Home/Index/news_detail',array('id'=>$vo['id']))}" title="{$vo.title}" target="_blank">{$vo.title}</a>
                           <span>
-                              <i class="icon-k2"></i>发布时间：{$v.time}</span>
+                              <i class="icon-k2"></i>发布时间：{$vo.time}</span>
                           <span>
-                              <i class="icon-k1"></i>浏览：{$v.eye}</span>
+                              <i class="icon-k1"></i>浏览：{$vo.eye}</span>
                           <span>
-                              <i class="icon-k3"></i>标签： {$v.tag}
-                              <label>&nbsp;&nbsp;</label></span>
+                              <i class="icon-k3"></i>标签： 
+                              <foreach name="vo['_child']" item="v">
+                                  {$v.title}<label>&nbsp;&nbsp;</label>
+                              </foreach>
+                          </span>
                       </h3>
                   </div>
-                  <p>{$v.desc}</p>
+                  <p>{$vo.desc}</p>
               </li>
-          </foreach>
-          
-     </ul> 
-     <link href="__PUBLIC__/Home/css/Page.css" rel="stylesheet" type="text/css" /> 
-     <div class="pages"> 
-        {$page}
-     </div> 
-    </div> 
+            </foreach>
+
+
+            
+        </ul>
+        <link href="__PUBLIC__/Home/css/Page.css" rel="stylesheet" type="text/css" /> 
+        <div class="pages">
+            {$page}
+        </div>
+    </div>
+
+    
     <div class="clear"></div> 
    </div> 
   </div> 
   <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/main.css" /> 
   
 
-  <!-- 头部引用 -->
+  <!-- 引用 -->
   <include file="Common/footer" />
 
 

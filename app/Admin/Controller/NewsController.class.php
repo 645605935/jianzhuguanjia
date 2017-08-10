@@ -33,7 +33,9 @@ class NewsController extends AuthController {
         $this->page_buttons=$page_buttons;
         $this->page=$page;
 
-        $this->type=A('Communal/Type')->getSon(1350);
+        $this->type=M('Type')->where(array('pid'=>1350))->select();
+        $this->tags_type=M('Type')->where(array('pid'=>1404))->select();
+        
         $this->display();
     }
 
@@ -83,6 +85,25 @@ class NewsController extends AuthController {
                 $data['code']=1;
                 $data['msg']='error';
             }
+        }else{
+            $data=array();
+            $data['code']=2;
+            $data['msg']='error';
+        }
+
+        echo json_encode($data);
+    }
+
+    //获取分类
+    public function ajax_get_tags(){
+
+        $type=M('Type')->where(array('pid'=>1404))->select();
+
+        if($type){
+            $data=array();
+            $data['code']=0;
+            $data['msg']='success';
+            $data['data']=$type;
         }else{
             $data=array();
             $data['code']=2;

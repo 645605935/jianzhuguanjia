@@ -333,9 +333,6 @@ class IndexController extends CommonController{
     }
 
     public function news(){
-        // 分类
-        $news_type=M('Type')->where(array('pid'=>1350))->select();
-
         $where=array();
         $where['type']=$_GET['type'];
         
@@ -350,9 +347,33 @@ class IndexController extends CommonController{
 
         $this->page=$Page->show();
         $this->list=$list;
-        $this->news_type=$news_type;
         $this->display();
     }
+
+    public function news_relevant(){
+        $where=array();
+        $where['tags']=array('like', "%".$_GET['tags']."%");
+        
+        $count      = M('News')->where($where)->count();
+        $Page       = new \Common\Extend\Page($count,6);
+        $nowPage = isset($_GET['p'])?$_GET['p']:1;
+        $list=D('News')->page($nowPage.','.$Page->listRows)->where($where)->relation(true)->select();
+        foreach ($list as $key => $value) {
+            $list[$key]['time']=date('Y-m-d',$value['time']);
+
+            $tags_arr=explode('_', $value['tags']);
+            foreach ($tags_arr as $k => $v) {
+                $list[$key]['_child'][]=M('Type')->find($v);
+            }
+        }
+
+        $this->tags_info=M('Type')->find($_GET['tags']);
+
+        $this->page=$Page->show();
+        $this->list=$list;
+        $this->display();
+    }
+
 
     public function news_detail(){
         $id=$_GET['id'];

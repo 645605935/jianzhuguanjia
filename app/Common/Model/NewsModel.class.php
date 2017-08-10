@@ -7,7 +7,7 @@ class NewsModel extends RelationModel{
 			'mapping_type'=>self::BELONGS_TO,
 			'class_name'=>'Type',
 			'foreign_key'=>'type',
-			'as_fields' => 'title:type',
+			'as_fields' => 'title:_type',
 		)
 	);
 }

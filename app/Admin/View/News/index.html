@@ -352,9 +352,9 @@
                     <td>
                       <div class="layui-inline">
                         <div class="layui-form-item">
-                          <label class="layui-form-label">标签</label>
+                          <label class="layui-form-label">关键词</label>
                           <div class="layui-input-inline">
-                            <input type="text" name="tag" lay-verify="required" placeholder="" class="layui-input tag">
+                            <input type="text" name="keyword" lay-verify="required" placeholder="" class="layui-input keyword">
                           </div>
                         </div>
                       </div>
@@ -368,6 +368,17 @@
                           </div>
                         </div>
                       </div>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="center" colspan="2">
+                        <div class="layui-form-item layui-form-text">
+                          <label class="layui-form-label" style="width: 100%!important;text-align: left;">标签</label>
+                          <div class="layui-input-inline tags_box" >
+                              
+                          </div>
+                        </div>
                     </td>
                   </tr>
 
@@ -448,9 +459,9 @@
                     <td>
                       <div class="layui-inline">
                         <div class="layui-form-item">
-                          <label class="layui-form-label">标签</label>
+                          <label class="layui-form-label">关键词</label>
                           <div class="layui-input-inline">
-                            <input type="text" name="tag" lay-verify="required" placeholder="" class="layui-input tag">
+                            <input type="text" name="keyword" lay-verify="required" placeholder="" class="layui-input keyword">
                           </div>
                         </div>
                       </div>
@@ -464,6 +475,17 @@
                           </div>
                         </div>
                       </div>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="center" colspan="2">
+                        <div class="layui-form-item layui-form-text">
+                          <label class="layui-form-label" style="width: 100%!important;text-align: left;">标签</label>
+                          <div class="layui-input-inline tags_box" >
+                              
+                          </div>
+                        </div>
                     </td>
                   </tr>
 
@@ -541,7 +563,11 @@
           $( "body" ).on('click','.id-btn-dialog2_add', function(e) {
             e.preventDefault();
 
+            var tags='';
+            var form_type='add_form';
+            render_type(form_type, tags);
             init_editer('editer_add');
+            layui.form().render();
 
             $( "#dialog-confirm_add" ).removeClass('hide').dialog({
               resizable: false,
@@ -650,9 +676,12 @@
                       $('#edit_form .id').val(data.id);
                       $('#edit_form .title').val(data.title);
                       $('#edit_form .from').val(data.from);
-                      $('#edit_form .tag').val(data.tag);
+                      $('#edit_form .keyword').val(data.keyword);
                       $('#edit_form .desc').val(data.desc);
                       
+                      var form_type="edit_form";
+                      var tags=data.tags;
+                      render_type(form_type, tags);
 
                       $.each($("#edit_form .type option"), function(name, value){
                           if($(value).attr('alt')==data.type){
@@ -759,6 +788,47 @@
               }  
           }); 
           return _json;
+      }
+
+      function render_type(form_type, tags){
+          $.ajax({  
+              async:false,
+              type:'get',  
+              url : "{:U('Admin/News/ajax_get_tags')}",
+              dataType : 'json',
+              success  : function(json) {  
+                  if(json.code == 0){
+                      var data=json.data;
+
+                      var str='';
+
+                      if(form_type=='add_form'){
+                          $.each(data, function(name, value){
+                              str+='<input type="checkbox" name="tags['+value.id+']" data-id="'+value.id+'" lay-skin="primary" title="'+value.title+'">';
+                          });
+                      }else{
+                          var temp=tags.split('_');
+
+                          $.each(data, function(name, value){
+
+                              if($.inArray( value.id, temp )>-1){
+                                    str+='<input type="checkbox" checked="checked" name="tags['+value.id+']" data-id="'+value.id+'" lay-skin="primary" title="'+value.title+'">';
+                              }else{
+                                    str+='<input type="checkbox" name="tags['+value.id+']" data-id="'+value.id+'" lay-skin="primary" title="'+value.title+'">';
+                              }
+                              
+                          });
+                      }
+                      
+                      $('#'+form_type+' .tags_box').html(str);
+                  }else{
+                      layer.msg(json.msg);
+                  }
+              },
+              error  : function() {  
+                  layer.msg('error');
+              }  
+          }); 
       }
 
 
@@ -886,7 +956,23 @@
 
               //监听提交
               form.on('submit(demo1_add)', function(data){
-                var _json=_ajax_add(data.field);
+                var _data=data.field;
+
+                var str = '';
+                var arr = [];
+
+                console.log(_data);
+                $.each(_data, function(name, value){
+                    if(name.indexOf("tags") >=0 ){
+                        var id=parseInt(name.replace(/[^0-9]/ig,""));
+                        arr.push(id);
+                        // delete _data[name]; 
+                    }
+                });
+                str=arr.join('_');
+                _data.tags=str;
+
+                var _json=_ajax_add(_data);
                 return false;
               });
 

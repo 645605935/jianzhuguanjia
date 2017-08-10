@@ -1,0 +1,27 @@
+<?php 
+    $news_type=M('Type')->where(array('pid'=>1350))->select();
+    $tags_type=M('Type')->where(array('pid'=>1404))->select();
+?>
+
+<div class="zzbz" style="background-color:#fff;"> 
+     <div class="icon-knowl1"></div> 
+     <div class="icon-knowl2"></div> 
+     <b>知识库<span style="display:inline">knowledge base</span></b>
+     <span style="display:block">
+
+         <foreach name="news_type" item="v">
+             <h2 <if condition="$_GET['type'] eq $v['id']">class="on"</if>><a href="{:U('Home/Index/news',array('type'=>$v['id']))}" title="{$v.title}">{$v.title}</a></h2>
+         </foreach>
+        
+     </span>
+</div> 
+<div class="zsbase-l" style="margin-top:10px;"> 
+ <div class="icon-knowl1"></div> 
+ <div class="icon-knowl2"></div> 
+ <b style="font-size:16px;"><a href="news_detail.html?tag/">热门标签</a></b> 
+ <ol style="color:#444; padding: 10px 10px 20px 15px; width:210px; height:auto;">
+      <foreach name="tags_type" item="v">
+          <a href="{:U('Home/Index/news_relevant',array('tags'=>$v['id']))}" title="{$v.title}">{$v.title}</a> 
+      </foreach>
+ </ol> 
+</div>
