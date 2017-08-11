@@ -5,9 +5,9 @@
 
 <if condition="$user['gid'] eq 22">
 	<dl>
-	  <img src="__PUBLIC__/Home/images/tx.jpg" width="80" height="80"/>
+	  <img src="{$companyinfo.company_logo}" width="80" height="80"/>
 	  <dt>
-	  <span title="南京炫迈网络科技有限公司" style="font-size:16px;">南京炫迈网..</span> (素材火) 
+	  <span title="{$companyinfo.company_name}" style="font-size:16px;">{$companyinfo.company_name}</span>
 	  </dt>
 	  <dd class="<if condition="$_page_ eq 'Accountinfor/personalinfo'">dd</if>">
 	  <a href="{:U('Home/Accountinfor/personalinfo')}"><span style="background:url(__PUBLIC__/Home/images/uz.png) no-repeat; background-position:left;">账户资料</span></a>
