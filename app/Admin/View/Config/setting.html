@@ -53,53 +53,7 @@
 		<script src="__PUBLIC__/Admin/assets/js/jquery.min.js"></script>
 
 		<script src="__PUBLIC__/Admin/layui-v1.0.4/layui/layui.js"></script>
-		<script>
-			layui.use('layedit', function(){
-			  var layedit = layui.layedit
-			  ,$ = layui.jquery;
-
-
-			　　//上传图片接口：注意：layedit.set 一定要放在 build前面，否则配置全局接口将无效
-			    layedit.set({
-			        uploadImage: {
-			            url: "{:U('Admin/Config/lay_upload_img')}", //接口url
-			            type: 'post', //默认post
-			        }
-			    });
-
-			    //构建一个默认的编辑器 //自定义工具栏
-			    var index = layedit.build('demo', {
-				  tool: ['face', 'link', 'unlink', '|', 'left', 'center', 'right']
-				  ,height: 300
-				});
-			    // //创建编辑器
-			    // layedit.build('demo'),{
-			    //     width:600,
-			    //     height: 180 //设置编辑器高度
-			    // }; //建立编辑器
-
-
-			    //编辑器外部操作
-				var active = {
-				    content: function(){
-				      alert(layedit.getContent(index)); //获取编辑器内容
-				    }
-				    ,text: function(){
-				      alert(layedit.getText(index)); //获取编辑器纯文本内容
-				    }
-				    ,selection: function(){
-				      alert(layedit.getSelection(index));
-				    }
-				};
-				  
-				$('.site-demo-layedit').on('click', function(){
-				    var type = $(this).data('type');
-				    active[type] ? active[type].call(this) : '';
-				});
-
-				
-			});
-		</script>
+		
 	</head>
 
 	<body>
@@ -128,11 +82,7 @@
 						</script>
 
 						<ul class="breadcrumb">
-							<li>
-								<i class="icon-home home-icon"></i>
-								{$cur_controller_name}
-							</li>
-							<li class="active">{$cur_action_name}</li>
+							<include file="Public/_breadcrumb"/>
 						</ul><!-- .breadcrumb -->
 
 						<div class="nav-search" id="nav-search">
@@ -154,115 +104,183 @@
 
 						<div class="row">
 							<div class="col-xs-12">
-								<!-- PAGE CONTENT BEGINS -->
-								<form action="{:U('Admin/Config/setting')}" class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
-									<input type="hidden" value="1" name="id">
+								
+								<div class="layui-tab">
+								  <ul class="layui-tab-title">
+								    <li class="layui-this">网站设置</li>
+								    <li>图片样式</li>
+								  </ul>
+								  <div class="layui-tab-content">
+								    <div class="layui-tab-item layui-show">
+								    	<form action="{:U('Admin/Config/setting')}" class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
+									      	<table class="layui-table">
+									          <colgroup>
+									            <col width="150">
+									            <col>
+									            <col>
+									          </colgroup>
+									          
+									          <tbody>
+									            <tr>
+									              <td>服务器IP</td>
+									              <td>
+									              	<input type="text" id="form-field-1" name="ip" value="{$config['ip']}" placeholder="ip" class="col-xs-10 col-sm-5" />
+									              </td>
+									              <td></td>
+									            </tr>
 
-									<div class="form-group">
-										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 服务器IP</label>
+									            <tr>
+									              <td>内网网址</td>
+									              <td>
+									              	<input type="text" id="form-field-1" name="in_url" value="{$config['in_url']}" placeholder="in_url" class="col-xs-10 col-sm-5" />
+									              </td>
+									              <td></td>
+									            </tr>
 
-										<div class="col-sm-9">
-											<input type="text" id="form-field-1" name="ip" value="{$config['ip']}" placeholder="ip" class="col-xs-10 col-sm-5" />
-										</div>
-									</div>
+									            <tr>
+									              <td>上传图片</td>
+									              <td>
+									              	<input type="text" id="form-field-1" name="img_host" value="{$config['img_host']}" placeholder="img_host" class="col-xs-10 col-sm-5" />
+									              </td>
+									              <td></td>
+									            </tr>
 
-									<div class="form-group">
-										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 内网网址</label>
+									            <tr>
+									              <td>站点标题</td>
+									              <td>
+									              	<input type="text" id="form-field-1" name="title" value="{$config['title']}" placeholder="title" class="col-xs-10 col-sm-5" />
+									              </td>
+									              <td></td>
+									            </tr>
 
-										<div class="col-sm-9">
-											<input type="text" id="form-field-1" name="in_url" value="{$config['in_url']}" placeholder="in_url" class="col-xs-10 col-sm-5" />
-										</div>
-									</div>
+									            <tr>
+									              <td>关键词</td>
+									              <td>
+									              	<input type="text" id="form-field-1" name="keywords" value="{$config['keywords']}" placeholder="keywords" class="col-xs-10 col-sm-5" />
+									              </td>
+									              <td></td>
+									            </tr>
 
-									<div class="form-group">
-										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 上传图片</label>
+									            <tr>
+									              <td>站点描述</td>
+									              <td>
+									              	<input type="text" id="form-field-1" name="description" value="{$config['description']}" placeholder="description" class="col-xs-10 col-sm-5" />
+									              </td>
+									              <td></td>
+									            </tr>
 
-										<div class="col-sm-9">
-											<input type="text" id="form-field-1" name="img_host" value="{$config['img_host']}" placeholder="img_host" class="col-xs-10 col-sm-5" />
-										</div>
-									</div>
+									            <tr>
+									              <td>网站标签</td>
+									              <td>
+									              	<input type="text" name="tags" id="form-field-tags" value="{$config['tags']}" placeholder="Enter tags ..." />
+									              </td>
+									              <td></td>
+									            </tr>
 
-									<div class="form-group">
-										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 站点标题</label>
-
-										<div class="col-sm-9">
-											<input type="text" id="form-field-1" name="title" value="{$config['title']}" placeholder="title" class="col-xs-10 col-sm-5" />
-										</div>
-									</div>
-
-									<div class="form-group">
-										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 关键词</label>
-
-										<div class="col-sm-9">
-											<input type="text" id="form-field-1" name="keywords" value="{$config['keywords']}" placeholder="keywords" class="col-xs-10 col-sm-5" />
-										</div>
-									</div>
-
-									<div class="form-group">
-										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 站点描述</label>
-
-										<div class="col-sm-9">
-											<input type="text" id="form-field-1" name="description" value="{$config['description']}" placeholder="description" class="col-xs-10 col-sm-5" />
-										</div>
-									</div>
-									
-									<div class="form-group">
-										<label class="col-sm-3 control-label no-padding-right" for="form-field-tags">网站标签</label>
-
-										<div class="col-sm-9">
-											<input type="text" name="tags" id="form-field-tags" value="{$config['tags']}" placeholder="Enter tags ..." />
-										</div>
-									</div>
-
-									<div class="form-group">
-										<label class="col-sm-3 control-label no-padding-right" for="form-field-tags">网站Logo</label>
-										<div class="col-sm-9">
-											<div class="widget-body">
-												<div class="widget-main">
-													<input type="file" name="logo" id="id-input-file-2" />
+									            <tr>
+									              <td>网站Logo</td>
+									              <td>
+									              	<input type="file" name="logo" id="id-input-file-2" />
 													<notempty name="config['logo']">
 														<img width="100px" src="__UPLOAD__/{$config['logo']}"/>
 													</notempty>
-												</div>
-											</div>
-										</div>
-									</div>
+									              </td>
+									              <td></td>
+									            </tr>
+									          </tbody>
 
-									<div class="form-group">
-										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 公司简介
-											<div class="site-demo-button" style="margin-top: 20px;">
-											  <a class="layui-btn site-demo-layedit" data-type="content">获取编辑器内容</a><br><br>
-											  <a class="layui-btn site-demo-layedit" data-type="text">获取编辑器纯文本内容</a><br><br>
-											  <a class="layui-btn site-demo-layedit" data-type="selection">获取编辑器选中内容</a>
-											</div>
-										</label>
+									          <tfoot>
+									            <tr>
+									              <td colspan="3">
+									              		<input type="hidden" value="1" name="id">
+						              					<button class="btn btn-info" type="submit">
+					              		              		<i class="icon-ok bigger-110"></i>
+					              		              		保存
+					              		              	</button>
+					              		              	<button class="btn" type="reset">
+					              		              		<i class="icon-undo bigger-110"></i>
+					              		              		重置
+					              		              	</button>
+									              </td>
+									            </tr> 
+									          </tfoot>
+									        </table>
+								        </form>
+								    </div>
+								    <div class="layui-tab-item">
+								    	<form action="{:U('Admin/Config/setting')}" class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
+									      	<table class="layui-table">
+									          <colgroup>
+									            <col width="150">
+									            <col>
+									            <col>
+									          </colgroup>
+									          
+									          <tbody>
 
-										<div class="col-sm-9">
-											<textarea id="demo" name="content" style="display: none;"></textarea>
-										</div>
+									          	<tr>
+									              <td>oss外网域名</td>
+									              <td>
+									              	<input type="text" id="form-field-1" name="oss_url" value="{$config['oss_url']}" placeholder="oss_url" class="col-xs-10 col-sm-5" />
+									              </td>
+									              <td></td>
+									            </tr>
+
+									            <tr>
+									              <td>oss_style_50x50</td>
+									              <td>
+									              	<div class="form-group">
+									              	    <div class="input-group">
+									              	      <div class="input-group-addon">?x-oss-process=</div>
+									              	      <input type="text" value="{$config['oss_style_50x50']}" name="{$config['oss_style_50x50']}" class="col-xs-10 col-sm-5">
+									              	    </div>
+									              	</div>
+									              </td>
+									              <td></td>
+									            </tr>
+
+									            <tr>
+									              <td>oss_style_150x150</td>
+									              <td>
+									              	<div class="form-group">
+									              	    <div class="input-group">
+									              	      <div class="input-group-addon">?x-oss-process=</div>
+									              	      <input type="text" value="{$config['oss_style_150x150']}" name="{$config['oss_style_150x150']}" class="col-xs-10 col-sm-5">
+									              	    </div>
+									              	</div>
+									              </td>
+									              <td></td>
+									            </tr>
+
+									            
+									          </tbody>
+
+									          <tfoot>
+									            <tr>
+									              <td colspan="3">
+									              		<input type="hidden" value="1" name="id">
+						              					<button class="btn btn-info" type="submit">
+					              		              		<i class="icon-ok bigger-110"></i>
+					              		              		保存
+					              		              	</button>
+					              		              	<button class="btn" type="reset">
+					              		              		<i class="icon-undo bigger-110"></i>
+					              		              		重置
+					              		              	</button>
+									              </td>
+									            </tr> 
+									          </tfoot>
+									        </table>
+								        </form>
+								    </div>
+								  </div>
+								</div>
+								
 
 
-										
-									</div>
-									
-	
-									
+								<!-- PAGE CONTENT BEGINS -->
 
-									<div class="clearfix form-actions">
-										<div class="col-md-offset-3 col-md-9">
-											<button class="btn btn-info" type="submit">
-												<i class="icon-ok bigger-110"></i>
-												保存
-											</button>
-
-											&nbsp; &nbsp; &nbsp;
-											<button class="btn" type="reset">
-												<i class="icon-undo bigger-110"></i>
-												重置
-											</button>
-										</div>
-									</div>
-								</form>
+								
 							</div><!-- /.col -->
 						</div><!-- /.row -->
 					</div><!-- /.page-content -->
@@ -621,3 +639,48 @@
 		</script>
 	</body>
 </html>
+
+
+<script>
+layui.use('element', function(){
+  var $ = layui.jquery
+  ,element = layui.element(); //Tab的切换功能，切换事件监听等，需要依赖element模块
+  
+  //触发事件
+  var active = {
+    tabAdd: function(){
+      //新增一个Tab项
+      element.tabAdd('demo', {
+        title: '新选项'+ (Math.random()*1000|0) //用于演示
+        ,content: '内容'+ (Math.random()*1000|0)
+        ,id: new Date().getTime() //实际使用一般是规定好的id，这里以时间戳模拟下
+      })
+    }
+    ,tabDelete: function(othis){
+      //删除指定Tab项
+      element.tabDelete('demo', '44'); //删除：“商品管理”
+      
+      
+      othis.addClass('layui-btn-disabled');
+    }
+    ,tabChange: function(){
+      //切换到指定Tab项
+      element.tabChange('demo', '22'); //切换到：用户管理
+    }
+  };
+  
+  $('.site-demo-active').on('click', function(){
+    var othis = $(this), type = othis.data('type');
+    active[type] ? active[type].call(this, othis) : '';
+  });
+  
+  //Hash地址的定位
+  var layid = location.hash.replace(/^#test=/, '');
+  element.tabChange('test', layid);
+  
+  element.on('tab(test)', function(elem){
+    location.hash = 'test='+ $(this).attr('lay-id');
+  });
+  
+});
+</script>

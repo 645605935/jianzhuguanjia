@@ -2868,7 +2868,7 @@ $(function() {
             $(".pull_box").show()
         }).mouseout(function() {
             $(".pull_box").hide()
-        })) : ($("#float_div").removeClass("search_float"), (window.location.href == "http://localhost:7676/" || window.location.href == "http://www.zizhiguanjia.com/") && ($(".pull_nav").unbind("mouseover").unbind("mouseout"), $(".pull_box").show()));
+        })) : ($("#float_div").removeClass("search_float"), ($(".pull_nav").unbind("mouseover").unbind("mouseout"), $(".pull_box").show()));
         $(window).scrollTop() > 100 ? $("#back-to-top").fadeIn(800) : $("#back-to-top").fadeOut(800)
     });
     $("#back-to-top").click(function() {

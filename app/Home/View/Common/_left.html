@@ -5,7 +5,7 @@
 
 <if condition="$user['gid'] eq 22">
 	<dl>
-	  <img src="{$companyinfo.company_logo}" width="80" height="80"/>
+	  <img src="{$user.company_logo}" width="80" height="80"/>
 	  <dt>
 	  <span title="{$companyinfo.company_name}" style="font-size:16px;">{$companyinfo.company_name}</span>
 	  </dt>
@@ -15,8 +15,8 @@
 	  <dd class="<if condition="$_page_ eq 'Safetyset/index'">dd</if>">
 	  <a href="{:U('Home/Safetyset/index')}"><i></i><span style="background:url(__PUBLIC__/Home/images/us.png) no-repeat; background-position:left;">安全设置</span></a>
 	  </dd>
-	  <dd class="<if condition="$_page_ eq 'company/list'">dd</if>">
-	  <a href="{:U('Home/Order/list')}"><i></i><span style="background:url(__PUBLIC__/Home/images/uo.png) no-repeat; background-position:left;">订单管理</span></a>
+	  <dd class="<if condition="$_page_ eq 'Usercenter/brokerorder'">dd</if>">
+	  <a href="{:U('Home/Usercenter/brokerorder')}"><i></i><span style="background:url(__PUBLIC__/Home/images/uo.png) no-repeat; background-position:left;">订单管理</span></a>
 	  </dd>
 	</dl>
 <else/>

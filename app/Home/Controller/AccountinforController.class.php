@@ -31,20 +31,10 @@ class AccountinforController extends CommonController{
         global $user;
         if($_POST && $user){
             $data=array();
-            $data['company_name']=$_POST['Name'];
-            $data['company_people']=$_POST['contact'];
-            $data['contact_phone']=$_POST['TelPhone'];
-            $data['contact_email']=$_POST['Email'];
-            $data['company_province']=$_POST['AreaPpid'];
-            $data['company_city']=$_POST['AreaId'];
-            $data['company_address']=$_POST['address'];
-            $data['company_introduction']=$_POST['Introduction'];
+            $data=$_POST;
             $data['time']=time();
 
-            $where=array();
-            $where['id']=$user['id'];
-
-            $res=M('User')->where($where)->save($data);
+            $res=M('User')->save($data);
             if($res){
                 $data=array();
                 $data['IsSuccess']=true;

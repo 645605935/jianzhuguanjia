@@ -91,8 +91,8 @@
         <div class="nav_main_box">
             <div class="nav_box nav_box_bottom">
                 <div class="pull_nav">
-                    <span class="pull_nav_title">服务导航</span>
-                    <div class="pull_box" style="display:none">
+                    <span class="pull_nav_title">服务导航</span>    
+                    <div class="pull_box" <if condition="($_SERVER['PATH_INFO'] eq 'Index/index') OR ($_SERVER['PATH_INFO'] eq '')">style="display:block;"<else/>style="display:none;"</if>>
                         <ul class="pull_box_nav_list">
                             <li class="pull_box_nav_li">
                                 <span>

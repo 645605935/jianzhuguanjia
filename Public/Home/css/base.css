@@ -2,6 +2,8 @@
 .zzbz { width:230px; background-color:#FFF; float:left; position:relative;}
 .zzbz b {font-size:20px; color:#000; height:50px; line-height:50px; border-bottom:1px solid #ececec; margin:0 10px; padding:8px 8px 0 16px;}
 .zzbz b span {color:#e1e1e1; font-size:14px; font-weight:normal; padding-left:10px;}
+.zsbase h1 {font-size:20px; color:#000; height:50px; line-height:50px; border-bottom:1px solid #ececec; margin:0 10px; padding:8px 8px 0 16px;}
+.zsbase h1 span {color:#e1e1e1; font-size:14px; font-weight:normal; padding-left:10px;}
 .zzbz #zzbzcx {font-size:20px; color:#000; height:50px; line-height:50px; border-bottom:1px solid #ececec; margin:0 10px; padding:8px 8px 0 16px;}
 .zzbz #zzbzcx span {color:#E1E1E1;font-size:14px;font-weight:normal;padding-left:10px;}
 .zzbz span{padding:10px 0 40px;}

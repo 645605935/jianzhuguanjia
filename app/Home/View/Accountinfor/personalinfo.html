@@ -5,11 +5,27 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>账户资料</title>
         <link type="text/css" rel="stylesheet" href="__PUBLIC__/Home/css/usercenter.css?v=20160601" />
+        <link rel="stylesheet" href="__PUBLIC__/Admin/layui-v1.0.4/layui/css/layui.css"  media="all">
+        
         <script type="text/javascript" src="__PUBLIC__/Home/js/jquery-1.10.2.js"></script>
-        <script type="text/javascript" src="__PUBLIC__/Home/js/jquery.validate.js"></script>
-        <script type="text/javascript" src="__PUBLIC__/Home/js/popup.js"></script>
+        <script src="__PUBLIC__/Admin/layui-v1.0.4/layui/layui.js"></script>
+        <script src="__PUBLIC__/layer/layer.js"></script>
+        
+        <style type="text/css">
+              #add_form{margin:0 auto;}
+              #add_form table{width:100%;margin:0 auto;}
+              #add_form .div_300{width: 100%;}
+              #add_form .div_150{width: 100%;}
+
+              #add_form .layui-table td{padding:5px 12px;border: 0px;}
+              #add_form .layui-table td .images_box a{padding:5px;box-sizing:border-box;width: 25%;display: block;}
+              #add_form .layui-table td .images_box a img{width: 100%;}
+              #add_form .layui-table td .img_box a{padding:5px;box-sizing:border-box;width: 25%;display: block;}
+              #add_form .layui-table td .img_box a img{width: 100%;}
+        </style>
+
         <script type="text/javascript">
-        var Home_Accountinfor_companyalter = "{:U('Home/Accountinfor/companyalter')}";
+            var Home_Accountinfor_companyalter = "{:U('Home/Accountinfor/companyalter')}";
         </script>
     </head>
     
@@ -48,69 +64,113 @@
                 </div>
                 <div class="content_box" style="margin-top:30px;">
                     <h3>
-                        <span>公司资料</span></h3>
-                    <form method="post" action="/usercenter/companyalter" id="sub_company" novalidate="novalidate">
-                        <li>
-                            <p>
-                                <span style="color:red">*</span>&nbsp;企业名称：</p>
-                            <input name="Name" class="inp1" id="Name" value="{$companyinfo.company_name}" type="text" />
-                            <span class="messge"></span>
-                        </li>
-                        <li>
-                            <p>
-                                <span style="color:red">*</span>&nbsp;真实姓名：</p>
-                            <input class="inp1" id="contact" name="contact" onkeyup="this.value = this.value.replace(/^ +| +$/g, '')" onkeydown=" this.value =" " this.value.replace(/\s/g, '')" value="{$companyinfo.truename}" type="text" />
-                            <span class="messge"></span>
-                        </li>
-                        <li>
-                            <p>
-                                <span style="color:red"></span>&nbsp;固定电话：</p>
-                            <input name="TelPhone" class="inp1" id="TelPhone" value="{$companyinfo.contact_phone}" type="text" />
-                            <span class="messge"></span>
-                        </li>
-                        <li>
-                            <p>
-                                <span style="color:red">*</span>&nbsp;邮箱地址：</p>
-                            <input name="Email" class="inp1" id="Email" value="{$companyinfo.contact_email}" type="text" />
-                            <span class="messge"></span>
-                        </li>
-                        <li>
-                            <p>
-                                <span style="color:red">*</span>&nbsp;公司地址：</p>
-                            <select id="AreaPpid" class="longtext " name="AreaPpid" style="width:157px;">
-                                <option value="">--省/市--</option>
-                                <foreach name="province" item="v">
-                                    <option value="{$v['provinceid']}" <if condition="$v['provinceid'] eq $companyinfo['company_province']">selected="selected"</if>>{$v['first_name']} {$v['province']}</option>
-                                </foreach>
-                            </select>
-                            <select name="AreaId" class="longtext" id="AreaPid" style="width:157px;">
-                                <option value="">--市/地区--</option>
-                                <foreach name="city" item="v">
-                                    <option value="{$v['cityid']}" <if condition="$v['cityid'] eq $companyinfo['company_city']">selected="selected"</if>>{$v['first_name']} {$v['city']}</option>
-                                </foreach>
-                            </select>
-                            <input value="{$companyinfo.company_city}" id="InpAreaId" type="hidden" />
-                            <input value="{$companyinfo.company_province}" id="InpAreaPid" type="hidden" />
-                            <input name="address" class="inp1" value="{$companyinfo.company_address}" type="text" />
-                            <span class="messge" id="address_span"></span>
-                        </li>
-                        <li>
-                            <p>
-                                <span style="color:red">*</span>&nbsp;公司简介：</p>
-                            <textarea cols="33" rows="7" name="Introduction" id="Introduction">{$companyinfo.company_introduction}</textarea>
-                            <span class="messge" id="introduction_span"></span>
-                        </li>
-                        <li>
-                            <input value="保存资料" class="input1" id="sub_com" type="submit" /></li>
-                    </form>
+                        <span>公司资料</span>
+                    </h3>
+
+
+                        <form class="layui-form layui-form-pane col-xs-12" method="post" action="" id="add_form" enctype="multipart/form-data">
+                           <table class="layui-table">
+                             <colgroup>
+                                <col width="20%">
+                                <col width="40%">
+                                <col>
+                             </colgroup>
+                             <tbody>
+                               
+                               <tr>
+                                 <td align="center">企业名称：</td>
+                                 <td colspan="2">
+                                   <div class="layui-input-inline div_300">
+                                     <input type="text" name="company_name" value="{$companyinfo.company_name}" autocomplete="off" class="layui-input company_name">
+                                   </div>
+                                 </td>
+                               </tr>
+
+                               <tr>
+                                 <td align="center">真实姓名：</td>
+                                 <td colspan="2">
+                                   <div class="layui-input-inline div_300">
+                                     <input type="text" name="contact_people" value="{$companyinfo.contact_people}" autocomplete="off" class="layui-input contact_people">
+                                   </div>
+                                 </td>
+                               </tr>
+
+                               <tr>
+                                 <td align="center">固定电话：</td>
+                                 <td colspan="2">
+                                   <div class="layui-input-inline div_300">
+                                     <input type="text" name="contact_phone" value="{$companyinfo.contact_phone}" autocomplete="off" class="layui-input contact_phone">
+                                   </div>
+                                 </td>
+                               </tr>
+
+                               <tr>
+                                 <td align="center">邮箱地址：</td>
+                                 <td colspan="2">
+                                   <div class="layui-input-inline div_300">
+                                     <input type="text" name="contact_email" value="{$companyinfo.contact_email}" autocomplete="off" class="layui-input contact_email">
+                                   </div>
+                                 </td>
+                               </tr>
+
+                               <tr>
+                                 <td align="center">公司地址：</td>
+                                 <td>
+                                   <div class="layui-input-inline div_150">
+                                     <select name="company_province" class="province" lay-filter="province" lay-verify="required" >
+                                       <option value="">省/市</option>
+                                       <foreach name="province" item="v">
+                                           <option value="{$v['provinceid']}" <if condition="$v['provinceid'] eq $companyinfo['company_province']">selected</if>>{$v['first_name']} {$v['province']}</option>
+                                       </foreach>
+                                     </select>
+                                   </div>
+                                 </td>
+                                 <td>
+                                   <div class="layui-input-inline div_150">
+                                     <select name="company_city" class="city" lay-verify="required" >
+                                       <option value="">市/地区</option>
+                                       <foreach name="city" item="v">
+                                           <option value="{$v['cityid']}" <if condition="$v['cityid'] eq $companyinfo['company_city']">selected</if>>{$v['first_name']} {$v['city']}</option>
+                                       </foreach>
+                                     </select>
+                                   </div>
+                                 </td>
+                               </tr>
+                           
+                               <tr>
+                                 <td align="center">详细地址：</td>
+                                 <td colspan="2">
+                                   <div class="layui-input-inline div_300">
+                                     <input type="text" name="company_address" value="{$companyinfo.company_address}" autocomplete="off" class="layui-input company_address">
+                                   </div>
+                                 </td>
+                               </tr>
+
+                               <tr>
+                                 <td align="center">公司简介：</td>
+                                 <td colspan="2">
+                                   <div class="layui-input-inline div_300">
+                                     <textarea class="layui-textarea layui-hide company_introduction" placeholder="" name="company_introduction" lay-verify="content" id="editer_add">{$companyinfo.company_introduction}</textarea>
+                                   </div>
+                                 </td>
+                               </tr>
+
+                             </tbody>
+                             <tfoot>
+                               <tr>
+                                 <td colspan="3" style="text-align:center;">
+                                   <input type="hidden" name="id" value="{$companyinfo.id}" lay-verify="required" class="layui-input id" readonly>
+                                   <button class="layui-btn layui-btn-danger" lay-submit="" lay-filter="demo1_add">保存</button>
+                                 </td>
+                               </tr>
+                             </tfoot>
+                           </table>
+                        </form>
+
+
+
                 </div>
             </div>
-            <script type="text/javascript" src="__PUBLIC__/Home/js/jquery-1.10.2.js"></script>
-            <script type="text/javascript" src="__PUBLIC__/Home/js/jquery.validate.js"></script>
-            <script type="text/javascript" src="__PUBLIC__/Home/js/popup.js"></script>
-            <!-- <script type="text/javascript" src="__PUBLIC__/Home/js/area_data.js"></script> -->
-            <!-- <script type="text/javascript" src="__PUBLIC__/Home/js/Area.js"></script> -->
-            <script type="text/javascript" src="__PUBLIC__/Home/js/companyalter.js"></script>
             <div class="elear" style="clear:both;"></div>
         </div>
         <div class="elear" style="clear:both;"></div>
@@ -120,44 +180,106 @@
     </body>
 
 </html>
-<script type="text/javascript">
-    $('#AreaPpid').change(function() {
-        var provinceid = $(this).children('option:selected').val();
-        if (provinceid) {
-            _ajax_get_city_select(provinceid);
-        } else {
-            alert('请选择省份');
-        }
-    });
 
-    function _ajax_get_city_select(provinceid) {
-        $.ajax({
-            async: false,
-            type: 'get',
-            contentType: "application/x-www-form-urlencoded",
-            url: "{:U('Home/Index/ajax_get_city_list')}",
-            data: {
-                provinceid: provinceid
+
+
+<script>
+    function _ajax_save_company_info(_data){
+         $.ajax({  
+             async:false,
+             type:'post',  
+             contentType:"application/x-www-form-urlencoded",
+             url : "{:U('Home/Agententer/ajax_save_company_info')}",
+             data: _data,
+             dataType : 'json',
+             success  : function(json) {
+                 if(json.code==0){
+                     alert(json.msg);
+                     window.location.reload();
+                 }else{
+                     alert(json.msg);
+                 }
+             },
+             error  : function() {  
+                 alert('error');
+             }  
+         }); 
+    }
+
+    function _ajax_get_city_select(provinceid){
+        $.ajax({  
+            async:false,
+            type:'get',  
+            contentType:"application/x-www-form-urlencoded",
+            url : "{:U('Home/Index/ajax_get_city_list')}",
+            data:{
+              provinceid:provinceid
             },
-            dataType: 'json',
-            success: function(json) {
-                if (json.code == 0) {
-                    var data = json.data;
+            dataType : 'json',
+            success  : function(json) {  
+                if(json.code==0){
+                    var data=json.data;
 
-                    var str = "<option value=''>市/地区</option>";
-                    $.each(json.data,
-                    function(key, value) {
-                        str += "<option value='" + value.cityid + "'>" + value.first_name + " " + value.city + "</option>";
+                    var str="<option value=''>市/地区</option>";
+                    $.each(json.data, function(key, value) {
+                         str+="<option value='"+value.cityid+"'>"+value.first_name+" "+value.city+"</option>";
                     });
-                    $('#AreaPid').html(str);
+                    $('#add_form .city').html(str);
+                    layui.form().render();
 
-                } else {
+                }else{
                     layer.msg(json.msg);
                 }
             },
-            error: function(json) {
+            error  : function(json) {  
                 layer.msg(json.msg);
-            }
+            }  
         });
-    }
+    }   
+
+    layui.use(['form', 'layedit', 'laydate', 'upload'], function(){
+      var form = layui.form()
+      ,layer = layui.layer
+      ,layedit = layui.layedit
+      ,laydate = layui.laydate;
+
+
+      //上传图片接口：注意：layedit.set 一定要放在 build前面，否则配置全局接口将无效
+      layedit.set({
+          uploadImage: {
+              url: "{:U('Home/Index/lay_upload_file')}", //接口url
+              type: 'post', //默认post
+          }
+      });
+
+      //创建一个编辑器
+      var editIndex = layedit.build('editer_add');
+
+      //自定义验证规则
+      form.verify({
+        title: function(value){
+          if(value.length < 5){
+            return '标题至少得5个字符啊';
+          }
+        }
+        ,pass: [/(.+){6,12}$/, '密码必须6到12位']
+        ,content: function(value){
+          layedit.sync(editIndex);
+        }
+      });
+
+      form.on('select(province)', function(data){
+          var provinceid=data.value;
+          if(provinceid){
+              _ajax_get_city_select(provinceid);
+          }
+          return false;
+      });
+
+      //监听提交
+      form.on('submit(demo1_add)', function(data){
+        var _json=_ajax_save_company_info(data.field);
+        return false;
+      });
+    });
 </script>
