@@ -109,6 +109,7 @@
 								  <ul class="layui-tab-title">
 								    <li class="layui-this">网站设置</li>
 								    <li>图片样式</li>
+								    <li>备案设置</li>
 								  </ul>
 								  <div class="layui-tab-content">
 								    <div class="layui-tab-item layui-show">
@@ -121,29 +122,7 @@
 									          </colgroup>
 									          
 									          <tbody>
-									            <tr>
-									              <td>服务器IP</td>
-									              <td>
-									              	<input type="text" id="form-field-1" name="ip" value="{$config['ip']}" placeholder="ip" class="col-xs-10 col-sm-5" />
-									              </td>
-									              <td></td>
-									            </tr>
-
-									            <tr>
-									              <td>内网网址</td>
-									              <td>
-									              	<input type="text" id="form-field-1" name="in_url" value="{$config['in_url']}" placeholder="in_url" class="col-xs-10 col-sm-5" />
-									              </td>
-									              <td></td>
-									            </tr>
-
-									            <tr>
-									              <td>上传图片</td>
-									              <td>
-									              	<input type="text" id="form-field-1" name="img_host" value="{$config['img_host']}" placeholder="img_host" class="col-xs-10 col-sm-5" />
-									              </td>
-									              <td></td>
-									            </tr>
+									            
 
 									            <tr>
 									              <td>站点标题</td>
@@ -217,7 +196,71 @@
 									          </colgroup>
 									          
 									          <tbody>
+									          	<tr>
+									              <td>oss外网域名</td>
+									              <td>
+									              	<input type="text" id="form-field-1" name="oss_url" value="{$config['oss_url']}" placeholder="oss_url" class="col-xs-10 col-sm-5" />
+									              </td>
+									              <td></td>
+									            </tr>
 
+									            <tr>
+									              <td>oss_style_50x50</td>
+									              <td>
+									              	<div class="form-group">
+									              	    <div class="input-group">
+									              	      <div class="input-group-addon">?x-oss-process=</div>
+									              	      <input type="text" value="{$config['oss_style_50x50']}" name="{$config['oss_style_50x50']}" class="col-xs-10 col-sm-5">
+									              	    </div>
+									              	</div>
+									              </td>
+									              <td></td>
+									            </tr>
+
+									            <tr>
+									              <td>oss_style_150x150</td>
+									              <td>
+									              	<div class="form-group">
+									              	    <div class="input-group">
+									              	      <div class="input-group-addon">?x-oss-process=</div>
+									              	      <input type="text" value="{$config['oss_style_150x150']}" name="{$config['oss_style_150x150']}" class="col-xs-10 col-sm-5">
+									              	    </div>
+									              	</div>
+									              </td>
+									              <td></td>
+									            </tr>
+
+									            
+									          </tbody>
+
+									          <tfoot>
+									            <tr>
+									              <td colspan="3">
+									              		<input type="hidden" value="1" name="id">
+						              					<button class="btn btn-info" type="submit">
+					              		              		<i class="icon-ok bigger-110"></i>
+					              		              		保存
+					              		              	</button>
+					              		              	<button class="btn" type="reset">
+					              		              		<i class="icon-undo bigger-110"></i>
+					              		              		重置
+					              		              	</button>
+									              </td>
+									            </tr> 
+									          </tfoot>
+									        </table>
+								        </form>
+								    </div>
+								    <div class="layui-tab-item">
+								    	<form action="{:U('Admin/Config/setting')}" class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
+									      	<table class="layui-table">
+									          <colgroup>
+									            <col width="150">
+									            <col>
+									            <col>
+									          </colgroup>
+									          
+									          <tbody>
 									          	<tr>
 									              <td>oss外网域名</td>
 									              <td>

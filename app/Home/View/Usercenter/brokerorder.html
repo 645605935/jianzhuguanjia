@@ -19,7 +19,6 @@
   <script type="text/javascript" src="__PUBLIC__/Home/js/jquery.validate.js"></script> 
   <script type="text/javascript" src="__PUBLIC__/Home/js/popup.js"></script> 
   <script src="__PUBLIC__/Admin/layui-v1.0.4/layui/layui.js"></script>
-  <script src="__PUBLIC__/layer/layer.js"></script>
  </head> 
  <body> 
   <!-- 头部引用 -->
@@ -73,14 +72,14 @@
                             <div class="layui-input-inline">
                               <select name="status" class="status">
                                 <option value="请选择">全部</option>
-                                <option value="未维护" <if condition="$_POST['status'] eq '未维护'">selected</if>>未维护</option>
-                                <option value="未解决" <if condition="$_POST['status'] eq '未解决'">selected</if>>未解决</option>
+                                <option value="已查看" <if condition="$_POST['status'] eq '已查看'">selected</if>>已查看</option>
+                                <option value="未查看" <if condition="$_POST['status'] eq '未查看'">selected</if>>未查看</option>
                               </select>
                             </div>
                           </div>
                         </div> 
 
-                        <div class="layui-inline" style="margin-top: 5px;">
+                       <!--  <div class="layui-inline" style="margin-top: 5px;">
                           <div class="layui-form-item">
                             <label class="layui-form-label">日期查询</label>
                             <div class="layui-input-inline">
@@ -90,7 +89,7 @@
                               <input class="layui-input Date2" name="Date2" value="{$_POST['Date2']}" placeholder="截止日" id="LAY_demorange_e">
                             </div>
                           </div>
-                        </div> 
+                        </div>  -->
                     </td>
                   </tr>
                 </tbody>
@@ -107,16 +106,16 @@
 
           <div class="layui-form">
               <table class="layui-table">
-                <!-- <colgroup>
+                <colgroup>
                   <col width="150">
                   <col width="150">
-                  <col width="150">
+                  <col width="100">
                   <col width="200">
-                  <col width="200">
+                  <col width="150">
                   <col width="200">
                   <col width="200">
                   <col>
-                </colgroup> -->
+                </colgroup>
                 <thead>
                   <tr>
                     <th>订单号</th>
@@ -133,11 +132,12 @@
                         <foreach name="list" item="v">
                             <tr>
                               <td>{$v.order_no}</td>
-                              <td>
+                              <td class="phone_seeing">
                                   <if condition="$v['see'] eq 1">
-                                      {$v.phone}
+                                      <span>{$v.phone}</span>
                                   <else/>
-                                      {$v.phone}<button class="layui-btn layui-btn-mini layui-btn-normal" style="float: right;">查看</button>
+                                      <span>{$v.phone}</span>
+                                      <button class="layui-btn layui-btn-mini layui-btn-normal see_phone" data-id="{$v.id}" style="float: right;">查看</button>
                                   </if>
                               </td>
                               <td>
@@ -147,8 +147,8 @@
                                       未审核
                                   </if>
                               </td>
-                              <td>人生似修行</td>
-                              <td>人生似修行</td>
+                              <td>{$v.type_1}<br>{$v.type_2}<br>{$v.type_3}</td>
+                              <td>{$v.province}<br>{$v.city}</td>
                               <td>{$v.time}</td>
                               <td>{$v.remark}</td>
                             </tr>
@@ -210,8 +210,43 @@
  </body>
 </html>
 
-
+<script type="text/javascript">
+    $(function(){
+        // $('.see_phone').click(function(){
+        //     var id=$(this).attr('data-id');
+        //     var _json=_ajax_get_phone(id);
+        // });
+    });
+</script>
 <script>
+
+      //获取手机号
+      function _ajax_get_phone(id){
+          var _json;
+          $.ajax({  
+              async:false,
+              type:'get',  
+              url : "{:U('Home/Usercenter/ajax_get_phone')}",
+              data:{
+                id:id
+              },
+              dataType : 'json',
+              success  : function(json) {  
+                  if(json.code == 0){
+                      _json=json;
+                  }else{
+                      layer.msg(json.msg);
+                  }
+              },
+              error  : function() {  
+                  layer.msg('error');
+              }  
+          }); 
+          return _json;
+      }
+
+
+
       layui.use(['form', 'laydate'], function(){
         var form = layui.form()
         ,layer = layui.layer
@@ -230,6 +265,27 @@
             layedit.sync(editIndex);
           }
         });
+
+        $('.see_phone').click(function(){
+            var id=$(this).attr('data-id');
+            $('td').removeClass('phone_seeing');
+            $(this).parent('td').addClass('phone_seeing');
+
+            if(confirm('确定查看？')){
+                layer.msg('恭喜您，可以查看了', {icon: 1});
+                var _json=_ajax_get_phone(id);
+                if(_json.code==0){
+                    $('.phone_seeing span').html(_json.data);
+                    $('.phone_seeing button').remove();
+                }else{
+                    layer.msg(_json.msg);
+                }
+            }else{
+                layer.msg('可能这条信息也很重要哦');
+            }
+        });
+
+        
 
         var start = {
           max: '2099-06-16 23:59:59'

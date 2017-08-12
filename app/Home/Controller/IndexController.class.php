@@ -68,6 +68,8 @@ class IndexController extends CommonController{
             $news_list[$key]['_child']=$temp;
         }
 
+
+
         //总承包资质
         $zizhi_1_list=M('Article')->where(array('type'=>1390))->limit(11)->select();
 
