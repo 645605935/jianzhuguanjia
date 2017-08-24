@@ -515,6 +515,7 @@
             e.preventDefault();
 
             init_editer('editer_add');
+            layui.form().render();
 
             $( "#dialog-confirm_add" ).removeClass('hide').dialog({
               resizable: false,
@@ -537,6 +538,7 @@
                 var _json=_ajax_get_row_info(id);
                 if(_json.code==0){
                     init_editer('editer_edit');
+                    layui.form().render();
 
                     $( "#dialog-confirm_edit" ).removeClass('hide').dialog({
                       resizable: false,
