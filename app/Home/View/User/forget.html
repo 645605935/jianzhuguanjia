@@ -1,0 +1,56 @@
+<html>
+ <head> 
+  <meta charset="utf-8" /> 
+  <title>忘记密码</title> 
+  <script type="text/javascript">
+    var Home_User_userbasicisexist_forget="{:U('Home/User/userbasicisexist_forget')}";
+    var Home_User_getvalidatecode="{:U('Home/User/getvalidatecode')}";
+    var Home_User_checkvalidatecode="{:U('Home/User/checkvalidatecode')}";
+    var Home_User_RetrievePassword="{:U('Home/User/RetrievePassword')}";
+
+    var Home_Accountinfor_personalinfo="{:U(Home/accountinfor/personalinfo)}";
+    var Home_Usercenter_brokerindex="{:U(Home/Usercenter/brokerindex)}";
+    var HTTP_HOST="http://"+"{$HTTP_HOST}";
+  </script>
+ </head> 
+ <body> 
+  <div class="logo_box"> 
+   <div class="logo"> 
+    <a href="http://www.zizhiguanjia.com/" title="资质管家">
+     <div class="ico-logo header-logo"></div></a> 
+    <p>欢迎入驻</p> 
+    <span>已有账号，<a href="login.html">直接登录</a></span> 
+   </div> 
+  </div> 
+  <meta http-equiv="x-ua-compatible" content="ie=7" /> 
+  <meta name="viewport" content="width=device-width" /> 
+  <title>找回密码-资质管家</title> 
+  <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/member.css" /> 
+  <div class="mion_er"> 
+   <div class="mioner"> 
+    <div class="mion_er_right" style="height:345px;"> 
+     <form action="/user/RetrievePassword" method="post" id="retrieve_form" novalidate="novalidate"> 
+      <ul class="ul_form" style="padding-left:25px; padding-top:25px;"> 
+       <li> <label>手 机 号 码</label> <input name="Phone" id="Phone" placeholder="建议输入常用手机号" type="text" /> <p class="messge" id="phone_error"></p> </li> 
+       <li> <label>验　证　码</label> <input style="height: 35px; line-height: 25px; border-radius: 4px; text-indent: 1em;" name="IdentifyingCode" id="IdentifyingCode" placeholder="手机验证码" type="text" /> <input class="btn" value="获取验证码" name="smsId" id="smsId" onclick="settime(this);" style="right:43px;" type="button" /> <p class="messge" id="identifyingCode_error"></p><br /> </li> 
+       <li> <label>设 置 密 码</label> <input name="password" maxlength="16" id="password" placeholder="请输入密码，6-16位字符" type="password" /> <p class="messge"></p> </li> 
+       <li> <label>确 认 密 码</label> <input name="repassword" maxlength="16" id="repassword" placeholder="请再输入密码" type="password" /> <p class="messge"></p> </li> 
+       <li><input class="submit_button_zc" value="确定并提交新密码" id="registerId" type="submit" /></li> 
+      </ul> 
+     </form> 
+    </div> 
+   </div> 
+  </div> 
+  <div class="bottom"> 
+   <ul> 
+    <li> <a href="daiban.html">资质代办</a>| <a href="zizhibiaozhun.html">资质标准</a>| <a href="news.html">行业资讯</a>| <a href="reg.html" rel="nofollow">中介入驻</a>| <a href="about.html" rel="nofollow">关于我们</a>| <a href="http://www.zizhiguanjia.com/join.html" rel="nofollow">加入我们</a>| <a href="http://www.zizhiguanjia.com/contact.html" rel="nofollow">联系我们</a>| <a href="#" rel="nofollow" style="cursor: default; color: #888;">常见问题</a>| <a href="#" rel="nofollow" style="cursor: default; color: #888;">意见反馈</a>| </li> 
+    <li>版权所有 资质管家（北京）信息技术有限公司 京ICP备16024435号-1</li> 
+   </ul> 
+   <a href="http://www.zizhiguanjia.com/sitemap.html" target="_blank" style="color: #5e5c5b;text-decoration: none !important;"></a> 
+  </div> 
+  <script async="" src="__PUBLIC__/Home/js/analytics.js"></script>
+  <script src="__PUBLIC__/Home/js/push.js"></script>
+ 
+  <script src="__PUBLIC__/Home/js/forget.js"></script> 
+ </body>
+</html>

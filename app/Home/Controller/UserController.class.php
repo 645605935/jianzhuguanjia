@@ -62,6 +62,34 @@ class UserController extends CommonController{
         $this->display();
     }
 
+    public function forget(){
+        $this->display();
+    }
+
+    public function RetrievePassword(){
+
+        if($_POST){
+            $where=array();
+            $where['phone']=$_POST['Phone'];
+
+            $data=array();
+            $data['password']=md5($_POST['password']);
+
+            $res=M('User')->where($where)->save($data);
+            if($res){
+                $data=array();
+                $data['IsSuccess']=true;
+                $data['Msg']='密码重置成功';
+            }else{
+                $data=array();
+                $data['IsSuccess']=false;
+                $data['Msg']='密码重置失败';
+            }
+
+            echo json_encode($data);
+        }
+    }
+
     public function UserLogin(){
         if($_POST){
             $where=array();
@@ -99,6 +127,18 @@ class UserController extends CommonController{
         if($phone){
             $row=M('User')->where(array('phone'=>$phone))->find();
             if(!$row){
+                echo 'true';
+            }else{
+                echo 'false';
+            }
+        }
+    }
+
+    public function userbasicisexist_forget(){
+        $phone=$_POST['phone'];
+        if($phone){
+            $row=M('User')->where(array('phone'=>$phone))->find();
+            if($row){
                 echo 'true';
             }else{
                 echo 'false';
