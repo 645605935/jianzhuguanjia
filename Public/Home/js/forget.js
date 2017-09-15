@@ -4,7 +4,7 @@ function formSubmit() {
     $.post(""+Home_User_RetrievePassword+"", $("#retrieve_form").serialize(),
     function(n) {
     	var data=JSON.parse(n);
-        data.IsSuccess ? location.href = "/user/successfully": alert(n.Msg)
+        data.IsSuccess ? location.href = ""+Home_user_successfully+"": alert(n.Msg)
     })
 }
 function settime() {

@@ -66,6 +66,10 @@ class UserController extends CommonController{
         $this->display();
     }
 
+    public function successfully(){
+        $this->display();
+    }
+
     public function RetrievePassword(){
 
         if($_POST){
