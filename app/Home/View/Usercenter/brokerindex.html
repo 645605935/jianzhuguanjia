@@ -42,7 +42,13 @@
          <span style="color:#ff4400">13611127228</span> 
         </div> </li>
        <li> 企业名称：<b style="font-weight:normal;">{$user.company_name}</b> </li> 
-       <li> 审核状态： <b>审核中</b> </li> 
+       <li> 审核状态： 
+          <b>
+              <if condition="$user['status'] eq 1">已通过</if>
+              <if condition="$user['status'] eq 0">审核中</if>
+              <if condition="$user['status'] eq -1">未通过</if>
+          </b>
+        </li> 
        <li class="li_dealpercent"> 
         <lable class="lab" style="font-size:14px">
          接单率
@@ -68,7 +74,7 @@
       <li style="line-height"> 
        <lable class="lab">
         您当前拥有&nbsp;
-        <strong class="num_style">3</strong>&nbsp;个订单券
+        <strong class="num_style">{$coupon_info.num}</strong>&nbsp;个订单券
         <i tip="ticketcount_lab_i"><img src="__PUBLIC__/Home/images/wenhao.png" /></i>
        </lable> <em style="margin-left:168px">如何获取订单券，请咨询13611127228</em> </li> 
      </ul> 

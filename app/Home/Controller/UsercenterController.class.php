@@ -23,6 +23,13 @@ class UsercenterController extends CommonController{
 
     //中介公司个人中心首页
     public function brokerindex(){
+        global $user;
+        $user=M('User')->find($user['id']);
+
+
+        $coupon_info=M('Coupon')->where(array('uid'=>$user['id']))->find();
+        $this->user=$user;
+        $this->coupon_info=$coupon_info;
         $this->display();
     }
 
