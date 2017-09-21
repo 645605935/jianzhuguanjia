@@ -124,8 +124,6 @@ class UserController extends CommonController{
         }
     }
 
-
-
     public function userbasicisexist(){
         $phone=$_POST['phone'];
         if($phone){

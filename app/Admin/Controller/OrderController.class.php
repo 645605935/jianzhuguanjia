@@ -69,8 +69,7 @@ class OrderController extends AuthController {
         $id=I('id');
 
         if($id){
-            $row = D('Order')->relation(true)->find($id);
-            $row['time']=date('Y-m-d H:i',$row['time']);
+            $row = D('Order')->find($id);
 
             if($row){
                 $data=array();

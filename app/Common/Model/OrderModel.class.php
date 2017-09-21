@@ -32,6 +32,12 @@ class OrderModel extends RelationModel{
 			'class_name'=>'City',
 			'foreign_key'=>'city',
 			'as_fields' => 'city:city',
+		),
+		'_user'=>array(
+			'mapping_type'=>self::BELONGS_TO,
+			'class_name'=>'User',
+			'foreign_key'=>'uid',
+			'as_fields' => 'truename:truename',
 		)
 	);
 }
