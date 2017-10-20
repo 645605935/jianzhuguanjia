@@ -1,52 +1,52 @@
-function QuickAreaSelectBind(n) {
-    if (n == "全国") {
-        $($("#QuickAreaPid option")[0]).attr("selected", "selected");
-        $("#QuickAreaId").html("<option>--市--<\/option>");
-        return
-    }
-    $("#QuickAreaPid option").each(function() {
-        if (this.innerText == $("#city-dingw span").text()) {
-            $(this).attr("selected", "selected");
-            fillPareas($(this).val(), "#QuickAreaId", !1);
-            return
-        }
-    })
-}
-function AreaSelectBind(n) {
-    if (n == "全国") {
-        $($("#AreaPid option")[0]).attr("selected", "selected");
-        $("#AreaId").html("<option>--请选择--<\/option>");
-        return
-    }
-    $("#AreaPid option").each(function() {
-        if (this.innerText.indexOf($("#city-dingw span").text()) != -1) {
-            $(this).attr("selected", "selected");
-            fillPareas($(this).val(), "#AreaId", !0);
-            return
-        }
-    })
-}
-function ComapnyUrlBind(n) {
-    if (n == "全国") {
-        $("#li_zzdbgs a").attr("href", "http://www.zizhiguanjia.com/zizhi/");
-        $("#li_zzdbgs a").text("资质代办公司");
-        $(".areas_zzdbgs a").css("color", "#999");
-        return
-    }
-    $(".areas_zzdbgs a").each(function() {
-        if ($(this).text() == n) {
-            $($(this)).css("color", "#ff4400").siblings().css("color", "#999");
-            return
-        }
-    });
-    $(".areas_zzdbgs a").each(function() {
-        if ($(this).text() == $("#city-dingw span").text()) {
-            $("#li_zzdbgs a").text(n + "资质代办公司");
-            $("#li_zzdbgs a").attr("href", $(this).attr("href"));
-            return
-        }
-    })
-}
+// function QuickAreaSelectBind(n) {
+//     if (n == "全国") {
+//         $($("#QuickAreaPid option")[0]).attr("selected", "selected");
+//         $("#QuickAreaId").html("<option>--市--<\/option>");
+//         return
+//     }
+//     $("#QuickAreaPid option").each(function() {
+//         if (this.innerText == $("#city-dingw span").text()) {
+//             $(this).attr("selected", "selected");
+//             fillPareas($(this).val(), "#QuickAreaId", !1);
+//             return
+//         }
+//     })
+// }
+// function AreaSelectBind(n) {
+//     if (n == "全国") {
+//         $($("#AreaPid option")[0]).attr("selected", "selected");
+//         $("#AreaId").html("<option>--请选择--<\/option>");
+//         return
+//     }
+//     $("#AreaPid option").each(function() {
+//         if (this.innerText.indexOf($("#city-dingw span").text()) != -1) {
+//             $(this).attr("selected", "selected");
+//             fillPareas($(this).val(), "#AreaId", !0);
+//             return
+//         }
+//     })
+// }
+// function ComapnyUrlBind(n) {
+//     if (n == "全国") {
+//         $("#li_zzdbgs a").attr("href", "http://www.zizhiguanjia.com/zizhi/");
+//         $("#li_zzdbgs a").text("资质代办公司");
+//         $(".areas_zzdbgs a").css("color", "#999");
+//         return
+//     }
+//     $(".areas_zzdbgs a").each(function() {
+//         if ($(this).text() == n) {
+//             $($(this)).css("color", "#ff4400").siblings().css("color", "#999");
+//             return
+//         }
+//     });
+//     $(".areas_zzdbgs a").each(function() {
+//         if ($(this).text() == $("#city-dingw span").text()) {
+//             $("#li_zzdbgs a").text(n + "资质代办公司");
+//             $("#li_zzdbgs a").attr("href", $(this).attr("href"));
+//             return
+//         }
+//     })
+// }
 function fillPareas(n, t, i) {
     var u = "<option value=''>--市--<\/option>", f = "", r;
     if (i)
@@ -2816,51 +2816,51 @@ $(document).ready(function() {
     var cityCookie = "", cityIdCookie = 0;
     cookie = getCookie("PC_HEADER_CITY_LOCATION");
     cookie != "null" && cookie != "" && (cookie = eval("(" + cookie + ")"), cityCookie = cookie.Name, cityIdCookie = cookie.Id);
-    cityCookie == null || cityCookie == "" || cityCookie == "全国" ? $("#city-dingw span").text("全国") : ($("#city-dingw span").text(cityCookie), $(".city_list a").each(function() {
-        if ($(this).text() == cityCookie) {
-            $("#zzarea").attr("href", "/" + $(this).attr("data-area") + "-zizhi");
-            $("#zzarea").text($(this).text() + "资质代办");
-            $("#azarea").attr("href", "/" + $(this).attr("data-area") + "-anquan");
-            $("#azarea").text($(this).text() + "安证办理");
-            return
-        }
-    }), $("#QuickAreaPid option").each(function() {
-        if (this.innerText == cityCookie) {
-            $(this).attr("selected", "selected");
-            fillPareas(cityIdCookie, "#QuickAreaId", !1);
-            return
-        }
-    }), $("#AreaPid option").each(function() {
-        if (this.innerText.indexOf(cityCookie) != -1) {
-            $(this).attr("selected", "selected");
-            fillPareas(cityIdCookie, "#AreaId", !0);
-            return
-        }
-    }), $("#Bottom_AreaPid option").each(function() {
-        if (this.innerText == cityCookie) {
-            $(this).attr("selected", "selected");
-            fillPareas(cityIdCookie, "#Bottom_AreaId", !1);
-            return
-        }
-    }));
-    $("#city_list a").each(function() {
-        $(this).bind("click", function() {
-            $("#city").hide();
-            $("#city-dingw span").text(this.innerText);
-            (location.href == "http://www.zizhiguanjia.com/zizhi/" || location.href == "http://www.zizhiguanjia.com/zizhi" || location.href.indexOf("-zizhi") > -1) && ($("#city-dingw span").text() == "全国" && (window.location.href = "daiban.html"), $(".areas_zzdbgs a").each(function() {
-                if ($(this).text() == $("#city-dingw span").text()) {
-                    window.location.href = $(this).attr("href");
-                    return
-                }
-            }));
-            $(this).text() == "全国" ? ($("#zzarea").text("资质代办"), $("#zzarea").attr("href", "/zizhi/"), $("#azarea").text("安证办理"), $("#azarea").attr("href", "/anquan/")) : ($("#zzarea").text($(this).text() + "资质代办"), $("#zzarea").attr("href", "/" + $(this).attr("data-area") + "-zizhi/"), $("#azarea").text($(this).text() + "安证办理"), $("#azarea").attr("href", "/" + $(this).attr("data-area") + "-anquan/"));
-            QuickAreaSelectBind(this.innerText);
-            AreaSelectBind(this.innerText);
-            ComapnyUrlBind(this.innerText);
-            $.post("/Index/SetCityLocationCookie", {name: this.innerText}, function() {
-            })
-        })
-    })
+    // cityCookie == null || cityCookie == "" || cityCookie == "全国" ? $("#city-dingw span").text("全国") : ($("#city-dingw span").text(cityCookie), $(".city_list a").each(function() {
+    //     if ($(this).text() == cityCookie) {
+    //         $("#zzarea").attr("href", "/" + $(this).attr("data-area") + "-zizhi");
+    //         $("#zzarea").text($(this).text() + "资质代办");
+    //         $("#azarea").attr("href", "/" + $(this).attr("data-area") + "-anquan");
+    //         $("#azarea").text($(this).text() + "安证办理");
+    //         return
+    //     }
+    // }), $("#QuickAreaPid option").each(function() {
+    //     if (this.innerText == cityCookie) {
+    //         $(this).attr("selected", "selected");
+    //         fillPareas(cityIdCookie, "#QuickAreaId", !1);
+    //         return
+    //     }
+    // }), $("#AreaPid option").each(function() {
+    //     if (this.innerText.indexOf(cityCookie) != -1) {
+    //         $(this).attr("selected", "selected");
+    //         fillPareas(cityIdCookie, "#AreaId", !0);
+    //         return
+    //     }
+    // }), $("#Bottom_AreaPid option").each(function() {
+    //     if (this.innerText == cityCookie) {
+    //         $(this).attr("selected", "selected");
+    //         fillPareas(cityIdCookie, "#Bottom_AreaId", !1);
+    //         return
+    //     }
+    // }));
+    // $("#city_list a").each(function() {
+    //     $(this).bind("click", function() {
+    //         $("#city").hide();
+    //         $("#city-dingw span").text(this.innerText);
+    //         (location.href == "http://www.zizhiguanjia.com/zizhi/" || location.href == "http://www.zizhiguanjia.com/zizhi" || location.href.indexOf("-zizhi") > -1) && ($("#city-dingw span").text() == "全国" && (window.location.href = "daiban.html"), $(".areas_zzdbgs a").each(function() {
+    //             if ($(this).text() == $("#city-dingw span").text()) {
+    //                 window.location.href = $(this).attr("href");
+    //                 return
+    //             }
+    //         }));
+    //         $(this).text() == "全国" ? ($("#zzarea").text("资质代办"), $("#zzarea").attr("href", "/zizhi/"), $("#azarea").text("安证办理"), $("#azarea").attr("href", "/anquan/")) : ($("#zzarea").text($(this).text() + "资质代办"), $("#zzarea").attr("href", "/" + $(this).attr("data-area") + "-zizhi/"), $("#azarea").text($(this).text() + "安证办理"), $("#azarea").attr("href", "/" + $(this).attr("data-area") + "-anquan/"));
+    //         QuickAreaSelectBind(this.innerText);
+    //         AreaSelectBind(this.innerText);
+    //         ComapnyUrlBind(this.innerText);
+    //         $.post("/Index/SetCityLocationCookie", {name: this.innerText}, function() {
+    //         })
+    //     })
+    // })
 });
 $(function() {
     $(window).scroll(function() {

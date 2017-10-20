@@ -2,6 +2,8 @@
     $_page_=$_SERVER['PATH_INFO'];
     $_province_=M('Province')->select();
     $_cur_page_="http://".$_SERVER['HTTP_HOST']."".$_SERVER['REDIRECT_URL'];
+
+    $cur_province_info=$_SESSION['cur_province_info'];
 ?>
 
 
@@ -49,12 +51,14 @@
                 <div class="dingw_title">
                     <img alt="定位" src="__PUBLIC__/Home/images/PCicon.png" class="dingw_img" />
                     <a target="_blank" href="javascript:void(0)" id="city-dingw">
-                        <span>全国</span>
+                        <span><if condition="!$cur_province_info">全国<else/>{$cur_province_info['province']}</if></span>
                         <font class="city_qieh">[切换]</font></a>
                 </div>
                 <div id="city">
                     <div class="city_list" id="city_list">
-                        <a href="javascript:void(0)">全国</a>
+                        <a href="javascript:void(0)">
+                            <if condition="!$cur_province_info">全国<else/>{$cur_province_info['province']}</if>
+                        </a>
                         <div class="clear"></div>
                         <foreach name="_province_" item="v">
                             <a href="{:U('Home/Index/change_province',array('provinceid'=>$v['provinceid']))}" title="{$v.province}">{$v.province}</a>

@@ -61,90 +61,90 @@ $(document).ready(function () {
         }
     });
 
-    //头部 地区定位选择
-    //如果cookie中有定位则绑定cookie中的地区
-    var cityCookie = "";
-    var cityIdCookie = 0;
-    cookie = getCookie("PC_HEADER_CITY_LOCATION");
-    if (cookie != "null" && cookie != "") {
-        cookie = eval("(" + cookie + ")");
-        cityCookie = cookie.Name;
-        cityIdCookie = cookie.Id;
-    }
-    if (cityCookie == null || cityCookie == '' || cityCookie == '全国') {
-        $('#city-dingw span').text("全国");
-    }
-    else {
-        $('#city-dingw span').text(cityCookie);
-        $('.city_list a').each(function () {
-            if ($(this).text() == cityCookie) {
-                $("#zzarea").attr("href", "/" + $(this).attr("data-area") + "-zizhi");
-                $("#zzarea").text($(this).text() + "资质代办");
-                $("#azarea").attr("href", "/" + $(this).attr("data-area") + "-anquan");
-                $("#azarea").text($(this).text() + "安证办理");
-                return;
-            }
-        });
-        $('#QuickAreaPid option').each(function () {
-            if (this.innerText == cityCookie) {
-                $(this).attr('selected', 'selected');
-                fillPareas(cityIdCookie, '#QuickAreaId', false);
-                return;
-            }
-        });
-        $('#AreaPid option').each(function () {
-            if (this.innerText.indexOf(cityCookie) != -1) {
-                $(this).attr('selected', 'selected');
-                fillPareas(cityIdCookie, '#AreaId', true);
-                return;
-            }
-        });
-        $('#Bottom_AreaPid option').each(function () {
-            if (this.innerText == cityCookie) {
-                $(this).attr('selected', 'selected');
-                fillPareas(cityIdCookie, '#Bottom_AreaId', false);
-                return;
-            }
-        });
-    }
-    //定位下拉点击事件
-    $('#city_list a').each(function () {
-        $(this).bind('click', function () {
-            $("#city").hide();
-            $('#city-dingw span').text(this.innerText);
+    // //头部 地区定位选择
+    // //如果cookie中有定位则绑定cookie中的地区
+    // var cityCookie = "";
+    // var cityIdCookie = 0;
+    // cookie = getCookie("PC_HEADER_CITY_LOCATION");
+    // if (cookie != "null" && cookie != "") {
+    //     cookie = eval("(" + cookie + ")");
+    //     cityCookie = cookie.Name;
+    //     cityIdCookie = cookie.Id;
+    // }
+    // if (cityCookie == null || cityCookie == '' || cityCookie == '全国') {
+    //     $('#city-dingw span').text("全国");
+    // }
+    // else {
+    //     $('#city-dingw span').text(cityCookie);
+    //     $('.city_list a').each(function () {
+    //         if ($(this).text() == cityCookie) {
+    //             $("#zzarea").attr("href", "/" + $(this).attr("data-area") + "-zizhi");
+    //             $("#zzarea").text($(this).text() + "资质代办");
+    //             $("#azarea").attr("href", "/" + $(this).attr("data-area") + "-anquan");
+    //             $("#azarea").text($(this).text() + "安证办理");
+    //             return;
+    //         }
+    //     });
+    //     $('#QuickAreaPid option').each(function () {
+    //         if (this.innerText == cityCookie) {
+    //             $(this).attr('selected', 'selected');
+    //             fillPareas(cityIdCookie, '#QuickAreaId', false);
+    //             return;
+    //         }
+    //     });
+    //     $('#AreaPid option').each(function () {
+    //         if (this.innerText.indexOf(cityCookie) != -1) {
+    //             $(this).attr('selected', 'selected');
+    //             fillPareas(cityIdCookie, '#AreaId', true);
+    //             return;
+    //         }
+    //     });
+    //     $('#Bottom_AreaPid option').each(function () {
+    //         if (this.innerText == cityCookie) {
+    //             $(this).attr('selected', 'selected');
+    //             fillPareas(cityIdCookie, '#Bottom_AreaId', false);
+    //             return;
+    //         }
+    //     });
+    // }
+    // //定位下拉点击事件
+    // $('#city_list a').each(function () {
+    //     $(this).bind('click', function () {
+    //         $("#city").hide();
+    //         $('#city-dingw span').text(this.innerText);
 
-            //修改定位 资质代办公司页面页面跳转
-            if (location.href == 'http://www.zizhiguanjia.com/zizhi/' || location.href == 'http://www.zizhiguanjia.com/zizhi' || location.href.indexOf('-zizhi') > -1) {
-                if ($('#city-dingw span').text() == '全国') {
-                    window.location.href = "http://www.zizhiguanjia.com/zizhi/";
-                }
-                $('.areas_zzdbgs a').each(function () {
-                    if ($(this).text() == $('#city-dingw span').text()) {
-                        window.location.href = $(this).attr('href');
-                        return;//退出循环
-                    }
-                });
-            }
-            if ($(this).text() == "全国") {
-                $("#zzarea").text("资质代办");
-                $("#zzarea").attr("href", "/zizhi/");
-                $("#azarea").text("安证办理");
-                $("#azarea").attr("href", "/anquan/");
-            } else {
-                $("#zzarea").text($(this).text() + "资质代办");
-                $("#zzarea").attr("href", "/" + $(this).attr("data-area") + "-zizhi/");
-                $("#azarea").text($(this).text() + "安证办理");
-                $("#azarea").attr("href", "/" + $(this).attr("data-area") + "-anquan/");
-            }
+    //         //修改定位 资质代办公司页面页面跳转
+    //         if (location.href == 'http://www.zizhiguanjia.com/zizhi/' || location.href == 'http://www.zizhiguanjia.com/zizhi' || location.href.indexOf('-zizhi') > -1) {
+    //             if ($('#city-dingw span').text() == '全国') {
+    //                 window.location.href = "http://www.zizhiguanjia.com/zizhi/";
+    //             }
+    //             $('.areas_zzdbgs a').each(function () {
+    //                 if ($(this).text() == $('#city-dingw span').text()) {
+    //                     window.location.href = $(this).attr('href');
+    //                     return;//退出循环
+    //                 }
+    //             });
+    //         }
+    //         if ($(this).text() == "全国") {
+    //             $("#zzarea").text("资质代办");
+    //             $("#zzarea").attr("href", "/zizhi/");
+    //             $("#azarea").text("安证办理");
+    //             $("#azarea").attr("href", "/anquan/");
+    //         } else {
+    //             $("#zzarea").text($(this).text() + "资质代办");
+    //             $("#zzarea").attr("href", "/" + $(this).attr("data-area") + "-zizhi/");
+    //             $("#azarea").text($(this).text() + "安证办理");
+    //             $("#azarea").attr("href", "/" + $(this).attr("data-area") + "-anquan/");
+    //         }
 
 
-            QuickAreaSelectBind(this.innerText);
-            AreaSelectBind(this.innerText);
-            ComapnyUrlBind(this.innerText);
-            $.post('/Index/SetCityLocationCookie', { "name": this.innerText }, function () {
-            });
-        });
-    });
+    //         QuickAreaSelectBind(this.innerText);
+    //         AreaSelectBind(this.innerText);
+    //         ComapnyUrlBind(this.innerText);
+    //         $.post('/Index/SetCityLocationCookie', { "name": this.innerText }, function () {
+    //         });
+    //     });
+    // });
 
 });
 
