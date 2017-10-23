@@ -157,11 +157,22 @@
 									            </tr>
 
 									            <tr>
-									              <td>网站Logo</td>
+									              <td>前台LOGO</td>
 									              <td>
 									              	<input type="file" name="logo" id="id-input-file-2" />
 													<notempty name="config['logo']">
 														<img width="100px" src="__UPLOAD__/{$config['logo']}"/>
+													</notempty>
+									              </td>
+									              <td></td>
+									            </tr>
+
+									            <tr>
+									              <td>后台Logo</td>
+									              <td>
+									              	<input type="file" name="logo_admin" id="id-input-file-2" />
+													<notempty name="config['logo_admin']">
+														<img width="100px" src="__UPLOAD__/{$config['logo_admin']}"/>
 													</notempty>
 									              </td>
 									              <td></td>
@@ -262,6 +273,22 @@
 									          
 									          <tbody>
 									          	<tr>
+									              <td>公司地址</td>
+									              <td>
+									              	<input type="text" id="form-field-1" name="company_address" value="{$config['company_address']}" placeholder="公司地址" class="col-xs-10 col-sm-5" />
+									              </td>
+									              <td></td>
+									            </tr>
+
+									            <tr>
+									              <td>公司电话</td>
+									              <td>
+									              	<input type="text" id="form-field-1" name="company_phone" value="{$config['company_phone']}" placeholder="公司电话" class="col-xs-10 col-sm-5" />
+									              </td>
+									              <td></td>
+									            </tr>
+
+									          	<tr>
 									              <td>备案号</td>
 									              <td>
 									              	<input type="text" id="form-field-1" name="beian" value="{$config['beian']}" placeholder="备案号" class="col-xs-10 col-sm-5" />
@@ -270,22 +297,12 @@
 									            </tr>
 
 									            <tr>
-									              <td>客服电话</td>
+									              <td>客服qq</td>
 									              <td>
-									              	<input type="text" id="form-field-1" name="phone" value="{$config['phone']}" placeholder="客服电话" class="col-xs-10 col-sm-5" />
+									              	<input type="text" id="form-field-1" name="qq" value="{$config['qq']}" placeholder="客服qq" class="col-xs-10 col-sm-5" />
 									              </td>
 									              <td></td>
 									            </tr>
-
-									            <tr>
-									              <td>客服QQ</td>
-									              <td>
-									              	<input type="text" id="form-field-1" name="qq" value="{$config['qq']}" placeholder="客服QQ" class="col-xs-10 col-sm-5" />
-									              </td>
-									              <td></td>
-									            </tr>
-
-									            
 									          </tbody>
 
 									          <tfoot>
