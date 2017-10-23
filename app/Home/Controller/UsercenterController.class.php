@@ -26,17 +26,40 @@ class UsercenterController extends CommonController{
         global $user;
         $user=M('User')->find($user['id']);
 
+        //订单查看情况
+        $where=array();
+        $where['type']=$user['company_yewufanwei'];
+        $where['province']=$user['company_service_province'];
+        $where['city']=$user['company_service_city'];
+        $where['type_2']=array('in', explode('#', $user['company_types']));
+        $all_orders=D('Order')->where($where)->select();
+        $nosee_num=0;
+        foreach ($all_orders as $key => $value) {
+            $res=M('OrderLog')->where(array('uid'=>$user['id'], 'oid'=>$value['id']))->find();
+            if($res){
+                $all_orders[$key]['see']=1;
+                $nosee_num++;    
+            }
+        }
 
         $coupon_info=M('Coupon')->where(array('uid'=>$user['id']))->find();
         $this->user=$user;
+        $this->all_num=count($all_orders);
+        $this->nosee_num=$nosee_num;
         $this->coupon_info=$coupon_info;
         $this->display();
     }
 
     public function brokerorder(){
         global $user;
+        $user=M('User')->find($user['id']);
 
         $where=array();
+        $where['type']=$user['company_yewufanwei'];
+        $where['province']=$user['company_service_province'];
+        $where['city']=$user['company_service_city'];
+        $where['type_2']=array('in', explode('#', $user['company_types']));
+
         $count      = M('Order')->where($where)->count();
         $Page       = new \Common\Extend\Page($count,10);
         $nowPage = isset($_GET['p'])?$_GET['p']:1;

@@ -26,7 +26,20 @@ class CompanyController extends CommonController{
             $company_types[$key]['_child']=M('Type')->where(array('pid'=>$value['id']))->select();
         }
 
+        $row=M('User')->find($user['id']);
+        $row['_company_types']=explode('#', $row['company_types']);
+        $row['_company_images']=explode('#', $row['company_images']);
+
+
+        if($row['company_province']){
+            $city=M('City')->where(array('fatherid'=>$row['company_province']))->select();
+        }else{
+            $city=array();
+        }
+
+        $this->row=$row;
         $this->province=$province;
+        $this->city=$city;
         $this->company_types=$company_types;
         $this->display();
     }

@@ -1,3 +1,6 @@
+<?php
+    $config_info=M('Config')->find(1);
+ ?>
 <footer> 
  <div class="footer-warp"> 
 
@@ -78,7 +81,7 @@
    <br /> 免责声明：本网站是建筑企业与资质代办公司服务对接平台，如发现假冒中介，请及时与本站联系。 
    <br /> 版权所有 资质管家（北京）信息技术有限公司 京ICP备16024435号-1 
    <br /> Copyright &copy; 2016 zizhiguanjia.com All Rights Reserved
-   <br /> 公司地址：北京市海淀区北四环西路66号中国技术交易大厦A座12层1210室 &nbsp;电话： 010-56269198&nbsp; 
+   <br /> 公司地址：{$config_info.company_address} &nbsp;电话： {$config_info.company_phone}&nbsp; 
   </div> 
  </div> 
 </footer> 
