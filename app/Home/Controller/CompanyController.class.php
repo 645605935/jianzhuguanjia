@@ -31,8 +31,8 @@ class CompanyController extends CommonController{
         $row['_company_images']=explode('#', $row['company_images']);
 
 
-        if($row['company_province']){
-            $city=M('City')->where(array('fatherid'=>$row['company_province']))->select();
+        if($row['company_service_province']){
+            $city=M('City')->where(array('fatherid'=>$row['company_service_province']))->select();
         }else{
             $city=array();
         }

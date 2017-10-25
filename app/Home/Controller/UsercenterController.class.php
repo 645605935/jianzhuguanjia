@@ -14,6 +14,8 @@ class UsercenterController extends CommonController{
         if(!$user){
             $this->redirect('Home/User/login');
         }
+
+        $this->config_info=M('Config')->find(1);
     }
 
     //建筑公司个人中心首页

@@ -142,7 +142,7 @@
                    <select name="company_service_province" class="province" lay-filter="province" lay-verify="required" >
                      <option value="">省/市</option>
                      <foreach name="province" item="v">
-                         <option value="{$v['provinceid']}" <if condition="$v['provinceid'] eq $row['company_province']"> selected="selected" </if>>{$v['first_name']} {$v['province']}</option>
+                         <option value="{$v['provinceid']}" <if condition="$v['provinceid'] eq $row['company_service_province']"> selected="selected" </if>>{$v['first_name']} {$v['province']}</option>
                      </foreach>
                    </select>
                  </div>
@@ -152,7 +152,7 @@
                    <select name="company_service_city" class="city" lay-filter="city" lay-verify="required" >
                      <option value="">市/地区</option>
                      <foreach name="city" item="v">
-                         <option value="{$v['cityid']}" <if condition="$v['cityid'] eq $row['company_city']"> selected="selected" </if>>{$v['first_name']} {$v['city']}</option>
+                         <option value="{$v['cityid']}" <if condition="$v['cityid'] eq $row['company_service_city']"> selected="selected" </if>>{$v['first_name']} {$v['city']}</option>
                      </foreach>
                    </select>
                  </div>
