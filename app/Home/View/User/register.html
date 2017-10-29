@@ -1,4 +1,8 @@
-<html>
+<?php
+    $config_info=M('Config')->find(1);
+ ?>
+
+ <html>
  <head> 
   <meta charset="utf-8" /> 
   <title>注册</title> 
@@ -77,7 +81,7 @@
   <div class="bottom"> 
    <ul> 
     <li> <a href="daiban.html">资质代办</a>| <a href="zizhibiaozhun.html">资质标准</a>| <a href="news.html">行业资讯</a>| <a href="reg.html" rel="nofollow">中介入驻</a>| <a href="about.html" rel="nofollow">关于我们</a>| <a href="http://www.zizhiguanjia.com/join.html" rel="nofollow">加入我们</a>| <a href="http://www.zizhiguanjia.com/contact.html" rel="nofollow">联系我们</a>| <a href="#" rel="nofollow" style="cursor: default; color: #888;">常见问题</a>| <a href="#" rel="nofollow" style="cursor: default; color: #888;">意见反馈</a>| </li> 
-    <li>版权所有 资质管家（北京）信息技术有限公司 京ICP备16024435号-1</li> 
+    <li>{$config_info.beian}</li> 
    </ul> 
    <a href="http://www.zizhiguanjia.com/sitemap.html" target="_blank" style="color: #5e5c5b;text-decoration: none !important;"></a> 
   </div> 

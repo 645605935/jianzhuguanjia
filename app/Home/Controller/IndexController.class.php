@@ -179,9 +179,20 @@ class IndexController extends CommonController{
     public function daiban(){
         global $user;
 
+        $where=array();
         $province=M('Province')->select();
+        // if($_GET['fit_1']){
+        //     $where['company_yewufanwei']=$_GET['fit_1'];
+        // }
+        // if($_GET['fit_2']){
+        //     $where['company_types']=array('like',"%".$_GET['fit_2']."%");
+        // }
         if($_GET['fit_3']){
             $city=M('City')->where(array('fatherid'=>$_GET['fit_3']))->select();
+            $where['company_service_province']=$_GET['fit_3'];
+        }
+        if($_GET['fit_4']){
+            $where['company_service_city']=$_GET['fit_4'];
         }
 
         $type_1=M('Type')->where(array('pid'=>1273))->select();
@@ -192,7 +203,7 @@ class IndexController extends CommonController{
         // 右侧分类
         $right_type_1=M('Type')->where(array('pid'=>1275))->select();
 
-        $where=array();
+        
         $count      = M('User')->where($where)->count();
         $Page       = new \Common\Extend\Page($count,3);
         $nowPage = isset($_GET['p'])?$_GET['p']:1;
@@ -215,9 +226,20 @@ class IndexController extends CommonController{
     public function safe(){
         global $user;
 
+        $where=array();
         $province=M('Province')->select();
+        // if($_GET['fit_1']){
+        //     $where['company_yewufanwei']=$_GET['fit_1'];
+        // }
+        // if($_GET['fit_2']){
+        //     $where['company_types']=array('like',"%".$_GET['fit_2']."%");
+        // }
         if($_GET['fit_3']){
             $city=M('City')->where(array('fatherid'=>$_GET['fit_3']))->select();
+            $where['company_service_province']=$_GET['fit_3'];
+        }
+        if($_GET['fit_4']){
+            $where['company_service_city']=$_GET['fit_4'];
         }
 
         $type=M('Type')->where(array('pid'=>1377))->select();
@@ -228,7 +250,7 @@ class IndexController extends CommonController{
         $right_type_3=M('Type')->where(array('pid'=>1379))->select();//人员情况
 
 
-        $where=array();
+        
         $count      = M('User')->where($where)->count();
         $Page       = new \Common\Extend\Page($count,3);
         $nowPage = isset($_GET['p'])?$_GET['p']:1;
