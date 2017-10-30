@@ -44,8 +44,8 @@
        <li> 企业名称：<b style="font-weight:normal;">{$user.company_name}</b> </li> 
        <li> 审核状态： 
           <b>
-              <if condition="$user['status'] eq 1">已通过</if>
-              <if condition="$user['status'] eq 0">审核中</if>
+              <if condition="$user['status'] eq 1">待审核</if>
+              <if condition="$user['status'] eq 2">已认证</if>
               <if condition="$user['status'] eq -1">未通过</if>
           </b>
         </li> 
@@ -84,7 +84,12 @@
        <lable class="lab">
         实名认证
         <i><img src="__PUBLIC__/Home/images/wenhao.png" /></i>：
-       </lable> <em>完成实名认证，将提高建筑企业的信任，实现与建企在线沟通</em> <b>审核中</b> </li> 
+       </lable> <em>完成实名认证，将提高建筑企业的信任，实现与建企在线沟通</em> 
+       <if condition="$user['status'] eq 1"><b>待审核</b> </if>
+       <if condition="$user['status'] eq 2"><b>已认证</b> </if>
+       <if condition="$user['status'] eq -1"><b>未通过</b> </if>
+       
+       </li> 
       <li> 
        <lable class="lab">
         公司资料

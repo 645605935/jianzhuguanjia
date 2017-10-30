@@ -338,6 +338,7 @@ class IndexController extends CommonController{
         if($_POST){
             $data=$_POST;
             $data['time']=time();
+            $data['order_no']='JZGJ'.time()."_".$user['id'];
 
             $id=M('Order')->add($data);
             if($id){

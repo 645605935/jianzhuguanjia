@@ -148,7 +148,9 @@
    </div> 
    <div class="fulx_list"> 
         <foreach name="type_list" item="v">
-            <a target="_blank" href="{:U('Home/Index/baojia')}">{$v.title}<i></i></a> 
+            <a target="_blank" href="{:U('Home/Index/baojia')}">{$v.title}
+                <if condition="$key lt 5"><i></i></if>
+            </a> 
         </foreach>
    </div> 
    <div class="clear"></div> 

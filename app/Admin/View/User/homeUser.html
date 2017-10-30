@@ -416,6 +416,16 @@
           }
       }
 
+      function statusFormatter(cellvalue, options, rowdata){ 
+          if (cellvalue == "1"){
+              return '待审核';
+          }else if(cellvalue == "2"){
+              return '已认证';
+          }else if(cellvalue == "-1"){
+              return '禁止';
+          }
+      }
+
       function pageInit(_username, _gid){
         var grid_data=_ajax_get_list(_username,_gid);
 
@@ -423,7 +433,7 @@
           caption: "用户列表",
           data: grid_data,
           datatype: "local",
-          colNames:['id', '公司名称','用户组', '公司LOGO', '时间', '操作'],
+          colNames:['id', '公司名称','用户组', '公司LOGO', '时间', '状态', '操作'],
           colModel:[
             {name:'id', index:'id', sorttype:"int", align:"center", hidden: true},
 
@@ -431,6 +441,7 @@
             {name:'_auth_group_title',index:'_auth_group_title',align:"center"},
             {name:'company_logo',index:'company_logo',align:"center", formatter: imgFormatter },
             {name:'time',index:'time',align:"center",hidden: true},
+            {name:'status',index:'status',align:"center", formatter: statusFormatter},
 
             {name:'operates',index:'operates',align:'center',sortable:false,width:200}
           ], 
@@ -972,7 +983,7 @@
                           <div class="layui-form-item">
                             <label class="layui-form-label">用户名</label>
                             <div class="layui-input-inline">
-                              <input type="text" name="username" lay-verify="required" placeholder="" class="layui-input username">
+                              <input type="text" name="username" placeholder="" class="layui-input username">
                             </div>
                           </div>
                         </div>
@@ -1027,7 +1038,7 @@
                           <div class="layui-form-item">
                             <label class="layui-form-label">邮箱</label>
                             <div class="layui-input-inline">
-                              <input type="text" name="email" lay-verify="required" placeholder="" class="layui-input email">
+                              <input type="text" name="email" placeholder="" class="layui-input email">
                             </div>
                           </div>
                         </div>
@@ -1309,11 +1320,17 @@
 
                        var str='';
                        if(1==data.status){
-                           str+='<input type="radio" name="status" class="status" value="1" title="禁止" checked="checked">';
-                           str+='<input type="radio" name="status" class="status" value="0" title="正常">';
-                       }else{
-                           str+='<input type="radio" name="status" class="status" value="1" title="禁止">';
-                           str+='<input type="radio" name="status" class="status" value="0" title="禁止" checked="checked">';
+                           str+='<input type="radio" name="status" class="status" value="1" title="待审核" checked="checked">';
+                           str+='<input type="radio" name="status" class="status" value="-1" title="禁止">';
+                           str+='<input type="radio" name="status" class="status" value="2" title="已认证">';
+                       }else if(-1==data.status){
+                           str+='<input type="radio" name="status" class="status" value="1" title="待审核">';
+                           str+='<input type="radio" name="status" class="status" value="-1" title="禁止" checked="checked">';
+                           str+='<input type="radio" name="status" class="status" value="2" title="已认证">';
+                       }else if(2==data.status){
+                           str+='<input type="radio" name="status" class="status" value="1" title="待审核">';
+                           str+='<input type="radio" name="status" class="status" value="-1" title="禁止">';
+                           str+='<input type="radio" name="status" class="status" value="2" title="已认证" checked="checked">';
                        }
                        $("#edit_form .status_box").html(str);
                        
