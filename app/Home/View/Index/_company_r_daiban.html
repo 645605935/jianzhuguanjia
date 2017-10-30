@@ -123,6 +123,11 @@
    </form>
   <!-- 表单结束 -->
 
+<?php 
+    $_where['gid']=33;
+    $_where['company_service_province']=$_SESSION['cur_province_info']['provinceid'];
+    $_list=D('User')->where($_where)->limit(6)->select();
+?>
 
  </div> 
  <!-- 管家推荐 --> 
@@ -130,60 +135,34 @@
   <h2>管家推荐</h2> 
   <div class="guanj_Recommend_list"> 
    <ul> 
-    <li> <img alt="资质管家" src="__PUBLIC__/Home/images/20151201163557940.jpg" /> <span class="guanj_tuij_name">资质管家</span> 
-     <div class="guanjia_tuij_zhubyw"> 
-      <p class="tuij_diq">北京</p> 
-      <p>施工总承包</p> 
-      <p>专业承包</p> 
-      <p><a href="/gongsi/4417/" target="_blank" title="资质管家（北京）信息技术有限公司">免费获取报价</a></p> 
-     </div> </li> 
-    <li> <img alt="广州携众" src="__PUBLIC__/Home/images/20170516151515875.jpg" /> <span class="guanj_tuij_name">广州携众</span> 
-     <div class="guanjia_tuij_zhubyw"> 
-      <p class="tuij_diq">广东</p> 
-      <p>施工总承包</p> 
-      <p>安全生产许可</p> 
-      <p><a href="/gongsi/7382/" target="_blank" title="广州携众建筑工程咨询有限公司">获取报价</a></p> 
-     </div> </li> 
-    <li> <img alt="山东同聚" src="__PUBLIC__/Home/images/20170519110951515.jpg" /> <span class="guanj_tuij_name">山东同聚</span> 
-     <div class="guanjia_tuij_zhubyw"> 
-      <p class="tuij_diq">山东</p> 
-      <p>施工总承包</p> 
-      <p>专业承包</p> 
-      <p><a href="/gongsi/6199/" target="_blank" title="山东省同聚工程咨询有限公司">获取报价</a></p> 
-     </div> </li> 
-    <li> <img alt="黑龙江宝骏" src="__PUBLIC__/Home/images/20170417180236452.jpg" /> <span class="guanj_tuij_name">黑龙江宝骏</span> 
-     <div class="guanjia_tuij_zhubyw"> 
-      <p class="tuij_diq">黑龙江</p> 
-      <p>专业承包</p> 
-      <p>劳务</p> 
-      <p><a href="/gongsi/6760/" target="_blank" title="黑龙江宝骏建设工程有限公司">获取报价</a></p> 
-     </div> </li> 
-    <li style="margin-bottom: 0px;"> <img alt="上海搜搜" src="__PUBLIC__/Home/images/20160601161405924.jpg" /> <span class="guanj_tuij_name">上海搜搜</span> 
-     <div class="guanjia_tuij_zhubyw"> 
-      <p class="tuij_diq">上海-闸北</p> 
-      <p>施工总承包</p> 
-      <p>专业承包</p> 
-      <p><a href="/gongsi/5847/" target="_blank" title="上海搜搜投资咨询有限公司">获取报价</a></p> 
-     </div> </li> 
-    <li> <img alt="天津尼西" src="__PUBLIC__/Home/images/20170508101500818.jpg" /> <span class="guanj_tuij_name">天津尼西</span> 
-     <div class="guanjia_tuij_zhubyw"> 
-      <p class="tuij_diq">天津</p> 
-      <p>施工总承包</p> 
-      <p>专业承包</p> 
-      <p><a href="/gongsi/7199/" target="_blank" title="尼西（天津）工程管理有限公司">获取报价</a></p> 
-     </div> </li> 
+       <foreach name="_list" item="v">
+          <li> <img alt="{$v.company_name}" src="{$v.company_logo}" /> <span class="guanj_tuij_name">{$v.company_name}</span> 
+           <div class="guanjia_tuij_zhubyw"> 
+            <p class="tuij_diq">{$v.company_address}</p> 
+            <p>施工总承包</p> 
+            <p>专业承包</p> 
+            <p><a href="/gongsi/4417/" target="_blank" title="{$v.company_name}">免费获取报价</a></p> 
+           </div> </li> 
+       </foreach>
    </ul> 
   </div> 
  </div> 
- <div class="zgs_clr_fc"> 
-  <span class="zcf_title">如何选择资质代办公司？</span> 
-  <ul> 
-   <li> <span class="zcf_kxy"></span> <b>看口碑</b> <em>数万家企业真实见证</em> </li> 
-   <li> <span class="zcf_bfa"></span> <b>比方案</b> <em>注册/安证方案鼎力支持</em> </li> 
-   <li> <span class="zcf_bbj"></span> <b>比报价</b> <em>多家报价横向对比 0水分</em> </li> 
-   <li> <span class="zcf_bbz"></span> <b>比保障</b> <em>规模/案例 实力应证</em> </li> 
-  </ul> 
- </div> 
+
+
+<if condition="$_SERVER['PATH_INFO'] eq 'Index/daiban'">
+    <div class="zgs_clr_fc"> 
+     <span class="zcf_title">如何选择资质代办公司？</span> 
+     <ul> 
+      <li> <span class="zcf_kxy"></span> <b>看口碑</b> <em>数万家企业真实见证</em> </li> 
+      <li> <span class="zcf_bfa"></span> <b>比方案</b> <em>注册/安证方案鼎力支持</em> </li> 
+      <li> <span class="zcf_bbj"></span> <b>比报价</b> <em>多家报价横向对比 0水分</em> </li> 
+      <li> <span class="zcf_bbz"></span> <b>比保障</b> <em>规模/案例 实力应证</em> </li> 
+     </ul> 
+    </div> 
+</if>
+ 
+
+
  <div class="right-bd" style="margin-top:0px;background:none"> 
   <div class="right-bd-p"> 
    <p>最新行业资讯</p> 

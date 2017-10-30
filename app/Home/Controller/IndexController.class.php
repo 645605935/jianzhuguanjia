@@ -203,7 +203,8 @@ class IndexController extends CommonController{
         // 右侧分类
         $right_type_1=M('Type')->where(array('pid'=>1275))->select();
 
-        
+        $where['gid']=33;
+        $where['company_service_province']=$_SESSION['cur_province_info']['provinceid'];
         $count      = M('User')->where($where)->count();
         $Page       = new \Common\Extend\Page($count,3);
         $nowPage = isset($_GET['p'])?$_GET['p']:1;
@@ -218,7 +219,7 @@ class IndexController extends CommonController{
         $this->type_2=$type_2;
         $this->province=$province;
         $this->city=$city;
-
+        $this->count=$count;
         $this->right_type_1=$right_type_1;
         $this->display();
     }
@@ -250,7 +251,8 @@ class IndexController extends CommonController{
         $right_type_3=M('Type')->where(array('pid'=>1379))->select();//人员情况
 
 
-        
+        $where['gid']=33;
+        $where['company_service_province']=$_SESSION['cur_province_info']['provinceid'];
         $count      = M('User')->where($where)->count();
         $Page       = new \Common\Extend\Page($count,3);
         $nowPage = isset($_GET['p'])?$_GET['p']:1;
@@ -450,6 +452,8 @@ class IndexController extends CommonController{
     }
 
     public function baike(){
+        global $user;
+
         //四类
         $list_1=M('Type')->where(array('pid'=>1347))->select();
         foreach ($list_1 as $key => $value) {
@@ -464,6 +468,16 @@ class IndexController extends CommonController{
         $this->list_1=$list_1;
         $this->list_2=$list_2;
 
+
+        
+
+        
+       
+        // 右侧分类
+        $province=M('Province')->select();
+        $right_type_1=M('Type')->where(array('pid'=>1275))->select();
+        $this->province=$province;
+        $this->right_type_1=$right_type_1;
         $this->display();
     }
 

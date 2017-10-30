@@ -11,7 +11,8 @@
   <meta name="mobile-agent" content="format=xhtml; url=http://m.zizhiguanjia.com/baike/" /> 
   <meta name="mobile-agent" content="format=html5; url=http://m.zizhiguanjia.com/baike/" /> 
   <meta name="mobile-agent" content="format=wml; url=http://m.zizhiguanjia.com/baike/" /> 
-<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/new.css" /> 
+  <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/new.css" /> 
+  <link rel="stylesheet" href="__PUBLIC__/Admin/layui-v1.0.4/layui/css/layui.css"  media="all">
  </head> 
  <body> 
   <!-- 引用 -->
@@ -217,72 +218,9 @@
       <img src="__PUBLIC__/Home/images/banlzz.gif" /> 
       <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/popup.css" /> 
       <div id="zhizgj_left"> 
-       <div class="mfhqbj"> 
-        <div class="mfhqbj_num"> 
-         <em>万元</em> 
-         <div class="mfhqbj_jiagesz"> 
-          <span class="mfhqbj_jiagesz_box">13.9</span> 
-          <span class="mfhqbj_jiagesz_box">17.8</span> 
-          <span class="mfhqbj_jiagesz_box">6.8</span> 
-          <span class="mfhqbj_jiagesz_box">33.6</span> 
-          <span class="mfhqbj_jiagesz_box">16.4</span> 
-          <span class="mfhqbj_jiagesz_box">18.1</span> 
-          <span class="mfhqbj_jiagesz_box">37.5</span> 
-          <span class="mfhqbj_jiagesz_box">12.1</span> 
-          <span class="mfhqbj_jiagesz_box">13.9</span> 
-         </div> 
-         <em>最近成交价</em> 
-        </div> 
-       </div> 
-       <form name="user_form" id="user_form" method="post" action="/index/addapplication" novalidate="novalidate"> 
-        <input value="1" name="TypeId" type="hidden" /> 
-        <input name="IdempotentRequestId" value="56224ecf-9cfa-4c2a-980b-a624c994a9eb" type="hidden" /> 
-        <div class="huoqlxfs"> 
-         <ul> 
-          <li> <select name="SubjectPid" id="SubjectPType" class="zzgj_index_btn zzgj_index_btn_xialk certificateType"><option value="">资质类型</option><option value="1">施工总承包资质</option><option value="2">施工专业承包资质</option><option value="3">施工劳务承包资质</option><option value="201">工程设计综合资质</option><option value="212">工程设计行业资质</option><option value="213">工程设计专业资质</option><option value="214">工程设计专项资质</option><option value="215">建筑工程设计事务所资质</option><option value="114">工程勘察综合资质</option><option value="600">工程勘察专业资质</option><option value="620">工程勘察劳务资质</option><option value="102">工程监理综合资质</option><option value="700">工程监理专业资质</option><option value="720">工程监理事务所资质</option><option value="113">工程造价咨询资质</option><option value="115">安防工程资质</option><option value="117">承装电力设施许可证</option><option value="11100">工程招标代理机构资格</option><option value="12100">劳务派遣经营许可证</option><option value="302">房地产开发企业资质</option><option value="303">房地产经纪机构资质</option><option value="304">房地产估价机构资质</option><option value="14100">计算机信息系统集成资质</option><option value="211">环境影响评价资质</option><option value="402">城乡规划编制资质</option><option value="17100">ISO质量管理体系</option><option value="17200">ISO环境管理体系</option><option value="18100">3C产品认证</option><option value="18200">CEP中国环保产品认证</option><option value="18300">欧盟CE产品安全认证</option><option value="18400">中国环境标志认证（十环）</option><option value="18500">ISCCC电子产品认证</option></select> </li> 
-          <li> <select name="SubjectId" id="SubjectType" class="zzgj_index_btn_xialk zzgj_index_btn "><option value="">资质专业</option></select> </li> 
-          <li> <select name="SubjectLv" id="SubjectLv" class="zzgj_index_btn_xialk zzgj_index_btn "><option value="">资质等级</option></select> </li> 
-          <li> <select name="AreaPid" id="IndexRegAreaPid" class="zzgj_index_btn_xialk zzgj_suozdq"> <option value="">省/市</option> <option value="12">安徽</option><option value="1">北京</option><option value="22">重庆</option><option value="13">福建</option><option value="19">广东</option><option value="20">广西</option><option value="24">贵州</option><option value="28">甘肃</option><option value="3">河北</option><option value="8">黑龙江</option><option value="16">河南</option><option value="17">湖北</option><option value="18">湖南</option><option value="21">海南</option><option value="7">吉林</option><option value="10">江苏</option><option value="14">江西</option><option value="6">辽宁</option><option value="5">内蒙古</option><option value="30">宁夏</option><option value="29">青海</option><option value="4">山西</option><option value="9">上海</option><option value="15">山东</option><option value="23">四川</option><option value="27">陕西</option><option value="2">天津</option><option value="26">西藏</option><option value="31">新疆</option><option value="25">云南</option><option value="11">浙江</option></select> <select name="AreaId" id="IndexRegAreaId" class="zzgj_index_btn_xialk zzgj_suozdq"> <option value="">市/地区</option> </select> </li> 
-          <li> <input name="Phone" id="Phone" class="zzgj_index_btn" placeholder=" 填写手机号码，轻松获精准报价" type="text" /> </li> 
-          <li> 
-           <div class="uform-err uform-err-subptype"></div> 
-           <div class="uform-err uform-err-subtype"></div> 
-           <div class="uform-err uform-err-sublv"></div> 
-           <div class="uform-err uform-err-areapid"></div> 
-           <div class="uform-err uform-err-areaid"></div> 
-           <div class="uform-err uform-err-phone"></div> 
-           <div style="float:right;">
-            <input value="免费获取报价" class="zzgj_index_ljsqbtn IndexRegSubmitBtn" style="margin:auto" onclick="Add(2,4)" type="submit" />
-           </div> 
-           <div class="clear"></div> </li> 
-         </ul> 
-        </div> 
-       </form> 
+          <!-- 右侧引用 -->
+          <include file="_company_r_daiban" />
       </div> 
-     </div> 
-     <div class="zsbase-l" style="margin-top:10px; float:none;width:300px;"> 
-      <div class="right-bd-p" style="margin:10px 10px 5px 15px; padding-top:10px;height:43px;"> 
-       <p style=" width:auto; color:#008800; border-bottom:2px solid #008800;">资质管家为您开启绿色服务通道</p> 
-      </div> 
-      <dl style="color:#444; padding: 20px 10px 20px 15px; width:280px; min-height:120px;"> 
-       <a href="baojia.html" title="办资质" class="a1">办资质</a> 
-       <a href="news_detail.html?zzzc/" title="政策动态">政策动态</a> 
-       <a href="news_detail.html?zzwd/" title="资质百科">资质百科</a> 
-       <a href="news_detail.html?zzdb/" title="行业新闻">行业新闻</a> 
-      </dl> 
-     </div> 
-     <div class="right-bd" style="margin-top:0px;background:none"> 
-      <div class="right-bd-p"> 
-       <p>最新行业资讯</p> 
-       <span><a href="news.html" title="查看更多最新文章" rel="nofollow">更多</a></span> 
-      </div> 
-      <ul> 
-       <li><span>01</span><a href="news_detail.html?7396.html" title="市政资质代理">市政资质代理</a></li> 
-       <li><span>02</span><a href="news_detail.html?7395.html" title="建筑企业资质年审">建筑企业资质年审</a></li> 
-       <li><span>03</span><a href="news_detail.html?7394.html" title="承装修试电力资质代办">承装修试电力资质代办</a></li> 
-       <li><span class="span1">04</span><a href="news_detail.html?7393.html" title="公路工程资质等级标准">公路工程资质等级标准</a></li> 
-       <li><span class="span1">05</span><a href="news_detail.html?7392.html" title="电子与智能化资质代办">电子与智能化资质代办</a></li> 
-      </ul> 
      </div> 
     </div> 
    </div> 
@@ -305,5 +243,211 @@
   <script type="text/javascript" src="__PUBLIC__/Home/js/index_reg.js?v=20151110"></script> 
   <script src="__PUBLIC__/Home/js/subject_data.js"></script> 
   <script src="__PUBLIC__/Home/js/subject_data_method.js"></script> 
+  <script src="__PUBLIC__/Admin/layui-v1.0.4/layui/layui.js"></script>
+  <script src="__PUBLIC__/layer/layer.js"></script>
  </body>
 </html>
+
+<script type="text/javascript">
+    $(function(){
+        init_editer();
+
+        $('#phone_code').blur(function(){
+            var code=$(this).val();
+            if(code.length==4){
+                _ajax_check_code(code);
+            }
+        });
+    });
+</script>
+
+<script>
+    function _ajax_apply_baojia(_data){
+         $.ajax({  
+             async:false,
+             type:'post',  
+             contentType:"application/x-www-form-urlencoded",
+             url : "{:U('Home/Index/ajax_apply_baojia')}",
+             data: _data,
+             dataType : 'json',
+             success  : function(json) {
+                 if(json.code==0){
+                     alert(json.msg);
+                 }else{
+                     alert(json.msg);
+                 }
+             },
+             error  : function() {  
+                 alert('error');
+             }  
+         }); 
+    }
+
+    function _ajax_check_code(code){
+         $.ajax({  
+             async:false,
+             type:'get',  
+             contentType:"application/x-www-form-urlencoded",
+             url : "{:U('Home/Index/ajax_check_code')}",
+             data: {
+                code:code
+             },
+             dataType : 'json',
+             success  : function(json) {
+                 if(json.code==0){
+                     alert(json.msg);
+                 }else{
+                     alert(json.msg);
+                 }
+             },
+             error  : function() {  
+                 alert('error');
+             }  
+         }); 
+    }
+
+    function init_editer(){
+        layui.use(['form', 'layedit', 'laydate', 'upload'], function(){
+          var form = layui.form()
+          ,layer = layui.layer
+          ,layedit = layui.layedit
+          ,laydate = layui.laydate;
+
+          //自定义验证规则
+          form.verify({
+            title: function(value){
+              if(value.length < 5){
+                return '标题至少得5个字符啊';
+              }
+            }
+            ,pass: [/(.+){6,12}$/, '密码必须6到12位']
+          });
+
+          form.on('select(province)', function(data){
+              var provinceid=data.value;
+              if(provinceid){
+                  _ajax_get_city_select(provinceid);
+              }
+              return false;
+          });
+
+          form.on('select(type_1)', function(data){
+              var type_1=data.value;
+              if(type_1){
+                  _ajax_get_type_2_select(type_1);
+              }
+              return false;
+          });
+
+          form.on('select(type_2)', function(data){
+              var type_2=data.value;
+              if(type_2){
+                  _ajax_get_type_3_select(type_2);
+              }
+              return false;
+          });
+
+          //监听提交
+          form.on('submit(demo1_apply_baojia)', function(data){
+            // console.log(data.field);
+            var _json=_ajax_apply_baojia(data.field);
+            return false;
+          });
+        });
+    }
+
+    function _ajax_get_city_select(provinceid){
+        $.ajax({  
+            async:false,
+            type:'get',  
+            contentType:"application/x-www-form-urlencoded",
+            url : "{:U('Home/Index/ajax_get_city_list')}",
+            data:{
+              provinceid:provinceid
+            },
+            dataType : 'json',
+            success  : function(json) {  
+                if(json.code==0){
+                    var data=json.data;
+
+                    var str="<option value=''>市/地区</option>";
+                    $.each(json.data, function(key, value) {
+                         str+="<option value='"+value.cityid+"'>"+value.first_name+" "+value.city+"</option>";
+                    });
+                    $('#baojia_form .city').html(str);
+                    layui.form().render();
+
+                }else{
+                    layer.msg(json.msg);
+                }
+            },
+            error  : function(json) {  
+                layer.msg(json.msg);
+            }  
+        });
+    }   
+
+    function _ajax_get_type_2_select(type_1) {
+        $.ajax({
+            async: false,
+            type: 'get',
+            contentType: "application/x-www-form-urlencoded",
+            url: "{:U('Home/Index/ajax_get_type_list')}",
+            data: {
+                type: type_1
+            },
+            dataType: 'json',
+            success: function(json) {
+                if (json.code == 0) {
+                    var data = json.data;
+
+                    var str = "<option value=''>资质专业</option>";
+                    $.each(json.data,
+                    function(key, value) {
+                        str += "<option value='" + value.id + "'>" + value.title + "</option>";
+                    });
+
+                    $('#baojia_form .type_2').html(str);
+                    layui.form().render();
+                } else {
+                    layer.msg(json.msg);
+                }
+            },
+            error: function(json) {
+                layer.msg(json.msg);
+            }
+        });
+    }
+
+    function _ajax_get_type_3_select(type_2) {
+        $.ajax({
+            async: false,
+            type: 'get',
+            contentType: "application/x-www-form-urlencoded",
+            url: "{:U('Home/Index/ajax_get_type_list')}",
+            data: {
+                type: type_2
+            },
+            dataType: 'json',
+            success: function(json) {
+                if (json.code == 0) {
+                    var data = json.data;
+
+                    var str = "";
+                    $.each(json.data,
+                    function(key, value) {
+                        str += "<option value='" + value.id + "'>" + value.title + "</option>";
+                    });
+
+                    $('#baojia_form .type_3').html(str);
+                    layui.form().render();
+                } else {
+                    layer.msg(json.msg);
+                }
+            },
+            error: function(json) {
+                layer.msg(json.msg);
+            }
+        });
+    }
+</script>
