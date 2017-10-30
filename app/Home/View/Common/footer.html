@@ -1,5 +1,6 @@
 <?php
     $config_info=M('Config')->find(1);
+    $qq=explode('#',$config_info['qq']);
  ?>
 <footer> 
  <div class="footer-warp"> 
@@ -85,6 +86,43 @@
   </div> 
  </div> 
 </footer> 
+
+<!-- kf代码部分begin -->
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/Home/css/lanren.css" /> 
+<div id="rightArrow"><a href="javascript:;" title="在线客户"></a></div>
+<div id="floatDivBoxs">
+  <div class="floatDtt">在线客服</div>
+  <div class="floatShadow">
+    <ul class="floatDqq">
+      <foreach name="qq" item="v">
+          <li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin={$v}&site=qq&menu=yes"><img src="__PUBLIC__/Home/images/qq.png" align="absmiddle">在线客服{$key+1}号</a></li>
+      </foreach>
+    </ul>
+    <div class="floatDtxt">热线电话</div>
+    <div class="floatDtel"><img src="__PUBLIC__/Home/images/online_phone.jpg" width="155" height="45" alt=""></div>
+    <div class="floatImg"><img src="__PUBLIC__/Home/images/erweima.jpg" width="100%">微信公众账号</div>
+  </div>
+  <div class="floatDbg"></div>
+</div>
+<script>
+$(function(){
+  var flag=0;
+  $('#rightArrow').on("click",function(){
+    if(flag==1){
+      $("#floatDivBoxs").animate({right: '-175px'},300);
+      $(this).animate({right: '-5px'},300);
+      $(this).css('background-position','-50px 0');
+      flag=0;
+    }else{
+      $("#floatDivBoxs").animate({right: '0'},300);
+      $(this).animate({right: '170px'},300);
+      $(this).css('background-position','0px 0');
+      flag=1;
+    }
+  });
+});
+</script>
+<!-- kf代码部分end -->
 
 <script type="text/javascript">
   function LoginOut() {

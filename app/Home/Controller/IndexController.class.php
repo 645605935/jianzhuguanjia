@@ -393,6 +393,7 @@ class IndexController extends CommonController{
             }
         }
 
+
         $this->tags_info=M('Type')->find($_GET['tags']);
 
         $this->page=$Page->show();
@@ -468,8 +469,11 @@ class IndexController extends CommonController{
         $this->list_1=$list_1;
         $this->list_2=$list_2;
 
+        //热名标签
+        $this->hot_tags=M('Type')->where(array('pid'=>1404))->select();
 
-        
+        //热名城市
+        $this->hot_province=M('Province')->limit(16)->select();
 
         
        
