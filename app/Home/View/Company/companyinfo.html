@@ -22,6 +22,8 @@
         #add_form .layui-table td .images_box a img{width: 100%;}
         #add_form .layui-table td .img_box a{padding:5px;box-sizing:border-box;width: 25%;display: block;}
         #add_form .layui-table td .img_box a img{width: 100%;}
+
+        .layui-upload-icon{height: 34px;line-height: 25px;padding-top: 6px;}
   </style>
  </head> 
  <body> 
@@ -96,43 +98,60 @@
                </td>
              </tr>
 
+
+
              <tr>
                <td align="center">业务范围：</td>
                <td colspan="2">
-                 <div class="layui-input-inline div_300">
+                 <!-- <div class="layui-input-inline div_300">
                    <input type="radio" name="company_yewufanwei" class="unit" value="1273" title="资质代办" checked="">
-                 </div>
-               </td>
-             </tr>
-
-             <tr>
-               <td align="center">资质分类：</td>
-               <td colspan="2">
+                   <input type="radio" name="company_yewufanwei" class="unit" value="1273" title="资质代办" checked="">
+                   <input type="radio" name="company_yewufanwei" class="unit" value="1273" title="资质代办" checked="">
+                 </div> -->
+                
                  <div class="layui-input-inline div_300">
                     <div class="layui-elem-quote" style="margin-top: 20px;border-left: 0px solid red;color: red;">
-                      请慎重选择，若经查实贵公司的实际业务范围不符，将存在被封号的可能且信誉等级减半。
+                      请慎重选择，若经查实贵公司的实际业务范围不符，将存在被封号的可能且信誉等级减半。【最多选6项！】
                     </div>
                  </div>
-                 <div>
-                   
+
+                 <div class="layui-tab">
+                   <ul class="layui-tab-title">
+                     <li class="layui-this" data-value="" id="company_types_1">资质代办</li>
+                     <li>安证办理</li>
+                     <li>公司注册</li>
+                   </ul>
+                   <div class="layui-tab-content">
+                     <div class="layui-tab-item layui-show">
+                          
+                          <table class="layui-table">
+                              <foreach name="company_types" item="vo">
+                                    <if condition="count($vo['_child']) gt 0">
+                                         <tr>
+                                             <td align="center">
+                                               <a class="layui-btn layui-btn-normal layui-btn-radius">{$vo['title']}</a>
+                                             </td>
+                                             <td colspan="2">
+                                                  <div class="layui-input-inline div_300" id="type_1_box">
+                                                       <foreach name="vo['_child']" item="v">
+                                                           <input type="checkbox" data-value="{$v.id}" <if condition="in_array($v['id'],$row['_company_types'])"> checked="checked" </if> lay-filter="company_types" name="type[{$v.id}]" title="{$v.title}">
+                                                       </foreach>
+                                                  </div>
+                                             </td>
+                                         </tr>
+                                    </if>
+                              </foreach>
+                          </table>
+
+                     </div>
+                     <div class="layui-tab-item">内容2</div>
+                     <div class="layui-tab-item">内容3</div>
+                   </div>
                  </div>
+
+
                </td>
              </tr>
-
-             <foreach name="company_types" item="vo">
-              <tr>
-                  <td align="center">
-                    <a class="layui-btn layui-btn-normal layui-btn-radius">{$vo['title']}</a>
-                  </td>
-                  <td colspan="2">
-                       <div class="layui-input-inline div_300">
-                            <foreach name="vo['_child']" item="v">
-                                <input type="checkbox" <if condition="in_array($v['id'],$row['_company_types'])"> checked="checked" </if> lay-filter="company_types" name="type[{$v.id}]" title="{$v.title}">
-                            </foreach>
-                       </div>
-                  </td>
-              </tr>
-             </foreach>
 
 
              <tr>
@@ -407,6 +426,12 @@
           var company_types=$('#add_form .company_types').val();
           var old_arr=company_types.split('#');
           if(data.elem.checked){
+              var _str=$('#add_form .company_types').val();
+              var _arr=_str.split('#');
+              if(_arr.length==6){
+                  alert('最多选6项！');return false;
+              }
+
               //加
               if(company_types==''){
                   var str=type;
@@ -416,6 +441,17 @@
                       new_arr.push(type);
                   var str=new_arr.join('#');
                   $('#add_form .company_types').val(str);
+                  if(new_arr.length==6){
+                      $.each($('#type_1_box input'), function(name ,value){
+                          var t=$(value).attr('data-value');
+                          
+                          if($.inArray( t, new_arr )>=0){
+
+                          }else{
+                              $(value).attr('disabled', 'disabled');
+                          }
+                      });
+                  }
               }
           }else{
               //减
@@ -424,8 +460,11 @@
               });
               var str=new_arr.join('#');
               $('#add_form .company_types').val(str);
+
+              $('#type_1_box input').removeAttr('disabled');
+
           }
-          
+          layui.form().render();
           return false;
       });
 
@@ -435,4 +474,48 @@
         return false;
       });
     });
+</script>
+
+<script>
+layui.use('element', function(){
+  var $ = layui.jquery
+  ,element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
+  
+  //触发事件
+  var active = {
+    tabAdd: function(){
+      //新增一个Tab项
+      element.tabAdd('demo', {
+        title: '新选项'+ (Math.random()*1000|0) //用于演示
+        ,content: '内容'+ (Math.random()*1000|0)
+        ,id: new Date().getTime() //实际使用一般是规定好的id，这里以时间戳模拟下
+      })
+    }
+    ,tabDelete: function(othis){
+      //删除指定Tab项
+      element.tabDelete('demo', '44'); //删除：“商品管理”
+      
+      
+      othis.addClass('layui-btn-disabled');
+    }
+    ,tabChange: function(){
+      //切换到指定Tab项
+      element.tabChange('demo', '22'); //切换到：用户管理
+    }
+  };
+  
+  $('.site-demo-active').on('click', function(){
+    var othis = $(this), type = othis.data('type');
+    active[type] ? active[type].call(this, othis) : '';
+  });
+  
+  //Hash地址的定位
+  var layid = location.hash.replace(/^#test=/, '');
+  element.tabChange('test', layid);
+  
+  element.on('tab(test)', function(elem){
+    location.hash = 'test='+ $(this).attr('lay-id');
+  });
+  
+});
 </script>
