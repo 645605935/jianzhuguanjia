@@ -204,15 +204,15 @@ class IndexController extends CommonController{
         $right_type_1=M('Type')->where(array('pid'=>1275))->select();
 
         $where['gid']=33;
-        $where['company_service_province']=$_SESSION['cur_province_info']['provinceid'];
+        // $where['company_service_province']=$_SESSION['cur_province_info']['provinceid'];
         $count      = M('User')->where($where)->count();
         $Page       = new \Common\Extend\Page($count,3);
         $nowPage = isset($_GET['p'])?$_GET['p']:1;
         $list=D('User')->page($nowPage.','.$Page->listRows)->where($where)->relation(true)->select();
-
+// echo D('User')->getlastsql();die;
         $this->page=$Page->show();
         $this->list=$list;
-
+// dump($list);die;
         
 
         $this->type_1=$type_1;
