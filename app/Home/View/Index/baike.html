@@ -67,8 +67,10 @@
             <div class="zizbk_zizfl_xiangq"> 
              <h2 class="zizfl_xiangq_title"><span>{$vo.title}</span></h2> 
              <ul class="zizfl_xiangq_list"> 
-              <li><a href="{:U('Home/Index/baike_detail',array('id'=>$v['id']))}">{$v.title}</a><if condition="$v['hot'] eq 1"></if></li> 
-              <div class="clear"></div> 
+                <foreach name="vo['_child']" item="v">
+                  <li><a href="{:U('Home/Index/baike_detail',array('id'=>$v['id']))}">{$v.title}</a><if condition="$v['hot'] eq 1"><span class="zzbk_hot"></span></if></li> 
+                </foreach>
+                <div class="clear"></div> 
              </ul> 
             </div> 
         </foreach>
