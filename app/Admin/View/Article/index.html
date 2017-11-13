@@ -743,7 +743,7 @@
               data: grid_data,
               datatype: "local",
               height: 430,
-              colNames:['id', '标题','关键词','分类','状态','点击量','操作'],
+              colNames:['id', '标题','关键词','分类','状态','点击量','点击量','操作'],
               colModel:[
                 {name:'id',index:'id',  sorttype:"int",align : "center", hidden: true},
 
@@ -752,6 +752,7 @@
                 {name:'type',index:'type', align : "center"},
                 {name:'show',index:'show', align : "center", formatter: showFormatter},
                 {name:'eye',index:'eye', align : "center"},
+                {name:'time',index:'time', align : "center"},
 
                 {name:'options',index:'options',align:'center',width:200}
               ], 
