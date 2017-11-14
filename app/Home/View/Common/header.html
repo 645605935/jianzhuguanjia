@@ -4,6 +4,8 @@
     $_cur_page_="http://".$_SERVER['HTTP_HOST']."".$_SERVER['REDIRECT_URL'];
 
     $cur_province_info=$_SESSION['cur_province_info'];
+
+    $config_info=M('Config')->find(1);
 ?>
 
 <script type="text/javascript" src="__PUBLIC__/Home/js/jquery-1.10.2.min.js"></script>
@@ -45,7 +47,7 @@
                                     </ul>
                                 </div>
                             </span>
-                            <span class="head_kefrx">客服热线：13371739040</span></div>
+                            <span class="head_kefrx">客服热线：{$config_info.company_phone}</span></div>
                     </li>
                 </ul>
             </div>
