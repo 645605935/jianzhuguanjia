@@ -39,8 +39,25 @@
      <h1 class="zgs_meitu_nav"> 
       <ul> 
        <li class="has_arrow"> <a href="daiban.html"> <h2 style="font-weight:normal">资质代办公司</h2> </a> <span class="nav_arrow_right"></span> </li> 
-       <li class="nav_type_select"> <a href="/zizhi/">全国</a> </li> 
-      </ul> <em> 共 764 个资质代办公司</em> </h1> 
+       <if condition="$fit_1_info||$fit_2_info||$fit_3_info||$fit_3_info">
+          <if condition="$fit_1_info">
+              <li class="nav_type_select"> <a href="">{$fit_1_info.title}</a> </li>
+          </if>
+          <if condition="$fit_2_info">
+              <li class="nav_type_select"> <a href="">{$fit_2_info.title}</a> </li>
+          </if>
+          <if condition="$fit_3_info">
+              <li class="nav_type_select"> <a href="">{$fit_3_info.province}</a> </li>
+          </if>
+          <if condition="$fit_4_info">
+              <li class="nav_type_select"> <a href="">{$fit_4_info.city}</a> </li>
+          </if>
+       <else/>
+          <li class="nav_type_select"> <a href="">全国</a> </li>
+       </if>
+        
+        
+      </ul> <em> 共 {$count} 个资质代办公司</em> </h1> 
 
      
       <form id="filterForm" name="form1" method="get" action="{:U('Home/Index/safe')}">
@@ -88,72 +105,67 @@
          <ul> 
 
             <foreach name="list" item="v">
-                <li>
-                    <div class="zgscl_container">
-                        <div class="zgscl_left">
-                            <a class="zgscl_logo" target="_blank" href="http://www.zizhiguanjia.com/gongsi/4417/">
-                                <img alt="{$v.company_name}" src="{$v.company_logo}" /></a>
-                            <span class="zgscl_zix_num">已有
-                                <i>25625</i>人咨询</span>
-                        </div>
-                        <div class="zgsclc_data">
-                            <span class="zd_one">
-                                <h4>
-                                    <a class="zgscl_name" target="_blank" href="http://www.zizhiguanjia.com/gongsi/4417/">{$v.company_name}</a>
-                                    <span class="zizhi_yingyzz" title="营业执照已认证">营</span>
-                                    <span class="zizhi_chenggalrz" title="成功案例已认证">认</span></h4>
-                            </span>
-                            <!-- 主营业务 -->
-                            <span class="zd_five">
-                                <i>
-                                </i>
-                                <p>
-                                    <a href="http://www.zizhiguanjia.com/zizhi/sgzcbzz/">
-                                        <span>施工总承包资质</span></a>
-                                    <a href="http://www.zizhiguanjia.com/zizhi/sgzycbzz/">
-                                        <span>施工专业承包资质</span></a>
-                                    <a href="http://www.zizhiguanjia.com/zizhi/gcsj/">
-                                        <span>工程设计资质</span></a>
-                                    <a href="http://www.zizhiguanjia.com/zizhi/aqscxkz/">
-                                        <span>安全生产许可证</span></a>
-                                    <a href="http://www.zizhiguanjia.com/zizhi/iso/">
-                                        <span>ISO9001</span></a>
-                                    <a href="http://www.zizhiguanjia.com/zizhi/csyllhzz/">
-                                        <span>城市园林绿化</span></a>
+               <li>
+                   <div class="zgscl_container">
+                       <div class="zgscl_left">
+                           <a class="zgscl_logo" target="_blank" href="{:U('Home/Gongsi/index',array('cid'=>$v['id']))}">
+                               <img alt="{$v.company_name}" src="{$v.company_logo}" /></a>
+                           <span class="zgscl_zix_num">已有
+                               <i>25625</i>人咨询</span>
+                       </div>
+                       <div class="zgsclc_data">
+                           <span class="zd_one">
+                               <h4>
+                                   <a class="zgscl_name" target="_blank" href="{:U('Home/Gongsi/index',array('cid'=>$v['id']))}">{$v.company_name}</a>
+                                   <span class="zizhi_yingyzz" title="营业执照已认证">营</span>
+                                   <span class="zizhi_chenggalrz" title="成功案例已认证">认</span></h4>
+                           </span>
+                           <!-- 主营业务 -->
+                           <span class="zd_five">
+                               <i>
+                               </i>
+                               <p>
+                                  <foreach name="v['_company_types']" item="vo">
+                                      <a href="{:U('Home/Gongsi/index',array('cid'=>$v['id']))}">
+                                          <span>{$vo.title}</span>
+                                      </a>
+                                  </foreach>
+                               </p>
+                           </span>
+                           <span class="zd_three">
+                               <div class="clear" style="height:0;"></div>
+                               <i title="{$v.company_address}">地址：{$v.company_address}</i></span>
+                           <span class="zd_four">
+                               <p class="tel">
+                                   <em></em>
+                                   <font id="4417">{$v._contact_phone}</font>
+                                   <i class="4417">[
+                                       <b class="showPhone" contact_phone="{$v.contact_phone}">查看</b>]
+                                   </i>
                                 </p>
-                            </span>
-                            <span class="zd_three">
-                                <div class="clear" style="height:0;"></div>
-                                <i title="{$v.company_address}">地址：{$v.company_address}</i></span>
-                            <span class="zd_four">
-                                <p class="tel">
-                                    <em></em>
-                                    <font id="4417">133****1038</font>
-                                    <i class="4417" onclick="Add(2,2)">[
-                                        <b onclick="showPhone(4417)">查看</b>]</i></p>
-                            </span>
-                        </div>
-                        <div class="zgsclc_koubei">
-                            <div class="zzdb_fuwcgqy" title="近期成功服务建企"></div>
-                            <div class="zgsclc_koubei_hp">
-                                <span class="zzdb_koubz">口碑值
-                                    <i>11543</i>
-                                </span>
-                                <span>接单率
-                                    <i>100.00%</i>
-                                </span>
-                                <p>诚信认证
-                                    <em></em>
-                                    <em></em>
-                                    <em></em>
-                                    <em></em>
-                                    <em></em>
-                                </p>
-                                <a class="free_design" href="javascript:void(0)" companyid="4417" areapid="1" areaid="0" onclick="Add(2,3)">免费获取报价</a></div>
-                        </div>
-                    </div>
-                </li>
-            </foreach>
+                           </span>
+                       </div>
+                       <div class="zgsclc_koubei">
+                           <div class="zzdb_fuwcgqy" title="近期成功服务建企"></div>
+                           <div class="zgsclc_koubei_hp">
+                               <span class="zzdb_koubz">口碑值
+                                   <i>11543</i>
+                               </span>
+                               <span>接单率
+                                   <i>100.00%</i>
+                               </span>
+                               <p>诚信认证
+                                   <em></em>
+                                   <em></em>
+                                   <em></em>
+                                   <em></em>
+                                   <em></em>
+                               </p>
+                               <a class="free_design" href="javascript:void(0)" companyid="4417" areapid="1" areaid="0" onclick="Add(2,3)">免费获取报价</a></div>
+                       </div>
+                   </div>
+               </li>
+           </foreach>
               
          </ul> 
 
@@ -241,7 +253,6 @@
   <script type="text/javascript" src="__PUBLIC__/Home/js/AddClick.js"></script> 
   <script src="__PUBLIC__/Home/js/jquery.validate.min.js"></script> 
   <script src="__PUBLIC__/Home/js/CompanyList.js"></script> 
-  <script type="text/javascript" charset="utf-8" src="__PUBLIC__/Home/js/10051268.js"></script>
   <script src="__PUBLIC__/Admin/layui-v1.0.4/layui/layui.js"></script>
   <script src="__PUBLIC__/layer/layer.js"></script>
 
@@ -295,126 +306,15 @@
 </script>
 
 
+
 <script type="text/javascript">
     $(function(){
-        init_editer();
+        $('.showPhone').click(function(){
+            var contact_phone=$(this).attr('contact_phone');
 
-        $('#phone_code').blur(function(){
-            var code=$(this).val();
-            if(code.length==4){
-                _ajax_check_code(code);
-            }
+            console.log(contact_phone);
+            $(this).parent().prev().html(contact_phone);
         });
     });
 </script>
 
-<script>
-    function _ajax_apply_baojia(_data){
-         $.ajax({  
-             async:false,
-             type:'post',  
-             contentType:"application/x-www-form-urlencoded",
-             url : "{:U('Home/Index/ajax_apply_baojia')}",
-             data: _data,
-             dataType : 'json',
-             success  : function(json) {
-                 if(json.code==0){
-                     alert(json.msg);
-                 }else{
-                     alert(json.msg);
-                 }
-             },
-             error  : function() {  
-                 alert('error');
-             }  
-         }); 
-    }
-
-    function _ajax_check_code(code){
-         $.ajax({  
-             async:false,
-             type:'get',  
-             contentType:"application/x-www-form-urlencoded",
-             url : "{:U('Home/Index/ajax_check_code')}",
-             data: {
-                code:code
-             },
-             dataType : 'json',
-             success  : function(json) {
-                 if(json.code==0){
-                     alert(json.msg);
-                 }else{
-                     alert(json.msg);
-                 }
-             },
-             error  : function() {  
-                 alert('error');
-             }  
-         }); 
-    }
-
-    function init_editer(){
-        layui.use(['form', 'layedit', 'laydate', 'upload'], function(){
-          var form = layui.form()
-          ,layer = layui.layer
-          ,layedit = layui.layedit
-          ,laydate = layui.laydate;
-
-          //自定义验证规则
-          form.verify({
-            title: function(value){
-              if(value.length < 5){
-                return '标题至少得5个字符啊';
-              }
-            }
-            ,pass: [/(.+){6,12}$/, '密码必须6到12位']
-          });
-
-          form.on('select(province)', function(data){
-              var provinceid=data.value;
-              if(provinceid){
-                  _ajax_get_city_select(provinceid);
-              }
-              return false;
-          });
-
-          //监听提交
-          form.on('submit(demo1_apply_baojia)', function(data){
-            // console.log(data.field);
-            var _json=_ajax_apply_baojia(data.field);
-            return false;
-          });
-        });
-    }
-
-    function _ajax_get_city_select(provinceid){
-        $.ajax({  
-            async:false,
-            type:'get',  
-            contentType:"application/x-www-form-urlencoded",
-            url : "{:U('Home/Index/ajax_get_city_list')}",
-            data:{
-              provinceid:provinceid
-            },
-            dataType : 'json',
-            success  : function(json) {  
-                if(json.code==0){
-                    var data=json.data;
-
-                    var str="<option value=''>市/地区</option>";
-                    $.each(json.data, function(key, value) {
-                         str+="<option value='"+value.cityid+"'>"+value.first_name+" "+value.city+"</option>";
-                    });
-                    $('#baojia_form .city').html(str);
-                    layui.form().render();
-
-                }else{
-                    layer.msg(json.msg);
-                }
-            },
-            error  : function(json) {  
-                layer.msg(json.msg);
-            }  
-        });
-    }   
-</script>

@@ -190,15 +190,26 @@ class IndexController extends CommonController{
         if($_GET['fit_3']){
             $city=M('City')->where(array('fatherid'=>$_GET['fit_3']))->select();
             $where['company_service_province']=$_GET['fit_3'];
+
+            $this->fit_3_info=M('Province')->where(array('provinceid'=>$_GET['fit_3']))->find();
         }
         if($_GET['fit_4']){
             $where['company_service_city']=$_GET['fit_4'];
+
+            $this->fit_4_info=M('City')->where(array('cityid'=>$_GET['fit_4']))->find();
         }
 
         $type_1=M('Type')->where(array('pid'=>1273))->select();
         if($_GET['fit_1']){
             $type_2=M('Type')->where(array('pid'=>$_GET['fit_1']))->select();
+
+            $this->fit_1_info=M('Type')->find($_GET['fit_1']);
         }
+
+        if($_GET['fit_2']){
+            $this->fit_2_info=M('Type')->find($_GET['fit_2']);
+        }
+        
 
         // 右侧分类
         $right_type_1=M('Type')->where(array('pid'=>1275))->select();
@@ -206,14 +217,24 @@ class IndexController extends CommonController{
         $where['gid']=33;
         // $where['company_service_province']=$_SESSION['cur_province_info']['provinceid'];
         $count      = M('User')->where($where)->count();
-        $Page       = new \Common\Extend\Page($count,3);
+        $Page       = new \Common\Extend\Page($count,8);
         $nowPage = isset($_GET['p'])?$_GET['p']:1;
         $list=D('User')->page($nowPage.','.$Page->listRows)->where($where)->relation(true)->select();
+        foreach ($list as $key => $value) {
+            if($value['company_types']){
+                $temp=explode('#', $value['company_types']);
+                foreach ($temp as $k => $v) {
+                    $row=M('Type')->find($v);
+                    $arr[]=$row;
+                }
+            }
+            $list[$key]['_company_types']=$arr;
+            $list[$key]['_contact_phone']=hidtel($value['contact_phone']);
+        }
 // echo D('User')->getlastsql();die;
         $this->page=$Page->show();
         $this->list=$list;
-// dump($list);die;
-        
+        // dump($list);die;
 
         $this->type_1=$type_1;
         $this->type_2=$type_2;
@@ -235,12 +256,20 @@ class IndexController extends CommonController{
         // if($_GET['fit_2']){
         //     $where['company_types']=array('like',"%".$_GET['fit_2']."%");
         // }
+        // 
+        if($_GET['fit_1']){
+            $this->fit_1_info=M('Type')->find($_GET['fit_1']);
+        }
         if($_GET['fit_3']){
             $city=M('City')->where(array('fatherid'=>$_GET['fit_3']))->select();
             $where['company_service_province']=$_GET['fit_3'];
+
+            $this->fit_3_info=M('Province')->where(array('provinceid'=>$_GET['fit_3']))->find();
         }
         if($_GET['fit_4']){
             $where['company_service_city']=$_GET['fit_4'];
+
+            $this->fit_4_info=M('City')->where(array('cityid'=>$_GET['fit_4']))->find();
         }
 
         $type=M('Type')->where(array('pid'=>1377))->select();
@@ -252,11 +281,22 @@ class IndexController extends CommonController{
 
 
         $where['gid']=33;
-        $where['company_service_province']=$_SESSION['cur_province_info']['provinceid'];
+        // $where['company_service_province']=$_SESSION['cur_province_info']['provinceid'];
         $count      = M('User')->where($where)->count();
-        $Page       = new \Common\Extend\Page($count,3);
+        $Page       = new \Common\Extend\Page($count,8);
         $nowPage = isset($_GET['p'])?$_GET['p']:1;
         $list=D('User')->page($nowPage.','.$Page->listRows)->where($where)->relation(true)->select();
+        foreach ($list as $key => $value) {
+            if($value['company_types']){
+                $temp=explode('#', $value['company_types']);
+                foreach ($temp as $k => $v) {
+                    $row=M('Type')->find($v);
+                    $arr[]=$row;
+                }
+            }
+            $list[$key]['_company_types']=$arr;
+            $list[$key]['_contact_phone']=hidtel($value['contact_phone']);
+        }
 
         $this->page=$Page->show();
         $this->list=$list;
@@ -498,7 +538,17 @@ class IndexController extends CommonController{
             $row['time']=date('Y-m-d H:i:s', $row['time']);
         }
 
+        //上一篇，下一篇
+        $prev=M('Article')->where(array('type'=>$row['type'], 'id'=>array('gt', $row['id'])))->find();
+        $next=M('Article')->where(array('type'=>$row['type'], 'id'=>array('lt', $row['id'])))->find();
+        
+        //相关文章
+        $list=M('Article')->where(array('type'=>$row['type']))->select();
+
         $this->row=$row;
+        $this->list=$list;
+        $this->prev=$prev;
+        $this->next=$next;
         $this->type=$type;
         $this->display();
     }

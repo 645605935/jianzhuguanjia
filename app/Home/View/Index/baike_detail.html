@@ -91,49 +91,26 @@
       <a href="javascript:void(0)" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
       <a href="javascript:void(0)" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
      </div> 
-     <script>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "2", "bdMiniList": false, "bdPic": "http://www.zizhiguanjia.com/Images/wx.jpg", "bdStyle": "0", "bdSize": "16" }, "share": {}, "image": { "viewList": ["weixin", "tsina", "qzone"], "viewText": "分享到：", "viewSize": "16" }, "selectShare": { "bdContainerClass": null, "bdSelectMiniList": ["weixin", "tsina", "qzone"] } }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script> 
+     <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"32"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
      <div class="index">
-      <a href="http://www.zizhiguanjia.com" title="资质管家">返回资质管家首页</a>
+      <a href="{:U('Home/Index/index')}" title="建筑管家">返回建筑管家首页</a>
      </div> 
      <div class="details-dt">
        上一篇： 
-      <a href="http://www.zizhiguanjia.com/zzbz/1.html" title="施工总承包资质">施工总承包资质</a> 
+      <a href="{:U('Home/Index/baike_detail',array('id'=>$prev['id']))}" title="{$prev['title']}">{$prev['title']}</a> 
       <br /> 下一篇： 
-      <a href="http://www.zizhiguanjia.com/zzbz/3.html" title="施工劳务承包资质">施工劳务承包资质</a>
+      <a href="{:U('Home/Index/baike_detail',array('id'=>$next['id']))}" title="{$next['title']}">{$next['title']}</a>
       <br /> 
      </div> 
      <div style="width: auto; overflow:auto;" class="details-conbd"> 
       <p style="width:auto">您可继续浏览<a title="施工专业承包资质" href="http://www.zizhiguanjia.com/zzbz/2.html">【施工专业承包资质】</a>的相关内容：</p> 
-      <ul style="width:435px; float:left;"> 
-       <li><a title="装修施工资质等级标准是什么？" href="news_detail.html?7273.html">装修施工资质等级标准是什么？</a> <span>2017-06-27</span></li> 
-      </ul> 
-      <ul style="width:435px; float:left;"> 
-       <li><a title="劳务承包需要资质吗" href="news_detail.html?7193.html">劳务承包需要资质吗</a> <span>2017-06-12</span></li> 
-      </ul> 
-      <ul style="width:435px; float:left;"> 
-       <li><a title="全面解析2017年安全生产许可证延期办理材料！" href="news_detail.html?7186.html">全面解析2017年安全生产许可证延期办理材料！</a> <span>2017-06-10</span></li> 
-      </ul> 
-      <ul style="width:435px; float:left;"> 
-       <li><a title="建筑企业怎么有效管理建筑资质" href="news_detail.html?7182.html">建筑企业怎么有效管理建筑资质</a> <span>2017-06-09</span></li> 
-      </ul> 
-      <ul style="width:435px; float:left;"> 
-       <li><a title="冶金工程施工总承包二级资质2017最新标准" href="news_detail.html?7175.html">冶金工程施工总承包二级资质2017最新标准</a> <span>2017-06-08</span></li> 
-      </ul> 
-      <ul style="width:435px; float:left;"> 
-       <li><a title="建筑幕墙工程专业承包一级资质申请办理标准" href="news_detail.html?7174.html">建筑幕墙工程专业承包一级资质申请办理标准</a> <span>2017-06-08</span></li> 
-      </ul> 
-      <ul style="width:435px; float:left;"> 
-       <li><a title="特级房屋建筑工程施工总承包企业资质标准" href="news_detail.html?7173.html">特级房屋建筑工程施工总承包企业资质标准</a> <span>2017-06-08</span></li> 
-      </ul> 
-      <ul style="width:435px; float:left;"> 
-       <li><a title="申请承装修试电力设施许可证需要具备哪些条件" href="news_detail.html?7172.html">申请承装修试电力设施许可证需要具备哪些条件</a> <span>2017-06-08</span></li> 
-      </ul> 
-      <ul style="width:435px; float:left;"> 
-       <li><a title="办理工程设计综合资质需要具备哪些条件" href="news_detail.html?7171.html">办理工程设计综合资质需要具备哪些条件</a> <span>2017-06-08</span></li> 
-      </ul> 
-      <ul style="width:435px; float:left;"> 
-       <li><a title="造成监理企业资质升级不成功有哪些原因" href="news_detail.html?7170.html">造成监理企业资质升级不成功有哪些原因</a> <span>2017-06-08</span></li> 
-      </ul> 
+      <foreach name="list" item="v">
+          <ul style="width:435px; float:left;"> 
+              <li><a title="{$v.title}" href="{:U('Home/Index/baike_detail',array('id'=>$v['id']))}">{$v.title}</a> <span>{$v.time|date="Y-m-d H:i",###}</span></li> 
+          </ul> 
+      </foreach>
+      
      </div> 
     </div> 
     <div class="clear"></div> 
