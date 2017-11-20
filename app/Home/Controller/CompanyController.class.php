@@ -21,13 +21,26 @@ class CompanyController extends CommonController{
         
         $province=M('Province')->select();
 
-        $company_types=M('Type')->where(array('pid'=>1275))->select();
-        foreach ($company_types as $key => $value) {
-            $company_types[$key]['_child']=M('Type')->where(array('pid'=>$value['id']))->select();
+        //资质代办【下的建筑施工】
+        $company_types_zzdb=M('Type')->where(array('pid'=>1275))->select();
+        foreach ($company_types_zzdb as $key => $value) {
+            $company_types_zzdb[$key]['_child']=M('Type')->where(array('pid'=>$value['id']))->select();
         }
 
+        //安许办理
+        $company_types_axbl=M('Type')->where(array('pid'=>1442))->select();
+
+        //录证挂靠
+        $company_types_xzgk=M('Type')->where(array('pid'=>1443))->select();
+
+        //公司注册
+        $company_types_gszc=M('Type')->where(array('pid'=>1274))->select();
+
         $row=M('User')->find($user['id']);
-        $row['_company_types']=explode('#', $row['company_types']);
+        $row['_company_types_zzdb']=explode('#', $row['company_types_zzdb']);
+        $row['_company_types_axbl']=explode('#', $row['company_types_axbl']);
+        $row['_company_types_xzgk']=explode('#', $row['company_types_xzgk']);
+        $row['_company_types_gszc']=explode('#', $row['company_types_gszc']);
         $row['_company_images']=explode('#', $row['company_images']);
 
 
@@ -37,10 +50,16 @@ class CompanyController extends CommonController{
             $city=array();
         }
 
+        
+
+
         $this->row=$row;
         $this->province=$province;
         $this->city=$city;
-        $this->company_types=$company_types;
+        $this->company_types_zzdb=$company_types_zzdb;
+        $this->company_types_axbl=$company_types_axbl;
+        $this->company_types_xzgk=$company_types_xzgk;
+        $this->company_types_gszc=$company_types_gszc;
         $this->display();
     }
 

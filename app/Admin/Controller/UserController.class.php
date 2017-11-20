@@ -130,6 +130,8 @@ class UserController extends AuthController {
         foreach ($list as $key => $value) {
             $list[$key]['register_time']=date('Y-m-d',$value['register_time']);
             $list[$key]['img']="./Uploads".$value['img'];
+
+            $list[$key]['img']="./Uploads".$value['img'];
         }
 
         if($list){

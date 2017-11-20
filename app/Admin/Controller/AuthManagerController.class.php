@@ -7,10 +7,10 @@ class AuthManagerController extends AuthController{
 
     public function _initialize() {
         parent::_initialize();
+
         global $user;
         $user=session('auth');
         $this->user=$user;
-        $this->cur_c='AuthManager';
     }
     
     /**
@@ -31,7 +31,6 @@ class AuthManagerController extends AuthController{
         }
         $this->list=$_arr;
 
-        $this->cur_v='AuthManager-index';
         $this->display();
     }
 
@@ -142,7 +141,7 @@ class AuthManagerController extends AuthController{
 
                 $this->success('权限编辑成功',U('Admin/AuthManager/index'));
             }else{
-                $this->error('权限编辑失败'); 
+                $this->success('权限编辑成功',U('Admin/AuthManager/index'));
             }
         }else{
             $group_id=I('id');
@@ -166,10 +165,6 @@ class AuthManagerController extends AuthController{
             }
             $this->group=$group;
 
-            
-
-
-            $this->cur_v='AuthManager-authSet';
             $this->display('authSet');
         }
     }
