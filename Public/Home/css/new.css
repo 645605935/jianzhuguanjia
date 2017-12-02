@@ -1203,7 +1203,7 @@ span#error_place{display:inline-block;height:18px;line-height:35px;color:red;mar
 .pull_nav{position:relative;float:left;display:block}
 .pull_nav_title{display:block;padding:0 15px 0 20px;width:195px;height:47px;background:#f40;color:#fff;text-align:center;font-size:16px;line-height:46px}
 .nav_box .pull_nav .pull_box{position:absolute;z-index:2;width:195px;background:url(../images/nav_bg.png)}
-.pull_nav .pull_box .pull_box_nav_list{width:195px;height:330px;margin-top:20px;}
+.pull_nav .pull_box .pull_box_nav_list{width:195px;height:381px;margin-top:20px;}
 .pull_box .pull_box_nav_list .pull_box_nav_li{z-index:2;display:inline-block;width:195px;height:58px;color:#fff;text-align:center;font-size:16px}
 .pull_box .pull_box_nav_list .pull_box_nav_li_more{z-index:2;display:inline-block;width:195px;height:58px;color:#fff;text-align:center;font-size:16px}
 .pull_box .pull_box_nav_list .pull_box_nav_li:hover{border:1px solid #ccc;border-right:0;background:#fff;cursor:pointer}

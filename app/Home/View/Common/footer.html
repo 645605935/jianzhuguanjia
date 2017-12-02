@@ -1,6 +1,5 @@
 <?php
-    $config_info=M('Config')->find(1);
-    $qq=explode('#',$config_info['qq']);
+    $qq=explode('#',$configInfo['qq']);
  ?>
 <footer> 
  <div class="footer-warp"> 
@@ -29,7 +28,7 @@
                                 <foreach name="friendlink_list_3" item="v">
                                     <a rel="nofollow" href="{$v.url}">{$v.title}</a>
                                 </foreach>
-                                <i style="color: #666666;margin-right: 18px;float: left;display: block;white-space: nowrap;">申请链接QQ:3267485428</i>
+                                <i style="color: #666666;margin-right: 18px;float: left;display: block;white-space: nowrap;">申请链接QQ:{$configInfo.qq}</i>
                             </div>
                         </div>
                     </div>
@@ -49,19 +48,19 @@
                             <p>
                                 <i class="i1"></i>
                                 <span>
-                                    <strong class="s1">{$config_info.company_phone}</strong>资质办理咨询电话(全天)</span></p>
+                                    <strong class="s1">{$configInfo.company_phone}</strong>资质办理咨询电话(全天)</span></p>
                             <p>
                                 <i class="i2"></i>
                                 <span>
                                     <strong class="s2">资质咨询</strong>
-                                    <a rel="nofollow" target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin={$config_info.qq}&amp;site=qq&amp;menu=yes">
-                                        <img border="0" src="http://wpa.qq.com/pa?p=2:{$config_info.qq}:51" alt="办资质，找建筑管家QQ交谈" title="办资质，找建筑管家QQ交谈"></a>
+                                    <a rel="nofollow" target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin={$configInfo.qq}&amp;site=qq&amp;menu=yes">
+                                        <img border="0" src="http://wpa.qq.com/pa?p=2:{$configInfo.qq}:51" alt="办资质，找建筑管家QQ交谈" title="办资质，找建筑管家QQ交谈"></a>
                                 </span>
                             </p>
                             <p>
                                 <i class="i3"></i>
                                 <span>
-                                    <strong class="s3">资质合作</strong>3267485428@qq.com</span></p>
+                                    <strong class="s3">资质合作</strong>{$configInfo.email}</span></p>
                         </li>
                     </ul>
                 </div>
@@ -80,9 +79,9 @@
    <a href="javascript:void(0)" rel="nofollow" style="cursor:default">常见问题 </a>|
    <a href="javascript:void(0)" rel="nofollow" style="cursor:default">意见反馈</a>
    <br /> 免责声明：本网站是建筑企业与资质代办公司服务对接平台，如发现假冒中介，请及时与本站联系。 
-   <br /> 版权所有 {$config_info.company_name}  {$config_info.beian} 
+   <br /> 版权所有 {$configInfo.company_name}  {$configInfo.beian} 
    <br /> Copyright &copy; 2016 jianzhuguanjia.com All Rights Reserved
-   <br /> 公司地址：{$config_info.company_address} &nbsp;电话： {$config_info.company_phone}&nbsp; 
+   <br /> 公司地址：{$configInfo.company_address} &nbsp;电话： {$configInfo.company_phone}&nbsp; 
   </div> 
  </div> 
 </footer> 

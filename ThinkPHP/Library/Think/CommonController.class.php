@@ -4,8 +4,7 @@ use Think\Controller;
 class CommonController extends Controller{
 
     public function _initialize(){
-
-
+    	$this->configInfo=M('config')->find(1);
     }
     //提示错误并且停止
     public function error_exit($msg='操作失败',$a='',$b='',$c=''){

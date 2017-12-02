@@ -4,8 +4,6 @@
     $_cur_page_="http://".$_SERVER['HTTP_HOST']."".$_SERVER['REDIRECT_URL'];
 
     $cur_province_info=$_SESSION['cur_province_info'];
-
-    $config_info=M('Config')->find(1);
 ?>
 
 <script type="text/javascript" src="__PUBLIC__/Home/js/jquery-1.10.2.min.js"></script>
@@ -47,7 +45,7 @@
                                     </ul>
                                 </div>
                             </span>
-                            <span class="head_kefrx">客服热线：{$config_info.company_phone}</span></div>
+                            <span class="head_kefrx">客服热线：{$configInfo.company_phone}</span></div>
                     </li>
                 </ul>
             </div>
@@ -77,7 +75,7 @@
         <div id="head">
             <div class="head_left">
                 <a href="index.html">
-                    <img alt="资质管家" src="__PUBLIC__/Home/images/zzgj_logo_3.0.gif" class="zzgj_logo" /></a>
+                    <img alt="资质管家" src="__UPLOAD__/{$configInfo.logo}" class="zzgj_logo" /></a>
                 <img alt="办资质就上资质管家" src="__PUBLIC__/Home/images/zzgj_ggy.gif" /></div>
             <div class="head_middle">
                 <div class="head_middle_mfzfw">免费找服务</div>

@@ -1,6 +1,3 @@
-<?php
-    $config_info=M('Config')->find(1);
-?>
 <div class="header">
     <div class="header_center">
         <div class="header_left">
@@ -15,7 +12,7 @@
                 <li>
                     <div id="regist" style="float:right;margin-top:5px">
                         <em>咨询热线：
-                            <span>{$config_info.company_phone}</span></em>
+                            <span>{$configinfo.company_phone}</span></em>
                         <em style="background:none;">您好，欢迎来到资质管家！</em>
                         <a href="{:U('Home/Usercenter/brokerindex')}">{$user.truename}</a>
                         <span id="loginout">
