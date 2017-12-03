@@ -1,7 +1,3 @@
-<?php
-    $config_info=M('Config')->find(1);
- ?>
- 
 <html>
  <head> 
   <meta charset="utf-8" /> 
@@ -16,7 +12,7 @@
   <div class="logo_box"> 
    <div class="logo"> 
     <a href="{:U('Home/Index/index')}" title="资质管家">
-     <div class="ico-logo header-logo"></div></a> 
+     <div class="ico-logo header-logo" style="background: url('__UPLOAD__/{$configInfo.logo}') no-repeat;"></div></a> 
     <p>欢迎入驻</p> 
     <span>已有账号，<a href="{:U('Home/User/login')}">直接登录</a></span> 
    </div> 
@@ -32,7 +28,7 @@
        <li style="padding-bottom:10px;"> <label>密　　　码</label> <input id="c" name="password" placeholder="请输入登录密码" class="valid" type="password" /> <p class="messge" id="mima"></p> </li> 
        <li style="padding-bottom:10px;"><a href="{:U('Home/User/forget')}" class="forget">忘记密码？</a></li> 
        <li><input class="submit_button_zc" value="立即登录" type="submit" /></li> 
-       <li style="width:342px;" class="register">还没有资质管家账号，<a href="{:U('HOme/User/register')}">立即注册 &gt;</a></li> 
+       <li style="width:342px;" class="register">还没有资质管家账号，<a href="{:U('Home/User/register')}">立即注册 &gt;</a></li> 
       </ul> 
      </form> 
     </div> 
@@ -40,10 +36,10 @@
   </div> 
   <div class="bottom"> 
    <ul> 
-    <li> <a href="daiban.html">资质代办</a>| <a href="zizhibiaozhun.html">资质标准</a>| <a href="news.html">行业资讯</a>| <a href="reg.html" rel="nofollow">中介入驻</a>| <a href="about.html" rel="nofollow">关于我们</a>| <a href="http://www.zizhiguanjia.com/join.html" rel="nofollow">加入我们</a>| <a href="http://www.zizhiguanjia.com/contact.html" rel="nofollow">联系我们</a>| <a href="#" rel="nofollow" style="cursor: default; color: #888;">常见问题</a>| <a href="#" rel="nofollow" style="cursor: default; color: #888;">意见反馈</a>| </li> 
-    <li>{$config_info.beian}</li> 
+    <li> <a href="">资质代办</a>| <a href="">资质标准</a>| <a href="">行业资讯</a>| <a href="" rel="nofollow">中介入驻</a>| <a href="" rel="nofollow">关于我们</a>| <a href="" rel="nofollow">加入我们</a>| <a href="" rel="nofollow">联系我们</a>| <a href="#" rel="nofollow" style="cursor: default; color: #888;">常见问题</a>| <a href="#" rel="nofollow" style="cursor: default; color: #888;">意见反馈</a>| </li> 
+    <li>{$configInfo.beian}</li> 
    </ul> 
-   <a href="http://www.zizhiguanjia.com/sitemap.html" target="_blank" style="color: #5e5c5b;text-decoration: none !important;"></a> 
+   <a href="" target="_blank" style="color: #5e5c5b;text-decoration: none !important;"></a> 
   </div> 
   <script async="" src="__PUBLIC__/Home/js/analytics.js"></script>
   <script src="__PUBLIC__/Home/js/push.js"></script>

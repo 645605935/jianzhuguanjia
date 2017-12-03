@@ -17,10 +17,17 @@
                 <ul>
                     <li>
                         <div id="regist" style="float:right">
+                        <if condition="$user">
+                            <span>您好，{$user.truename}</span>
+                            <a href="javascript:void(0);" rel="nofollow" onclick="LoginOut();">(退出)</a>
+                        <else/>
                             <span>您好，请</span>
                             <a target="_blank" href="{:U('Home/User/login')}" rel="nofollow">
                                 <span style="color:#ff4400;">&nbsp;登录</span></a>
                             <a target="_blank" href="{:U('Home/User/register')}" rel="nofollow">｜　注册　｜</a>
+                        </if>
+
+                            
                             <span class="head_jianzqy">
                                 <a class="head_jianzqy_a">我是建筑企业</a>
                                 <div class="head_jianzqy_content">
@@ -39,7 +46,7 @@
                                 <div class="head_jianzqy_content head_fuwzj_content">
                                     <ul>
                                         <li>
-                                            <a target="_blank" href="member_order.html" rel="nofollow">我的订单</a></li>
+                                            <a target="_blank" href="{:U('Home/Usercenter/brokerorder')}" rel="nofollow">我的订单</a></li>
                                         <li>
                                             <a target="_blank" href="{:U('Home/Index/tuiguang')}" rel="nofollow">我要推广</a></li>
                                     </ul>
