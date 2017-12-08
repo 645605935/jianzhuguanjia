@@ -73,21 +73,23 @@
    <span> <img src="__PUBLIC__/Home/images/gold_zhongj.gif" /> </span> 
    <ul class="gold_zhongj_list"> 
       <foreach name="zhongjie_list" item="v">
-          <li>
-              <if condition="$v['recommend'] eq 1">
+          <if condition="$v['recommend'] eq 1">
+              <li>
                   <img style="width:100%;height:100%;" src="{$v.company_logo}" />
-              <else/>
+                  <div class="jianpzj_text" title="{$v.company_name}">
+                      <p>{$v.company_service_province}</p>
+                      <p>{$v.company_name}</p>
+                      <p>
+                          <a target="_blank" rel="nofollow" href="{:U('Home/Gongsi/index',array('cid'=>$v['id']))}">获取报价</a>
+                      </p>
+                  </div>
+              </li>
+          <else/>
+              <li>
                   <img style="width:100%;height:100%;" src="__UPLOAD__/{$configInfo['ad_img']}" />
-              </if>
-              
-              <div class="jianpzj_text" title="{$v.company_name}">
-                  <p>{$v.company_service_province}</p>
-                  <p>{$v.company_name}</p>
-                  <p>
-                      <a target="_blank" rel="nofollow" href="{:U('Home/Gongsi/index',array('cid'=>$v['id']))}">获取报价</a>
-                  </p>
-              </div>
-          </li>
+              </li>
+          </if>
+          
       </foreach>
    </ul> 
    <div class="clear"></div> 
