@@ -74,7 +74,12 @@
    <ul class="gold_zhongj_list"> 
       <foreach name="zhongjie_list" item="v">
           <li>
-              <img style="width:100%;height:100%;" src="{$v.company_logo}" />
+              <if condition="$v['recommend'] eq 1">
+                  <img style="width:100%;height:100%;" src="{$v.company_logo}" />
+              <else/>
+                  <img style="width:100%;height:100%;" src="__UPLOAD__/{$configInfo['ad_img']}" />
+              </if>
+              
               <div class="jianpzj_text" title="{$v.company_name}">
                   <p>{$v.company_service_province}</p>
                   <p>{$v.company_name}</p>
