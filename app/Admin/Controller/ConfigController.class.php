@@ -34,6 +34,13 @@ class ConfigController extends AuthController {
                 unset($data['logo_admin']);
             }
 
+            if($_FILES['ad_img']['size']>0){
+                $img=eUpload(1,$_FILES['ad_img'],'config');
+                $data['ad_img']   =$img['url'];
+            }else{
+                unset($data['ad_img']);
+            }
+
 
             if($d->save($data)){
                 cacheConfig(0);
