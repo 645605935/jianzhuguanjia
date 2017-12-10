@@ -48,21 +48,21 @@
           <div class="infor"> 
            <i class="in1"></i> 
            <span>资质代办</span> 
-           <p>咨询热线： 13371739040</p> 
-           <p>专家手机： 13371631038</p> 
+           <p>咨询热线： 13512048690</p> 
+           <p>专家手机： 13512048690</p> 
           </div> </li> 
          <li> 
           <div class="infor"> 
            <i class="in2"></i> 
            <span>企业寻证</span> 
-           <p>咨询热线： 13363862207</p> 
-           <p>专家手机： 13739754550</p> 
+           <p>咨询热线： 13512048690</p> 
+           <p>专家手机： 13512048690</p> 
           </div> </li> 
          <li style="border:0;"> 
           <div class="infor"> 
            <i class="in3"><img src="__PUBLIC__/Home/images/wx.jpg" width="95" height="75" /></i> 
-           <p>微信公众号：<em style="color:#0b9fe6;">zizhiguanjia-bj</em></p> 
-           <p>新浪微博：<a style="color:#0b9fe6;" href="http://www.weibo.com/izizhiguanjia">weibo.com/izizhiguanjia</a></p> 
+           <p>微信公众号：<em style="color:#0b9fe6;">jianzhuguanjia-tj</em></p> 
+           <p>新浪微博：<a style="color:#0b9fe6;" href="http://www.weibo.com/izizhiguanjia">weibo.com/jianzhuguanjia</a></p> 
           </div> </li> 
         </ul> 
        </div> 
@@ -137,14 +137,33 @@
  
    <script type="text/javascript" src="__PUBLIC__/Home/js/jquery-1.10.2.min.js"></script> 
    <script type="text/javascript" src="__PUBLIC__/Home/js/header.js"></script> 
-   <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=OMA8YUbZCYXaLkgMkgwVNZWrIFV0VFD7">
+   <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=OMA8YUbZCYXaLkgMkgwVNZWrIFV0VFD7"></script>
+   <script type="text/javascript" src="__PUBLIC__/Home/js/jquery.baiduMap.min.js"></script>
    <script type="text/javascript">
-      //百度地图API功能
-      var map= new BMap.Map('dituContent');
-      map.centerAndZoom(new BMap.Point(121,31),10);
-      map.addControl(new BMap.MapTypeControl());
-      map.setCurrentCity('上海');
-      map.enableScrollWheelZoom(true);
+      new BaiduMap({
+        id: "dituContent",
+        title: {
+          text: "北京故宫博物院",
+          className: "title"
+        },
+        content: {
+          className: "content",
+          text: ["地址：天津市滨海新区古林街福绣园33-3-502", "电话：13512048690"]
+        },
+        point: {
+          lng: "117.486321",
+          lat: "38.854736"
+        },
+        level: 15,
+        type: true,
+        width: 320,
+        height: 70,
+        icon: {
+          url: "__PUBLIC__/Home/images/icon.png",
+          width: 36,
+          height: 36
+        }
+      });
    </script>
  
  </body>
