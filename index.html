@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+ </head> 
+ <body> 
+    <!--百度地图容器--> 
+    <div style="width: 600px; height: 360px; border: 1px solid rgb(204, 204, 204); overflow: hidden; position: relative; z-index: 0;  text-align:center;" left="" id="dituContent">
+       
+    </div> 
+
+   <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=OMA8YUbZCYXaLkgMkgwVNZWrIFV0VFD7">
+   <script type="text/javascript">
+      //百度地图API功能
+      var map= new BMap.Map('dituContent');
+      map.centerAndZoom(new BMap.Point(121,31),10);
+      map.addControl(new BMap.MapTypeControl());
+      map.setCurrentCity('上海');
+      map.enableScrollWheelZoom(true);
+   </script>
+ 
+ </body>
+</html>
