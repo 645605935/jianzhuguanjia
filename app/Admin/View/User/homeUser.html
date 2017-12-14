@@ -905,7 +905,7 @@
                         <div class="layui-inline">
                           <div class="layui-form-item">
                             <label class="layui-form-label">推荐至首页</label>
-                            <div class="layui-input-inline recommend_box">
+                            <div class="layui-input-inline">
                               <input type="radio" name="recommend" class="recommend" value="1" title="是">
                               <input type="radio" name="recommend" class="recommend" value="0" title="否" checked="">
                             </div>
@@ -1361,7 +1361,7 @@
                        }
                        $("#edit_form .status_box").html(str);
 
-                       var str_='';
+                       var str='';
                        if(1==data.recommend){
                            str+='<input type="radio" name="status" class="status" value="1" title="是" checked="checked">';
                            str+='<input type="radio" name="status" class="status" value="0" title="否">';
