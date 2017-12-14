@@ -426,6 +426,15 @@
           }
       }
 
+      function recommendFormatter(cellvalue, options, rowdata){ 
+          if (cellvalue == "1"){
+              return '是';
+          }else{
+              return '否';
+          }
+      }
+      
+
       function pageInit(_username, _gid){
         var grid_data=_ajax_get_list(_username,_gid);
 
@@ -433,7 +442,7 @@
           caption: "用户列表",
           data: grid_data,
           datatype: "local",
-          colNames:['id', '公司名称','用户组', '公司LOGO', '时间', '状态', '操作'],
+          colNames:['id', '公司名称','用户组', '公司LOGO', '时间', '状态', '首页', '操作'],
           colModel:[
             {name:'id', index:'id', sorttype:"int", align:"center", hidden: true},
 
@@ -442,6 +451,7 @@
             {name:'company_logo',index:'company_logo',align:"center", formatter: imgFormatter },
             {name:'time',index:'time',align:"center",hidden: true},
             {name:'status',index:'status',align:"center", formatter: statusFormatter},
+            {name:'recommend',index:'recommend',align:"center", formatter: recommendFormatter},
 
             {name:'operates',index:'operates',align:'center',sortable:false,width:200}
           ], 
