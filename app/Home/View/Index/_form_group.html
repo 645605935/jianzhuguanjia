@@ -186,7 +186,7 @@
 			        <tr>
 			          <td colspan="2">
 			            <div class="layui-input-inline div_300">
-			              <input type="tel" name="phone" lay-verify="phone" placeholder="填写手机号码，轻松获精准报价" class="layui-input phone phone_1">
+			              <input type="tel" name="phone" lay-verify="phone" placeholder="填写手机号码，轻松获精准报价" class="layui-input phone phone_2">
 			            </div>
 			          </td>
 			        </tr>
@@ -374,12 +374,15 @@
             var phone=$(this).val();
             if(isPhoneNo(phone)){
                 $('#btn_verify_1').removeClass('no');
-            }else{
-                alert('手机号不正确');return false;
             }
         });
 
         $('#btn_verify_1').click(function(){
+            var phone=$('.phone_1').val();
+            if(!isPhoneNo(phone)){
+                alert('请填写正确的手机号码');return;
+            }
+
             if($(this).hasClass('no')){
 
             }else{
@@ -403,12 +406,15 @@
             var phone=$(this).val();
             if(isPhoneNo(phone)){
                 $('#btn_verify_2').removeClass('no');
-            }else{
-                alert('手机号不正确');return false;
             }
         });
 
         $('#btn_verify_2').click(function(){
+            var phone=$('.phone_2').val();
+            if(!isPhoneNo(phone)){
+                alert('请填写正确的手机号码');return;
+            }
+
             if($(this).hasClass('no')){
 
             }else{
