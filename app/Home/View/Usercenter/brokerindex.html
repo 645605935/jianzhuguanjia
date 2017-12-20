@@ -5,10 +5,13 @@
   <title>管理中心首页</title> 
   <link type="text/css" rel="stylesheet" href="__PUBLIC__/Home/css/usercenter.css?v=20160601" /> 
   <link href="__PUBLIC__/Home/css/broker.css" rel="stylesheet" /> 
+  <link rel="stylesheet" href="__PUBLIC__/Admin/layui-v1.0.4/layui/css/layui.css"  media="all">
+
   
   <script type="text/javascript" src="__PUBLIC__/Home/js/jquery-1.10.2.js"></script> 
   <script type="text/javascript" src="__PUBLIC__/Home/js/jquery.validate.js"></script> 
   <script type="text/javascript" src="__PUBLIC__/Home/js/popup.js"></script> 
+  <script type="text/javascript" src="__PUBLIC__/Admin/layui-v1.0.4/layui/layui.js"></script> 
  </head> 
  <body> 
   <!-- 头部引用 -->
@@ -36,10 +39,10 @@
           公告：
          <br /> 
          <img src="__PUBLIC__/Home/images/BlackPoint.png" />&nbsp;如果企业信息未在前台展示，
-         <a href="/usercenter/question">查看原因</a> 
+         <a id="tips">查看原因</a> 
          <br /> 
          <img src="__PUBLIC__/Home/images/BlackPoint.png" />&nbsp;获取订单券，请咨询
-         <span style="color:#ff4400">13611127228</span> 
+         <span style="color:#ff4400">{$configInfo.company_phone}</span> 
         </div> </li>
        <li> 企业名称：<b style="font-weight:normal;">{$user.company_name}</b> </li> 
        <li> 审核状态： 
@@ -135,6 +138,21 @@
         }
     }
 </script> 
+<script>
+layui.use('layer', function(){ //独立版的layer无需执行这一句
+  var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
+  
+  $('#tips').click(function(){
+      var message="{$user.company_check_remark}";
+      layer.tips(message, '#tips', {
+          tips: [1, '#3595CC'],
+          time: 4000
+      });
+  });
+  
+});
+</script>
+
    <div class="elear" style="clear:both;"></div> 
   </div> 
   <div class="elear" style="clear:both;"></div> 
