@@ -1,8 +1,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
  <head> 
   <title>资讯详情</title> 
-  <meta name="keywords" content="" /> 
-  <meta name="description" content="" /> 
  </head>
  <body>
     
@@ -13,20 +11,27 @@
     <meta name="mobile-agent" content="format=html5; url=http://m.zizhiguanjia.com/zs/7186.html" /> 
     <meta name="mobile-agent" content="format=wml; url=http://m.zizhiguanjia.com/zs/7186.html" /> 
     <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/new.css" /> 
+    <link rel="stylesheet" href="__PUBLIC__/Admin/layui-v1.0.4/layui/css/layui.css"  media="all">
 
     <!-- 引用 -->
     <include file="Common/header" />
 
 
-    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/tag.css?v=20151105" /> 
-    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/base.css" /> 
-    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/common.css" /> 
-    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/pub.css" /> 
-    <link href="__PUBLIC__/Home/css/IndexReg.css" rel="stylesheet" /> 
-    <style type="text/css">
+    <link type="text/css" rel="stylesheet" href="__PUBLIC__/Home/css/base.css" /> 
+  <link type="text/css" rel="stylesheet" href="__PUBLIC__/Home/css/company1.css" /> 
+  <link type="text/css" rel="stylesheet" href="__PUBLIC__/Home/css/tag.css" /> 
+  <link href="__PUBLIC__/Home/css/IndexReg.css" rel="stylesheet" /> 
+    <style>
     #zhizgj_left {
         float: none !important;
-        background-color: #fff;
+        background: url(__PUBLIC__/Home/images/zzdd_right_img.jpg) #ffcc33 no-repeat;
+        background-position: 0 100%;
+        background-size: 300px 104px;
+    }
+
+    .right-bd {
+        background: #fff !important;
+        margin-top: 10px !important;
     }
 </style> 
     <div class="details-bg-dis"> 
@@ -34,21 +39,21 @@
       <h2> 
        <ul class="yiji_ul"> 
         <li>您当前的位置：</li> 
-        <li><a href="http://www.zizhiguanjia.com/" title="建筑管家">建筑管家</a></li> 
+        <li><a href="{:U('Home/Index/index')}" title="建筑管家">建筑管家</a></li> 
         <li><span> &gt; </span></li> 
-        <li><a href="news.html" title="知识库">知识库</a></li> 
+        <li><a href="{:U('Home/Index/news', array('type'=>1351))}" title="知识库">知识库</a></li> 
         <li><span>&gt;</span></li> 
         <li> 
          <div class="divSelect"> 
           <div class="yiji_class"> 
            <img src="__PUBLIC__/Home/images/xtb.png" class="img_trigon" data-bd-imgshare-binded="1" /> 
-           <a href="news_detail.html?zzdb/" title="行业新闻">行业新闻</a> 
+           <a href="{:U('Home/Index/news', array('type'=>1351))}" title="行业新闻">行业新闻</a> 
           </div> 
           <div id="line_1" class="class2"></div> 
           <ul class="erji_ul"> 
            <div id="div_option" class="class2"> 
-            <li><a href="news_detail.html?zzzc/" title="政策动态">政策动态</a></li> 
-            <li><a href="news_detail.html?zzwd/" title="资质百科">资质百科</a></li> 
+            <li><a href="{:U('Home/Index/news', array('type'=>1351))}" title="政策动态">政策动态</a></li> 
+            <li><a href="{:U('Home/Index/news', array('type'=>1351))}" title="资质百科">资质百科</a></li> 
            </div> 
           </ul> 
          </div> </li> 
@@ -58,7 +63,7 @@
      </div> 
      <div class="container"> 
       <div class="details-con"> 
-       <div class="xiangqy_jsq"> 
+       <div class="xiangqy_jsq" style="display: none;"> 
         <h3><span class="biaot_xian">—————</span>资质代办多少钱？ <span style="color:#00af62;">10秒</span>获取在线智能报价<span class="biaot_xian">—————</span></h3> 
         <form id="form1" name="form1" method="post" action="" class="xinq_jisq_biand"> 
          <input value="0" id="hid_SubjectPType1" type="hidden" /> 
@@ -117,16 +122,16 @@
         <span>下一篇：</span>
         <a href="news_detail.html?7187.html" title="办理安防工程三级资质注意事项">办理安防工程三级资质注意事项</a> 
        </div> 
-       <div class="xiangqy_zhongjru"> 
+       <div class="xiangqy_zhongjru" style="display: none;"> 
         <div class="xiangqy_zhongjru_list"> 
          <div style="width:130px; margin:0px;">
           我是建筑企业：
          </div> 
          <div>
-          <a href="baojia.html" target="_blank">免费获资质报价&gt;&gt;</a>
+          <a href="" target="_blank">免费获资质报价&gt;&gt;</a>
          </div> 
          <div>
-          <a href="http://www.zizhiguanjia.com/xunzheng/" target="_blank">免费寻人才证书&gt;&gt;</a>
+          <a href="" target="_blank">免费寻人才证书&gt;&gt;</a>
          </div> 
          <div style="clear:both"></div> 
         </div> 
@@ -144,7 +149,7 @@
         </div> 
         <div style="clear:both"></div> 
        </div> 
-       <div class="details-conbd" style="height: auto;"> 
+       <div class="details-conbd" style="height: auto;display: none;"> 
         <p>刚看完<a href="news_detail.html?7186.html" title="全面解析2017年安全生产许可证延期办理材料！">【全面解析2017年安全生产许可证延期办理材料！】</a>正在看以下内容：</p> 
         <ul> 
          <li style="background-image:none;"> <a href="news_detail.html?zzdb/" style="color:#fff; margin:0;padding: 0px 5px;"> <span class="span" style="background:url(__PUBLIC__/Home/images/xtb2.gif) no-repeat; background-position:left;width: 105px;font-size: 12px;float: left;text-align: center;padding-left: 0px; padding-right:0px">行业新闻</span> </a> <a href="news_detail.html?7396.html" title="市政资质代理"> 市政资质代理 </a> 2017-07-13 19:00:47 </li> 
@@ -154,7 +159,7 @@
          <li style="background-image:none;"> <a href="news_detail.html?zzdb/" style="color:#fff; margin:0;padding: 0px 5px;"> <span class="span" style="background:url(__PUBLIC__/Home/images/xtb2.gif) no-repeat; background-position:left;width: 105px;font-size: 12px;float: left;text-align: center;padding-left: 0px; padding-right:0px">行业新闻</span> </a> <a href="news_detail.html?7392.html" title="电子与智能化资质代办"> 电子与智能化资质代办 </a> 2017-07-13 17:11:55 </li> 
         </ul> 
        </div> 
-       <div class="footer-link clear" style="border:1px solid #eaeaea;width:900px;padding:20px;"> 
+       <div class="footer-link clear" style="border:1px solid #eaeaea;width:900px;padding:20px;display: none;"> 
         <div style="width:100%;" class="clear"> 
          <span style="float:left;font-size:14px;line-height:27px;color:black">资质百科 :</span> 
          <div style="display:block;margin-left:63px;"> 
@@ -200,47 +205,8 @@
        <div class="sec_topr_bd" id="fixed-block"> 
         <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/popup.css" /> 
         <div id="zhizgj_left"> 
-         <div class="mfhqbj"> 
-          <div class="mfhqbj_num"> 
-           <em>万元</em> 
-           <div class="mfhqbj_jiagesz"> 
-            <span class="mfhqbj_jiagesz_box">13.9</span> 
-            <span class="mfhqbj_jiagesz_box">17.8</span> 
-            <span class="mfhqbj_jiagesz_box">6.8</span> 
-            <span class="mfhqbj_jiagesz_box">33.6</span> 
-            <span class="mfhqbj_jiagesz_box">16.4</span> 
-            <span class="mfhqbj_jiagesz_box">18.1</span> 
-            <span class="mfhqbj_jiagesz_box">37.5</span> 
-            <span class="mfhqbj_jiagesz_box">12.1</span> 
-            <span class="mfhqbj_jiagesz_box">13.9</span> 
-           </div> 
-           <em>最近成交价</em> 
-          </div> 
-         </div> 
-         <form name="user_form" id="user_form" method="post" action="/index/addapplication" novalidate="novalidate"> 
-          <input value="1" name="TypeId" type="hidden" /> 
-          <input name="IdempotentRequestId" value="13e2f9db-823c-4e76-bf14-a3d2cd991d5b" type="hidden" /> 
-          <div class="huoqlxfs"> 
-           <ul> 
-            <li> <select name="SubjectPid" id="SubjectPType" class="zzgj_index_btn zzgj_index_btn_xialk certificateType"><option value="">资质类型</option><option value="1">施工总承包资质</option><option value="2">施工专业承包资质</option><option value="3">施工劳务承包资质</option><option value="201">工程设计综合资质</option><option value="212">工程设计行业资质</option><option value="213">工程设计专业资质</option><option value="214">工程设计专项资质</option><option value="215">建筑工程设计事务所资质</option><option value="114">工程勘察综合资质</option><option value="600">工程勘察专业资质</option><option value="620">工程勘察劳务资质</option><option value="102">工程监理综合资质</option><option value="700">工程监理专业资质</option><option value="720">工程监理事务所资质</option><option value="113">工程造价咨询资质</option><option value="115">安防工程资质</option><option value="117">承装电力设施许可证</option><option value="11100">工程招标代理机构资格</option><option value="12100">劳务派遣经营许可证</option><option value="302">房地产开发企业资质</option><option value="303">房地产经纪机构资质</option><option value="304">房地产估价机构资质</option><option value="14100">计算机信息系统集成资质</option><option value="211">环境影响评价资质</option><option value="402">城乡规划编制资质</option><option value="17100">ISO质量管理体系</option><option value="17200">ISO环境管理体系</option><option value="18100">3C产品认证</option><option value="18200">CEP中国环保产品认证</option><option value="18300">欧盟CE产品安全认证</option><option value="18400">中国环境标志认证（十环）</option><option value="18500">ISCCC电子产品认证</option></select> </li> 
-            <li> <select name="SubjectId" id="SubjectType" class="zzgj_index_btn_xialk zzgj_index_btn "><option value="">资质专业</option></select> </li> 
-            <li> <select name="SubjectLv" id="SubjectLv" class="zzgj_index_btn_xialk zzgj_index_btn "><option value="">资质等级</option></select> </li> 
-            <li> <select name="AreaPid" id="IndexRegAreaPid" class="zzgj_index_btn_xialk zzgj_suozdq"> <option value="">省/市</option> <option value="12">安徽</option><option value="1">北京</option><option value="22">重庆</option><option value="13">福建</option><option value="19">广东</option><option value="20">广西</option><option value="24">贵州</option><option value="28">甘肃</option><option value="3">河北</option><option value="8">黑龙江</option><option value="16">河南</option><option value="17">湖北</option><option value="18">湖南</option><option value="21">海南</option><option value="7">吉林</option><option value="10">江苏</option><option value="14">江西</option><option value="6">辽宁</option><option value="5">内蒙古</option><option value="30">宁夏</option><option value="29">青海</option><option value="4">山西</option><option value="9">上海</option><option value="15">山东</option><option value="23">四川</option><option value="27">陕西</option><option value="2">天津</option><option value="26">西藏</option><option value="31">新疆</option><option value="25">云南</option><option value="11">浙江</option></select> <select name="AreaId" id="IndexRegAreaId" class="zzgj_index_btn_xialk zzgj_suozdq"> <option value="">市/地区</option> </select> </li> 
-            <li> <input name="Phone" id="Phone" class="zzgj_index_btn" placeholder=" 填写手机号码，轻松获精准报价" type="text" /> </li> 
-            <li> 
-             <div class="uform-err uform-err-subptype"></div> 
-             <div class="uform-err uform-err-subtype"></div> 
-             <div class="uform-err uform-err-sublv"></div> 
-             <div class="uform-err uform-err-areapid"></div> 
-             <div class="uform-err uform-err-areaid"></div> 
-             <div class="uform-err uform-err-phone"></div> 
-             <div style="float:right;">
-              <input value="免费获取报价" class="zzgj_index_ljsqbtn IndexRegSubmitBtn" style="margin:auto" onclick="Add(4,5)" type="submit" />
-             </div> 
-             <div class="clear"></div> </li> 
-           </ul> 
-          </div> 
-         </form> 
+         <!-- 右侧引用 -->
+          <include file="_company_r_daiban" />
         </div> 
        </div> 
        <div class="zsbase-l" style="margin-top:10px; float:none;width:300px;"> 
@@ -248,131 +214,13 @@
          <p>快速导航</p> 
         </div> 
         <dl style="color:#444; padding: 20px 10px 20px 15px; width:280px; min-height:120px;"> 
-         <a href="baojia.html" title="办资质" class="a1">办资质</a> 
-         <a href="news_detail.html?zzzc/" title="政策动态">政策动态</a> 
-         <a href="news_detail.html?zzwd/" title="资质百科">资质百科</a> 
-         <a href="news_detail.html?zzdb/" title="行业新闻">行业新闻</a> 
+         <a href="{:U('Home/Index/daiban')}" title="办资质" class="a1">办资质</a> 
+         <a href="{:U('Home/Index/news',array('type'=>1351))}" title="政策动态">政策动态</a> 
+         <a href="{:U('Home/Index/news',array('type'=>1352))}" title="资质百科">资质百科</a> 
+         <a href="{:U('Home/Index/news',array('type'=>1353))}" title="行业新闻">行业新闻</a> 
         </dl> 
        </div> 
-       <div class="right-bd"> 
-        <div class="right-bd-p"> 
-         <p>热门文章</p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-         <span class="right-bd-span right-bd-span-on">日</span> 
-         <span class="right-bd-span">周</span> 
-         <span class="right-bd-span">月</span> 
-        </div> 
-        <ul class="wpp-list item"> 
-         <li class="thumb-li"> <a href="news_detail.html?5793.html" title="保定办理劳务派遣资质需要材料汇总" rel="nofollow"><img src="__PUBLIC__/Home/images/logo_h.jpg" alt="保定办理劳务派遣资质需要材料汇总" title="保定办理劳务派遣资质需要材料汇总" class="wpp-thumbnail" data-bd-imgshare-binded="1" width="90" height="60" /></a> <a class="thumb-a" href="news_detail.html?5793.html" title="保定办理劳务派遣资质需要材料汇总">保定办理劳务派遣资质需要材料汇总</a> <span><a href="news_detail.html?tag-sglwzz/" title="施工劳务资质">施工劳务资质</a></span> </li> 
-         <li class="thumb-li"> <a href="news_detail.html?3254.html" title="企业资质变更需提供的材料包括什么？" rel="nofollow"><img src="__PUBLIC__/Home/images/logo_h.jpg" alt="企业资质变更需提供的材料包括什么？" title="企业资质变更需提供的材料包括什么？" class="wpp-thumbnail" data-bd-imgshare-binded="1" width="90" height="60" /></a> <a class="thumb-a" href="news_detail.html?3254.html" title="企业资质变更需提供的材料包括什么？">企业资质变更需提供的材料包括什么？</a> <span><a href="news_detail.html?tag-zzbgzz/" title="资质变更">资质变更</a></span> </li> 
-         <li class="thumb-li"> <a href="news_detail.html?4228.html" title="2015资质就位需要注意哪些问题?" rel="nofollow"><img src="__PUBLIC__/Home/images/6357905267410061819364884.jpg" alt="2015资质就位需要注意哪些问题?" title="2015资质就位需要注意哪些问题?" class="wpp-thumbnail" data-bd-imgshare-binded="1" width="90" height="60" /></a> <a class="thumb-a" href="news_detail.html?4228.html" title="2015资质就位需要注意哪些问题?">2015资质就位需要注意哪些问题?</a> <span><a href="news_detail.html?tag-zzjw/" title="资质就位">资质就位</a></span> </li> 
-         <li class="thumb-li"> <a href="news_detail.html?7348.html" title="建筑工程公司资质办理" rel="nofollow"><img src="__PUBLIC__/Home/images/image1822923.png" alt="建筑工程公司资质办理" title="建筑工程公司资质办理" class="wpp-thumbnail" data-bd-imgshare-binded="1" width="90" height="60" /></a> <a class="thumb-a" href="news_detail.html?7348.html" title="建筑工程公司资质办理">建筑工程公司资质办理</a> <span><a href="news_detail.html?tag-zzbl/" title="资质办理">资质办理</a></span> </li> 
-         <li class="thumb-li"> <a href="news_detail.html?2752.html" title="2015年最新建筑资质有关说明" rel="nofollow"><img src="__PUBLIC__/Home/images/logo_h.jpg" alt="2015年最新建筑资质有关说明" title="2015年最新建筑资质有关说明" class="wpp-thumbnail" data-bd-imgshare-binded="1" width="90" height="60" /></a> <a class="thumb-a" href="news_detail.html?2752.html" title="2015年最新建筑资质有关说明">2015年最新建筑资质有关说明</a> <span><a href="news_detail.html?tag-jzzz/" title="建筑资质">建筑资质</a></span> </li> 
-        </ul> 
-        <ul class="wpp-list item" style="display:none;"> 
-         <li class="thumb-li"> <a href="news_detail.html?4907.html" title="人才决定资质——建筑企业发展核心竞争力" rel="nofollow"><img src="__PUBLIC__/Home/images/6358352095787636722561642.jpg" alt="人才决定资质——建筑企业发展核心竞争力" title="人才决定资质——建筑企业发展核心竞争力" class="wpp-thumbnail" data-bd-imgshare-binded="1" width="90" height="60" /></a> <a class="thumb-a" href="news_detail.html?4907.html" title="人才决定资质——建筑企业发展核心竞争力">人才决定资质——建筑企业发展核心竞争力</a> <span><a href="news_detail.html?tag-jzzz/" title="建筑资质">建筑资质</a></span> </li> 
-         <li class="thumb-li"> <a href="news_detail.html?6328.html" title="部分施工总承包资质将不再进行初审" rel="nofollow"><img src="__PUBLIC__/Home/images/6360695480221571641481371.jpg" alt="部分施工总承包资质将不再进行初审" title="部分施工总承包资质将不再进行初审" class="wpp-thumbnail" data-bd-imgshare-binded="1" width="90" height="60" /></a> <a class="thumb-a" href="news_detail.html?6328.html" title="部分施工总承包资质将不再进行初审">部分施工总承包资质将不再进行初审</a> <span><a href="news_detail.html?tag-zzxz/" title="资质新政">资质新政</a></span> </li> 
-         <li class="thumb-li"> <a href="news_detail.html?5276.html" title="石家庄代办送变电资质需要哪些人员?" rel="nofollow"><img src="__PUBLIC__/Home/images/6358826805118791773505095.jpg" alt="石家庄代办送变电资质需要哪些人员?" title="石家庄代办送变电资质需要哪些人员?" class="wpp-thumbnail" data-bd-imgshare-binded="1" width="90" height="60" /></a> <a class="thumb-a" href="news_detail.html?5276.html" title="石家庄代办送变电资质需要哪些人员?">石家庄代办送变电资质需要哪些人员?</a> <span><a href="news_detail.html?tag-sbdgczz/" title="输变电工程资质">输变电工程资质</a></span> </li> 
-         <li class="thumb-li"> <a href="news_detail.html?2137.html" title="2015年资质就位对资金和设备标准新规定" rel="nofollow"><img src="__PUBLIC__/Home/images/logo_h.jpg" alt="2015年资质就位对资金和设备标准新规定" title="2015年资质就位对资金和设备标准新规定" class="wpp-thumbnail" data-bd-imgshare-binded="1" width="90" height="60" /></a> <a class="thumb-a" href="news_detail.html?2137.html" title="2015年资质就位对资金和设备标准新规定">2015年资质就位对资金和设备标准新规定</a> <span><a href="news_detail.html?tag-zzjw/" title="资质就位">资质就位</a></span> </li> 
-         <li class="thumb-li"> <a href="news_detail.html?2994.html" title="通信建设招标代理资质审批部门" rel="nofollow"><img src="__PUBLIC__/Home/images/logo_h.jpg" alt="通信建设招标代理资质审批部门" title="通信建设招标代理资质审批部门" class="wpp-thumbnail" data-bd-imgshare-binded="1" width="90" height="60" /></a> <a class="thumb-a" href="news_detail.html?2994.html" title="通信建设招标代理资质审批部门">通信建设招标代理资质审批部门</a> <span><a href="news_detail.html?tag-gczbdlzz/" title="工程招标代理资质">工程招标代理资质</a></span> </li> 
-        </ul> 
-        <ul class="wpp-list item" style="display:none;"> 
-         <li class="thumb-li"> <a href="news_detail.html?6686.html" title="办理资质数据录入时需要注意的事项" rel="nofollow"><img src="__PUBLIC__/Home/images/6361154258984649933109266.png" alt="办理资质数据录入时需要注意的事项" title="办理资质数据录入时需要注意的事项" class="wpp-thumbnail" data-bd-imgshare-binded="1" width="90" height="60" /></a> <a class="thumb-a" href="news_detail.html?6686.html" title="办理资质数据录入时需要注意的事项">办理资质数据录入时需要注意的事项</a> <span><a href="news_detail.html?tag-zzdb/" title="资质代办">资质代办</a></span> </li> 
-         <li class="thumb-li"> <a href="news_detail.html?1663.html" title="压力管道安装资质代办步骤" rel="nofollow"><img src="__PUBLIC__/Home/images/logo_h.jpg" alt="压力管道安装资质代办步骤" title="压力管道安装资质代办步骤" class="wpp-thumbnail" data-bd-imgshare-binded="1" width="90" height="60" /></a> <a class="thumb-a" href="news_detail.html?1663.html" title="压力管道安装资质代办步骤">压力管道安装资质代办步骤</a> <span><a href="news_detail.html?tag-ylgdazzz/" title="压力管道安装资质">压力管道安装资质</a></span> </li> 
-         <li class="thumb-li"> <a href="news_detail.html?5706.html" title="河北建委审批建筑工程资质都需要哪些流程？" rel="nofollow"><img src="__PUBLIC__/Home/images/6359511633852058146519898.jpg" alt="河北建委审批建筑工程资质都需要哪些流程？" title="河北建委审批建筑工程资质都需要哪些流程？" class="wpp-thumbnail" data-bd-imgshare-binded="1" width="90" height="60" /></a> <a class="thumb-a" href="news_detail.html?5706.html" title="河北建委审批建筑工程资质都需要哪些流程？">河北建委审批建筑工程资质都需要哪些流程？</a> <span><a href="news_detail.html?tag-jzsgzz/" title="建筑施工资质">建筑施工资质</a></span> </li> 
-         <li class="thumb-li"> <a href="news_detail.html?5202.html" title="矿山工程施工总承包资质对业绩有要求吗？" rel="nofollow"><img src="__PUBLIC__/Home/images/6358603588520125566693496.jpg" alt="矿山工程施工总承包资质对业绩有要求吗？" title="矿山工程施工总承包资质对业绩有要求吗？" class="wpp-thumbnail" data-bd-imgshare-binded="1" width="90" height="60" /></a> <a class="thumb-a" href="news_detail.html?5202.html" title="矿山工程施工总承包资质对业绩有要求吗？">矿山工程施工总承包资质对业绩有要求吗？</a> <span><a href="news_detail.html?tag-ksgcsgzz/" title="矿山工程施工资质">矿山工程施工资质</a></span> </li> 
-         <li class="thumb-li"> <a href="news_detail.html?7126.html" title="有限责任公司减少注册资本流程是什么？" rel="nofollow"><img src="__PUBLIC__/Home/images/25b0a224-f2c8-4b2a-b66f-23d3355fa52c.jpg" alt="有限责任公司减少注册资本流程是什么？" title="有限责任公司减少注册资本流程是什么？" class="wpp-thumbnail" data-bd-imgshare-binded="1" width="90" height="60" /></a> <a class="thumb-a" href="news_detail.html?7126.html" title="有限责任公司减少注册资本流程是什么？">有限责任公司减少注册资本流程是什么？</a> <span><a href="news_detail.html?tag-zczb/" title="注册资本">注册资本</a></span> </li> 
-        </ul> 
-       </div> 
-       <div class="right-bd"> 
-        <div class="right-bd-p"> 
-         <a href="news_detail.html?zzdb/"><p>行业新闻</p></a> 
-         <span><a href="news_detail.html?zzdb/" title="查看更多行业新闻文章">更多</a></span> 
-        </div> 
-        <ul> 
-         <li><span>01</span><a href="news_detail.html?1297.html" title="建筑资质代办需要的时间有多长？">建筑资质代办需要的时间有多长？</a></li> 
-         <li><span>02</span><a href="news_detail.html?4350.html" title="机电工程总承包一级资质可承接哪些项目?">机电工程总承包一级资质可承接哪些项目?</a></li> 
-         <li><span>03</span><a href="news_detail.html?1095.html" title="招标代理机构资质分级标准和业务范围">招标代理机构资质分级标准和业务范围</a></li> 
-         <li><span class="span1">04</span><a href="news_detail.html?2802.html" title="建筑施工资质审批程序">建筑施工资质审批程序</a></li> 
-         <li><span class="span1">05</span><a href="news_detail.html?1171.html" title="资质办理中企业的净资产考核标准是什么？">资质办理中企业的净资产考核标准是什么？</a></li> 
-         <li><span class="span1">06</span><a href="news_detail.html?475.html" title="资质代办公司怎么样">资质代办公司怎么样</a></li> 
-         <li><span class="span1">07</span><a href="news_detail.html?2690.html" title="环保公司需要办理哪些资质?">环保公司需要办理哪些资质?</a></li> 
-         <li><span class="span1">08</span><a href="news_detail.html?1472.html" title="办理环保工程资质三级有哪些要求？">办理环保工程资质三级有哪些要求？</a></li> 
-         <li><span class="span1">09</span><a href="news_detail.html?1322.html" title="2015年如何申请房地产估价资质?">2015年如何申请房地产估价资质?</a></li> 
-         <li><span class="span1">10</span><a href="news_detail.html?5797.html" title="保定建筑资质升级工程业绩说明">保定建筑资质升级工程业绩说明</a></li> 
-        </ul> 
-       </div> 
-       <div class="zsbase-l" style="margin-top:10px;"> 
-        <div class="icon-knowl1"></div> 
-        <div class="icon-knowl2"></div> 
-        <b style="font-size:16px;"><a href="news_detail.html?tag/">热门标签</a></b> 
-        <ol style="color:#444; padding: 10px 10px 20px 15px; width:210px; height:auto;"> 
-         <a href="news_detail.html?tag-zzbz/" title="资质标准-建筑管家">资质标准</a> 
-         <a href="news_detail.html?tag-fdczz/" title="房地产资质-建筑管家" style="font-size:20px;">房地产资质</a> 
-         <a href="news_detail.html?tag-gcsjzz/" title="工程设计资质-建筑管家" style="font-size:20px;">工程设计资质</a> 
-         <a href="news_detail.html?tag-fdckfzz/" title="房地产开发资质-建筑管家" style="font-size:18px;">房地产开发资质</a> 
-         <a href="news_detail.html?tag-zzsj/" title="资质升级-建筑管家" style="font-size:20px;">资质升级</a> 
-         <a href="news_detail.html?tag-aqscxkz/" title="安全生产许可证-建筑管家" style="font-size:20px;">安全生产许可证</a> 
-         <a href="news_detail.html?tag-zzbl/" title="资质办理-建筑管家">资质办理</a> 
-         <a href="news_detail.html?tag-gckczz/" title="工程勘察资质-建筑管家">工程勘察资质</a> 
-         <a href="news_detail.html?tag-zycbzz/" title="专业承包资质-建筑管家">专业承包资质</a> 
-         <a href="news_detail.html?tag-zzjw/" title="资质就位-建筑管家" style="font-size:18px;">资质就位</a> 
-         <a href="news_detail.html?tag-jzzzdb/" title="建筑资质代办-建筑管家">建筑资质代办</a> 
-         <a href="news_detail.html?tag-zzdb/" title="资质代办-建筑管家" style="font-size:26px;">资质代办</a> 
-         <a href="news_detail.html?tag-jzzz/" title="建筑资质-建筑管家" style="font-size:18px;">建筑资质</a> 
-         <a href="news_detail.html?tag-zzhzzz/" title="资质换证-建筑管家">资质换证</a> 
-         <a href="news_detail.html?tag-zzzs/" title="资质证书-建筑管家">资质证书</a> 
-         <a href="news_detail.html?tag-sglwzz/" title="施工劳务资质-建筑管家" style="font-size:20px;">施工劳务资质</a> 
-         <a href="news_detail.html?tag-yllhzz/" title="园林绿化资质-建筑管家" style="font-size:20px;">园林绿化资质</a> 
-         <a href="news_detail.html?tag-gcjlzz/" title="工程监理资质-建筑管家" style="font-size:18px;">工程监理资质</a> 
-         <a href="news_detail.html?tag-zszxzz/" title="装饰装修资质_建筑装修装饰施工资质_建筑装修装饰工程专业总承包资质-建筑管家" style="font-size:18px;">装饰装修资质</a> 
-         <a href="news_detail.html?tag-hbzz/" title="环保资质_环保工程资质代办_环保工程专业承包资质_环保资质办理-建筑管家">环保资质</a> 
-         <a href="news_detail.html?tag-wyglzz/" title="物业管理资质-建筑管家" style="font-size:18px;">物业管理资质</a> 
-         <a href="news_detail.html?tag-gczbdlzz/" title="工程招标代理资质-建筑管家">工程招标代理资质</a> 
-         <a href="news_detail.html?tag-afgczz/" title="安防工程资质-建筑管家">安防工程资质</a> 
-         <a href="news_detail.html?tag-dljzzz/" title="代理记账-建筑管家" style="font-size:18px;">代理记账</a> 
-         <a href="news_detail.html?tag-zcgs/" title="注册公司-建筑管家">注册公司</a> 
-         <a href="news_detail.html?tag-gszczz/" title="公司注册-建筑管家">公司注册</a> 
-         <a href="news_detail.html?tag-szgczz/" title="市政工程资质_市政工程施工资质_市政公用工程资质-建筑管家" style="font-size:18px;">市政工程资质</a> 
-         <a href="news_detail.html?tag-dlsgzz/" title="电力施工资质_电力工程施工资质代办_电力施工总承包资质-建筑管家">电力施工资质</a> 
-         <a href="news_detail.html?tag-gjzzz/" title="古建筑资质_古建筑施工资质代办_古建筑工程专业承包资质-建筑管家">古建筑资质</a> 
-         <a href="news_detail.html?tag-mqzz/" title="幕墙资质_幕墙资质升级_建筑幕墙工程资质代办-建筑管家">幕墙资质</a> 
-         <a href="news_detail.html?tag-slsdzz/" title="水利施工资质_机电安装资质_水利水电机电安装工程资质代办-建筑管家">水利水电资质</a> 
-         <a href="news_detail.html?tag-txgczz/" title="通信工程资质_通信工程施工资质代办_通信工程总承包资质-建筑管家">通信工程资质</a> 
-         <a href="news_detail.html?tag-csdlzmzz/" title="城市道路照明资质_道路照明施工资质代办_城市及道路照明专业承包资质-建筑管家">城市道路照明资质</a> 
-         <a href="news_detail.html?tag-jzsgzz/" title="建筑工程资质_房屋建筑工程资质_建筑施工总承包资质-建筑管家" style="font-size:26px;">建筑施工资质</a> 
-         <a href="news_detail.html?tag-jdsbazzz/" title="机电设备安装资质_建筑机电设备安装资质_建筑机电安装工程专业承包资质-建筑管家" style="font-size:18px;">机电设备安装资质</a> 
-         <a href="news_detail.html?tag-gczjzxzz/" title="工程造价咨询资质-建筑管家">工程造价咨询资质</a> 
-         <a href="news_detail.html?tag-glgcsgzz/" title="公路工程资质_公路施工资质代办_公路工程施工资质-建筑管家">公路工程施工资质</a> 
-         <a href="news_detail.html?tag-gjggczz/" title="钢结构资质_钢结构工程资质代办_钢结构工程专业承包资质-建筑管家">钢结构工程资质</a> 
-         <a href="news_detail.html?tag-xfssgczz/" title="消防施工资质_消防设施工程资质_消防施工资质代办_消防工程资质标准-建筑管家">消防设施工程资质</a> 
-         <a href="news_detail.html?tag-djyjcsgzz/" title="地基基础施工资质_地基基础工程资质代办_地基基础专业承包资质-建筑管家">地基与基础施工资质</a> 
-         <a href="news_detail.html?tag-fsffbwgczz/" title="建筑防水工程资质_防腐保温工程资质代办_防水防腐保温保温工程资质-建筑管家">防水防腐保温工程资质</a> 
-         <a href="news_detail.html?tag-dzyznhgczycbzz/" title="电子与智能化工程资质_建筑智能化工程资质_电子与智能化工程专业承包资质-建筑管家">电子与智能化工程专业承包资质</a> 
-         <a href="news_detail.html?tag-tzzygczz/" title="特种专业工程资质_特种工程专业承包资质_特种工程装也承包资质代办-建筑管家">特种专业工程资质</a> 
-         <a href="news_detail.html?tag-sbdgczz/" title="输变电资质_输送变电施工资质代办_输变电工程专业承包资质-建筑管家">输变电工程资质</a> 
-         <a href="news_detail.html?tag-zzxz/" title="资质新政-建筑管家" style="font-size:18px;">资质新政</a> 
-        </ol> 
-       </div> 
-       <div style="height:10px;float:left;width:300px;background:#EFEFF0;"></div> 
-       <div class="right-bd" style="margin-top:10px;float:none;width:300px;"> 
-        <div class="right-bd-p"> 
-         <a></a>
-         <p style="width:auto;">最新文章抢先看</p> 
-         <span><a href="news_detail.html?zzdb/" title="查看更多行业新闻文章">更多</a></span> 
-        </div> 
-        <ul> 
-         <li> <span>01</span> <a href="news_detail.html?7396.html" title="市政资质代理"> 市政资质代理 </a> </li> 
-         <li> <span>02</span> <a href="news_detail.html?7395.html" title="建筑企业资质年审"> 建筑企业资质年审 </a> </li> 
-         <li> <span>03</span> <a href="news_detail.html?7394.html" title="承装修试电力资质代办"> 承装修试电力资质代办 </a> </li> 
-         <li> <span class="span1">04</span> <a href="news_detail.html?7393.html" title="公路工程资质等级标准"> 公路工程资质等级标准 </a> </li> 
-         <li> <span class="span1">05</span> <a href="news_detail.html?7392.html" title="电子与智能化资质代办"> 电子与智能化资质代办 </a> </li> 
-         <li> <span class="span1">06</span> <a href="news_detail.html?7390.html" title="办理建筑劳务分包公司需要准备的手续"> 办理建筑劳务分包公司需要准备的手续 </a> </li> 
-         <li> <span class="span1">07</span> <a href="news_detail.html?7389.html" title="建筑劳务公司是做什么的"> 建筑劳务公司是做什么的 </a> </li> 
-         <li> <span class="span1">08</span> <a href="news_detail.html?7388.html" title="维修需要施工许可证"> 维修需要施工许可证 </a> </li> 
-         <li> <span class="span1">09</span> <a href="news_detail.html?7387.html" title="造林绿化工程施工资质"> 造林绿化工程施工资质 </a> </li> 
-         <li> <span class="span1">10</span> <a href="news_detail.html?7386.html" title="建筑装饰二级资质标准"> 建筑装饰二级资质标准 </a> </li> 
-        </ul> 
-       </div> 
+        
       </div> 
      </div> 
      <div class="clear"></div> 
