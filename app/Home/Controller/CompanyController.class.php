@@ -28,7 +28,7 @@ class CompanyController extends CommonController{
         }
 
         //安许办理
-        $company_types_axbl=M('Type')->where(array('pid'=>1442))->select();
+        $company_types_axbl=M('Type')->where(array('pid'=>1377))->select();
 
         //录证挂靠
         $company_types_xzgk=M('Type')->where(array('pid'=>1443))->select();

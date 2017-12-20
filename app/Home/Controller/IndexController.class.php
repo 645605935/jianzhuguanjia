@@ -23,6 +23,7 @@ class IndexController extends CommonController{
         $safe_type_2=M('Type')->where(array('pid'=>1378))->select();//资质情况
         $safe_type_3=M('Type')->where(array('pid'=>1379))->select();//人员情况
 
+
         //金牌中介
         $zhongjie_list=D('User')->where(array('gid'=>33))->order('recommend desc')->limit(10)->relation(true)->select();
         foreach ($zhongjie_list as $key => $value) {

@@ -57,10 +57,26 @@ class UsercenterController extends CommonController{
         $user=M('User')->find($user['id']);
 
         $where=array();
-        $where['type']=$user['company_yewufanwei'];
+
+        switch ($_POST['type']) {
+            case 1:
+                $where['type']=1;//zzdb  资质代办
+                $where['type_2']=array('in', explode('#', $user['company_types_zzdb']));
+                break;
+            case 2:
+                $where['type']=2;//zzdb  资质代办
+                $where['type_2']=array('in', explode('#', $user['company_types_axbl']));
+                break;
+
+            default:
+                # code...
+                break;
+        }
+
+        
         $where['province']=$user['company_service_province'];
         $where['city']=$user['company_service_city'];
-        $where['type_2']=array('in', explode('#', $user['company_types']));
+        
 
         $count      = M('Order')->where($where)->count();
         $Page       = new \Common\Extend\Page($count,10);
