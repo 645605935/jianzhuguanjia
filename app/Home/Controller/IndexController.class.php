@@ -46,8 +46,9 @@ class IndexController extends CommonController{
         $order_list=D('Order')->limit(5)->relation(true)->select();
         foreach ($order_list as $key => $value) {
             $order_list[$key]['time']=date('m月d日', $value['time']);
-            $order_list[$key]['phone']=hidtel($value['time']);
+            $order_list[$key]['phone']=hidtel($value['phone']);
         }
+
 
         // 最新申请服务
         $voice_list=D('Voice')->limit(15)->relation(true)->select();
