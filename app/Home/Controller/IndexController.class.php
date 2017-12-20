@@ -43,7 +43,7 @@ class IndexController extends CommonController{
         $focus_list=M('Focus')->where(array('type'=>1398))->limit(5)->select();
 
         // 最新申请服务
-        $order_list=D('Order')->limit(5)->relation(true)->select();
+        $order_list=D('Order')->limit(5)->relation(true)->order('time desc')->select();
         foreach ($order_list as $key => $value) {
             $order_list[$key]['time']=date('m月d日', $value['time']);
             $order_list[$key]['phone']=hidtel($value['phone']);
