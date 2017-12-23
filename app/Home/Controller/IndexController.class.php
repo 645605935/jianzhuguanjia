@@ -69,7 +69,6 @@ class IndexController extends CommonController{
         }
 
 
-
         //总承包资质
         $zizhi_1_list=M('Article')->where(array('type'=>1390))->limit(11)->select();
 
@@ -445,13 +444,28 @@ class IndexController extends CommonController{
 
     public function news_detail(){
         $id=$_GET['id'];
-        if($id){
-            $row=M('News')->find($id);
-            $row['time']=date('Y-m-d H:i:s', $row['time']);
+        $row=M('News')->find($id);
+        $row['time']=date('Y-m-d H:i:s', $row['time']);
 
-            $this->row=$row;
-            $this->display();
+        $types=array(1351, 1352, 1353);
+        foreach( $types as $k=>$v) {
+            if($v == $row['type']) unset($types[$k]);
         }
+
+        $type_top_1=M('Type')->find($row['type']);
+        $type_top_2=M('Type')->where(array('id'=>array('in', $types)))->select();
+
+
+        //上一篇，下一篇
+        $prev=M('News')->where(array('type'=>$row['type'], 'id'=>array('gt', $row['id'])))->find();
+        $next=M('News')->where(array('type'=>$row['type'], 'id'=>array('lt', $row['id'])))->find();
+
+        $this->row=$row;
+        $this->type_top_1=$type_top_1;
+        $this->type_top_2=$type_top_2;
+        $this->prev=$prev;
+        $this->next=$next;
+        $this->display();
     }
 
     //临时接口
@@ -490,6 +504,16 @@ class IndexController extends CommonController{
     }
 
     public function xunzheng(){
+        global $user;
+
+        $companyinfo=M('User')->find($user['id']); 
+
+        $xunzheng_1=M('Type')->where(array('pid'=>1488))->select();
+        $province=M('Province')->select();
+
+        $this->companyinfo=$companyinfo;
+        $this->xunzheng_1=$xunzheng_1;
+        $this->province=$province;
         $this->display();
     }
 
@@ -560,6 +584,27 @@ class IndexController extends CommonController{
         }
             
         $list = M('City')->where($map)->order('first_name desc')->select();
+
+        if($list){
+            $data=array();
+            $data['code']=0;
+            $data['msg']='success';
+            $data['data']=$list;
+        }else{
+            $data=array();
+            $data['code']=1;
+            $data['msg']='empty';
+        }
+        echo json_encode($data);
+    }
+
+    public function ajax_get_xunzheng_2_list(){
+        $map=array();
+        if($id=$_GET['id']){
+            $map['pid']=$id;
+        }
+            
+        $list = M('Type')->where($map)->select();
 
         if($list){
             $data=array();

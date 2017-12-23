@@ -44,21 +44,23 @@
         <li><a href="{:U('Home/Index/news', array('type'=>1351))}" title="知识库">知识库</a></li> 
         <li><span>&gt;</span></li> 
         <li> 
-         <div class="divSelect"> 
-          <div class="yiji_class"> 
-           <img src="__PUBLIC__/Home/images/xtb.png" class="img_trigon" data-bd-imgshare-binded="1" /> 
-           <a href="{:U('Home/Index/news', array('type'=>1351))}" title="行业新闻">行业新闻</a> 
-          </div> 
-          <div id="line_1" class="class2"></div> 
-          <ul class="erji_ul"> 
-           <div id="div_option" class="class2"> 
-            <li><a href="{:U('Home/Index/news', array('type'=>1351))}" title="政策动态">政策动态</a></li> 
-            <li><a href="{:U('Home/Index/news', array('type'=>1351))}" title="资质百科">资质百科</a></li> 
-           </div> 
-          </ul> 
-         </div> </li> 
+            <div class="divSelect"> 
+                <div class="yiji_class"> 
+                   <img src="__PUBLIC__/Home/images/xtb.png" class="img_trigon" data-bd-imgshare-binded="1" /> 
+                   <a href="{:U('Home/Index/news', array('type'=>$type_top_1['id']))}" title="{$type_top_1.title}">{$type_top_1.title}</a>
+                </div> 
+                <div id="line_1" class="class2"></div> 
+                <ul class="erji_ul"> 
+                     <div id="div_option" class="class2"> 
+                         <foreach name="type_top_2" item="v">
+                            <li><a href="{:U('Home/Index/news', array('type'=>$v['id']))}" title="{$v.title}">{$v.title}</a></li> 
+                         </foreach>
+                     </div> 
+                </ul> 
+            </div> 
+        </li> 
         <li>&gt;</li> 
-        <li><em> 全面解析2017年安全生产许可证延期办理材料！</em></li> 
+        <li><em> {$row.title}</em></li> 
        </ul> </h2> 
      </div> 
      <div class="container"> 
@@ -113,14 +115,23 @@
          </div> 
          <script>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "2", "bdMiniList": false, "bdPic": "http://www.zizhiguanjia.comimages/wx.jpg", "bdStyle": "0", "bdSize": "16" }, "share": {}, "image": { "viewList": ["weixin", "tsina", "qzone"], "viewText": "分享到：", "viewSize": "16" }, "selectShare": { "bdContainerClass": null, "bdSelectMiniList": ["weixin", "tsina", "qzone"] } }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script> 
         </div> 
-        <p style="font-size:12px;display:inline"> 【编辑：amanda】 <a href="news_detail.html?tag-aqscxkz/" title="安全生产许可证-建筑管家">安全生产许可证</a> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>本文链接：</span> <a href="news_detail.html?7186.html" title="全面解析2017年安全生产许可证延期办理材料！-建筑管家">href="news_detail.html?7186.html</a> </p> 
+        <p style="font-size:12px;display:inline"> 【编辑：建筑管家】  
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <span>本文链接：</span> 
+        <a href="{:U('Home/Index/news_detail',array('id'=>$row['id']))}" title="全面解析2017年安全生产许可证延期办理材料！-建筑管家">{:U('Home/Index/news_detail',array('id'=>$row['id']))}</a> </p> 
        </div> 
        <div class="details-dt"> 
-        <span>上一篇：</span>
-        <a href="news_detail.html?7185.html" title="古建筑资质质如何办理">古建筑资质质如何办理</a>
-        <br /> 
-        <span>下一篇：</span>
-        <a href="news_detail.html?7187.html" title="办理安防工程三级资质注意事项">办理安防工程三级资质注意事项</a> 
+          <if condition="$prev">
+              <span>上一篇：</span>
+              <a href="{:U('Home/Index/news_detail',array('id'=>$prev['id']))}" title="{$prev.title}">{$prev.title}</a>
+              <br /> 
+          </if>
+          
+          <if condition="$next">
+              <span>下一篇：</span>
+              <a href="{:U('Home/Index/news_detail',array('id'=>$next['id']))}" title="{$next.title}">{$next.title}</a>
+              <br /> 
+          </if>
        </div> 
        <div class="xiangqy_zhongjru" style="display: none;"> 
         <div class="xiangqy_zhongjru_list"> 

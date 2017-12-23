@@ -1,3 +1,9 @@
+
+<?php 
+    $safe_type_1=M('Type')->where(array('pid'=>1377))->select();//办理类型
+    $safe_type_2=M('Type')->where(array('pid'=>1378))->select();//资质情况
+    $safe_type_3=M('Type')->where(array('pid'=>1379))->select();//人员情况
+?>
 <style type="text/css">
     #baojia_form table{width: 300px;background: none;}
     #baojia_form .div_300{width: 100%;}
@@ -49,7 +55,7 @@
                 <div class="layui-input-inline div_300">
                   <select name="type_1" class="type_1" lay-filter="type_1" lay-verify="required" >
                     <option value="">办理类型</option>
-                    <foreach name="right_type_1" item="v">
+                    <foreach name="safe_type_1" item="v">
                         <option value="{$v['id']}">{$v['title']}</option>
                     </foreach>
                   </select>
@@ -62,7 +68,7 @@
                 <div class="layui-input-inline div_300">
                   <select name="type_2" class="type_2" lay-filter="type_2" lay-verify="required" >
                     <option value="">资质情况</option>
-                    <foreach name="right_type_2" item="v">
+                    <foreach name="safe_type_2" item="v">
                         <option value="{$v['id']}">{$v['title']}</option>
                     </foreach>
                   </select>
@@ -75,7 +81,7 @@
                 <div class="layui-input-inline div_300">
                   <select name="type_3" class="type_3" lay-filter="type_3" lay-verify="required" >
                     <option value="">人员情况</option>
-                    <foreach name="right_type_2" item="v">
+                    <foreach name="safe_type_3" item="v">
                         <option value="{$v['id']}">{$v['title']}</option>
                     </foreach>
                   </select>
@@ -86,7 +92,7 @@
             <tr>
               <td>
                 <div class="layui-input-inline div_150">
-                  <select name="province" class="province" lay-filter="province" lay-verify="required" >
+                  <select name="province" class="province" lay-filter="_province" lay-verify="required" >
                     <option value="">省/市</option>
                     <foreach name="province" item="v">
                         <option value="{$v['provinceid']}">{$v['first_name']} {$v['province']}</option>
@@ -124,7 +130,7 @@
             <tr>
               <td colspan="2" style="text-align:center;">
                  <input type="hidden" name="type" value='2' placeholder="安证代办" autocomplete="off" class="layui-input">
-                 <input id="right_apply_baojia" value="免费获取精准报价" lay-submit="" lay-filter="demo1_apply_baojia" class="btn btn-primary btn-large" />
+                 <input value="免费获取精准报价" lay-submit="" lay-filter="demo1_apply_safe" class="btn btn-primary btn-large" />
               </td>
             </tr>
           </tfoot>
@@ -132,7 +138,7 @@
 
         <script type="text/javascript">
             $(function(){
-                init_editer();
+                _init_safe();
 
                 $('#phone_code_2').blur(function(){
                     var phone=$('.phone_2').val();
@@ -144,14 +150,17 @@
 
                 $('.phone_2').blur(function(){
                     var phone=$(this).val();
-                    if(isPhoneNo(phone)){
+                    if(_isPhoneNo(phone)){
                         $('#btn_verify_2').removeClass('no');
-                    }else{
-                        alert('手机号不正确');return false;
                     }
                 });
 
                 $('#btn_verify_2').click(function(){
+                    var phone=$('.phone_2').val();
+                    if(!isPhoneNo(phone)){
+                        alert('请填写正确的手机号码');return;
+                    }
+
                     if($(this).hasClass('no')){
 
                     }else{
@@ -167,7 +176,7 @@
 
 
         <script type="text/javascript">
-          function invokeSettime(obj){
+          function _invokeSettime(obj){
               var countdown=60;
               settime(obj);
               function settime(obj) {
@@ -188,14 +197,14 @@
           }
 
           // 验证手机号 
-          function isPhoneNo(phone) {
+          function _isPhoneNo(phone) {
               var pattern = /^1[34578]\d{9}$/;
               return pattern.test(phone);
           }
         </script>
 
         <script>
-            function _ajax_apply_baojia(_data){
+            function _ajax_apply_safe(_data){
                  $.ajax({  
                      async:false,
                      type:'post',  
@@ -263,41 +272,29 @@
                  }); 
             }
 
-            function init_editer(){
-                layui.use(['form', 'layedit', 'laydate', 'upload'], function(){
+            function _init_safe(){
+                layui.use(['form', 'layer'], function(){
                   var form = layui.form()
                   ,layer = layui.layer
-                  ,layedit = layui.layedit
-                  ,laydate = layui.laydate;
-
-                  //自定义验证规则
-                  form.verify({
-                    title: function(value){
-                      if(value.length < 5){
-                        return '标题至少得5个字符啊';
-                      }
-                    }
-                    ,pass: [/(.+){6,12}$/, '密码必须6到12位']
-                  });
-
-                  form.on('select(province)', function(data){
+                  
+                  form.on('select(_province)', function(data){
                       var provinceid=data.value;
                       if(provinceid){
-                          _ajax_get_city_select(provinceid);
+                          _ajax_get_city_select_for_safe(provinceid);
                       }
                       return false;
                   });
 
                   //监听提交
-                  form.on('submit(demo1_apply_baojia)', function(data){
+                  form.on('submit(demo1_apply_safe)', function(data){
                     // console.log(data.field);
-                    var _json=_ajax_apply_baojia(data.field);
+                    var _json=_ajax_apply_safe(data.field);
                     return false;
                   });
                 });
             }
 
-            function _ajax_get_city_select(provinceid){
+            function _ajax_get_city_select_for_safe(provinceid){
                 $.ajax({  
                     async:false,
                     type:'get',  

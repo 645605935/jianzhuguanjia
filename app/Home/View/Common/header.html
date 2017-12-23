@@ -10,6 +10,10 @@
 <script src="__PUBLIC__/Admin/layui-v1.0.4/layui/layui.js"></script>
 <script src="__PUBLIC__/layer/layer.js"></script>
 
+<style type="text/css">
+    .dingw_title .dingw_img{top:-3px!important;}
+</style>
+
 <div class="header">
     <div class="header_top">
         <div class="header_top_center">
@@ -18,7 +22,7 @@
                     <li>
                         <div id="regist" style="float:right">
                         <if condition="$user">
-                            <span>您好，{$user.truename}</span>
+                            <span>您好，</span><a href="{:U('Home/usercenter/brokerindex')}">{$user.truename}</a>
                             <a href="javascript:void(0);" rel="nofollow" onclick="LoginOut();">(退出)</a>
                         <else/>
                             <span>您好，请</span>
@@ -81,7 +85,7 @@
     <div id="float_div">
         <div id="head">
             <div class="head_left">
-                <a href="index.html">
+                <a href="{:U('Home/Index/index')}">
                     <img alt="资质管家" src="__UPLOAD__/{$configInfo.logo}" class="zzgj_logo" /></a>
                 <img alt="办资质就上资质管家" src="__PUBLIC__/Home/images/zzgj_ggy.gif" /></div>
             <div class="head_middle">

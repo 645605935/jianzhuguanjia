@@ -1,8 +1,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
  <head> 
   <title>首页</title> 
-  <meta name="keywords" content="" /> 
-  <meta name="description" content="" /> 
   
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
   <meta http-equiv="Cache-Control" content="no-transform" /> 
@@ -10,6 +8,9 @@
   <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/new.css" /> 
   <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/index.css" /> 
   <link rel="stylesheet" href="__PUBLIC__/Admin/layui-v1.0.4/layui/css/layui.css"  media="all">
+  <style type="text/css">
+      .index_zzbz_left_list li{overflow: hidden;}
+  </style>
  </head> 
  <body> 
   <!-- 引用 -->
@@ -183,10 +184,10 @@
 
     <foreach name="news_list" item="vo">
         <ul class="hangy_news" <if condition="$key eq 0">style="margin-left: 0px;"</if>> 
-           <h3><span>|</span>{$vo.title}<a taget="_blank" href="/zs/zzzc/">更多&gt;&gt;</a></h3> 
+           <h3><span>|</span>{$vo.title}<a taget="_blank" href="{:U('Home/Index/news',array('type'=>$vo['id']))}">更多&gt;&gt;</a></h3> 
            <foreach name="vo['_child']" item="v">
                <li>
-                   <a taget="_blank" href="news_detail.html?7273.html" title="{$v.title}">{$v.title}
+                   <a taget="_blank" href="{:U('Home/Index/news_detail',array('id'=>$v['id']))}" title="{$v.title}">{$v.title}
                        <i style="background:url(__PUBLIC__/Home/images/global.png) no-repeat scroll -239px -57px; display:inline-block; padding:0 15px;width:22px;height:18px"></i></a>
                    <span class="index_news_shij">{$v.time}</span>
                </li>
