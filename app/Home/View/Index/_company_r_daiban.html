@@ -423,7 +423,7 @@
             <p class="tuij_diq">{$v.company_address}</p> 
             <p>施工总承包</p> 
             <p>专业承包</p> 
-            <p><a href="/gongsi/4417/" target="_blank" title="{$v.company_name}">免费获取报价</a></p> 
+            <p><a href="{:U('Home/Gongsi/index',array('cid'=>$v['id']))}" target="_blank" title="{$v.company_name}">免费获取报价</a></p> 
            </div> </li> 
        </foreach>
    </ul> 

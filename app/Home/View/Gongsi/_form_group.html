@@ -1,3 +1,12 @@
+<?php
+$province=M('Province')->select();
+$daiban_type=M('Type')->where(array('pid'=>1275))->select();
+
+$safe_type_1=M('Type')->where(array('pid'=>1377))->select();//办理类型
+$safe_type_2=M('Type')->where(array('pid'=>1378))->select();//资质情况
+$safe_type_3=M('Type')->where(array('pid'=>1379))->select();//人员情况
+?>
+
 <style type="text/css">
 	.banner_content .banner_content_form{width: auto!important;top:6px;height: 338px;}
 	.banner_content .banner_content_form .layui-tab-content{padding: 0px;}
@@ -6,17 +15,33 @@
     #daiban_form table{width: 300px;background: none;}
     #daiban_form .div_300{width: 100%;}
     #daiban_form .div_150{width: 125px;}
-    #daiban_form .div_180{width: 150px;}
+    #daiban_form .div_180{width: 138px;}
     #daiban_form .layui-table td{padding:5px 12px;border: 0px;}
 
     #safe_form table{width: 300px;background: none;}
     #safe_form .div_300{width: 100%;}
     #safe_form .div_150{width: 125px;}
-    #safe_form .div_180{width: 150px;}
+    #safe_form .div_180{width: 138px;}
     #safe_form .layui-table td{padding:5px 12px;border: 0px;}
 
 
     #zhizgj_left{height: auto!important;}
+	
+	.pop-form {
+	    padding-top: 200px;
+	}
+    .layui-tab {
+	    margin: 10px 114px!important;
+	    overflow-y: auto!important;
+	    text-align: left!important;
+	}
+	.order-popover {
+	    background-size: 100% 621px;
+	    width: 535px;
+	    height: 587px;
+	}
+
+
 </style>
 
 

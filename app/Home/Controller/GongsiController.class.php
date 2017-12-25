@@ -12,11 +12,14 @@ class GongsiController extends CommonController{
         $user=session('userinfo');
         $this->user=$user;
 
-        if(!$_GET['cid']){
+        if(!$cid=$_GET['cid']){
             $this->redirect('Home/Index/index');
         }else{
             $company_info=D('User')->relation(true)->find($cid);
-            $types=explode('#', $company_info['company_types']);
+            $types_zzdb=explode('#', $company_info['company_types_zzdb']);
+            $types_axbl=explode('#', $company_info['company_types_axbl']);
+            $types=array_filter(array_merge($types_zzdb, $types_axbl));   
+            
             foreach ($types as $key => $value) {
                 $company_info['_company_types'][]=M('Type')->find($value);
             }

@@ -14,8 +14,11 @@
   <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/pub.css" /> 
   <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/gls.css" /> 
   <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/popup.css" /> 
+  <link rel="stylesheet" href="__PUBLIC__/Admin/layui-v1.0.4/layui/css/layui.css"  media="all">
   <script type="text/javascript" src="__PUBLIC__/Home/js/jquery-1.10.2.min.js"></script> 
   <script type="text/javascript" src="__PUBLIC__/Home/js/popup.js"></script> 
+  <script src="__PUBLIC__/Admin/layui-v1.0.4/layui/layui.js"></script>
+  <script src="__PUBLIC__/layer/layer.js"></script>
   <script type="text/javascript">
         $(function () { $("[name='index']").addClass("on"); });
     </script> 
@@ -52,7 +55,7 @@
      <!--由于资质名称过长，需要修正单个资质显示的方框长度--> 
      <div style="display:inline-block;width:475px;margin-left:25px;"> 
         <foreach name="company_info['_company_types']" item="v">
-            <a href="{:U('Home/Index/baojia')}">{$v.title}</a> 
+            <a href="javascript:;">{$v.title}</a> 
         </foreach>
      </div> 
      <p class="ico_p3">服务区域：{$company_info.company_service_province}-{$company_info.company_service_city}</p> 
@@ -151,36 +154,9 @@
      <a href="javascript:void(0)"><img src="__PUBLIC__/Home/images/guanbcon.png" original="__PUBLIC__/Home/images/guanbcon.png" /></a> 
     </div> 
     <div class="pop-form"> 
-     <form class="get-price-form" method="post" novalidate="novalidate"> 
-      <input name="IdempotentRequestId" value="57de4de3-82d1-4591-810f-ffb373c78ca9" type="hidden" /> 
-      <input name="CompanyId" value="5847" id="pop-companyid" type="hidden" /> 
-      <input value="1" name="TypeId" type="hidden" /> 
-      <div class="pop-row"> 
-       <input name="Phone" class="pop-phone" id="pop-phone" placeholder="请填写手机号码，免费获取精确报价" type="text" /> 
-       <div class="pop-err pop-phone-err error_bg" style="display: none;"></div> 
-      </div> 
-      <div class="pop-row"> 
-       <select name="SubjectPid" class="pop-subptype" id="pop-subptype"><option value="">资质类型</option><option value="1">施工总承包资质</option><option value="2">施工专业承包资质</option><option value="3">施工劳务承包资质</option><option value="201">工程设计综合资质</option><option value="212">工程设计行业资质</option><option value="213">工程设计专业资质</option><option value="214">工程设计专项资质</option><option value="215">建筑工程设计事务所资质</option><option value="114">工程勘察综合资质</option><option value="600">工程勘察专业资质</option><option value="620">工程勘察劳务资质</option><option value="102">工程监理综合资质</option><option value="700">工程监理专业资质</option><option value="720">工程监理事务所资质</option><option value="113">工程造价咨询资质</option><option value="115">安防工程资质</option><option value="117">承装电力设施许可证</option><option value="11100">工程招标代理机构资格</option><option value="12100">劳务派遣经营许可证</option><option value="302">房地产开发企业资质</option><option value="303">房地产经纪机构资质</option><option value="304">房地产估价机构资质</option><option value="14100">计算机信息系统集成资质</option><option value="211">环境影响评价资质</option><option value="402">城乡规划编制资质</option><option value="17100">ISO质量管理体系</option><option value="17200">ISO环境管理体系</option><option value="18100">3C产品认证</option><option value="18200">CEP中国环保产品认证</option><option value="18300">欧盟CE产品安全认证</option><option value="18400">中国环境标志认证（十环）</option><option value="18500">ISCCC电子产品认证</option></select> 
-       <div class="pop-err pop-subptype-err error_bg" style="display: none;"></div> 
-      </div> 
-      <div class="pop-row"> 
-       <select name="SubjectId" class="pop-subtype" id="pop-subtype"> <option value="">资质专业</option> </select> 
-       <select name="SubjectLv" class="pop-sublv" id="pop-sublv"> <option value="">资质等级</option> </select> 
-       <div class="pop-err-sa pop-subtype-err error_bg" style="display: none;"></div> 
-       <div class="pop-err-sa pop-sublv-err error_bg" style="display: none;"></div> 
-      </div> 
-      <div class="pop-row"> 
-       <select name="AreaPid" class="pop-areapid" id="pop-areapid"><option value="9">上海</option></select> 
-       <select name="AreaId" class="pop-areaid" id="pop-areaid"><option value="407">闸北</option></select> 
-       <div class="pop-err-sa pop-areapid-err error_bg" style="display: none;"></div> 
-       <div class="pop-err-sa pop-areaid-err error_bg" style="display: none;"></div> 
-       <div class="resp-err error_bg" style="display: none;"></div> 
-      </div> 
-      <div class="pop-row"> 
-       <input class="pop-submit-btn" value="立即申请" type="submit" /> 
-       <input style="display:none" id="reset" type="reset" /> 
-      </div> 
-     </form> 
+
+     <include file="_form_group" />
+     
     </div> 
    </div> 
    <div class="order-suc-popover" style="top: 210.5px; left: 684px;"> 

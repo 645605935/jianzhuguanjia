@@ -22,7 +22,7 @@
       <span>恭喜您，入驻成功！</span>
       <label>我们将在24小时内完成审核！</label> 
       <em style="margin-top:30px;">审核通过后，公司将展示在平台首页，并可在账户中心查看建筑企业的咨询订单 </em> 
-      <em>如有疑问，请拨打24小时服务热线：010-56269198</em> 
+      <em>如有疑问，请拨打24小时服务热线：{$config_info.phone}</em> 
       <ul> 
        <li>为了让更多建筑企业看到并选择，您还可以通过以下方式提升信誉等级：</li> 
       </ul> 
@@ -35,47 +35,5 @@
 
   <!-- 引用 -->
   <include file="_footer" />
-
-  <script async="" src="__PUBLIC__/Home/js/analytics.js"></script>
-  <script src="__PUBLIC__/Home/js/push.js"></script>
-  <script src="__PUBLIC__/Home/js/hm.js?580e9422d1d340fa7711682e41256040"></script>
-  <script>
-    var _hmt = _hmt || [];
-    (function () {
-        var hm = document.createElement("script");
-        hm.src = "__PUBLIC__/Home/js/hm.js?580e9422d1d340fa7711682e41256040";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
-    </script> 
-  <script>
-            (function () {
-                var bp = document.createElement('script');
-                var curProtocol = window.location.protocol.split(':')[0];
-                if (curProtocol === 'https') {
-                    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-                }
-                else {
-                    bp.src = 'js/push.js';
-                }
-                var s = document.getElementsByTagName("script")[0];
-                s.parentNode.insertBefore(bp, s);
-            })();
-        </script> 
-  <script>
-        (function (i, s, o, g, r, a, m) {
-            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date(); a = s.createElement(o),
-            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-        })(window, document, 'script', 'js/analytics.js', 'ga');
-
-        ga('create', 'UA-101792527-1', 'auto');
-        ga('send', 'pageview');
-
-    </script> 
-  <div style="display: none"> 
-   <a href="http://www.cnzz.com/stat/website.php?web_id=1255699131" target="_blank" title="站长统计">站长统计</a> 
-  </div> 
  </body>
 </html>

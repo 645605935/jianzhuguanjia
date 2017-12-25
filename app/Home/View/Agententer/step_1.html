@@ -30,32 +30,32 @@
       <li> <label>用　户　名&nbsp;：&nbsp;</label> <input name="Contact" id="Contact" placeholder="请输入您的称呼" type="text" /> <p class="messge" id="contact_error"></p> </li> 
       <li> <label>手 机 号 码&nbsp;：&nbsp;</label> <input name="Phone" id="Phone" placeholder="建议输入常用手机号" type="text" /> <p class="messge" id="phone_error"></p> </li> 
       <li> <label>验　证　码&nbsp;：&nbsp;</label> <input name="IdentifyingCode" id="IdentifyingCode" placeholder="手机验证码" type="text" /> <input class="btn" value="获取验证码" name="smsId" id="smsId" onclick="settime(this);" type="button" /> <p class="messge" id="identifyingCode_error"></p><br /> </li> 
-      <li style="font-size:12px;height:12px;margin-left:35px;display:none" id="hint">未收到验证码，请发送&quot;yz&quot;至13371739040进行人工验证</li> 
+      <li style="font-size:12px;height:12px;margin-left:35px;display:none" id="hint">未收到验证码，请发送&quot;yz&quot;至{$config_info.phone}进行人工验证</li> 
       <li> <label>设 置 密 码&nbsp;：&nbsp;</label> <input name="password" maxlength="16" id="password" placeholder="请输入密码，6-16位字符" type="password" /> <p class="messge"></p> </li> 
       <li> <label>确 认 密 码&nbsp;：&nbsp;</label> <input name="repassword" maxlength="16" id="repassword" placeholder="请再输入密码" type="password" /> <p class="messge"></p> </li> 
-      <li> <input checked="checked" class="input" name="Agree" id="Agree" type="checkbox" /> <span>我已阅读并同意<a href="javascript:;" id="k" target="_parent">《资质管家服务协议》</a></span> <p class="messge" style="left:130px;top:19px;"></p> </li> 
+      <li> <input checked="checked" class="input" name="Agree" id="Agree" type="checkbox" /> <span>我已阅读并同意<a href="javascript:;" id="k" target="_parent">《建筑管家服务协议》</a></span> <p class="messge" style="left:130px;top:19px;"></p> </li> 
       <li><input class="submit_button_zc" value="立即免费注册" id="registerId" type="submit" /></li> 
      </ul> 
     </form> 
    </div> 
   </div> 
-  <!--  资质管家服务协议 弹框  --> 
+  <!--  建筑管家服务协议 弹框  --> 
   <div id="popup" style="display:none;"> 
    <div class="popup_layer"> 
     <div class="title"> 
-     <h3>资质管家服务协议</h3> 
+     <h3>建筑管家服务协议</h3> 
      <a id="x" href="javascript:;">x</a> 
     </div> 
     <div class="text"> 
      <h4>服务条款　Terms of Service</h4> 
-     <p>欢迎使用资质管家！任何使用资质管家的用户均应仔细阅读本声明，用户可选择不使用资质管家，用户使用资质管家的行为，包括进入资质管家主页及各层页面将被视为对本声明全部内容的认可。</p> 
-     <p>1.资质管家所有刊登内容，以及所提供的信息资料，目的是为了更好地服务我们的访问者，本网站不保证所有信息、文本、图形、链接及其它 项目的绝对准确性和完整性，故仅供访问者参照使用。</p> 
-     <p>2.资质管家不担保网络服务一定能满足用户的要求，也不担保网络服务不会中断，对网络服务的及时性、安全性、准确性也都不做担保。对于因不可抗力或资质管家不能控制的原因造成的网络服务中断或其他缺陷，资质管家不承担任何责任，但将尽力减少因此而给用户造成的损失和 影响.资质管家严格保障用户隐私权，对上网用户的个人信息保密，未经上网用户同意不得向他人泄露，但法律另有规定的除外.用户自愿注册个人信息，用户在注册时提供的所有信息，都是基于自愿，用户有权在任何时候拒绝提供这些信息。注册个人信息的用户同意资质管家对这些信息进行善意利用。用户明确同意其使用资质管家网络服务所存在的风险将完全由其自己承担。</p> 
-     <p>3.任何单位或个人认为通过资质管家的内容（或通过资质管家到的第三方内容：例如，口袋资源分享）可能涉嫌侵犯其合法权益，应该及时向资质管家书面反馈，并提供身份证明、权属证明及详细侵权情况证明，资质管家在收到上述法律文件后，将会尽快删除被控侵权内容。</p> 
-     <p>4.除资质管家注明之服务条款外，其它因使用资质管家而引致之任何意外、疏忽、合约毁坏、诽谤、版权或知识产权侵犯及其所造成的各种损失 （包括因下载而感染电脑病毒），资质管家概不负责，亦不承担任何法律责任。</p> 
-     <p>5.任何透过资质管家网页而链接及得到之资讯、产品及服务，资质管家概不负责，亦不负任何法律责任。</p> 
-     <p>6.资质管家内所有内容并不反映任何资质管家之意见及观点。</p> 
-     <p>7.资质管家适用于中华人民共和国法律法规规定的其它有关免责规定。</p> 
+     <p>欢迎使用建筑管家！任何使用建筑管家的用户均应仔细阅读本声明，用户可选择不使用建筑管家，用户使用建筑管家的行为，包括进入建筑管家主页及各层页面将被视为对本声明全部内容的认可。</p> 
+     <p>1.建筑管家所有刊登内容，以及所提供的信息资料，目的是为了更好地服务我们的访问者，本网站不保证所有信息、文本、图形、链接及其它 项目的绝对准确性和完整性，故仅供访问者参照使用。</p> 
+     <p>2.建筑管家不担保网络服务一定能满足用户的要求，也不担保网络服务不会中断，对网络服务的及时性、安全性、准确性也都不做担保。对于因不可抗力或建筑管家不能控制的原因造成的网络服务中断或其他缺陷，建筑管家不承担任何责任，但将尽力减少因此而给用户造成的损失和 影响.建筑管家严格保障用户隐私权，对上网用户的个人信息保密，未经上网用户同意不得向他人泄露，但法律另有规定的除外.用户自愿注册个人信息，用户在注册时提供的所有信息，都是基于自愿，用户有权在任何时候拒绝提供这些信息。注册个人信息的用户同意建筑管家对这些信息进行善意利用。用户明确同意其使用建筑管家网络服务所存在的风险将完全由其自己承担。</p> 
+     <p>3.任何单位或个人认为通过建筑管家的内容（或通过建筑管家到的第三方内容：例如，口袋资源分享）可能涉嫌侵犯其合法权益，应该及时向建筑管家书面反馈，并提供身份证明、权属证明及详细侵权情况证明，建筑管家在收到上述法律文件后，将会尽快删除被控侵权内容。</p> 
+     <p>4.除建筑管家注明之服务条款外，其它因使用建筑管家而引致之任何意外、疏忽、合约毁坏、诽谤、版权或知识产权侵犯及其所造成的各种损失 （包括因下载而感染电脑病毒），建筑管家概不负责，亦不承担任何法律责任。</p> 
+     <p>5.任何透过建筑管家网页而链接及得到之资讯、产品及服务，建筑管家概不负责，亦不负任何法律责任。</p> 
+     <p>6.建筑管家内所有内容并不反映任何建筑管家之意见及观点。</p> 
+     <p>7.建筑管家适用于中华人民共和国法律法规规定的其它有关免责规定。</p> 
      <a href="javascript:;" class="agree" id="agree2">同意并继续</a> 
     </div> 
    </div> 
