@@ -733,7 +733,7 @@
               return '<span class="label label-danger" alt="'+cellvalue+'">办安证</span>';
           }
           if (cellvalue == "3"){
-              return '<span class="label label-warning" alt="'+cellvalue+'">开公司</span>';
+              return '<span class="label label-warning" alt="'+cellvalue+'">企业寻证</span>';
           }
       }
 
@@ -755,11 +755,12 @@
               data: grid_data,
               datatype: "local",
               height: 430,
-              colNames:['id', '用户名', '省', '市', '手机号','类型','分类一','分类二','分类三','状态','描述','查看量','操作'],
+              colNames:['id', '用户名', '昵称', '省', '市', '手机号', '类型','分类一','分类二','分类三', '数量', '价格','状态','描述','查看量','操作'],
               colModel:[
                 {name:'id',index:'id',  sorttype:"int",align : "center", hidden: true},
 
                 {name:'truename',index:'truename', align : "center"},
+                {name:'nickname',index:'nickname', align : "center"},
                 {name:'province',index:'province', align : "center"},
                 {name:'city',index:'city', align : "center"},
                 {name:'phone',index:'phone', align : "center"},
@@ -767,6 +768,8 @@
                 {name:'type_1',index:'type_1', align : "center"},
                 {name:'type_2',index:'type_2', align : "center"},
                 {name:'type_3',index:'type_3', align : "center"},
+                {name:'num',index:'num', align : "center"},
+                {name:'price',index:'price', align : "center"},
                 {name:'status',index:'status', align : "center", formatter: statusFormatter},
                 {name:'remark',index:'remark', align : "center", width:300},
                 {name:'eye',index:'eye', align : "center"},

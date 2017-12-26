@@ -75,7 +75,7 @@
                               <div class="layui-form-item">
                                 <label class="layui-form-label">您的称呼</label>
                                 <div class="layui-input-inline">
-                                  <input type="text" name="username" lay-verify="required" class="layui-input username">
+                                  <input type="text" name="nickname" lay-verify="required" class="layui-input nickname">
                                 </div>
                               </div>
                             </div>
@@ -86,9 +86,9 @@
                           <td>
                             <div class="layui-inline">
                               <div class="layui-form-item">
-                                <label class="layui-form-label">所需人才</label>
+                                <label class="layui-form-label">所需证书</label>
                                 <div class="layui-input-inline">
-                                  <select name="xunzheng_1" class="xunzheng_1" lay-filter="xunzheng_1">
+                                  <select name="type_2" class="xunzheng_1" lay-filter="xunzheng_1">
                                     <option value="">请选择</option>
                                     <foreach name="xunzheng_1" item="v">
                                         <option value="{$v['id']}">{$v['title']}</option>
@@ -96,7 +96,7 @@
                                   </select>
                                 </div>
                                 <div class="layui-input-inline">
-                                  <select name="xunzheng_2" class="xunzheng_2">
+                                  <select name="type_3" class="xunzheng_2">
                                     <option value="">请选择</option>
                                   </select>
                                 </div>
@@ -211,7 +211,8 @@
                       <tfoot>
                         <tr>
                           <td colspan="2" style="text-align:center;">
-                            <button class="layui-btn" lay-submit="" lay-filter="demo1_xunzheng">提交</button>
+                            <input type="hidden" name="type" value="3" lay-verify="required" class="layui-input">
+                            <button class="layui-btn layui-btn-normals" lay-submit="" lay-filter="demo1_xunzheng">提交</button>
                           </td>
                         </tr>
                       </tfoot>

@@ -374,16 +374,20 @@ class IndexController extends CommonController{
     public function ajax_apply_baojia(){
         global $user;
 
+        // if(!$user){
+        //     $this->redirect('Home/User/login');die;
+        // }
+
         if($_POST){
             $data=$_POST;
             $data['time']=time();
-            $data['order_no']='JZGJ'.time()."_".$user['id'];
+            $data['order_no']='JZGJ-'.time();
 
             $id=M('Order')->add($data);
             if($id){
                 $data=array();
                 $data['code']=0;
-                $data['msg']='申请成功';
+                $data['msg']='申请成功,【入驻建筑管家可查看更多订单信息】';
             }else{
                 $data=array();
                 $data['code']=1;
