@@ -19,13 +19,15 @@ class GongsiController extends CommonController{
             $types_zzdb=explode('#', $company_info['company_types_zzdb']);
             $types_axbl=explode('#', $company_info['company_types_axbl']);
             $types=array_filter(array_merge($types_zzdb, $types_axbl));   
-            
+
             foreach ($types as $key => $value) {
                 $company_info['_company_types'][]=M('Type')->find($value);
             }
 
             $this->company_info=$company_info;
         }
+
+        // dump($_SERVER);die;
     }
 
     public function search(){

@@ -58,7 +58,13 @@
         <li name="jytd"> <a href="{:U('Home/Gongsi/team',array('cid'=>$_GET['cid']))}">精英团队</a> </li> 
         <li name="lianxi"> <a href="{:U('Home/Gongsi/lianxi',array('cid'=>$_GET['cid']))}">联系我们</a> </li> 
        </ul> 
-       <a href="javascript:void(0)" class="zgs_freeDesignAndPrice btn-get-price"> 免费为我报价 <b></b> </a> 
+
+       <if condition="$_SERVER['PATH_INFO'] eq 'Gongsi/index/cid/'.$_GET['cid']">
+         <a href="javascript:void(0)" class="zgs_freeDesignAndPrice btn-get-price" > 免费为我报价 <b></b> </a> 
+      <else/>
+          <a href="{:U('Home/Gongsi/index',array('cid'=>$_GET['cid']))}" class="zgs_freeDesignAndPrice btn-get-price" > 返回公司首页 <b></b> </a> 
+       </if>
+       
       </div> 
      </div> 
     </div> 
