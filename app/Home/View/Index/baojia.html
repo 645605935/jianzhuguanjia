@@ -578,7 +578,7 @@
               var type=data.value;
               if(type){
                   _ajax_get_dengji_select(type);
-                  _ajax_get_autoprice_info(type);
+                  // _ajax_get_autoprice_info(type);
               }
 
               return false;
@@ -597,6 +597,9 @@
             var _json=_ajax_apply_baojia(data.field);
             if(_json.code==0){
                 layer.msg(_json.msg);
+
+                var type=$('#baojia_form .zhuanye').val();
+                _ajax_get_autoprice_info(type);
             }else{
                 layer.msg(_json.msg);
             }
