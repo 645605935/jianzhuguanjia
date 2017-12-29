@@ -131,13 +131,17 @@ function formSubmit() {
     $("#identifyingCode_error").text("");
     $("#identifyingCode_error").removeClass("error_bg");
     $.post(""+Home_User_register+"", $("#register_form").serialize(), function (data) {
+        console.log(data);
         var data=JSON.parse(data);
         if (data.IsSuccess) {
-            if (data.CompanyType == 1) {
+
+            console.log(data);
+            // console.log(typeof data.CompanyType);return false;
+            if (data.CompanyType == '1') {
                 var strPhone = data.Phone.substring(0,3);
                 location.href = ""+HTTP_HOST+"/Home/Agententer/ruzhu_success.html?phone=" + strPhone;
-            }else {
-                location.href = ""+Home_Accountinfor_personalinfo+"";
+            }else if(data.CompanyType == '0'){
+                location.href = ""+HTTP_HOST+"/Home/accountinfor/personalinfo.html";
             }
         }
     });

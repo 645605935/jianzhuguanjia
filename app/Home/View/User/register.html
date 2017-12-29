@@ -109,55 +109,5 @@
             };
         };
     </script> 
-
-
-    <script type="text/javascript">
-          //异步添加信息
-          function _ajax_add_user(data){
-
-              var truename=data.truename;
-              var password=data.password;
-              var username=data.username;
-              var gid=data.gid;
-              var img=data.img;
-
-              var _edit_data ='{';
-                  _edit_data+='"truename":"'+truename+'","password":"'+password+'","username":"'+username+'","img":"'+img+'","gid":"'+gid+'"';
-                  _edit_data+='}';
-
-              var _json;
-              $.ajax({  
-                  async:false,
-                  type:'post',  
-                  contentType:"application/x-www-form-urlencoded",
-                  url : "{:U('Admin/User/ajax_add_user')}",
-                  data: _edit_data,
-                  dataType : 'json',
-                  success  : function(json) {  
-                      if(json.code == 0){
-                          layer.msg(json.msg);
-                          _json=json;
-
-                          var _row=json.data;
-                          console.log(_row);
-                          var operate =""; 
-                          operate  = "<button style='margin-right:5px;' class='btn btn-warm btn-xs id-btn-dialog2_show' data-id='"+_row.id+"'>查看</button>";
-                          operate += "<button style='margin-right:5px;' class='btn btn-primary btn-xs id-btn-dialog2_edit' data-id='"+_row.id+"'>编辑</button>";
-                          operate += "<button class='btn btn-danger btn-xs id-btn-dialog2_del' data-id='"+_row.id+"'>删除</button>";
-
-                          $("#grid-table").addRowData("1", {"id":_row.id,"truename":_row.truename,"_auth_group_title":_row._auth_group_title,"username":_row.username,"time":_row.time,"img":"./Uploads"+_row.img,"operates":_row.operate}, "first");  
-
-                      }else{
-                          layer.msg(json.msg);
-                          _json=json;
-                      }
-                  },
-                  error  : function() {  
-                      alert('error');
-                  }  
-              }); 
-              return _json;  
-          }
-    </script>
  </body>
 </html>
