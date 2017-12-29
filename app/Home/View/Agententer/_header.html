@@ -1,12 +1,11 @@
 <?php
     $config_info=M('Config')->find(1);
  ?>
-
 <div class="logo_box"> 
    <div class="logo"> 
     <a href="{:U('Home/Index/index')}" title="建筑管家">
      <div class="sheader-logo">
-       <img src="__UPLOAD__/{$config_info.logo}">
+       <img src="__UPLOAD__/{$configInfo.logo}">
      </div>
     </a> 
     <p>欢迎入驻</p> 
@@ -18,7 +17,7 @@
     </div> 
     <div class="div2"> 
      <p>24小时服务热线:</p> 
-     <span>{$config_info.phone}</span> 
+     <span>{$configInfo.company_phone}</span> 
     </div> 
    </div> 
   </div> 

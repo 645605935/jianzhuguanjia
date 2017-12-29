@@ -652,6 +652,9 @@ class IndexController extends CommonController{
         }
 
         $row = M('Autoprice')->where($map)->find();
+        if(!$row){
+            $row = M('Autoprice')->find(3);
+        }
 
         if($row){
             $data=array();
