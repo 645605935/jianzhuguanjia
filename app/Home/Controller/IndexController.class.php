@@ -10,6 +10,36 @@ class IndexController extends CommonController{
         global $user;
         $user=session('userinfo');
         $this->user=$user;
+
+        if($_GET['fit_1']||$_GET['fit_3']){
+            if($_SERVER['PATH_INFO']=='Index/daiban'){
+                if($_SESSION['daiban']['fit_1']!=$_GET['fit_1']){
+                    unset($_GET['fit_2']);
+                    $this->redirect('Home/Index/daiban', $_GET);
+                }
+            }
+            if($_SERVER['PATH_INFO']=='Index/daiban'){
+                if($_SESSION['daiban']['fit_3']!=$_GET['fit_3']){
+                    unset($_GET['fit_4']);
+                    $this->redirect('Home/Index/daiban', $_GET);
+                }
+            }
+            if($_SERVER['PATH_INFO']=='Index/safe'){
+                if($_SESSION['safe']['fit_1']!=$_GET['fit_1']){
+                    unset($_GET['fit_2']);
+                    $this->redirect('Home/Index/safe', $_GET);
+                }
+            }
+            if($_SERVER['PATH_INFO']=='Index/safe'){
+                if($_SESSION['safe']['fit_3']!=$_GET['fit_3']){
+                    unset($_GET['fit_4']);
+                    $this->redirect('Home/Index/safe', $_GET);
+                }
+            }
+
+            $_SESSION['daiban']=$_GET;
+            $_SESSION['safe']=$_GET;
+        }
     }
 
     public function index(){

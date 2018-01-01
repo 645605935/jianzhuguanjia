@@ -70,6 +70,7 @@
       <dl class="zgs_st_dl" id="proId">
           <dt>办理类型</dt>
           <dd>
+              &nbsp; <a fit_1="0" href="javascript:Filter('fit_1','0');">不限</a>&nbsp;  
               <foreach name="type" item="v">
                   &nbsp; <a fit_1="{$v.id}" href="javascript:Filter('fit_1','{$v.id}');">{$v.title}</a>&nbsp;  
               </foreach>
@@ -79,6 +80,7 @@
       <dl class="zgs_st_dl" id="proId">
           <dt>省　　市</dt>
           <dd>
+              &nbsp; <a fit_3="0" href="javascript:Filter('fit_3','0');">不限</a>&nbsp;
               <foreach name="province" item="v">
                   &nbsp; <a fit_3="{$v.provinceid}" href="javascript:Filter('fit_3','{$v.provinceid}');">{$v.province}</a>&nbsp; 
               </foreach>
@@ -88,6 +90,7 @@
       <dl class="zgs_st_dl" <if condition="!$city">style="display:none;"</if>>
           <dt>地　　区</dt>
           <dd>
+              &nbsp; <a fit_4="0" href="javascript:Filter('fit_4','0');">不限</a>&nbsp;
               <foreach name="city" item="v">
                   &nbsp; <a fit_4="{$v.cityid}" href="javascript:Filter('fit_4','{$v.cityid}');">{$v.city}</a>&nbsp; 
               </foreach>
