@@ -46,7 +46,7 @@ class IndexController extends CommonController{
         $province=M('Province')->select();
 
         // 右侧分类
-        $daiban_type=M('Type')->where(array('pid'=>1275))->select();
+        $daiban_type=M('Type')->where(array('pid'=>1275,'id'=>array('in',array('1292','1293'))))->select();
 
         // 右侧分类
         $safe_type_1=M('Type')->where(array('pid'=>1377))->select();//办理类型
@@ -85,7 +85,7 @@ class IndexController extends CommonController{
         $voice_list=D('Voice')->limit(15)->relation(true)->select();
 
         //资质代办服务类型
-        $type_list=M('Type')->where(array('pid'=>1275))->select();
+        $type_list=M('Type')->where(array('pid'=>1275,'id'=>array('in',array('1292','1293'))))->select();
 
 
         //行业新闻
@@ -241,7 +241,7 @@ class IndexController extends CommonController{
         
 
         // 右侧分类
-        $right_type_1=M('Type')->where(array('pid'=>1275))->select();
+        $right_type_1=M('Type')->where(array('pid'=>1275,'id'=>array('in',array('1292','1293'))))->select();
 
         $where['gid']=33;
         // $where['company_service_province']=$_SESSION['cur_province_info']['provinceid'];
@@ -578,7 +578,7 @@ class IndexController extends CommonController{
        
         // 右侧分类
         $province=M('Province')->select();
-        $right_type_1=M('Type')->where(array('pid'=>1275))->select();
+        $right_type_1=M('Type')->where(array('pid'=>1275,'id'=>array('in',array('1292','1293'))))->select();
         $this->province=$province;
         $this->right_type_1=$right_type_1;
         $this->display();
