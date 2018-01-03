@@ -204,7 +204,7 @@
                    success  : function(json) {
                        if(json.code==0){
                            alert(json.msg);
-                           window.location.reload();
+                           window.location.href="{:U('Home/Index/index')}"+"#latest_orders";
                        }else{
                            alert(json.msg);
                        }

@@ -80,7 +80,6 @@ class IndexController extends CommonController{
             $order_list[$key]['phone']=hidtel($value['phone']);
         }
 
-
         // 最新申请服务
         $voice_list=D('Voice')->limit(15)->relation(true)->select();
 

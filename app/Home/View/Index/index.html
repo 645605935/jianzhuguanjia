@@ -107,7 +107,7 @@
    </ul> 
    <div class="clear"></div> 
   </div> 
-  <div class="dingd_shengy"> 
+  <div class="dingd_shengy" id="latest_orders"> 
    <div class="ding_shengy_w"> 
     <div class="ziz_title"> 
      <div class="ziz_dingd_title"> 
@@ -121,24 +121,60 @@
     </div> 
     <div class="modulat-daibgs modulat-order"> 
      <div class="modulat-order-list"> 
-      <table width="100%" border="1"> 
-       <tbody>
-        <tr> 
-         <th width="17%" valign="middle" align="center"> 建筑企业 </th> 
-         <th width="34%" valign="middle" align="center"> 服务类型 </th> 
-         <th width="14%" valign="middle" align="center"> 地区 </th> 
-         <th width="14%" valign="middle" align="center"> 发布时间 </th> 
-        </tr> 
-        <foreach name="order_list" item="v">
-            <tr> 
-             <td valign="middle" align="center">{$v.phone}</td> 
-             <td valign="middle" align="center">{$v.type_1}<br />{$v.type_2} {$v.type_2}</td> 
-             <td valign="middle" align="center">{$v.province}-{$v.city}</td> 
-             <td valign="middle" align="center">{$v.time}</td> 
-            </tr> 
-        </foreach>
-       </tbody>
-      </table> 
+
+
+
+      
+
+      <script type="text/javascript" src="__PUBLIC__/Home/js/jquery.SuperSlide.2.1.1.js"></script>
+      <style type="text/css">
+          /* 本例子css */
+          .txtMarquee-top{ width:100%;  overflow:hidden; position:relative;  border:1px solid #ccc;   }
+          .txtMarquee-top .bd{}
+          .txtMarquee-top .infoList li{ height:50px; line-height:50px; width:100%;overflow: hidden;  }
+          .txtMarquee-top .infoList li { float:left; color:#999; display: block;height: 50px;line-height: 50px; }
+          .txtMarquee-top .infoList li div{ float:right; color:#999; box-sizing: border-box; border-right: 1px solid #ccc; border-bottom: 1px solid #ccc; }
+      </style>
+
+      <div class="txtMarquee-top">
+        <div class="hd">
+          <a class="next"></a>
+          <a class="prev"></a>
+        </div>
+        <div class="bd">
+          <table width="100%" border="1"> 
+
+             <thead>
+                <tr> 
+                 <th width="17%" valign="middle" align="center"> 建筑企业 </th> 
+                 <th width="43%" valign="middle" align="center"> 服务类型 </th> 
+                 <th width="20%" valign="middle" align="center"> 地区 </th> 
+                 <th width="20%" valign="middle" align="center"> 发布时间 </th> 
+                </tr>
+             </thead>
+             <tbody>
+                <ul class="infoList">
+                 <foreach name="order_list" item="v">
+                   <li> 
+                    <div style="width:17%;float: left;text-align: center;">{$v.phone}</div> 
+                    <div style="width:43%;float: left;">{$v.type_1}=>{$v.type_2}=>{$v.type_2}</div> 
+                    <div style="width:20%;float: left;text-align: center;">{$v.province}=>{$v.city}</div> 
+                    <div style="width:20%;float: left;text-align: center;">{$v.time}</div> 
+                   </li> 
+                 </foreach>
+                </ul>
+             </tbody>
+             
+          </table> 
+        </div>
+      </div>
+
+
+      <script type="text/javascript">
+        $(".txtMarquee-top").slide({mainCell:".bd ul",autoPlay:true,effect:"topMarquee",vis:5,interTime:50});
+      </script>
+
+
      </div> 
     </div> 
     <div class="modulat-index-city modulat-order modulat-evaluate"> 
