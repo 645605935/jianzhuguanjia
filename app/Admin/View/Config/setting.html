@@ -188,6 +188,28 @@
 									              </td>
 									              <td></td>
 									            </tr>
+
+									            <tr>
+									              <td>微信收钱码</td>
+									              <td>
+									              	<input type="file" name="wxpay_img" id="id-input-file-2" />
+													<notempty name="config['wxpay_img']">
+														<img width="100px" src="__UPLOAD__/{$config['wxpay_img']}"/>
+													</notempty>
+									              </td>
+									              <td></td>
+									            </tr>
+
+									            <tr>
+									              <td>支付宝收钱码</td>
+									              <td>
+									              	<input type="file" name="alipay_img" id="id-input-file-2" />
+													<notempty name="config['alipay_img']">
+														<img width="100px" src="__UPLOAD__/{$config['alipay_img']}"/>
+													</notempty>
+									              </td>
+									              <td></td>
+									            </tr>
 									          </tbody>
 
 									          <tfoot>

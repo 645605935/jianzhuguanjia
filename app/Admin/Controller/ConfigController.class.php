@@ -41,6 +41,20 @@ class ConfigController extends AuthController {
                 unset($data['ad_img']);
             }
 
+            if($_FILES['wxpay_img']['size']>0){
+                $img=eUpload(1,$_FILES['wxpay_img'],'config');
+                $data['wxpay_img']   =$img['url'];
+            }else{
+                unset($data['wxpay_img']);
+            }
+
+            if($_FILES['alipay_img']['size']>0){
+                $img=eUpload(1,$_FILES['alipay_img'],'config');
+                $data['alipay_img']   =$img['url'];
+            }else{
+                unset($data['alipay_img']);
+            }
+
 
             if($d->save($data)){
                 cacheConfig(0);
