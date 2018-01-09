@@ -336,7 +336,7 @@ class UserController extends AuthController {
 
     //删除
     public function ajax_del(){
-        $id=I('id'); 
+        $id=I('ids'); 
 
         if($id){
             $res=M('User')->where(array('id'=>$id))->delete();

@@ -1495,13 +1495,13 @@
 
        //异步删除
        function _ajax_del(ids){
-           var _RowID='{"ids":"'+ids+'"}';
-
            var _json;
            $.ajax({  
-               type:'post',  
+               type:'get',  
                url : "{:U('Admin/User/ajax_del')}",
-               data: _RowID,
+               data: {
+                  ids:ids
+               },
                dataType : 'json',
                success  : function(json) {  
                    if(json.code == 0){
