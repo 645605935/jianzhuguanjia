@@ -336,7 +336,7 @@ class UserController extends AuthController {
 
     //删除
     public function ajax_del(){
-        $id=I('ids'); 
+        $id=I('id'); 
 
         if($id){
             $res=M('User')->where(array('id'=>$id))->delete();
@@ -359,7 +359,30 @@ class UserController extends AuthController {
         echo json_encode($data);
     }
 
+    //删除
+    public function ajax_del_coupon(){
+        $id=I('id'); 
 
+        if($id){
+            $res=M('coupon')->where(array('id'=>$id))->delete();
+
+            if($res){
+                $data=array();
+                $data['code']=0;
+                $data['msg']='success';
+            }else{
+                $data=array();
+                $data['code']=1;
+                $data['msg']='error';
+            }
+        }else{
+            $data=array();
+            $data['code']=2;
+            $data['msg']='error';
+        }
+
+        echo json_encode($data);
+    }
 
  
     //批量添加用户信息
