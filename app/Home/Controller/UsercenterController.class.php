@@ -55,50 +55,88 @@ class UsercenterController extends CommonController{
     public function brokerorder(){
         global $user;
         $user=M('User')->find($user['id']);
+        if($user['gid']==33){
+            //中介
+            $where=array();
 
-        $where=array();
+            switch ($_POST['type']) {
+                case 1:
+                    $where['type']=1;//zzdb  资质代办
+                    $where['type_2']=array('in', explode('#', $user['company_types_zzdb']));
+                    break;
+                case 2:
+                    $where['type']=2;//axbl  安许办理
+                    $where['type_2']=array('in', explode('#', $user['company_types_axbl']));
+                    break;
 
-        switch ($_POST['type']) {
-            case 1:
-                $where['type']=1;//zzdb  资质代办
-                $where['type_2']=array('in', explode('#', $user['company_types_zzdb']));
-                break;
-            case 2:
-                $where['type']=2;//zzdb  资质代办
-                $where['type_2']=array('in', explode('#', $user['company_types_axbl']));
-                break;
-
-            default:
-                # code...
-                break;
-        }
-
-        
-        $where['province']=$user['company_service_province'];
-        $where['city']=$user['company_service_city'];
-        
-
-        $count      = M('Order')->where($where)->count();
-        $Page       = new \Common\Extend\Page($count,10);
-        $nowPage = isset($_GET['p'])?$_GET['p']:1;
-        $list=D('Order')->page($nowPage.','.$Page->listRows)->where($where)->relation(true)->select();
-        foreach ($list as $key => $value) {
-            $res=M('OrderLog')->where(array('uid'=>$user['id'], 'oid'=>$value['id']))->find();
-            if($res){
-                $list[$key]['see']=1;
-            }else{
-                $list[$key]['phone']=hidtel($value['phone']);
-                $list[$key]['see']=0;
+                default:
+                    # code...
+                    break;
             }
-            $list[$key]['time']=date('Y-m-d H:i', $value['time']);
+
+            
+            $where['province']=$user['company_service_province'];
+            $where['city']=$user['company_service_city'];
+            
+
+            $count      = M('Order')->where($where)->count();
+            $Page       = new \Common\Extend\Page($count,10);
+            $nowPage = isset($_GET['p'])?$_GET['p']:1;
+            $list=D('Order')->page($nowPage.','.$Page->listRows)->where($where)->relation(true)->select();
+            foreach ($list as $key => $value) {
+                $res=M('OrderLog')->where(array('uid'=>$user['id'], 'oid'=>$value['id']))->find();
+                if($res){
+                    $list[$key]['see']=1;
+                }else{
+                    $list[$key]['phone']=hidtel($value['phone']);
+                    $list[$key]['see']=0;
+                }
+                $list[$key]['time']=date('Y-m-d H:i', $value['time']);
+            }
+
+            $this->page=$Page->show();
+            $this->list=$list;
+
+            $this->display();
+        }else{
+            //建筑
+            $where=array();
+
+            switch ($_POST['type']) {
+                case 1:
+                    $where['type']=1;//zzdb  资质代办
+                    $where['type_2']=array('in', explode('#', $user['company_types_zzdb']));
+                    break;
+                case 2:
+                    $where['type']=2;//axbl  安许办理
+                    $where['type_2']=array('in', explode('#', $user['company_types_axbl']));
+                    break;
+
+                default:
+                    # code...
+                    break;
+            }
+            $where['phone']=$user['phone'];
+
+            $count      = M('Order')->where($where)->count();
+            $Page       = new \Common\Extend\Page($count,10);
+            $nowPage = isset($_GET['p'])?$_GET['p']:1;
+            $list=D('Order')->page($nowPage.','.$Page->listRows)->where($where)->relation(true)->select();
+            foreach ($list as $key => $value) {
+                $list[$key]['see']=1;
+                $list[$key]['time']=date('Y-m-d H:i', $value['time']);
+            }
+
+            $this->page=$Page->show();
+            $this->list=$list;
+
+            $this->display();
         }
 
-        $this->page=$Page->show();
-        $this->list=$list;
-
-        $this->display();
+        
         
     }
+
 
     public function question(){
         $this->display();

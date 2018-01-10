@@ -22,6 +22,8 @@
               #add_form .layui-table td .images_box a img{width: 100%;}
               #add_form .layui-table td .img_box a{padding:5px;box-sizing:border-box;width: 25%;display: block;}
               #add_form .layui-table td .img_box a img{width: 100%;}
+
+              .layui-upload-icon{height: 34px;line-height: 25px;padding-top: 6px;}
         </style>
 
         <script type="text/javascript">
@@ -155,11 +157,33 @@
                                  </td>
                                </tr>
 
+                               <tr>
+                                 <td colspan="3">
+                                    <div class="row img_box">
+                                      <if condition="$companyinfo['company_logo']">
+                                          <img src="{$companyinfo['company_logo']}">
+                                      </if>
+                                    </div>
+                                 </td>
+                               </tr>
+
+                               <tr>
+                                 <td align="center">公司Logo：</td>
+                                 <td colspan="2">
+                                   <div class="layui-input-inline div_300" style="float: left;">
+                                      <input type="file" id="add_upload_img" name="img" class="layui-upload-file" style="float:left;">
+                                      <label class="layui-form-label" style="float:right;width:auto;">支持最大2MB的jpg/png格式图片</label>
+                                   </div>
+                                 </td>
+                               </tr>
+
+                               
                              </tbody>
                              <tfoot>
                                <tr>
                                  <td colspan="3" style="text-align:center;">
-                                   <input type="hidden" name="id" value="{$companyinfo.id}" lay-verify="required" class="layui-input id" readonly>
+                                   <input type="hidden" name="company_logo" value="{$companyinfo['company_logo']}" class="layui-input company_logo">
+                                   <input type="hidden" name="id" value="{$companyinfo.id}" lay-verify="required" class="layui-input id">
                                    <button class="layui-btn layui-btn-danger" lay-submit="" lay-filter="demo1_add">保存</button>
                                  </td>
                                </tr>
@@ -250,6 +274,23 @@
               url: "{:U('Home/Index/lay_upload_file')}", //接口url
               type: 'post', //默认post
           }
+      });
+
+      //上传文件
+      layui.upload({
+         url: "{:U('Home/Index/lay_upload_img')}" //上传接口
+         ,elem: '#add_upload_img' //指定原始元素，默认直接查找class="layui-upload-file"
+         ,success: function(res){ //上传成功后的回调
+           if(res.code==0){
+              var str='';
+                 str+='<a href="#">'+
+                        '<img src="'+res.data.src+'">'+
+                      '</a>';
+
+              $('#add_form .img_box').html(str);
+              $('#add_form .company_logo').val(res.data.src);
+           }
+         }
       });
 
       //创建一个编辑器
