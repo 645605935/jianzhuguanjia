@@ -15,6 +15,10 @@ class SafetysetController extends CommonController{
 
     //安全设置
     public function index(){
+        global $user;
+
+        $userinfo=M('User')->find($user['id']);
+        $this->phone=$userinfo['phone'];
         $this->display();
     }
 
