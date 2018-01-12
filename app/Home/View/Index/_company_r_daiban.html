@@ -353,19 +353,24 @@
                   },
                   dataType: 'json',
                   success: function(json) {
+                    console.log(json);
                       if (json.code == 0) {
                           var data = json.data;
 
                           var str = "<option value=''>资质专业</option>";
-                          $.each(json.data,
-                          function(key, value) {
+                          $.each(json.data, function(key, value) {
                               str += "<option value='" + value.id + "'>" + value.title + "</option>";
                           });
 
                           $('#baojia_form .type_2').html(str);
                           layui.form().render();
                       } else {
-                          layer.msg(json.msg);
+                          var data = json.data;
+
+                          var str = "<option value=''>-----</option>";
+                          $('#baojia_form .type_2').html(str);
+                          $('#baojia_form .type_3').html(str);
+                          layui.form().render();
                       }
                   },
                   error: function(json) {
@@ -397,7 +402,11 @@
                           $('#baojia_form .type_3').html(str);
                           layui.form().render();
                       } else {
-                          layer.msg(json.msg);
+                          var data = json.data;
+
+                          var str = "<option value=''>-----</option>";
+                          $('#baojia_form .type_3').html(str);
+                          layui.form().render();
                       }
                   },
                   error: function(json) {

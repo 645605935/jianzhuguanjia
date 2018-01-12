@@ -645,7 +645,12 @@
                     $('#daiban_form .type_2').html(str);
                     layui.form().render();
                 } else {
-                    layer.msg(json.msg);
+                    var data = json.data;
+
+                    var str = "<option value=''>-----</option>";
+                    $('#daiban_form .type_2').html(str);
+                    $('#daiban_form .type_3').html(str);
+                    layui.form().render();
                 }
             },
             error: function(json) {
@@ -677,7 +682,11 @@
                     $('#daiban_form .type_3').html(str);
                     layui.form().render();
                 } else {
-                    layer.msg(json.msg);
+                    var data = json.data;
+
+                    var str = "<option value=''>-----</option>";
+                    $('#daiban_form .type_3').html(str);
+                    layui.form().render();
                 }
             },
             error: function(json) {
