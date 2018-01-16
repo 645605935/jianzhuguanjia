@@ -325,7 +325,8 @@ class IndexController extends CommonController{
                 }
             }
             $list[$key]['_company_types']=$arr;
-            $list[$key]['_contact_phone']=hidtel($value['contact_phone']);
+            $list[$key]['_contact_phone']=hidtel('022-65616119');
+            $list[$key]['contact_phone']=('022-65616119');
         }
 
         $this->page=$Page->show();
