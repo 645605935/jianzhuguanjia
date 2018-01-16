@@ -30,10 +30,18 @@ class UsercenterController extends CommonController{
 
         //订单查看情况
         $where=array();
-        $where['type']=$user['company_yewufanwei'];
+        if($user['company_types_zzdb']!=''){
+            $map['type_2']=array('in', explode('#', $user['company_types_zzdb']));
+        }
+        if($user['company_types_axbl']!=''){
+            $map['type_2']=array('in', explode('#', $user['company_types_axbl']));
+        }
+        $map['_logic'] = 'or';
+        $where['_complex'] = $map;
         $where['province']=$user['company_service_province'];
         $where['city']=$user['company_service_city'];
-        $where['type_2']=array('in', explode('#', $user['company_types']));
+
+
         $all_orders=D('Order')->where($where)->select();
         $nosee_num=0;
         foreach ($all_orders as $key => $value) {
@@ -44,11 +52,12 @@ class UsercenterController extends CommonController{
             }
         }
 
-        $coupon_info=M('Coupon')->where(array('uid'=>$user['id']))->find();
+        $coupon_num=$user['coupon'];
         $this->user=$user;
         $this->all_num=count($all_orders);
         $this->nosee_num=$nosee_num;
-        $this->coupon_info=$coupon_info;
+
+        $this->coupon_num=$coupon_num;
         $this->display();
     }
 
@@ -68,13 +77,34 @@ class UsercenterController extends CommonController{
                     $where['type']=2;//axbl  安许办理
                     $where['type_2']=array('in', explode('#', $user['company_types_axbl']));
                     break;
+                case 3:
+                    $where['type']=3;//axbl  寻证挂靠
+                    $where['type_2']=array('in', explode('#', $user['company_types_xzgk']));
+                    break;
+                case 4:
+                    $where['type']=4;//axbl  公司注册
+                    $where['type_2']=array('in', explode('#', $user['company_types_gszc']));
+                    break;
 
                 default:
-                    # code...
+                    if($user['company_types_zzdb']!=''){
+                        $map['type_2']=array('in', explode('#', $user['company_types_zzdb']));
+                    }
+                    if($user['company_types_axbl']!=''){
+                        $map['type_2']=array('in', explode('#', $user['company_types_axbl']));
+                    }
+                    if($user['company_types_xzgk']!=''){
+                        $map['type_2']=array('in', explode('#', $user['company_types_xzgk']));
+                    }
+                    if($user['company_types_gszc']!=''){
+                        $map['type_2']=array('in', explode('#', $user['company_types_gszc']));
+                    }
+                    $map['_logic'] = 'or';
+                    $where['_complex'] = $map;
                     break;
             }
 
-            
+
             $where['province']=$user['company_service_province'];
             $where['city']=$user['company_service_city'];
             
@@ -151,12 +181,11 @@ class UsercenterController extends CommonController{
 
         //查看是否还有卷可用
         $where=array();
-        $where['uid']=$user['id'];
-        $where['num']=array('gt', 0);
-        $coupon=M('Coupon')->where($where)->find();
+        $where['id']=$user['id'];
+        $user=M('user')->where($where)->find();
        
-        if($coupon['num'] > 0){
-            M('Coupon')->where(array('id'=>$coupon['id']))->setDec('num',1);
+        if($user['coupon'] > 0){
+            M('User')->where(array('id'=>$user['id']))->setDec('coupon',1);
             $data=array();
             $data['uid']=$user['id'];
             $data['oid']=$id;
@@ -177,6 +206,25 @@ class UsercenterController extends CommonController{
         echo json_encode($data);
     }
 
+    //获取当前订单券数量
+    public function ajax_get_coupon_num(){
+        global $user;
+
+        $user=M('user')->find($user['id']);
+       
+        if($user['coupon'] > 0){
+            $data=array();
+            $data['code']=0;
+            $data['msg']='success';
+            $data['data']=$user['coupon'];
+        }else{
+            $data=array();
+            $data['code']=2;
+            $data['msg']='请先购买优惠券！';
+        }
+
+        echo json_encode($data);
+    }
 
   
 

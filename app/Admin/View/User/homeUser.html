@@ -1478,9 +1478,7 @@
                success  : function(json) {  
                    if(json.code == 0){
                        layer.msg(json.msg);
-                       $("#grid-table").addRowData(1, json.data, "first");
-                       $("#add_form .reset").trigger('click');
-                       $("div[aria-describedby='dialog-confirm_add'] .ui-dialog-titlebar-close").trigger("click");
+                       $("div[aria-describedby='dialog-confirm_add-coupon'] .ui-dialog-titlebar-close").trigger("click");
                    }else{
                        layer.msg(json.msg);
                        _json=json;

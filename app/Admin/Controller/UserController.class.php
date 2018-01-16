@@ -84,6 +84,7 @@ class UserController extends AuthController {
 
         $data=array();
         $data=$_POST;
+        $buy_uid=$_POST['uid'];
         if($data){
             $coupon_type_info=M('Type')->find($data['type']);
             if($coupon_type_info){
@@ -93,8 +94,13 @@ class UserController extends AuthController {
                 $data['end_time']=time() + $coupon_type_info['day']*24*60*60;
             }
 
+            //添加购买优惠券记录
             $id = M('Coupon')->add($data);
-            if($id){
+
+            //给用户添加对应的优惠券
+            $res = M('user')->where(array('id'=>$buy_uid))->setInc('coupon',$data['num']);
+
+            if($res&&$id){
                 $data=array();
                 $data['code']=0;
                 $data['msg']='success';

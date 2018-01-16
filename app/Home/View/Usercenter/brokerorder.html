@@ -16,8 +16,6 @@
 
 
   <script type="text/javascript" src="__PUBLIC__/Home/js/jquery-1.10.2.js"></script> 
-  <script type="text/javascript" src="__PUBLIC__/Home/js/jquery.validate.js"></script> 
-  <script type="text/javascript" src="__PUBLIC__/Home/js/popup.js"></script> 
   <script src="__PUBLIC__/Admin/layui-v1.0.4/layui/layui.js"></script>
  </head> 
  <body> 
@@ -241,11 +239,25 @@
               },
               dataType : 'json',
               success  : function(json) {  
-                  if(json.code == 0){
-                      _json=json;
-                  }else{
-                      layer.msg(json.msg);
-                  }
+                  _json=json;
+              },
+              error  : function() {  
+                  layer.msg('error');
+              }  
+          }); 
+          return _json;
+      }
+
+      //获取当前订单券数量 
+      function _ajax_get_coupon_num(){
+          var _json;
+          $.ajax({  
+              async:false,
+              type:'get',  
+              url : "{:U('Home/Usercenter/ajax_get_coupon_num')}",
+              dataType : 'json',
+              success  : function(json) {  
+                  _json=json;
               },
               error  : function() {  
                   layer.msg('error');
@@ -256,7 +268,7 @@
 
 
 
-      layui.use(['form', 'laydate'], function(){
+      layui.use(['form','layer', 'laydate'], function(){
         var form = layui.form()
         ,layer = layui.layer
         ,layedit = layui.layedit
@@ -280,47 +292,26 @@
             $('td').removeClass('phone_seeing');
             $(this).parent('td').addClass('phone_seeing');
 
-            if(confirm('确定查看（将消费您一张券）？')){
-                layer.msg('恭喜您，可以查看了', {icon: 1});
-                var _json=_ajax_get_phone(id);
-                if(_json.code==0){
-                    $('.phone_seeing span').html(_json.data);
-                    $('.phone_seeing button').remove();
+            //获取当前订单券数量
+            var _json=_ajax_get_coupon_num();
+            if(_json.code==0){
+                if(confirm('【还有'+_json.data+'张可用】确定查看（将消费您一张券）？')){
+                    var _json=_ajax_get_phone(id);
+                    if(_json.code==0){
+                        alert('恭喜您，可以查看了');
+                        $('.phone_seeing span').html(_json.data);
+                        $('.phone_seeing button').remove();
+                    }else{
+                        alert(_json.msg);
+                        window.location.href="{:U('Home/Index/tuiguang')}";
+                    }
                 }else{
-                    layer.msg(_json.msg);
+                    alert('可能这条信息也很重要哦');
                 }
             }else{
-                layer.msg('可能这条信息也很重要哦');
+                alert('请先购买优惠券！');
+                window.location.href="{:U('Home/Index/tuiguang')}";
             }
         });
-
-        
-
-        var start = {
-          max: '2099-06-16 23:59:59'
-          ,istoday: false
-          ,choose: function(datas){
-            end.min = datas; //开始日选好后，重置结束日的最小日期
-            end.start = datas //将结束日的初始值设定为开始日
-          }
-        };
-
-        var end = {
-          max: '2099-06-16 23:59:59'
-          ,istoday: false
-          ,choose: function(datas){
-            start.max = datas; //结束日选好后，重置开始日的最大日期
-          }
-        };
-
-        document.getElementById('LAY_demorange_s').onclick = function(){
-          start.elem = this;
-          laydate(start);
-        }
-
-        document.getElementById('LAY_demorange_e').onclick = function(){
-          end.elem = this
-          laydate(end);
-        }
       });
 </script>
