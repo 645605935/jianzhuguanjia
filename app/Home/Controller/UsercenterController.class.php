@@ -107,7 +107,9 @@ class UsercenterController extends CommonController{
                     }else{
                         $gszc=array();
                     }
-                    $where['type_2'] = array_merge($zzdb,$axbl,$xzgk,$gszc);
+
+                    $temp_arr=array_merge($zzdb,$axbl,$xzgk,$gszc);
+                    $where['type_2'] = array('in', $temp_arr);
                     break;
             }
 
