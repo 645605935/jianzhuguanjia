@@ -152,7 +152,7 @@
                                      <td colspan="2">
                                           <div class="layui-input-inline div_300" id="type_2_box">
                                                <foreach name="company_types_axbl" item="v">
-                                                   <input type="radio" value="{$v.id}" <if condition="in_array($v['id'],$row['_company_types_axbl'])"> checked="checked" </if> lay-filter="company_types_axbl" name="axbl" title="{$v.title}">
+                                                   <input type="checkbox" data-value="{$v.id}" <if condition="in_array($v['id'],$row['_company_types_axbl'])"> checked="checked" </if> lay-filter="company_types_axbl" name="axbl[{$v.id}]" title="{$v.title}">
                                                </foreach>
                                           </div>
                                      </td>
@@ -519,10 +519,55 @@
           return false;
       });
 
-      form.on('radio(company_types_axbl)', function(data){
-          var value=data.value;
+      form.on('checkbox(company_types_axbl)', function(data){
+          var temp=data.elem.name;
+          var temp_1=temp.split('[');
+          var temp_2=temp_1[1];
+          var temp_3=temp_2.split(']');
+          var type=temp_3[0];
 
-          $('#add_form .company_types_axbl').val(value);
+          var company_types_axbl=$('#add_form .company_types_axbl').val();
+          var old_arr=company_types_axbl.split('#');
+          if(data.elem.checked){
+              var _str=$('#add_form .company_types_axbl').val();
+              var _arr=_str.split('#');
+              if(_arr.length==1116){
+                  alert('最多选6项！');return false;
+              }
+
+              //加
+              if(company_types_axbl==''){
+                  var str=type;
+                  $('#add_form .company_types_axbl').val(str);
+              }else{
+                  var new_arr=company_types_axbl.split('#');
+                      new_arr.push(type);
+                  var str=new_arr.join('#');
+                  $('#add_form .company_types_axbl').val(str);
+                  if(new_arr.length==6){
+                      $.each($('#type_2_box input'), function(name ,value){
+                          var t=$(value).attr('data-value');
+                          
+                          if($.inArray( t, new_arr )>=0){
+
+                          }else{
+                              $(value).attr('disabled', 'disabled');
+                          }
+                      });
+                  }
+              }
+          }else{
+              //减
+              new_arr = $.grep(old_arr, function(value) {
+                  return value != type;
+              });
+              var str=new_arr.join('#');
+              $('#add_form .company_types_axbl').val(str);
+
+              $('#type_2_box input').removeAttr('disabled');
+
+          }
+          layui.form().render();
           return false;
       });
 
@@ -538,7 +583,7 @@
           if(data.elem.checked){
               var _str=$('#add_form .company_types_gszc').val();
               var _arr=_str.split('#');
-              if(_arr.length==6){
+              if(_arr.length==1116){
                   alert('最多选6项！');return false;
               }
 
@@ -590,7 +635,7 @@
           if(data.elem.checked){
               var _str=$('#add_form .company_types_xzgk').val();
               var _arr=_str.split('#');
-              if(_arr.length==6){
+              if(_arr.length==1116){
                   alert('最多选6项！');return false;
               }
 

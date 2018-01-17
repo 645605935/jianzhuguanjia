@@ -88,19 +88,26 @@ class UsercenterController extends CommonController{
 
                 default:
                     if($user['company_types_zzdb']!=''){
-                        $map['type_2']=array('in', explode('#', $user['company_types_zzdb']));
+                        $zzdb=explode('#', $user['company_types_zzdb']);
+                    }else{
+                        $zzdb=array();
                     }
                     if($user['company_types_axbl']!=''){
-                        $map['type_2']=array('in', explode('#', $user['company_types_axbl']));
+                        $axbl=explode('#', $user['company_types_axbl']);
+                    }else{
+                        $zzdb=array();
                     }
                     if($user['company_types_xzgk']!=''){
-                        $map['type_2']=array('in', explode('#', $user['company_types_xzgk']));
+                        $xzgk=explode('#', $user['company_types_xzgk']);
+                    }else{
+                        $xzgk=array();
                     }
                     if($user['company_types_gszc']!=''){
-                        $map['type_2']=array('in', explode('#', $user['company_types_gszc']));
+                        $gszc=explode('#', $user['company_types_gszc']);
+                    }else{
+                        $gszc=array();
                     }
-                    $map['_logic'] = 'or';
-                    $where['_complex'] = $map;
+                    $where['type_2'] = array_merge($zzdb,$axbl,$xzgk,$gszc);
                     break;
             }
 
