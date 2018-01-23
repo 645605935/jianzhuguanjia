@@ -42,6 +42,72 @@ class IndexController extends CommonController{
         }
     }
 
+
+    //百度语音合成
+    public function bdtsn(){
+        $appid = '10718604';//填写自己的appid
+        $apikey = 'dNd0pySFdy6m9kSw7KKIduRV';//填写自己的
+        $secretkey = 'ENn1AAqU9qf17GMcN92gkecEZHRnVkDp';//填写自己的
+
+        $tex = '张腾瑞，我爱你';//要合成音源的文字（比如： 成功收款0.01元 ）
+        // $tex = I('tex','','trim');//要合成音源的文字（比如： 成功收款0.01元 ）
+
+        if(!$tex){
+            $this->error('字符非法');
+        }
+
+        $tex = urlencode($tex);
+
+
+        //语言文件地址
+        $file = './Uploads/Mp3/'.md5($tex).'.mp3'; //本地缓存音源的路径 避免同样提示音重复去百度生成
+ 
+        if(!file_exists($file)){
+
+            //缓存名称
+            $name = 'bdtsn_'.$appid;
+            if(!$json = S($name)){
+                //获取百度语音token信息 并缓存
+                $jsonStr = http_post('https://openapi.baidu.com/oauth/2.0/token?grant_type=client_credentials&client_id='.$apikey.'&client_secret='.$secretkey);
+                $json = json_decode($jsonStr,true);
+                S($name,$json,$json['expires_in']);
+            }
+
+            if(!$json){
+                $this->error('token获取失败');
+            }else{
+                $access_token=$json['access_token'];
+            }
+
+
+            //获取语语音数据 并生成 本地mp3文件
+            $url = 'http://tsn.baidu.com/text2audio?tex='.$tex.'&lan=zh&cuid='.$appid.'&ctp=1&tok='.$json['access_token'];
+            $data = file_get_contents($url);
+
+
+            if(!$json){
+                $this->error('音频数据获取失败');
+            }
+
+            file_put_contents($file,$data);
+
+
+
+        }
+
+        $url_="http://tsn.baidu.com/text2audio?lan=zh&ctp=1&cuid=abcdxxx&tok=".$access_token."&tex=%e7%99%be%e5%ba%a6%e4%bd%a0%e5%a5%bd&vol=9&per=0&spd=5&pit=5";
+        echo $url_;die;
+        // $url_="http://tsn.baidu.com/text2audio?lan=zh&ctp=1&cuid=abcdxxx&tok=".$access_token."&tex=".urlencode('张腾瑞')."&vol=9&per=0&spd=5&pit=5";
+
+
+        
+
+        if($file){
+            $this->success('success',$url_);//返回本地音源路径 
+        }
+
+    }
+
     public function index(){
         $province=M('Province')->select();
 

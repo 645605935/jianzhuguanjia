@@ -108,7 +108,7 @@
         	        <tr>
         	          <td colspan="2" style="text-align:center;">
         	             <input type="hidden" name="type" value='1' placeholder="办资质" autocomplete="off" class="layui-input">
-        	             <input id="apply_daiban" disabled="disabled" value="免费获取精准报价" lay-submit="" lay-filter="demo1_apply_daiban" class="btn btn-primary btn-large" />
+        	             <input id="apply_daiban" value="免费获取精准报价" lay-submit="" lay-filter="demo1_apply_daiban" class="btn btn-primary btn-large" />
         	          </td>
         	        </tr>
         	      </tfoot>
@@ -204,7 +204,7 @@
 			        <tr>
 			          <td colspan="2" style="text-align:center;">
 			             <input type="hidden" name="type" value='2' placeholder="办安证" autocomplete="off" class="layui-input">
-			             <input id="apply_safe" disabled="disabled" value="免费获取精准报价" lay-submit="" lay-filter="demo1_apply_safe" class="btn btn-primary btn-large" />
+			             <input id="apply_safe" value="免费获取精准报价" lay-submit="" lay-filter="demo1_apply_safe" class="btn btn-primary btn-large" />
 			          </td>
 			        </tr>
 			      </tfoot>
@@ -362,14 +362,6 @@
     $(function(){
         init_editer();
 
-        $('#phone_code_1').blur(function(){
-            var phone=$('.phone_1').val();
-            var code=$(this).val();
-            if(code && phone){
-                _ajax_check_code(code, phone);
-            }
-        });
-
         $('.phone_1').blur(function(){
             var phone=$(this).val();
             if(isPhoneNo(phone)){
@@ -394,13 +386,6 @@
             }
         });
 
-        $('#phone_code_2').blur(function(){
-            var phone=$('.phone_2').val();
-            var code=$(this).val();
-            if(code && phone){
-                _ajax_check_code(code, phone);
-            }
-        });
 
         $('.phone_2').blur(function(){
             var phone=$(this).val();
@@ -503,6 +488,7 @@
     }
 
     function _ajax_check_code(code, phone){
+         var _json;
          $.ajax({  
              async:false,
              type:'post',  
@@ -514,16 +500,13 @@
              },
              dataType : 'json',
              success  : function(json) {
-                 if(json.IsSuccess==true){
-                     $('#apply_daiban').removeAttr('disabled');
-                 }else{
-                     alert(json.Msg);
-                 }
+                 _json=json;
              },
              error  : function() {  
                  alert('error');
              }  
          }); 
+         return _json;
     }
 
     function init_editer(){
@@ -577,15 +560,39 @@
 
           //监听提交
           form.on('submit(demo1_apply_daiban)', function(data){
-            // console.log(data.field);
-            var _json=_ajax_apply_baojia(data.field);
+            var phone=$('.phone_1').val();
+            var code=$('#phone_code_1').val();
+            if(code.length==6 && phone){
+                var _res = _ajax_check_code(code, phone);
+
+                if(_res.IsSuccess==true){
+                     _ajax_apply_baojia(data.field);
+                }else{
+                     alert('请填写正确的手机号码或验证码');
+                }
+            }else{
+                alert('请填写正确的手机号码或验证码');
+            }
+            
             return false;
           });
 
           //监听提交
           form.on('submit(demo1_apply_safe)', function(data){
-            // console.log(data.field);
-            var _json=_ajax_apply_baojia(data.field);
+            var phone=$('.phone_2').val();
+            var code=$('#phone_code_2').val();
+            if(code.length==6 && phone){
+                var _res = _ajax_check_code(code, phone);
+
+                if(_res.IsSuccess==true){
+                     _ajax_apply_baojia(data.field);
+                }else{
+                     alert('请填写正确的手机号码或验证码');
+                }
+            }else{
+                alert('请填写正确的手机号码或验证码');
+            }
+
             return false;
           });
         });
