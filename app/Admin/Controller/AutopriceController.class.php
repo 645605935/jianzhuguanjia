@@ -33,12 +33,26 @@ class AutopriceController extends AuthController {
         $this->page_buttons=$page_buttons;
         $this->page=$page;
 
-        $type=M('Type')->where(array('pid'=>1275,'id'=>array('in',array('1292','1293'))))->select();
-        foreach ($type as $key => $value) {
-            $type[$key]['_child']=M('Type')->where(array('pid'=>$value['id']))->select();
-        }
+        $type=M('Type')->where(array('pid'=>11))->select();
         $this->type=$type;
         $this->display();
+    }
+
+    //请求分类
+    public function ajax_get_type_list(){
+        $list = D('Type')->where(array('pid'=>I('id')))->select();
+        if($list){
+            $data=array();
+            $data['code']=0;
+            $data['msg']='success';
+            $data['data']=$list;
+        }else{
+            $data=array();
+            $data['code']=1;
+            $data['msg']='未搜索到数据';
+            $data['data']=array();
+        }
+        echo json_encode($data);
     }
 
     //列表
@@ -76,7 +90,42 @@ class AutopriceController extends AuthController {
         $id=I('id');
 
         if($id){
-            $row = D('Autoprice')->relation(true)->find($id);
+            $row = D('Autoprice')->find($id);
+
+            $type1_info=M('type')->find($row['type1']);
+            $type2_info=M('type')->find($row['type2']);
+            $type3_info=M('type')->find($row['type3']);
+            $_type1_list=M('type')->where(array('pid'=>$type1_info['pid']))->select();
+            $_type2_list=M('type')->where(array('pid'=>$type2_info['pid']))->select();
+            $_type3_list=M('type')->where(array('pid'=>$type3_info['pid']))->select();
+
+            foreach ($_type1_list as $key => $value) {
+                if($value['id']==$row['type1']){
+                    $_type1_list[$key]['selected']=1;
+                }else{
+                    $_type1_list[$key]['selected']=0;
+                }
+            }
+            $row['_type1_list']=$_type1_list;
+
+            foreach ($_type2_list as $key => $value) {
+                if($value['id']==$row['type2']){
+                    $_type2_list[$key]['selected']=1;
+                }else{
+                    $_type2_list[$key]['selected']=0;
+                }
+            }
+            $row['_type2_list']=$_type2_list;
+
+            foreach ($_type3_list as $key => $value) {
+                if($value['id']==$row['type3']){
+                    $_type3_list[$key]['selected']=1;
+                }else{
+                    $_type3_list[$key]['selected']=0;
+                }
+            }
+            $row['_type3_list']=$_type3_list;
+
 
             $row['time']=date('Y-m-d H:i',$row['time']);
             $row['start_time']=date('Y-m-d H:i',$row['start_time']);
@@ -109,10 +158,11 @@ class AutopriceController extends AuthController {
         $data=array();
         $data=$_POST;
         if($data){
-            $data['uid']=$user['uid'];
+            $type1_info=M('type')->find($_POST['type1']);
+            $type2_info=M('type')->find($_POST['type2']);
+            $type3_info=M('type')->find($_POST['type3']);
+            $data['title']=$type1_info['title'].'=>'.$type2_info['title'].'=>'.$type3_info['title'];
             $data['time']=time();
-            $data['start_time']=strtotime($data['start_time']);
-            $data['end_time']=strtotime($data['end_time']);
 
             $id = M('Autoprice')->add($data);
             if($id){
@@ -154,6 +204,10 @@ class AutopriceController extends AuthController {
         $data=$_POST;
         if($data){
             $data['time']=time();
+            $type1_info=M('type')->find($_POST['type1']);
+            $type2_info=M('type')->find($_POST['type2']);
+            $type3_info=M('type')->find($_POST['type3']);
+            $data['title']=$type1_info['title'].'=>'.$type2_info['title'].'=>'.$type3_info['title'];
 
             $res = M('Autoprice')->save($data);
             if($res){

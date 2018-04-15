@@ -145,6 +145,9 @@
                                     <div class="layui-input-inline">
                                       <input type="text" name="title" placeholder="" value="{$_POST['title']}" autocomplete="off" class="layui-input title">
                                     </div>
+                                    <div class="layui-input-inline">
+                                      <button style="float:right;" class="layui-btn search_btn" lay-submit="" title="search_btn">搜索</button>
+                                    </div>
                                   </div>
                                 </div>  
                               </td>
@@ -154,7 +157,6 @@
                             <tr>
                               <td>
                                 <button style="float:left;" class="layui-btn id-btn-dialog2_add" title="id-btn-dialog2_add"> 添加 </button>
-                                <button style="float:right;" class="layui-btn search_btn" lay-submit="" title="search_btn">搜索</button>
                               </td>
                             </tr> 
                           </tfoot>
@@ -320,17 +322,23 @@
             
               <table class="table table-striped table-bordered table-hover">
                 <colgroup>
-                  <col width="50%">
-                  <col width="50%">
+                  <col width="33%">
+                  <col width="33%">
+                  <col>
                 </colgroup>
                 <tbody>
                   <tr>
                     <td>
                       <div class="layui-inline">
                         <div class="layui-form-item">
-                          <label class="layui-form-label">价格</label>
+                          <label class="layui-form-label">资质类型</label>
                           <div class="layui-input-inline">
-                            <input type="text" name="title" lay-verify="required" placeholder="" class="layui-input title">
+                            <select name="type1" class="type1" lay-verify="required" lay-filter="type1">
+                               <option value="">请选择</option>
+                               <foreach name="type" item="vo">
+                                  <option value="{$vo.id}">{$vo.title}</option>
+                               </foreach>
+                            </select>
                           </div>
                         </div>
                       </div>
@@ -338,17 +346,22 @@
                     <td>
                       <div class="layui-inline">
                         <div class="layui-form-item">
-                          <label class="layui-form-label">分类</label>
+                          <label class="layui-form-label">资质分类</label>
                           <div class="layui-input-inline">
-                            <select name="type" class="type" lay-verify="required">
+                            <select name="type2" class="type2" lay-verify="required" lay-filter="type2">
                                <option value="">请选择</option>
-                               <foreach name="type" item="vo">
-                                  <optgroup label="{$vo['title']}">
-                                    <foreach name="vo['_child']" item="v">
-                                      <option value="{$v.id}">{$v.title}</option>
-                                    </foreach>
-                                  </optgroup>
-                               </foreach>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="layui-inline">
+                        <div class="layui-form-item">
+                          <label class="layui-form-label">资质等级</label>
+                          <div class="layui-input-inline">
+                            <select name="type3" class="type3" lay-verify="required">
+                               <option value="">请选择</option>
                             </select>
                           </div>
                         </div>
@@ -357,15 +370,13 @@
                   </tr>
                   
                   <tr>
-                    <td>
+                    <td colspan="3">
                       <div class="layui-form-item layui-form-text">
-                          <label class="layui-form-label" style="width: 100%!important;text-align: left;">平台估价</label>
+                          <label class="layui-form-label" style="width: 100%!important;text-align: left;">报价图</label>
                           <div class="layui-input-block">
                               <textarea class="layui-textarea layui-hide content_1" name="content_1" lay-verify="content_1" id="editer_add_1"></textarea>
                           </div>
                       </div>
-                    </td>
-                    <td>
                       <div class="layui-form-item layui-form-text">
                           <label class="layui-form-label" style="width: 100%!important;text-align: left;">资质标准</label>
                           <div class="layui-input-block">
@@ -374,31 +385,11 @@
                       </div>
                     </td>
                   </tr>
-
-                  <tr>
-                    <td>
-                      <div class="layui-form-item layui-form-text">
-                          <label class="layui-form-label" style="width: 100%!important;text-align: left;">工程范围</label>
-                          <div class="layui-input-block">
-                              <textarea class="layui-textarea layui-hide content_3" name="content_3" lay-verify="content_3" id="editer_add_3"></textarea>
-                          </div>
-                      </div>
-                    </td>
-                    <td>
-                      <div class="layui-form-item layui-form-text">
-                          <label class="layui-form-label" style="width: 100%!important;text-align: left;">办理材料</label>
-                          <div class="layui-input-block">
-                              <textarea class="layui-textarea layui-hide content_4" name="content_4" lay-verify="content_4" id="editer_add_4"></textarea>
-                          </div>
-                      </div>
-                    </td>
-                  </tr>
                 </tbody>
                 <tfoot>
                   <tr>
-                    <td colspan="2" style="text-align:right;">
+                    <td colspan="3" style="text-align:right;">
                       <button class="layui-btn" lay-submit="" lay-filter="demo1_add">确认</button>
-                      <button type="reset" class="layui-btn layui-btn-primary reset">重置</button>
                     </td>
                   </tr>
                 </tfoot>
@@ -416,14 +407,21 @@
            <form class="layui-form layui-form-pane col-xs-12" method="post" action="" id="edit_form" enctype="multipart/form-data">
             
               <table class="table table-striped table-bordered table-hover">
+                <colgroup>
+                  <col width="33%">
+                  <col width="33%">
+                  <col>
+                </colgroup>
                 <tbody>
                   <tr>
                     <td>
                       <div class="layui-inline">
                         <div class="layui-form-item">
-                          <label class="layui-form-label">价格</label>
+                          <label class="layui-form-label">资质类型</label>
                           <div class="layui-input-inline">
-                            <input type="text" name="title" lay-verify="required" placeholder="" class="layui-input title">
+                            <select name="type1" class="type1" lay-verify="required" lay-filter="type1">
+                               <option value="">请选择</option>
+                            </select>
                           </div>
                         </div>
                       </div>
@@ -431,17 +429,22 @@
                     <td>
                       <div class="layui-inline">
                         <div class="layui-form-item">
-                          <label class="layui-form-label">分类</label>
+                          <label class="layui-form-label">资质分类</label>
                           <div class="layui-input-inline">
-                            <select name="type" class="type" lay-verify="required">
+                            <select name="type2" class="type2" lay-verify="required" lay-filter="type2">
                                <option value="">请选择</option>
-                               <foreach name="type" item="vo">
-                                  <optgroup label="{$vo['title']}">
-                                    <foreach name="vo['_child']" item="v">
-                                      <option value="{$v.id}" alt="{$v.title}">{$v.title}</option>
-                                    </foreach>
-                                  </optgroup>
-                               </foreach>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="layui-inline">
+                        <div class="layui-form-item">
+                          <label class="layui-form-label">资质等级</label>
+                          <div class="layui-input-inline">
+                            <select name="type3" class="type3" lay-verify="required">
+                               <option value="">请选择</option>
                             </select>
                           </div>
                         </div>
@@ -450,15 +453,13 @@
                   </tr>
 
                   <tr>
-                    <td>
+                    <td colspan="3">
                       <div class="layui-form-item layui-form-text">
-                          <label class="layui-form-label" style="width: 100%!important;text-align: left;">平台估价</label>
+                          <label class="layui-form-label" style="width: 100%!important;text-align: left;">报价图</label>
                           <div class="layui-input-block">
                               <textarea class="layui-textarea layui-hide content_1" name="content_1" lay-verify="content_1" id="editer_edit_1"></textarea>
                           </div>
                       </div>
-                    </td>
-                    <td>
                       <div class="layui-form-item layui-form-text">
                           <label class="layui-form-label" style="width: 100%!important;text-align: left;">资质标准</label>
                           <div class="layui-input-block">
@@ -467,32 +468,12 @@
                       </div>
                     </td>
                   </tr>
-
-                  <tr>
-                    <td>
-                      <div class="layui-form-item layui-form-text">
-                          <label class="layui-form-label" style="width: 100%!important;text-align: left;">工程范围</label>
-                          <div class="layui-input-block">
-                              <textarea class="layui-textarea layui-hide content_3" name="content_3" lay-verify="content_3" id="editer_edit_3"></textarea>
-                          </div>
-                      </div>
-                    </td>
-                    <td>
-                      <div class="layui-form-item layui-form-text">
-                          <label class="layui-form-label" style="width: 100%!important;text-align: left;">办理材料</label>
-                          <div class="layui-input-block">
-                              <textarea class="layui-textarea layui-hide content_4" name="content_4" lay-verify="content_4" id="editer_edit_4"></textarea>
-                          </div>
-                      </div>
-                    </td>
-                  </tr>
                 </tbody>
                 <tfoot>
                   <tr>
-                    <td colspan="2" style="text-align:right;">
+                    <td colspan="3" style="text-align:right;">
                       <input type="hidden" name="id" class="layui-input id">
                       <button class="layui-btn" lay-submit="" lay-filter="demo1_edit">确认</button>
-                      <button type="reset" class="layui-btn layui-btn-primary reset">重置</button>
                     </td>
                   </tr>
                 </tfoot>
@@ -630,6 +611,42 @@
           return _data;  
       } 
 
+      //异步获取分类列表
+      function _ajax_get_type_list(class_type, id){
+          var _data;
+          $.ajax({   
+              async:false,
+              type:'get',  
+              contentType:"application/x-www-form-urlencoded",
+              url : "{:U('Admin/Autoprice/ajax_get_type_list')}",
+              data: {
+                'id':id
+              },
+              dataType : 'json',
+              success  : function(json) { 
+                  if(json.code==0){
+                      _data=json.data;
+                      
+                      var str='<option value="">请选择</option>';
+                      for (var i = 0; i < _data.length; i++) {
+                          str+='<option value="'+_data[i]['id']+'">'+_data[i]['title']+'</option>';
+                      };
+
+                      $('#add_form .'+class_type).html(str);
+                      layui.form().render();
+
+                  }
+                  if(json.code==1){
+                      _data=json;
+                  }
+              },
+              error  : function(json) {  
+                  layer.msg(json.msg);
+              }  
+          });  
+          return _data;  
+      } 
+
       //获取单条信息
       function _ajax_get_row_info(id){
           var _json;
@@ -644,22 +661,54 @@
               success  : function(json) {  
                   if(json.code == 0){
                       var data=json.data;
+                      var type1_list=data._type1_list;
+                      var type2_list=data._type2_list;
+                      var type3_list=data._type3_list;
 
                       $('#edit_form .id').val(data.id);
-                      $('#edit_form .title').val(data.title);
+                      
 
-                      $.each($("#edit_form .type option"), function(name, value){
-                          if($(value).attr('alt')==data.type){
-                              $(value).attr('selected','selected');
+                      var str1='<option value="">请选择</option>';
+                      for (var i = 0; i < type1_list.length; i++) {
+                          if(type1_list[i]['id']==data.type1){
+                              var selected='selected';
                           }else{
-                              $(value).removeAttr('selected');
+                              var selected='';
                           }
-                      });
+                          str1+='<option '+selected+' value="'+type1_list[i]['id']+'">'+type1_list[i]['title']+'</option>';
+                      };
+                      $('#edit_form .type1').html(str1);
+
+                      var str2='<option value="">请选择</option>';
+                      for (var i = 0; i < type2_list.length; i++) {
+                          if(type2_list[i]['id']==data.type2){
+                              var selected='selected';
+                          }else{
+                              var selected='';
+                          }
+                          str2+='<option '+selected+' value="'+type2_list[i]['id']+'">'+type2_list[i]['title']+'</option>';
+                      };
+                      $('#edit_form .type2').html(str2);
+
+                      var str3='<option value="">请选择</option>';
+                      for (var i = 0; i < type3_list.length; i++) {
+                          if(type3_list[i]['id']==data.type3){
+                              var selected='selected';
+                          }else{
+                              var selected='';
+                          }
+                          str3+='<option '+selected+' value="'+type3_list[i]['id']+'">'+type3_list[i]['title']+'</option>';
+                      };
+                      $('#edit_form .type3').html(str3);
+
+                      layui.form().render();
+
+
+
+
 
                       $('#edit_form .content_1').val(data.content_1);
                       $('#edit_form .content_2').val(data.content_2);
-                      $('#edit_form .content_3').val(data.content_3);
-                      $('#edit_form .content_4').val(data.content_4);
                       _json=json;
 
                       layui.form().render();
@@ -780,12 +829,13 @@
               data: grid_data,
               datatype: "local",
               height: 430,
-              colNames:['id', '标题','分类','状态','操作'],
+              colNames:['id','资质类型' ,'资质分类', '资质等级','状态','操作'],
               colModel:[
                 {name:'id',index:'id',  sorttype:"int",align : "center", hidden: true},
 
-                {name:'title',index:'title', align : "center"},
-                {name:'type',index:'type', align : "center"},
+                {name:'type1',index:'type1', align : "center"},
+                {name:'type2',index:'type2', align : "center"},
+                {name:'type3',index:'type3', align : "center"},
                 {name:'show',index:'show', align : "center", formatter: showFormatter},
 
                 {name:'options',index:'options',align:'center',width:200}
@@ -850,6 +900,22 @@
               ,layedit = layui.layedit
               ,laydate = layui.laydate;
 
+              //监听指定开关
+              form.on('select(type1)', function(data){
+                  var id=data.value;
+                  if(id){
+                      _ajax_get_type_list('type2', id);
+                  }
+              });
+
+              //监听指定开关
+              form.on('select(type2)', function(data){
+                  var id=data.value;
+                  if(id){
+                      _ajax_get_type_list('type3', id);
+                  }
+              });
+
 
               var arr=edit_type.split('_');
               var form_type=arr[1];
@@ -865,28 +931,14 @@
               //创建一个编辑器
               var editIndex_1 = layedit.build(edit_type+"_1");
               var editIndex_2 = layedit.build(edit_type+"_2");
-              var editIndex_3 = layedit.build(edit_type+"_3");
-              var editIndex_4 = layedit.build(edit_type+"_4");
 
               //自定义验证规则
               form.verify({
-                title: function(value){
-                  if(value.length < 5){
-                    return '标题至少得5个字符啊';
-                  }
-                }
-                ,pass: [/(.+){6,12}$/, '密码必须6到12位']
-                ,content_1: function(value){
+                content_1: function(value){
                   layedit.sync(editIndex_1);
                 }
                 ,content_2: function(value){
                   layedit.sync(editIndex_2);
-                }
-                ,content_3: function(value){
-                  layedit.sync(editIndex_3);
-                }
-                ,content_4: function(value){
-                  layedit.sync(editIndex_4);
                 }
               });
 

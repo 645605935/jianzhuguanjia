@@ -9,11 +9,23 @@ class AutopriceModel extends RelationModel{
 			'foreign_key'=>'uid',
 			'as_fields' => 'truename:_truename',
 		),
-		'_type'=>array(
+		'_type1'=>array(
 			'mapping_type'=>self::BELONGS_TO,
 			'class_name'=>'Type',
-			'foreign_key'=>'type',
-			'as_fields' => 'title:type',
+			'foreign_key'=>'type1',
+			'as_fields' => 'title:type1',
+		),
+		'_type2'=>array(
+			'mapping_type'=>self::BELONGS_TO,
+			'class_name'=>'Type',
+			'foreign_key'=>'type2',
+			'as_fields' => 'title:type2',
+		),
+		'_type3'=>array(
+			'mapping_type'=>self::BELONGS_TO,
+			'class_name'=>'Type',
+			'foreign_key'=>'type3',
+			'as_fields' => 'title:type3',
 		)
 	);
 }
